@@ -1,0 +1,32 @@
+{
+  "name": "react-svg",
+  "version": "1.0.0",
+  "description": "A react.js svg component for loading svg files into the dom.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/index-spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atomic-app/react-svg"
+  },
+  "keywords": [
+    "react",
+    "react.js",
+    "svg"
+  ],
+  "author": "PrototypeAlex",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/atomic-app/react-svg/issues"
+  },
+  "homepage": "https://github.com/atomic-app/react-svg",
+  "dependencies": {
+    "react": "^0.12.1"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "jsdom": "^1.3.1",
+    "mocha": "^2.0.1"
+  }
+}
