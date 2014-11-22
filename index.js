@@ -4,7 +4,6 @@ var React = require('react'),
 svgConfig = function(args) {
   return {
     evalScripts: args.evalScripts || 'never',
-    pngFallback: args.pngFallback || false,
     each: args.callback || null
   };
 };
@@ -15,7 +14,10 @@ var SVGComponent = React.createClass({
   },
 
   render: function(){
-    return React.DOM.img({className: this.props.className, 'data-src': this.props.path});
+    return React.DOM.img({
+      className: this.props.className,
+      'data-src': this.props.path,
+      'data-fallback': this.props.fallbackPath});
   }
 });
 
