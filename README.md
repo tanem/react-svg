@@ -35,7 +35,6 @@ render: function() {
 ```
 
 # Roadmap
-Currently, svg-injector does not exist on npm, so we've manually included it in this package. It would be nice to have svg-injector as a npm dependency, hopefully it can be published at some stage.
 
 react-svg does not currently support being rendered in node, this is because svg-injector uses XMLHttpRequest, something that node does not have locally. It would be nice to rewrite svg-injector to use something environment agnostic, like superagent or anything along those lines. This would allow react-svg to be rendered on both client and server.
 
