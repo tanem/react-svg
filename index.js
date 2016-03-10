@@ -13,14 +13,17 @@ var svgConfig = function(args){
 var SVGComponent = React.createClass({
 
   componentDidMount: function(){
-    return SVGInjector([this.getDOMNode()], svgConfig(this.props));
+    return SVGInjector([this._img], svgConfig(this.props));
   },
 
   render: function(){
-    return React.DOM.img({
+    return React.createElement('img', {
       className: this.props.className,
       'data-src': this.props.path,
-      'data-fallback': this.props.fallbackPath
+      'data-fallback': this.props.fallbackPath,
+      ref: function(img){
+        this._img = img;
+      }.bind(this)
     });
   }
 

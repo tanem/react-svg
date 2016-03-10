@@ -1,7 +1,7 @@
 var jsdom = require('jsdom'),
   chai = require('chai'),
   React = require('react'),
-  TestUtils = require('react/addons').addons.TestUtils;
+  TestUtils = require('react-addons-test-utils');
 
 should = chai.should();
 
@@ -35,11 +35,11 @@ describe('SVGComponent', function() {
     });
 
     it('should add the className to the rendered component', function() {
-      this.instance.getDOMNode().className.should.eq('not-vml');
+      this.instance._img.className.should.eq('not-vml');
     });
 
     it('should add the path to the rendered component', function() {
-      this.instance.getDOMNode().attributes['data-src']._nodeValue.should.eq('/images/svg/atomic.svg');
+      this.instance._img.attributes['data-src']._nodeValue.should.eq('/images/svg/atomic.svg');
     });
   });
 
