@@ -4,16 +4,17 @@
   "plugins": [
     "react"
   ],
-  "globals": {
-    "Pusher": true,
-    "TimelineLite": true,
-    "TweenLite": true
-  },
   "env": {
     "node": true,
     "es6": true,
-    "browser": true,
-    "mocha": true
+    "browser": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true
+    }
   },
   "rules": {
     "quotes": [1, "single"],
@@ -23,7 +24,6 @@
     "no-console": [1],
     "jsx-quotes": [1, "prefer-double"],
     "no-unreachable": [1],
-    // REACT
     "react/jsx-no-undef": [1],
     "react/jsx-uses-react": [1],
     "react/jsx-uses-vars": [1],
@@ -35,27 +35,5 @@
     "react/react-in-jsx-scope": [1],
     "react/self-closing-comp": [1],
     "react/wrap-multilines": [1]
-  },
-  "ecmaFeatures": {
-    "jsx": true,
-    "modules": true,
-    "experimentalObjectRestSpread": true,
-    "arrowFunctions": true,
-    "binaryLiterals": true,
-    "blockBindings": true,
-    "classes": true,
-    "defaultParams": true,
-    "destructuring": true,
-    "forOf": true,
-    "generators": true,
-    "objectLiteralComputedProperties": true,
-    "objectLiteralDuplicateProperties": true,
-    "objectLiteralShorthandMethods": true,
-    "objectLiteralShorthandProperties": true,
-    "octalLiterals": true,
-    "restParams": true,
-    "spread": true,
-    "superInFunctions": true,
-    "templateStrings": true
   }
 }
