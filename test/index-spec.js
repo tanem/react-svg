@@ -12,26 +12,26 @@ chai.should();
 describe('react-svg', () => {
   describe('while rendering', () => {
     it('should add the className to the rendered component', () => {
-      const component = renderIntoDocument(
+      const reactSVG = renderIntoDocument(
         <ReactSVG
           className={'not-vml'}
           path={'http://localhost:9876/base/test/fixtures/atomic.svg'}
         />
       );
 
-      findRenderedDOMComponentWithTag(component, 'img').className
+      findRenderedDOMComponentWithTag(reactSVG, 'img').className
         .should.eql('not-vml');
     });
 
     it('should add the path to the rendered component', () => {
-      const component = renderIntoDocument(
+      const reactSVG = renderIntoDocument(
         <ReactSVG
           className={'not-vml'}
           path={'http://localhost:9876/base/test/fixtures/atomic.svg'}
         />
       );
 
-      findRenderedDOMComponentWithTag(component, 'img').dataset.src
+      findRenderedDOMComponentWithTag(reactSVG, 'img').dataset.src
         .should.eql('http://localhost:9876/base/test/fixtures/atomic.svg');
     });
   });
