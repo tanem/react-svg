@@ -1,49 +1,52 @@
-'use strict';
+import chai from 'chai';
+import React from 'react';
+import {
+  findRenderedDOMComponentWithTag,
+  renderIntoDocument
+} from 'react-addons-test-utils';
 
-var should = require('chai').should();
-var React = require('react');
-var TestUtils = require('react-addons-test-utils');
+import ReactSVG from '../src';
 
-var ReactSVG = React.createFactory(require('..'));
+chai.should();
 
-describe('react-svg', function(){
-  describe('while rendering', function(){
-    it('should add the className to the rendered component', function(){
-      var component = TestUtils.renderIntoDocument(
-        ReactSVG({
-          className: 'not-vml',
-          path: 'http://localhost:9876/base/test/fixtures/atomic.svg'
-        })
+describe('react-svg', () => {
+  describe('while rendering', () => {
+    it('should add the className to the rendered component', () => {
+      const component = renderIntoDocument(
+        <ReactSVG
+          className={'not-vml'}
+          path={'http://localhost:9876/base/test/fixtures/atomic.svg'}
+        />
       );
 
-      TestUtils.findRenderedDOMComponentWithTag(component, 'img').className
+      findRenderedDOMComponentWithTag(component, 'img').className
         .should.eql('not-vml');
     });
 
-    it('should add the path to the rendered component', function() {
-      var component = TestUtils.renderIntoDocument(
-        ReactSVG({
-          className: 'not-vml',
-          path: 'http://localhost:9876/base/test/fixtures/atomic.svg'
-        })
+    it('should add the path to the rendered component', () => {
+      const component = renderIntoDocument(
+        <ReactSVG
+          className={'not-vml'}
+          path={'http://localhost:9876/base/test/fixtures/atomic.svg'}
+        />
       );
 
-      TestUtils.findRenderedDOMComponentWithTag(component, 'img').dataset.src
+      findRenderedDOMComponentWithTag(component, 'img').dataset.src
         .should.eql('http://localhost:9876/base/test/fixtures/atomic.svg');
     });
   });
 
-  describe('after mounting', function(){
-    it('should run the callback when the SVGInjector has finished', function(done){
-      TestUtils.renderIntoDocument(
-        ReactSVG({
-          className: 'not-vml',
-          path: 'http://localhost:9876/base/test/fixtures/atomic.svg',
-          callback: function(svg){
+  describe('after mounting', () => {
+    it('should run the callback when the SVGInjector has finished', (done) => {
+      renderIntoDocument(
+        <ReactSVG
+          className={'not-vml'}
+          path={'http://localhost:9876/base/test/fixtures/atomic.svg'}
+          callback={(svg) => {
             svg.classList.contains('not-vml').should.be.true;
             done();
-          }
-        })
+          }}
+        />
       );
     });
   });

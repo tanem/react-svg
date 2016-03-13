@@ -1,7 +1,5 @@
 'use strict';
 
-var path = require('path');
-
 module.exports = function(config){
   config.set({
     browsers: ['Chrome'],
@@ -16,7 +14,12 @@ module.exports = function(config){
     },
     reporters: ['mocha'],
     webpack: {
-      devtool: 'inline-source-map'
+      devtool: 'inline-source-map',
+      module: {
+        loaders: [
+          { test: /\.js$/, loader: 'babel', exclude: /node_modules/ }
+        ]
+      }
     },
     webpackMiddleware: {
       noInfo: true

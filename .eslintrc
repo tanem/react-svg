@@ -1,0 +1,61 @@
+{
+  "parser": "babel-eslint",
+  "extends": "eslint:recommended",
+  "plugins": [
+    "react"
+  ],
+  "globals": {
+    "Pusher": true,
+    "TimelineLite": true,
+    "TweenLite": true
+  },
+  "env": {
+    "node": true,
+    "es6": true,
+    "browser": true,
+    "mocha": true
+  },
+  "rules": {
+    "quotes": [1, "single"],
+    "linebreak-style": [2, "unix"],
+    "semi": [2, "always"],
+    "no-underscore-dangle": [0],
+    "no-console": [1],
+    "jsx-quotes": [1, "prefer-double"],
+    "no-unreachable": [1],
+    // REACT
+    "react/jsx-no-undef": [1],
+    "react/jsx-uses-react": [1],
+    "react/jsx-uses-vars": [1],
+    "react/no-did-mount-set-state": [1],
+    "react/no-did-update-set-state": [1],
+    "react/no-multi-comp": [1],
+    "react/display-name": [0],
+    "react/prop-types": [0],
+    "react/react-in-jsx-scope": [1],
+    "react/self-closing-comp": [1],
+    "react/wrap-multilines": [1]
+  },
+  "ecmaFeatures": {
+    "jsx": true,
+    "modules": true,
+    "experimentalObjectRestSpread": true,
+    "arrowFunctions": true,
+    "binaryLiterals": true,
+    "blockBindings": true,
+    "classes": true,
+    "defaultParams": true,
+    "destructuring": true,
+    "forOf": true,
+    "generators": true,
+    "objectLiteralComputedProperties": true,
+    "objectLiteralDuplicateProperties": true,
+    "objectLiteralShorthandMethods": true,
+    "objectLiteralShorthandProperties": true,
+    "octalLiterals": true,
+    "restParams": true,
+    "spread": true,
+    "superInFunctions": true,
+    "templateStrings": true
+  }
+}
