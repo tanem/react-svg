@@ -4,11 +4,17 @@
   "description": "A react.js svg component for loading svg files into the dom.",
   "main": "index.js",
   "scripts": {
-    "build": "npm run lint && webpack && babel src -d lib",
+    "clean": "rimraf dist lib",
+    "build:lib": "babel-node ./bin/build.js lib",
+    "build:umd": "babel-node ./bin/build.js umd",
+    "build:umd:min": "babel-node ./bin/build.js umd:min",
+    "build": "npm run build:lib && npm run build:umd && npm run build:umd:min",
     "lint": "eslint .",
-    "test": "karma start"
+    "prepublish": "in-publish && npm run clean && npm run build || not-in-publish",
+    "test": "npm run lint && karma start"
   },
   "repository": {
+
     "type": "git",
     "url": "https://github.com/atomic-app/react-svg"
   },
