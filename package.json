@@ -11,7 +11,7 @@
     "build": "npm run build:lib && npm run build:umd && npm run build:umd:min",
     "lint": "eslint .",
     "prepublish": "in-publish && npm run clean && npm run build || not-in-publish",
-    "test": "npm run lint && karma start"
+    "test": "npm run lint && babel-node ./bin/test.js"
   },
   "repository": {
 

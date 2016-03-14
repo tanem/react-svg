@@ -1,7 +1,9 @@
-'use strict';
+import { Server } from 'karma';
 
-module.exports = function(config){
-  config.set({
+new Server(getConfig()).start();
+
+function getConfig() {
+  return {
     browsers: ['Chrome'],
     singleRun: true,
     frameworks: ['mocha'],
@@ -16,13 +18,15 @@ module.exports = function(config){
     webpack: {
       devtool: 'inline-source-map',
       module: {
-        loaders: [
-          { test: /\.js$/, loader: 'babel', exclude: /node_modules/ }
-        ]
+        loaders: [{
+          test: /\.js$/,
+          loader: 'babel',
+          exclude: /node_modules/
+        }]
       }
     },
     webpackMiddleware: {
       noInfo: true
     }
-  });
-};
+  };
+}
