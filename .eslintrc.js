@@ -1,4 +1,4 @@
-{
+module.exports = {
   "parser": "babel-eslint",
   "extends": "eslint:recommended",
   "plugins": [
@@ -36,4 +36,4 @@
     "react/self-closing-comp": [1],
     "react/wrap-multilines": [1]
   }
-}
+};
