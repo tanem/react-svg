@@ -1,5 +1,4 @@
 bin
-dist
 src
 test
 .babelrc
