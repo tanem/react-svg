@@ -5,13 +5,16 @@
   "main": "lib/index.js",
   "scripts": {
     "clean": "rimraf dist lib",
+    "lint": "eslint bin src test",
+    "test": "npm run lint && babel-node ./bin/test.js",
     "build:lib": "babel-node ./bin/build.js lib",
     "build:umd": "babel-node ./bin/build.js umd",
     "build:umd:min": "babel-node ./bin/build.js umd:min",
     "build": "npm run build:lib && npm run build:umd && npm run build:umd:min",
-    "lint": "eslint bin src test",
-    "prepublish": "in-publish && npm run clean && npm run build || not-in-publish",
-    "test": "npm run lint && babel-node ./bin/test.js"
+    "preversion": "npm run clean && npm run lint && npm test",
+    "version": "npm run build && git add -A dist",
+    "postversion": "git push && git push --tags",
+    "release": "npm version -m 'Release v%s' && npm publish"
   },
   "repository": {
     "type": "git",
