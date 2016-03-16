@@ -23,7 +23,7 @@ A React component that uses [SVGInjector](https://github.com/iconic/SVGInjector)
 $ npm install react-svg --save
 ```
 
-There are also UMD builds available in the `dist` directory.
+There are also UMD builds available in the `dist` directory. If you use these, make sure you have already included React as a dependency.
 
 ## example
 
@@ -67,6 +67,7 @@ __Example__
 <ReactSVG
   path={'atomic.svg'}
   className={'example'}
+  evalScript={'always'}
   fallbackPath={'atomic.png'}
   callback={(svg) => console.log(svg)}
 />
