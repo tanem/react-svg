@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "clean": "rimraf dist lib",
-    "lint": "eslint bin src test",
+    "lint": "eslint bin example src test",
     "test": "npm run lint && babel-node ./bin/test.js",
     "start": "babel-node ./bin/start.js",
     "build:lib": "babel-node ./bin/build.js lib",
