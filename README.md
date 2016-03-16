@@ -73,6 +73,8 @@ __Example__
 />
 ```
 
+Refer to the SVGInjector [configuration docs](https://github.com/iconic/SVGInjector#configuration) for more information.
+
 ## tests
 
 ```
