@@ -1,5 +1,8 @@
 # react-svg
 
+[![npm version](https://img.shields.io/npm/v/react-svg.svg?style=flat-square)](https://www.npmjs.com/package/react-svg)
+[![npm downloads](https://img.shields.io/npm/dm/react-svg.svg?style=flat-square)](https://www.npmjs.com/package/react-svg)
+
 A React component that uses [SVGInjector](https://github.com/iconic/SVGInjector) to dynamically add SVG to the DOM. 
 
 ## table of contents
