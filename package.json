@@ -7,6 +7,7 @@
     "clean": "rimraf dist lib",
     "lint": "eslint bin src test",
     "test": "npm run lint && babel-node ./bin/test.js",
+    "start": "babel-node ./bin/start.js",
     "build:lib": "babel-node ./bin/build.js lib",
     "build:umd": "babel-node ./bin/build.js umd",
     "build:umd:min": "babel-node ./bin/build.js umd:min",
@@ -55,6 +56,8 @@
     "mocha": "^2.4.5",
     "react": "^0.14.7",
     "react-addons-test-utils": "^0.14.7",
-    "webpack": "^1.12.14"
+    "react-dom": "^0.14.7",
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1"
   }
 }

@@ -1,62 +1,90 @@
-# React SVG
+# react-svg
 
-react-svg is a react component that uses [svg-injector](https://github.com/iconic/SVGInjector) to dynamically add svg to your DOM. This allows you to pass in an svg path ('/path/icon.svg'), and react-svg will fetch the svg object and mutate it into the dom.
+A React component that uses [SVGInjector](https://github.com/iconic/SVGInjector) to dynamically add SVG to the DOM. 
 
-Also supports non-svg capable browsers by falling back to images if a fallback path is given.
+## table of contents
 
-# Install
+- [react-svg](#react-svg)
+- [table of contents](#table-of-contents)
+- [installation](#installation)
+- [example](#example)
+- [api](#api)
+- [tests](#tests)
+- [releasing](#releasing)
+- [roadmap](#roadmap)
+- [license](#license)
 
-`npm install react-svg`
-
-# Usage
-
-
-
-```javascript
-var SVG = React.createFactory(require('react-svg'));
-
-...
-
-render: function() {
-  return SVG({
-    path: 'path/to/your/vector.svg',
-    // [Required] Local or remote (supports CORS)
-    className: 'vectors',
-    // [Optional] Binds a class to the svg
-    evalScripts: false,
-    // [Optional] Evals any javascript in the svg - [always|once|never]
-    fallbackPath: 'path/to/your/vector.png',
-    // [Optional]
-    callback: function(svg) { console.log(svg); }
-    // [Optional]
-  });
-};
+## installation
 
 ```
+$ npm install react-svg --save
+```
 
-# Roadmap
+## example
 
-react-svg does not currently support being rendered in node, this is because svg-injector uses XMLHttpRequest, something that node does not have locally. It would be nice to rewrite svg-injector to use something environment agnostic, like superagent or anything along those lines. This would allow react-svg to be rendered on both client and server.
+```js
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-# License
-The MIT License (MIT)
+import ReactSVG from '../src/index.js';
 
-Copyright (c) 2014 Atomic
+ReactDOM.render(
+  <ReactSVG
+    path={'atomic.svg'}
+    className={'example'}
+    callback={(svg) => console.log(svg)}
+  />,
+  document.querySelector('.Root')
+);
+```
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+To run the above example:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+```
+$ npm start
+```
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Then open a browser at `localhost:8080`.
+
+## api
+
+__Props__
+
+- `path` - Path to the SVG.
+- `className` - *Optional* Class name to be added to the SVG.
+- `evalScripts` - *Optional* Run any script blocks found in the SVG (`always`, `once`, or `never`). Defaults to `never`.
+- `fallbackPath` - *Optional* Path to the fallback PNG.
+- `callback` - *Optional* Function to call after the SVG is injected. Receives the newly injected SVG DOM element as a parameter. Defaults to `null`.
+
+__Example__
+
+```js
+<ReactSVG
+  path={'atomic.svg'}
+  className={'example'}
+  fallbackPath={'atomic.png'}
+  callback={(svg) => console.log(svg)}
+/>
+```
+
+## tests
+
+```
+$ npm test
+```
+
+## releasing
+
+The release script for this module uses [npm-version](https://docs.npmjs.com/cli/version) under the hood, so you should pass a semver string or release type as an argument:
+
+```
+$ npm run release -- patch
+```
+
+## roadmap
+
+react-svg does not currently support being rendered in Node. This is because SVGInjector uses XMLHttpRequest, something that Node does not have locally. It would be nice to rewrite SVGInjector to use something environment agnostic, like superagent or anything along those lines. This would allow react-svg to be rendered on both client and server.
+
+## license
+
+MIT
