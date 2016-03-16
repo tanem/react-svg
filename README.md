@@ -83,7 +83,9 @@ $ npm test
 
 ## releasing
 
-The release script for this module uses [npm-version](https://docs.npmjs.com/cli/version) under the hood, so you should pass a semver string or release type as an argument:
+The release script for this module uses [npm-version](https://docs.npmjs.com/cli/version) under the hood, so you should pass a semver string or release type as an argument.
+
+For example, to publish a `patch` release:
 
 ```
 $ npm run release -- patch
