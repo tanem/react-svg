@@ -23,6 +23,8 @@ A React component that uses [SVGInjector](https://github.com/iconic/SVGInjector)
 $ npm install react-svg --save
 ```
 
+There are also UMD builds available in the `dist` directory.
+
 ## example
 
 ```js
