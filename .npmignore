@@ -1,0 +1,8 @@
+bin
+src
+test
+.babelrc
+.editorconfig
+.eslintrc.js
+.gitignore
+.npmignore

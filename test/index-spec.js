@@ -1,68 +1,53 @@
-var jsdom = require('jsdom'),
-  chai = require('chai'),
-  React = require('react'),
-  TestUtils = require('react/addons').addons.TestUtils;
+import chai from 'chai';
+import React from 'react';
+import {
+  findRenderedDOMComponentWithTag,
+  renderIntoDocument
+} from 'react-addons-test-utils';
 
-should = chai.should();
+import ReactSVG from '../src';
 
-var jsdocument = jsdom.jsdom('<html><body></body></html>', jsdom.level(1, 'core'));
+chai.should();
 
-// Because of SVGInjector, we need to set the window and document before
-// we require SVGInjector. This also forces us to set the navigator as React
-// will use it if it detects a window being present.
-document = jsdocument;
-window = document.parentWindow;
-navigator = window.navigator;
+describe('react-svg', () => {
+  describe('while rendering', () => {
+    it('should add the className to the rendered component', () => {
+      const reactSVG = renderIntoDocument(
+        <ReactSVG
+          className={'not-vml'}
+          path={'http://localhost:9876/base/test/fixtures/atomic.svg'}
+        />
+      );
 
-before(function() {
-  document = jsdocument;
-  window = document.parentWindow;
-  navigator = window.navigator;
-});
-
-describe('SVGComponent', function() {
-
-  beforeEach(function() {
-    this.htmlContainer = document.createElement('div');
-    this.SVGComponent = React.createFactory(require('../index.js'));
-  });
-
-  describe('while rendering', function() {
-
-    beforeEach(function() {
-      var component = this.SVGComponent({ className: 'not-vml', path: '/images/svg/atomic.svg' });
-      this.instance = TestUtils.renderIntoDocument(component, this.htmlContainer);
+      findRenderedDOMComponentWithTag(reactSVG, 'img').className
+        .should.eql('not-vml');
     });
 
-    it('should add the className to the rendered component', function() {
-      this.instance.getDOMNode().className.should.eq('not-vml');
-    });
+    it('should add the path to the rendered component', () => {
+      const reactSVG = renderIntoDocument(
+        <ReactSVG
+          className={'not-vml'}
+          path={'http://localhost:9876/base/test/fixtures/atomic.svg'}
+        />
+      );
 
-    it('should add the path to the rendered component', function() {
-      this.instance.getDOMNode().attributes['data-src']._nodeValue.should.eq('/images/svg/atomic.svg');
+      findRenderedDOMComponentWithTag(reactSVG, 'img').dataset.src
+        .should.eql('http://localhost:9876/base/test/fixtures/atomic.svg');
     });
   });
 
-  describe('after mounting', function() {
-    beforeEach(function() {
-      var htmlContainer = document.createElement('div');
-      var SVGComponent = React.createFactory(require('../index.js'));
+  describe('after mounting', () => {
+    it('should run the callback when the SVGInjector has finished', (done) => {
+      renderIntoDocument(
+        <ReactSVG
+          className={'not-vml'}
+          path={'http://localhost:9876/base/test/fixtures/atomic.svg'}
+          callback={(svg) => {
+            svg.classList.contains('not-vml').should.be.true;
+            done();
+          }}
+        />
+      );
     });
-
-    it('should run the callback when the SVGInjector has finished', function(done) {
-
-      var callback = function(svg) {
-        svg.should.eq('This browser does not support SVG and no PNG fallback was defined.');
-        done();
-      };
-      var component = this.SVGComponent({
-        className: 'not-vml',
-        path: '/images/svg/atomic.svg',
-        callback: callback
-      });
-      instance = TestUtils.renderIntoDocument(component, this.htmlContainer);
-    });
-
   });
-
 });
