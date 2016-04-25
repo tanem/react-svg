@@ -14,8 +14,8 @@
     "build": "npm run clean && npm run build:lib && npm run build:umd && npm run build:umd:min",
     "preversion": "npm test",
     "version": "npm run build && git add -A dist",
-    "postversion": "git push && git push --tags",
-    "release": "npm version -m 'Release v%s' && npm publish"
+    "postversion": "git push && git push --tags && npm publish",
+    "release": "npm version -m 'Release v%s'"
   },
   "repository": {
     "type": "git",
