@@ -36,6 +36,14 @@ export default class ReactSVG extends Component {
   }
 
   componentDidMount() {
+    this.updateSVG();
+  }
+
+  componentDidUpdate() {
+    this.updateSVG();
+  }
+
+  updateSVG() {
 
     const {
       evalScripts,
