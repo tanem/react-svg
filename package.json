@@ -58,6 +58,7 @@
     "react": "^15.3.2",
     "react-addons-test-utils": "^15.3.2",
     "react-dom": "^15.3.2",
+    "rimraf": "^2.5.4",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.2"
   }
