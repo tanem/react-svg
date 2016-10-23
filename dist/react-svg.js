@@ -110,6 +110,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
+	      this.updateSVG();
+	    }
+	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate() {
+	      this.updateSVG();
+	    }
+	  }, {
+	    key: 'updateSVG',
+	    value: function updateSVG() {
 	      var _props2 = this.props;
 	      var evalScripts = _props2.evalScripts;
 	      var each = _props2.callback;
