@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import ReactSVG from '../src';
+import ReactSVG from '../lib';
 
 ReactDOM.render(
   <ReactSVG
