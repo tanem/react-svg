@@ -84,7 +84,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function ReactSVG() {
 	    _classCallCheck(this, ReactSVG);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(ReactSVG).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (ReactSVG.__proto__ || Object.getPrototypeOf(ReactSVG)).apply(this, arguments));
 	  }
 
 	  _createClass(ReactSVG, [{
