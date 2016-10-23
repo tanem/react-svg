@@ -37,6 +37,7 @@ export default function makeWebpackConfig(buildType) {
       entry: './src/index.js',
       output: {
         filename: 'index.js',
+        libraryTarget: 'umd',
         path: path.join(__dirname, '../lib')
       }
     });
