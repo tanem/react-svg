@@ -30,8 +30,7 @@ There are also UMD builds available in the `dist` directory. If you use these, m
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import ReactSVG from '../src/index.js';
+import ReactSVG from 'react-svg';
 
 ReactDOM.render(
   <ReactSVG
