@@ -11,7 +11,6 @@ export default class ReactSVG extends Component {
   static propTypes = {
     path: PropTypes.string.isRequired,
     className: PropTypes.string,
-    height: PropTypes.string,
     style: PropTypes.object,
     evalScripts: PropTypes.oneOf(['always', 'once', 'never']),
     fallbackPath: PropTypes.string,
