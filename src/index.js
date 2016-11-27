@@ -11,6 +11,8 @@ export default class ReactSVG extends Component {
   static propTypes = {
     path: PropTypes.string.isRequired,
     className: PropTypes.string,
+    height: PropTypes.string,
+    style: PropTypes.object,
     evalScripts: PropTypes.oneOf(['always', 'once', 'never']),
     fallbackPath: PropTypes.string,
     callback: PropTypes.func
@@ -21,6 +23,7 @@ export default class ReactSVG extends Component {
     const {
       className,
       path,
+      style,
       fallbackPath
     } = this.props;
 
@@ -28,6 +31,7 @@ export default class ReactSVG extends Component {
       <img
         className={className}
         data-src={path}
+        style={style}
         data-fallback={fallbackPath}
         ref={(img) => this._img = img}
       />
