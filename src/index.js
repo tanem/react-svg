@@ -6,7 +6,7 @@ export default class ReactSVG extends PureComponent {
   static defaultProps = {
     evalScripts: 'never',
     callback: () => {}
-  }
+  };
 
   static propTypes = {
     path: PropTypes.string.isRequired,
@@ -14,7 +14,7 @@ export default class ReactSVG extends PureComponent {
     evalScripts: PropTypes.oneOf(['always', 'once', 'never']),
     fallbackPath: PropTypes.string,
     callback: PropTypes.func
-  }
+  };
 
   constructor(props) {
     super(props);
