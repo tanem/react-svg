@@ -78,54 +78,52 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var ReactSVG = function (_Component) {
-	  _inherits(ReactSVG, _Component);
+	var ReactSVG = function (_PureComponent) {
+	  _inherits(ReactSVG, _PureComponent);
 
-	  function ReactSVG() {
+	  function ReactSVG(props) {
 	    _classCallCheck(this, ReactSVG);
 
-	    return _possibleConstructorReturn(this, (ReactSVG.__proto__ || Object.getPrototypeOf(ReactSVG)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (ReactSVG.__proto__ || Object.getPrototypeOf(ReactSVG)).call(this, props));
+
+	    _this.updateSVG = _this.updateSVG.bind(_this);
+	    return _this;
 	  }
 
 	  _createClass(ReactSVG, [{
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
-
-	      var _props = this.props;
-	      var className = _props.className;
-	      var path = _props.path;
-	      var fallbackPath = _props.fallbackPath;
+	      var _props = this.props,
+	          className = _props.className,
+	          path = _props.path,
+	          fallbackPath = _props.fallbackPath;
 
 
-	      return _react2.default.createElement('img', {
-	        className: className,
-	        'data-src': path,
-	        'data-fallback': fallbackPath,
-	        ref: function ref(img) {
-	          return _this2._img = img;
-	        }
-	      });
-	    }
-	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      this.updateSVG();
-	    }
-	  }, {
-	    key: 'componentDidUpdate',
-	    value: function componentDidUpdate() {
-	      this.updateSVG();
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement('img', {
+	          className: className,
+	          'data-src': path,
+	          'data-fallback': fallbackPath,
+	          ref: this.updateSVG
+	        })
+	      );
 	    }
 	  }, {
 	    key: 'updateSVG',
-	    value: function updateSVG() {
-	      var _props2 = this.props;
-	      var evalScripts = _props2.evalScripts;
-	      var each = _props2.callback;
+	    value: function updateSVG(img) {
+	      if (!img) {
+	        // Ref is being unmounted, should we clean anything up? Probably.
+	        return;
+	      }
+
+	      var _props2 = this.props,
+	          evalScripts = _props2.evalScripts,
+	          each = _props2.callback;
 
 
-	      (0, _svgInjector2.default)(this._img, {
+	      (0, _svgInjector2.default)(img, {
 	        evalScripts: evalScripts,
 	        each: each
 	      });
@@ -133,7 +131,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }]);
 
 	  return ReactSVG;
-	}(_react.Component);
+	}(_react.PureComponent);
 
 	ReactSVG.defaultProps = {
 	  evalScripts: 'never',
