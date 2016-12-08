@@ -1,12 +1,12 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import SVGInjector from 'svg-injector';
 
-export default class ReactSVG extends Component {
+export default class ReactSVG extends PureComponent {
 
   static defaultProps = {
     evalScripts: 'never',
     callback: () => {}
-  }
+  };
 
   static propTypes = {
     path: PropTypes.string.isRequired,
@@ -14,6 +14,11 @@ export default class ReactSVG extends Component {
     evalScripts: PropTypes.oneOf(['always', 'once', 'never']),
     fallbackPath: PropTypes.string,
     callback: PropTypes.func
+  };
+
+  constructor(props) {
+    super(props);
+    this.updateSVG = this.updateSVG.bind(this);
   }
 
   render() {
@@ -25,32 +30,30 @@ export default class ReactSVG extends Component {
     } = this.props;
 
     return (
-      <img
-        className={className}
-        data-src={path}
-        data-fallback={fallbackPath}
-        ref={(img) => this._img = img}
-      />
+      <div>
+        <img
+          className={className}
+          data-src={path}
+          data-fallback={fallbackPath}
+          ref={this.updateSVG}
+        />
+      </div>
     );
 
   }
 
-  componentDidMount() {
-    this.updateSVG();
-  }
-
-  componentDidUpdate() {
-    this.updateSVG();
-  }
-
-  updateSVG() {
+  updateSVG(img) {
+    if(!img){
+      // Ref is being unmounted, should we clean anything up? Probably.
+      return;
+    }
 
     const {
       evalScripts,
       callback: each
     } = this.props;
 
-    SVGInjector(this._img, {
+    SVGInjector(img, {
       evalScripts,
       each
     });
