@@ -1,13 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-import ReactSVG from '../lib';
+import ReactSVG from '../src'
 
 ReactDOM.render(
   <ReactSVG
-    path={'atomic.svg'}
-    className={'example'}
-    callback={(svg) => console.log(svg)}
+    srcPath="atomic.svg"
+    callback={svg => console.log(svg)}
+    className="example"
   />,
   document.querySelector('.Root')
-);
+)

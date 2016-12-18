@@ -3,6 +3,7 @@ src
 test
 .babelrc
 .editorconfig
-.eslintrc.js
+.eslintignore
+.eslintrc
 .gitignore
 .npmignore

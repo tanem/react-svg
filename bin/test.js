@@ -1,32 +1,34 @@
-import { Server } from 'karma';
+import { Server } from 'karma'
 
-new Server(getConfig()).start();
+new Server(getConfig()).start()
 
 function getConfig() {
   return {
-    browsers: ['Chrome'],
+    browsers: [ 'Chrome' ],
     singleRun: true,
-    frameworks: ['mocha'],
+    frameworks: [ 'mocha' ],
     files: [
       'test/fixtures/atomic.svg',
       'test/index-spec.js'
     ],
     preprocessors: {
-      'test/index-spec.js': ['webpack', 'sourcemap']
+      'test/index-spec.js': [ 'webpack', 'sourcemap' ]
     },
-    reporters: ['mocha'],
+    reporters: [ 'mocha' ],
     webpack: {
       devtool: 'inline-source-map',
       module: {
-        loaders: [{
-          test: /\.js$/,
-          loader: 'babel',
-          exclude: /node_modules/
-        }]
+        loaders: [
+          {
+            test: /\.js$/,
+            loader: 'babel',
+            exclude: /node_modules/
+          }
+        ]
       }
     },
     webpackMiddleware: {
       noInfo: true
     }
-  };
+  }
 }
