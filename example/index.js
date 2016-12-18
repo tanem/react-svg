@@ -5,7 +5,7 @@ import ReactSVG from '../src'
 
 ReactDOM.render(
   <ReactSVG
-    srcPath="atomic.svg"
+    path="atomic.svg"
     callback={svg => console.log(svg)}
     className="example"
   />,
