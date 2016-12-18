@@ -34,6 +34,20 @@ describe('react-svg', () => {
       findRenderedDOMComponentWithTag(reactSVG, 'img').dataset.src
         .should.eql('http://localhost:9876/base/test/fixtures/atomic.svg')
     })
+
+    it('should add any inline styles to the rendered component', () => {
+      const reactSVG = renderIntoDocument(
+        <ReactSVG
+          path={'http://localhost:9876/base/test/fixtures/atomic.svg'}
+          style={{
+            height: 200
+          }}
+        />
+      )
+
+      findRenderedDOMComponentWithTag(reactSVG, 'img').style.height
+        .should.eql('200px')
+    })
   })
 
   describe('after mounting', () => {
