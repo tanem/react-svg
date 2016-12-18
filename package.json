@@ -13,7 +13,7 @@
     "build:umd:min": "babel-node ./bin/build.js umd:min",
     "build": "npm run clean && npm run build:lib && npm run build:umd && npm run build:umd:min",
     "preversion": "npm test",
-    "version": "npm run build:lib",
+    "version": "npm run build",
     "postversion": "git push && git push --tags && npm publish",
     "release": "npm version -m 'Release v%s'"
   },
