@@ -1,59 +1,56 @@
-import React, { Component, PropTypes } from 'react';
-import SVGInjector from 'svg-injector';
+import React, { PureComponent, PropTypes } from 'react'
+import SVGInjector from 'svg-injector'
 
-export default class ReactSVG extends Component {
+export default class ReactSVG extends PureComponent {
 
   static defaultProps = {
-    evalScripts: 'never',
-    callback: () => {}
+    callback: () => {},
+    className: '',
+    evalScripts: 'once'
   }
 
   static propTypes = {
-    path: PropTypes.string.isRequired,
+    callback: PropTypes.func,
     className: PropTypes.string,
-    evalScripts: PropTypes.oneOf(['always', 'once', 'never']),
-    fallbackPath: PropTypes.string,
-    callback: PropTypes.func
+    evalScripts: PropTypes.oneOf([ 'always', 'once', 'never' ]),
+    srcPath: PropTypes.string.isRequired
   }
 
-  render() {
-
-    const {
-      className,
-      path,
-      fallbackPath
-    } = this.props;
-
-    return (
-      <img
-        className={className}
-        data-src={path}
-        data-fallback={fallbackPath}
-        ref={(img) => this._img = img}
-      />
-    );
-
-  }
-
-  componentDidMount() {
-    this.updateSVG();
-  }
-
-  componentDidUpdate() {
-    this.updateSVG();
-  }
-
-  updateSVG() {
-
+  injectSVG() {
     const {
       evalScripts,
       callback: each
-    } = this.props;
+    } = this.props
 
-    SVGInjector(this._img, {
-      evalScripts,
-      each
-    });
+    if (this._img) {
+      SVGInjector(this._img, {
+        evalScripts,
+        each
+      })
+    }
+  }
+
+  componentDidMount() {
+    this.injectSVG()
+  }
+
+  componentDidUpdate() {
+    this.injectSVG()
+  }
+
+  render() {
+    const {
+      className,
+      srcPath
+    } = this.props
+
+    return (
+      <img
+        ref={img => this._img = img}
+        className={className}
+        data-src={srcPath}
+      />
+    )
 
   }
 
