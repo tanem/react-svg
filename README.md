@@ -32,6 +32,7 @@ __Props__
 - `callback` - *Optional* Function to call after the SVG is injected. Receives the newly injected SVG DOM element as a parameter. Defaults to `null`.
 - `className` - *Optional* Class name to be added to the SVG. Defaults to `''`.
 - `evalScripts` - *Optional* Run any script blocks found in the SVG (`always`, `once`, or `never`). Defaults to `never`.
+- `style` - *Optional* Inline styles to be added to the SVG. Defaults to `{}`.
 
 __Example__
 
@@ -41,6 +42,7 @@ __Example__
   callback={(svg) => console.log(svg)}
   className="example"
   evalScript="always"
+  style={{ width: 200 }}
 />
 ```
 
