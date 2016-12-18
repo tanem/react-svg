@@ -45,11 +45,13 @@ export default class ReactSVG extends PureComponent {
     } = this.props
 
     return (
-      <img
-        ref={img => this._img = img}
-        className={className}
-        data-src={path}
-      />
+      <div>
+        <img
+          ref={img => this._img = img}
+          className={className}
+          data-src={path}
+        />
+      </div>
     )
 
   }
