@@ -1,5 +1,5 @@
-import path from 'path';
-import webpack from 'webpack';
+import path from 'path'
+import webpack from 'webpack'
 
 export default function makeWebpackConfig(buildType) {
 
@@ -13,13 +13,15 @@ export default function makeWebpackConfig(buildType) {
       }
     },
     module: {
-      loaders: [{
-        test: /\.js$/,
-        loader: 'babel',
-        exclude: /node_modules/
-      }]
+      loaders: [
+        {
+          test: /\.js$/,
+          loader: 'babel',
+          exclude: /node_modules/
+        }
+      ]
     }
-  };
+  }
 
   if (buildType === 'example') {
     return Object.assign(baseConfig, {
@@ -29,18 +31,7 @@ export default function makeWebpackConfig(buildType) {
         filename: 'bundle.js',
         path: path.join(__dirname, '../example')
       }
-    });
-  }
-
-  if (buildType === 'lib') {
-    return Object.assign(baseConfig, {
-      entry: './src/index.js',
-      output: {
-        filename: 'index.js',
-        libraryTarget: 'umd',
-        path: path.join(__dirname, '../lib')
-      }
-    });
+    })
   }
 
   if (buildType === 'umd') {
@@ -53,9 +44,12 @@ export default function makeWebpackConfig(buildType) {
         path: path.join(__dirname, '../dist')
       },
       plugins: [
-        new webpack.optimize.OccurenceOrderPlugin()
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.DefinePlugin({
+          'process.env.NODE_ENV': JSON.stringify('production')
+        })
       ]
-    });
+    })
   }
 
   if (buildType === 'umd:min') {
@@ -79,7 +73,7 @@ export default function makeWebpackConfig(buildType) {
           }
         })
       ]
-    });
+    })
   }
 
 }
