@@ -15,7 +15,7 @@ describe('react-svg', () => {
       const reactSVG = renderIntoDocument(
         <ReactSVG
           className={'not-vml'}
-          path={'http://localhost:9876/base/test/fixtures/atomic.svg'}
+          srcPath={'http://localhost:9876/base/test/fixtures/atomic.svg'}
         />
       )
 
@@ -27,7 +27,7 @@ describe('react-svg', () => {
       const reactSVG = renderIntoDocument(
         <ReactSVG
           className={'not-vml'}
-          path={'http://localhost:9876/base/test/fixtures/atomic.svg'}
+          srcPath={'http://localhost:9876/base/test/fixtures/atomic.svg'}
         />
       )
 
@@ -41,7 +41,7 @@ describe('react-svg', () => {
       renderIntoDocument(
         <ReactSVG
           className={'not-vml'}
-          path={'http://localhost:9876/base/test/fixtures/atomic.svg'}
+          srcPath={'http://localhost:9876/base/test/fixtures/atomic.svg'}
           callback={(svg) => {
             svg.classList.contains('not-vml').should.be.true
             done()
