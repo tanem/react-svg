@@ -6,14 +6,16 @@ export default class ReactSVG extends PureComponent {
   static defaultProps = {
     callback: () => {},
     className: '',
-    evalScripts: 'once'
+    evalScripts: 'once',
+    style: {}
   }
 
   static propTypes = {
     callback: PropTypes.func,
     className: PropTypes.string,
     evalScripts: PropTypes.oneOf([ 'always', 'once', 'never' ]),
-    path: PropTypes.string.isRequired
+    path: PropTypes.string.isRequired,
+    style: PropTypes.object
   }
 
   injectSVG() {
@@ -41,7 +43,8 @@ export default class ReactSVG extends PureComponent {
   render() {
     const {
       className,
-      path
+      path,
+      style
     } = this.props
 
     return (
@@ -50,6 +53,7 @@ export default class ReactSVG extends PureComponent {
           ref={img => this._img = img}
           className={className}
           data-src={path}
+          style={style}
         />
       </div>
     )
