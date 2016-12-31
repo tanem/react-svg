@@ -1,5 +1,6 @@
 import React, { PureComponent, PropTypes } from 'react'
 import SVGInjector from 'svg-injector'
+import ReactDOM from 'react-dom'
 
 export default class ReactSVG extends PureComponent {
 
@@ -18,46 +19,51 @@ export default class ReactSVG extends PureComponent {
     style: PropTypes.object
   }
 
-  injectSVG() {
+  renderSVG(props = this.props) {
     const {
+      callback: each,
+      className,
       evalScripts,
-      callback: each
-    } = this.props
+      path,
+      style
+    } = props
 
-    if (this._img) {
-      SVGInjector(this._img, {
-        evalScripts,
-        each
-      })
-    }
+    this.container = ReactDOM.findDOMNode(this)
+
+    ReactDOM.unstable_renderSubtreeIntoContainer(
+      this,
+      <img
+        ref={(img) => {
+          this.img = img
+        }}
+        className={className}
+        data-src={path}
+        style={style}
+      />,
+      this.container,
+      () => {
+        SVGInjector(this.img, {
+          evalScripts,
+          each
+        })
+      }
+    )
   }
 
   componentDidMount() {
-    this.injectSVG()
+    this.renderSVG()
   }
 
-  componentDidUpdate() {
-    this.injectSVG()
+  componentWillReceiveProps(nextProps) {
+    this.renderSVG(nextProps)
+  }
+
+  componentWillUnmount() {
+    ReactDOM.unmountComponentAtNode(this.container)
   }
 
   render() {
-    const {
-      className,
-      path,
-      style
-    } = this.props
-
-    return (
-      <div>
-        <img
-          ref={img => this._img = img}
-          className={className}
-          data-src={path}
-          style={style}
-        />
-      </div>
-    )
-
+    return React.createElement('div')
   }
 
 }
