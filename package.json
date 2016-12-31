@@ -60,6 +60,8 @@
     "webpack-dev-server": "^1.16.2"
   },
   "jest": {
+    "collectCoverage": true,
+    "coveragePathIgnorePatterns": ["<rootDir>/test/fixtures/", "<rootDir>/node_modules/"],
     "testPathDirs": [
       "test"
     ]
