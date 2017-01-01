@@ -63,7 +63,7 @@ export default class ReactSVG extends PureComponent {
   }
 
   render() {
-    return React.createElement('div')
+    return <div />
   }
 
 }
