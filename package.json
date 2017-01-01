@@ -63,7 +63,11 @@
     "collectCoverage": true,
     "coveragePathIgnorePatterns": [
       "<rootDir>/test/fixtures/",
-      "<rootDir>/node_modules/"
+      "<rootDir>/node_modules/",
+      "<rootDir>/.jest-setup.js"
+    ],
+    "setupFiles": [
+      "<rootDir>/.jest-setup.js"
     ],
     "testPathDirs": [
       "test"
