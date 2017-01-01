@@ -1,5 +1,6 @@
 # react-svg
 
+[![build status](https://img.shields.io/travis/atomic-app/react-svg/master.svg?style=flat-square)](https://travis-ci.org/atomic-app/react-svg)
 [![npm version](https://img.shields.io/npm/v/react-svg.svg?style=flat-square)](https://www.npmjs.com/package/react-svg)
 [![npm downloads](https://img.shields.io/npm/dm/react-svg.svg?style=flat-square)](https://www.npmjs.com/package/react-svg)
 
