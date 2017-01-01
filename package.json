@@ -33,7 +33,8 @@
   },
   "homepage": "https://github.com/atomic-app/react-svg",
   "peerDependencies": {
-    "react": "^15.3.2"
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2"
   },
   "dependencies": {
     "svg-injector": "^1.1.3"

@@ -61,7 +61,7 @@ There are also UMD builds available via [unpkg](https://unpkg.com/):
 - https://unpkg.com/react-svg/dist/react-svg.js
 - https://unpkg.com/react-svg/dist/react-svg.min.js
 
-If you use these, make sure you have already included React as a dependency.
+If you use these, make sure you have already included React and ReactDOM as dependencies.
 
 ## License
 
