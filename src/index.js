@@ -1,6 +1,7 @@
 import React, { PureComponent, PropTypes } from 'react'
-import SVGInjector from 'svg-injector'
 import ReactDOM from 'react-dom'
+import ReactDOMServer from 'react-dom/server'
+import SVGInjector from 'svg-injector'
 
 export default class ReactSVG extends PureComponent {
 
@@ -30,24 +31,25 @@ export default class ReactSVG extends PureComponent {
 
     this.container = ReactDOM.findDOMNode(this)
 
-    ReactDOM.unstable_renderSubtreeIntoContainer(
-      this,
+    const div = document.createElement('div')
+    div.innerHTML = ReactDOMServer.renderToStaticMarkup(
       <img
-        ref={(img) => {
-          this.img = img
-        }}
         className={className}
         data-src={path}
         style={style}
-      />,
-      this.container,
-      () => {
-        SVGInjector(this.img, {
-          evalScripts,
-          each
-        })
-      }
+      />
     )
+
+    const img = this.container.appendChild(div.firstChild)
+
+    SVGInjector(img, {
+      evalScripts,
+      each
+    })
+  }
+
+  removeSVG() {
+    this.container.removeChild(this.container.firstChild)
   }
 
   componentDidMount() {
@@ -55,11 +57,12 @@ export default class ReactSVG extends PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
+    this.removeSVG()
     this.renderSVG(nextProps)
   }
 
   componentWillUnmount() {
-    ReactDOM.unmountComponentAtNode(this.container)
+    this.removeSVG()
   }
 
   render() {
