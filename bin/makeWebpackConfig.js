@@ -50,8 +50,8 @@ export default function makeWebpackConfig(buildType) {
     return Object.assign(baseConfig, {
       entry: './src/index.js',
       output: {
-        filename: 'react-svg.js',
-        library: 'react-svg',
+        filename: 'ReactSVG.js',
+        library: 'ReactSVG',
         libraryTarget: 'umd',
         path: path.join(__dirname, '../dist')
       },
@@ -68,8 +68,8 @@ export default function makeWebpackConfig(buildType) {
     return Object.assign(baseConfig, {
       entry: './src/index.js',
       output: {
-        filename: 'react-svg.min.js',
-        library: 'react-svg',
+        filename: 'ReactSVG.min.js',
+        library: 'ReactSVG',
         libraryTarget: 'umd',
         path: path.join(__dirname, '../dist')
       },
