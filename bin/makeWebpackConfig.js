@@ -11,12 +11,6 @@ export default function makeWebpackConfig(buildType) {
         commonjs2: 'react',
         amd: 'react'
       },
-      'react-dom': {
-        root: 'ReactDOM',
-        commonjs: 'react-dom',
-        commonjs2: 'react-dom',
-        amd: 'react-dom'
-      },
       'react-dom/server': {
         root: 'ReactDOMServer',
         commonjs: 'react-dom/server',
