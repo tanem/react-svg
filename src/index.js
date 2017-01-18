@@ -1,9 +1,9 @@
-import React, { PureComponent, PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
 import ReactDOMServer from 'react-dom/server'
 import SVGInjector from 'svg-injector'
 
-export default class ReactSVG extends PureComponent {
+export default class ReactSVG extends Component {
 
   static defaultProps = {
     callback: () => {},
@@ -29,7 +29,7 @@ export default class ReactSVG extends PureComponent {
       style
     } = props
 
-    this.container = ReactDOM.findDOMNode(this)
+    this.container = this.container || ReactDOM.findDOMNode(this)
 
     const div = document.createElement('div')
     div.innerHTML = ReactDOMServer.renderToStaticMarkup(
@@ -59,6 +59,10 @@ export default class ReactSVG extends PureComponent {
   componentWillReceiveProps(nextProps) {
     this.removeSVG()
     this.renderSVG(nextProps)
+  }
+
+  shouldComponentUpdate() {
+    return false
   }
 
   componentWillUnmount() {
