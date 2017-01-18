@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import ReactDOM from 'react-dom'
 import ReactDOMServer from 'react-dom/server'
 import SVGInjector from 'svg-injector'
 
@@ -20,6 +19,16 @@ export default class ReactSVG extends Component {
     style: PropTypes.object
   }
 
+  refCallback = (container) => {
+    if (!container) {
+      this.removeSVG()
+      return
+    }
+
+    this.container = container
+    this.renderSVG()
+  }
+
   renderSVG(props = this.props) {
     const {
       callback: each,
@@ -28,8 +37,6 @@ export default class ReactSVG extends Component {
       path,
       style
     } = props
-
-    this.container = this.container || ReactDOM.findDOMNode(this)
 
     const div = document.createElement('div')
     div.innerHTML = ReactDOMServer.renderToStaticMarkup(
@@ -52,10 +59,6 @@ export default class ReactSVG extends Component {
     this.container.removeChild(this.container.firstChild)
   }
 
-  componentDidMount() {
-    this.renderSVG()
-  }
-
   componentWillReceiveProps(nextProps) {
     this.removeSVG()
     this.renderSVG(nextProps)
@@ -65,12 +68,8 @@ export default class ReactSVG extends Component {
     return false
   }
 
-  componentWillUnmount() {
-    this.removeSVG()
-  }
-
   render() {
-    return <div />
+    return <div ref={this.refCallback} />
   }
 
 }
