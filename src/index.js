@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import ReactDOMServer from 'react-dom/server'
-import SVGInjector from 'svg-injector'
+
+// See: https://github.com/webpack/react-starter/issues/37
+const isBrowser = typeof window !== 'undefined'
+const SVGInjector = isBrowser ? require('svg-injector') : undefined
 
 export default class ReactSVG extends Component {
 
@@ -50,7 +53,7 @@ export default class ReactSVG extends Component {
     )
 
     const imgWrapper = this.container.appendChild(div.firstChild)
-    
+
     SVGInjector(imgWrapper.firstChild, {
       evalScripts,
       each
