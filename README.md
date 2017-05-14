@@ -35,6 +35,7 @@ __Props__
 - `className` - *Optional* Class name to be added to the SVG. Defaults to `''`.
 - `evalScripts` - *Optional* Run any script blocks found in the SVG (`always`, `once`, or `never`). Defaults to `never`.
 - `style` - *Optional* Inline styles to be added to the SVG. Defaults to `{}`.
+- `alt` - *Optional* Alt text to be added to the SVG. Defaults to `''`.
 
 __Example__
 
@@ -44,6 +45,7 @@ __Example__
   callback={(svg) => console.log(svg)}
   className="example"
   evalScript="always"
+  alt="Atomic logo"
   style={{ width: 200 }}
 />
 ```
