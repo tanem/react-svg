@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import ReactDOMServer from 'react-dom/server'
 
 // See: https://github.com/webpack/react-starter/issues/37
