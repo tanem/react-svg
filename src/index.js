@@ -45,7 +45,7 @@ export default class ReactSVG extends Component {
     const div = document.createElement('div')
     div.innerHTML = ReactDOMServer.renderToStaticMarkup(
       <div>
-        <img
+        <div
           className={className}
           data-src={path}
           style={style}
@@ -53,9 +53,9 @@ export default class ReactSVG extends Component {
       </div>
     )
 
-    const imgWrapper = this.container.appendChild(div.firstChild)
+    const wrapper = this.container.appendChild(div.firstChild)
 
-    SVGInjector(imgWrapper.firstChild, {
+    SVGInjector(wrapper.firstChild, {
       evalScripts,
       each
     })
