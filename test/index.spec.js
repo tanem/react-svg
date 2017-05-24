@@ -49,11 +49,13 @@ describe('ReactSVG', () => {
         className="test-class"
         path="http://localhost/render-source.svg"
         style={{ height: 200 }}
+        alt="Alternate text"
       />,
       { attachTo: container }
     )
 
     requests[0].respond(200, {}, sourceSVG)
+    expect(wrapper.prop('alt')).toEqual('Alternate text');
     jest.runAllTimers()
   })
 
