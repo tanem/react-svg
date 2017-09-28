@@ -22,7 +22,7 @@ export default function makeWebpackConfig(buildType) {
       loaders: [
         {
           test: /\.js$/,
-          loader: 'babel',
+          loader: 'babel-loader',
           exclude: /node_modules/
         }
       ]
