@@ -4,6 +4,7 @@
   "description": "A react.js svg component for loading svg files into the dom.",
   "main": "lib/index.js",
   "scripts": {
+    "precommit": "lint-staged",
     "clean": "rimraf dist lib",
     "lint": "eslint .",
     "test": "jest && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js || true",
@@ -16,6 +17,12 @@
     "version": "npm run build",
     "postversion": "git push && git push --tags && npm publish",
     "release": "npm version -m 'Release v%s'"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
@@ -52,9 +59,13 @@
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-16": "1.0.0",
     "eslint": "^4.7.2",
-    "eslint-config-rackt": "^1.1.1",
+    "eslint-config-prettier": "2.6.0",
+    "eslint-plugin-prettier": "2.3.1",
     "eslint-plugin-react": "^7.4.0",
+    "husky": "0.14.3",
     "jest": "^21.2.1",
+    "lint-staged": "4.2.3",
+    "prettier": "1.7.3",
     "prop-types": "^15.5.10",
     "raf": "^3.3.2",
     "react": "^16.0.0",
@@ -72,7 +83,12 @@
       "<rootDir>/node_modules/",
       "<rootDir>/.jest-setup.js"
     ],
-    "setupFiles": ["raf/polyfill", "<rootDir>/.jest-setup.js"],
-    "roots": ["test"]
+    "setupFiles": [
+      "raf/polyfill",
+      "<rootDir>/.jest-setup.js"
+    ],
+    "roots": [
+      "test"
+    ]
   }
 }

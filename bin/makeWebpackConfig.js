@@ -1,33 +1,32 @@
-import path from 'path'
-import webpack from 'webpack'
+import path from 'path';
+import webpack from 'webpack';
 
 export default function makeWebpackConfig(buildType) {
-
   const baseConfig = {
     externals: {
       react: {
         root: 'React',
         commonjs: 'react',
         commonjs2: 'react',
-        amd: 'react'
+        amd: 'react',
       },
       'react-dom/server': {
         root: 'ReactDOMServer',
         commonjs: 'react-dom/server',
         commonjs2: 'react-dom/server',
-        amd: 'react-dom/server'
-      }
+        amd: 'react-dom/server',
+      },
     },
     module: {
       loaders: [
         {
           test: /\.js$/,
           loader: 'babel-loader',
-          exclude: /node_modules/
-        }
-      ]
-    }
-  }
+          exclude: /node_modules/,
+        },
+      ],
+    },
+  };
 
   if (buildType === 'example') {
     return Object.assign(baseConfig, {
@@ -35,9 +34,9 @@ export default function makeWebpackConfig(buildType) {
       externals: {},
       output: {
         filename: 'bundle.js',
-        path: path.join(__dirname, '../example')
-      }
-    })
+        path: path.join(__dirname, '../example'),
+      },
+    });
   }
 
   if (buildType === 'umd') {
@@ -47,15 +46,15 @@ export default function makeWebpackConfig(buildType) {
         filename: 'ReactSVG.js',
         library: 'ReactSVG',
         libraryTarget: 'umd',
-        path: path.join(__dirname, '../dist')
+        path: path.join(__dirname, '../dist'),
       },
       plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.DefinePlugin({
-          'process.env.NODE_ENV': JSON.stringify('production')
-        })
-      ]
-    })
+          'process.env.NODE_ENV': JSON.stringify('production'),
+        }),
+      ],
+    });
   }
 
   if (buildType === 'umd:min') {
@@ -65,21 +64,20 @@ export default function makeWebpackConfig(buildType) {
         filename: 'ReactSVG.min.js',
         library: 'ReactSVG',
         libraryTarget: 'umd',
-        path: path.join(__dirname, '../dist')
+        path: path.join(__dirname, '../dist'),
       },
       plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.DefinePlugin({
-          'process.env.NODE_ENV': JSON.stringify('production')
+          'process.env.NODE_ENV': JSON.stringify('production'),
         }),
         new webpack.optimize.UglifyJsPlugin({
           compressor: {
             screw_ie8: true,
-            warnings: false
-          }
-        })
-      ]
-    })
+            warnings: false,
+          },
+        }),
+      ],
+    });
   }
-
 }

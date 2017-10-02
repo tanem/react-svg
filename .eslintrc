@@ -1,14 +1,24 @@
 {
-  "extends": "rackt",
-  "rules": {
-    "valid-jsdoc": 2,
-    "no-var": 0,
-    "react/jsx-uses-vars": 1,
-    "react/jsx-uses-react": 1,
-    "react/jsx-no-undef": 2,
-    "react/jsx-wrap-multilines": 2
-  },
+  "parser": "babel-eslint",
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/react"
+  ],
   "plugins": [
-    "react"
-  ]
+    "react",
+    "prettier"
+  ],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "prettier/prettier": ["error", {
+      "singleQuote": true,
+      "trailingComma": "es5",
+      "bracketSpacing": false
+    }]
+  }
 }
