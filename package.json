@@ -6,7 +6,6 @@
   "scripts": {
     "precommit": "lint-staged",
     "clean": "rimraf dist lib",
-    "lint": "eslint .",
     "test":
       "jest && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js || true",
     "start": "babel-node ./bin/start.js",
@@ -15,7 +14,7 @@
     "build:umd:min": "babel-node ./bin/build.js umd:min",
     "build":
       "npm run clean && npm run build:lib && npm run build:umd && npm run build:umd:min",
-    "preversion": "npm run lint && npm test",
+    "preversion": "npm test",
     "version": "npm run build",
     "postversion": "git push && git push --tags && npm publish",
     "release": "npm version -m 'Release v%s'"
