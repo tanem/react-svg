@@ -1,32 +1,37 @@
 {
   "name": "react-svg",
-  "version": "2.1.21",
+  "version": "2.1.22",
   "description": "A react.js svg component for loading svg files into the dom.",
   "main": "lib/index.js",
   "scripts": {
     "precommit": "lint-staged",
     "clean": "rimraf dist lib",
-    "test":
-      "jest && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js || true",
+    "test": "jest && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js || true",
     "start": "babel-node ./bin/start.js",
     "build:lib": "babel src -d lib",
     "build:umd": "babel-node ./bin/build.js umd",
     "build:umd:min": "babel-node ./bin/build.js umd:min",
-    "build":
-      "npm run clean && npm run build:lib && npm run build:umd && npm run build:umd:min",
+    "build": "npm run clean && npm run build:lib && npm run build:umd && npm run build:umd:min",
     "preversion": "npm test",
     "version": "npm run build",
     "postversion": "git push && git push --tags && npm publish",
     "release": "npm version -m 'Release v%s'"
   },
   "lint-staged": {
-    "*.js": ["eslint --fix", "git add"]
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/atomic-app/react-svg"
   },
-  "keywords": ["react", "react.js", "svg"],
+  "keywords": [
+    "react",
+    "react.js",
+    "svg"
+  ],
   "author": "PrototypeAlex",
   "license": "MIT",
   "bugs": {
@@ -77,7 +82,12 @@
       "<rootDir>/node_modules/",
       "<rootDir>/.jest-setup.js"
     ],
-    "setupFiles": ["raf/polyfill", "<rootDir>/.jest-setup.js"],
-    "roots": ["test"]
+    "setupFiles": [
+      "raf/polyfill",
+      "<rootDir>/.jest-setup.js"
+    ],
+    "roots": [
+      "test"
+    ]
   }
 }
