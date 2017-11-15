@@ -1,6 +1,6 @@
 {
   "name": "react-svg",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "A react.js svg component for loading svg files into the dom.",
   "main": "lib/index.js",
   "scripts": {
