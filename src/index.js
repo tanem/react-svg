@@ -21,6 +21,7 @@ export default class ReactSVG extends Component {
     evalScripts: PropTypes.oneOf(['always', 'once', 'never']),
     path: PropTypes.string.isRequired,
     style: PropTypes.object,
+    wrapperClassName: PropTypes.string,
   };
 
   refCallback = container => {
@@ -65,6 +66,8 @@ export default class ReactSVG extends Component {
   }
 
   render() {
-    return <div ref={this.refCallback} className={this.props.wrapperClassName} />;
+    return (
+      <div ref={this.refCallback} className={this.props.wrapperClassName} />
+    );
   }
 }
