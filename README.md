@@ -18,7 +18,8 @@ ReactDOM.render(
   <ReactSVG
     path="atomic.svg"
     callback={svg => console.log(svg)}
-    className="example"
+    className="class-name"
+    wrapperClassName="wrapper-class-name"
   />,
   document.querySelector('.Root')
 );
