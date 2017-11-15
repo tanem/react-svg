@@ -10,6 +10,7 @@ export default class ReactSVG extends Component {
   static defaultProps = {
     callback: () => {},
     className: '',
+    wrapperClassName: '',
     evalScripts: 'once',
     style: {},
   };
@@ -64,6 +65,6 @@ export default class ReactSVG extends Component {
   }
 
   render() {
-    return <div ref={this.refCallback} />;
+    return <div ref={this.refCallback} className={this.props.wrapperClassName} />;
   }
 }

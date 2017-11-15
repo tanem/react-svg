@@ -33,6 +33,7 @@ __Props__
 - `path` - Path to the SVG.
 - `callback` - *Optional* Function to call after the SVG is injected. Receives the newly injected SVG DOM element as a parameter. Defaults to `null`.
 - `className` - *Optional* Class name to be added to the SVG. Defaults to `''`.
+- `wrapperClasName` - *Optional* Class name to be added to the wrapping `div`. Defaults to `''`.
 - `evalScripts` - *Optional* Run any script blocks found in the SVG (`always`, `once`, or `never`). Defaults to `never`.
 - `style` - *Optional* Inline styles to be added to the SVG. Defaults to `{}`.
 
@@ -43,6 +44,7 @@ __Example__
   path="atomic.svg"
   callback={svg => console.log(svg)}
   className="example"
+  wrapperClassName="example-wrapper-classname"
   evalScript="always"
   style={{width: 200}}
 />
