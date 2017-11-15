@@ -3,10 +3,6 @@
   "version": "2.2.1",
   "description": "A react.js svg component for loading svg files into the dom.",
   "main": "lib/index.js",
-  "engines": {
-    "node": "8.9.1",
-    "npm": "5.5.1"
-  },
   "scripts": {
     "precommit": "lint-staged",
     "clean": "rimraf dist lib",
