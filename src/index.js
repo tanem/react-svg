@@ -10,9 +10,9 @@ export default class ReactSVG extends Component {
   static defaultProps = {
     callback: () => {},
     className: '',
-    wrapperClassName: '',
     evalScripts: 'once',
     style: {},
+    wrapperClassName: '',
   };
 
   static propTypes = {
