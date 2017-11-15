@@ -9,10 +9,10 @@ const SVGInjector = isBrowser ? require('svg-injector') : undefined;
 export default class ReactSVG extends Component {
   static defaultProps = {
     callback: () => {},
-    className: '',
+    className: null,
     evalScripts: 'once',
     style: {},
-    wrapperClassName: '',
+    wrapperClassName: null,
   };
 
   static propTypes = {
