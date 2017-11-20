@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import ReactDOMServer from 'react-dom/server';
+import ReactDOM from 'react-dom';
 
 // See: https://github.com/webpack/react-starter/issues/37
 const isBrowser = typeof window !== 'undefined';
@@ -37,19 +37,18 @@ export default class ReactSVG extends Component {
   renderSVG(props = this.props) {
     const {callback: each, className, evalScripts, path, style} = props;
 
-    const div = document.createElement('div');
-    div.innerHTML = ReactDOMServer.renderToStaticMarkup(
-      <div>
-        <div className={className} data-src={path} style={style} />
-      </div>
+    const wrapper = document.createElement('div');
+    ReactDOM.render(
+      <div className={className} data-src={path} style={style} />,
+      wrapper,
+      () => {
+        SVGInjector(wrapper.firstChild, {
+          evalScripts,
+          each,
+        });
+        this.container.appendChild(wrapper.firstChild);
+      }
     );
-
-    const wrapper = this.container.appendChild(div.firstChild);
-
-    SVGInjector(wrapper.firstChild, {
-      evalScripts,
-      each,
-    });
   }
 
   removeSVG() {
