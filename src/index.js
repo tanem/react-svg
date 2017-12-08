@@ -53,7 +53,12 @@ export default class ReactSVG extends Component {
   }
 
   removeSVG() {
-    this.container.removeChild(this.container.firstChild);
+    if (
+      this.container instanceof Node &&
+      this.container.firstChild instanceof Node
+    ) {
+      this.container.removeChild(this.container.firstChild);
+    }
   }
 
   componentWillReceiveProps(nextProps) {
