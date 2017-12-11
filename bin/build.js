@@ -9,6 +9,7 @@ webpack(makeWebpackConfig(buildType), (error, stats) => {
     throw new Error(error);
   }
 
+  // eslint-disable-next-line no-console
   console.log(
     stats.toString({
       assets: true,
