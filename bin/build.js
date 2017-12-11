@@ -1,5 +1,4 @@
 import webpack from 'webpack';
-
 import makeWebpackConfig from './makeWebpackConfig';
 
 const [, , buildType] = process.argv;

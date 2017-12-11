@@ -1,6 +1,5 @@
 import WebpackDevServer from 'webpack-dev-server';
 import webpack from 'webpack';
-
 import makeWebpackConfig from './makeWebpackConfig';
 
 new WebpackDevServer(webpack(makeWebpackConfig('example')), {
