@@ -80,11 +80,11 @@
     "coveragePathIgnorePatterns": [
       "<rootDir>/test/fixtures/",
       "<rootDir>/node_modules/",
-      "<rootDir>/.jest-setup.js"
+      "<rootDir>/test/setup.js"
     ],
     "setupFiles": [
       "raf/polyfill",
-      "<rootDir>/.jest-setup.js"
+      "<rootDir>/test/setup.js"
     ],
     "roots": [
       "test"

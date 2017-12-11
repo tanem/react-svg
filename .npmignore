@@ -1,10 +1,11 @@
-bin
-coverage
-src
-test
 .babelrc
-.editorconfig
 .eslintignore
 .eslintrc
 .gitignore
 .npmignore
+.nvmrc
+.travis.yml
+bin
+coverage
+src
+test
