@@ -4,18 +4,18 @@
   "description": "A react.js svg component for loading svg files into the dom.",
   "main": "lib/index.js",
   "scripts": {
-    "precommit": "lint-staged",
-    "clean": "rimraf dist lib",
-    "test": "jest && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js || true",
-    "start": "babel-node ./bin/start.js",
+    "build": "npm run clean && npm run build:lib && npm run build:umd && npm run build:umd:min",
     "build:lib": "babel src -d lib",
     "build:umd": "babel-node ./bin/build.js umd",
     "build:umd:min": "babel-node ./bin/build.js umd:min",
-    "build": "npm run clean && npm run build:lib && npm run build:umd && npm run build:umd:min",
-    "preversion": "npm test",
-    "version": "npm run build",
+    "clean": "rimraf dist lib",
     "postversion": "git push && git push --tags && npm publish",
-    "release": "npm version -m 'Release v%s'"
+    "precommit": "lint-staged",
+    "preversion": "npm test",
+    "release": "npm version -m 'Release v%s'",
+    "start": "babel-node ./bin/start.js",
+    "test": "jest && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js || true",
+    "version": "npm run build"
   },
   "lint-staged": {
     "*.js": [
