@@ -16,9 +16,10 @@
   },
   "rules": {
     "prettier/prettier": ["error", {
+      "bracketSpacing": false,
+      "jsxBracketSameLine": true,
       "singleQuote": true,
-      "trailingComma": "es5",
-      "bracketSpacing": false
+      "trailingComma": "all"
     }]
   }
 }

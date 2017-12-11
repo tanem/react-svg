@@ -17,6 +17,6 @@ webpack(makeWebpackConfig(buildType), (error, stats) => {
       hash: false,
       timings: false,
       version: false,
-    })
+    }),
   );
 });

@@ -46,7 +46,7 @@ describe('ReactSVG', () => {
         path="http://localhost/render-source.svg"
         style={{height: 200}}
       />,
-      {attachTo: container}
+      {attachTo: container},
     );
 
     requests[0].respond(200, {}, sourceSVG);
@@ -68,7 +68,7 @@ describe('ReactSVG', () => {
         path="http://localhost/update-source.svg"
         style={{height: 200}}
       />,
-      {attachTo: container}
+      {attachTo: container},
     );
 
     requests[0].respond(200, {}, sourceSVG);
@@ -87,7 +87,7 @@ describe('ReactSVG', () => {
         path="http://localhost/unmount-source.svg"
         style={{height: 200}}
       />,
-      {attachTo: container}
+      {attachTo: container},
     );
 
     requests[0].respond(200, {}, sourceSVG);

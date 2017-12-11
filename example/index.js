@@ -9,5 +9,5 @@ ReactDOM.render(
     className="class-name"
     wrapperClassName="wrapper-class-name"
   />,
-  document.querySelector('.Root')
+  document.querySelector('.Root'),
 );

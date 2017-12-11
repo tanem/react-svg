@@ -41,7 +41,7 @@ export default class ReactSVG extends Component {
     div.innerHTML = ReactDOMServer.renderToStaticMarkup(
       <div>
         <div className={className} data-src={path} style={style} />
-      </div>
+      </div>,
     );
 
     const wrapper = this.container.appendChild(div.firstChild);
