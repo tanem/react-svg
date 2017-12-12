@@ -1,7 +1,6 @@
 import React from 'react';
-import {mount} from 'enzyme';
 import sinon from 'sinon';
-
+import {mount} from 'enzyme';
 import ReactSVG from '../src';
 import {sourceSVG, renderedSVG, updatedSVG} from './fixtures/svg';
 
@@ -11,7 +10,7 @@ import {sourceSVG, renderedSVG, updatedSVG} from './fixtures/svg';
 //   request processing manually via Jest and Sinon.
 // - Even though we're always responding with `sourceSVG`, we use different
 //   `path` values when mounting within each test so that SVGInjector doesn't
-//   use it's internal cache. This keeps the test isolated from one another.
+//   use it's internal cache. This keeps the tests isolated from one another.
 
 jest.useFakeTimers();
 
@@ -46,7 +45,7 @@ describe('ReactSVG', () => {
         path="http://localhost/render-source.svg"
         style={{height: 200}}
       />,
-      {attachTo: container}
+      {attachTo: container},
     );
 
     requests[0].respond(200, {}, sourceSVG);
@@ -68,7 +67,7 @@ describe('ReactSVG', () => {
         path="http://localhost/update-source.svg"
         style={{height: 200}}
       />,
-      {attachTo: container}
+      {attachTo: container},
     );
 
     requests[0].respond(200, {}, sourceSVG);
@@ -87,7 +86,7 @@ describe('ReactSVG', () => {
         path="http://localhost/unmount-source.svg"
         style={{height: 200}}
       />,
-      {attachTo: container}
+      {attachTo: container},
     );
 
     requests[0].respond(200, {}, sourceSVG);

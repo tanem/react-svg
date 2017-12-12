@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
 // See: https://github.com/webpack/react-starter/issues/37
 const isBrowser = typeof window !== 'undefined';
 const SVGInjector = isBrowser ? require('svg-injector') : undefined;
 
-export default class ReactSVG extends Component {
+export default class ReactSVG extends React.Component {
   static defaultProps = {
     callback: () => {},
     className: null,
@@ -41,7 +41,7 @@ export default class ReactSVG extends Component {
     div.innerHTML = ReactDOMServer.renderToStaticMarkup(
       <div>
         <div className={className} data-src={path} style={style} />
-      </div>
+      </div>,
     );
 
     const wrapper = this.container.appendChild(div.firstChild);

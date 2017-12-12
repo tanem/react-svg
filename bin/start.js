@@ -1,6 +1,5 @@
 import WebpackDevServer from 'webpack-dev-server';
 import webpack from 'webpack';
-
 import makeWebpackConfig from './makeWebpackConfig';
 
 new WebpackDevServer(webpack(makeWebpackConfig('example')), {
@@ -15,5 +14,6 @@ new WebpackDevServer(webpack(makeWebpackConfig('example')), {
     version: false,
   },
 }).listen(8080, 'localhost', () => {
+  // eslint-disable-next-line no-console
   console.log('listening on localhost:8080');
 });
