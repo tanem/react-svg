@@ -6,14 +6,14 @@
   "scripts": {
     "build": "npm run clean && npm run build:lib && npm run build:umd && npm run build:umd:min",
     "build:lib": "babel src -d lib",
-    "build:umd": "babel-node ./bin/build.js umd",
-    "build:umd:min": "babel-node ./bin/build.js umd:min",
+    "build:umd": "babel-node ./scripts/build.js umd",
+    "build:umd:min": "babel-node ./scripts/build.js umd:min",
     "clean": "rimraf dist lib",
     "postversion": "git push && git push --tags && npm publish",
     "precommit": "lint-staged",
     "preversion": "npm test",
     "release": "npm version -m 'Release v%s'",
-    "start": "babel-node ./bin/start.js",
+    "start": "babel-node ./scripts/start.js",
     "test": "jest && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js || true",
     "version": "npm run build"
   },
