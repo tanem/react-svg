@@ -5,7 +5,7 @@
 .npmignore
 .nvmrc
 .travis.yml
-bin
 coverage
+scripts
 src
 test
