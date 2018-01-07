@@ -1,7 +1,7 @@
 {
   "name": "react-svg",
   "version": "2.2.8",
-  "description": "A react.js svg component for loading svg files into the dom.",
+  "description": "A React component that uses SVGInjector to add SVG to the DOM.",
   "main": "lib/index.js",
   "scripts": {
     "build": "npm run clean && npm run build:lib && npm run build:umd && npm run build:umd:min",
@@ -28,11 +28,12 @@
     "url": "https://github.com/atomic-app/react-svg"
   },
   "keywords": [
+    "javascript",
     "react",
-    "react.js",
-    "svg"
+    "svg",
+    "svginjector"
   ],
-  "author": "PrototypeAlex",
+  "author": "PrototypeAlex (http://www.console.nz)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/atomic-app/react-svg/issues"
