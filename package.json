@@ -1,7 +1,7 @@
 {
   "name": "react-svg",
   "version": "2.2.8",
-  "description": "A react.js svg component for loading svg files into the dom.",
+  "description": "A React component that uses SVGInjector to add SVG to the DOM.",
   "main": "lib/index.js",
   "scripts": {
     "build": "npm run clean && npm run build:lib && npm run build:umd && npm run build:umd:min",
@@ -28,11 +28,12 @@
     "url": "https://github.com/atomic-app/react-svg"
   },
   "keywords": [
+    "javascript",
     "react",
-    "react.js",
-    "svg"
+    "svg",
+    "svginjector"
   ],
-  "author": "PrototypeAlex",
+  "author": "PrototypeAlex (http://www.console.nz)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/atomic-app/react-svg/issues"
@@ -57,7 +58,7 @@
     "coveralls": "^3.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "eslint": "^4.14.0",
+    "eslint": "^4.15.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.4.0",
     "eslint-plugin-react": "^7.5.1",
@@ -73,7 +74,7 @@
     "rimraf": "^2.5.4",
     "sinon": "^4.1.3",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.9.7"
+    "webpack-dev-server": "^2.10.0"
   },
   "jest": {
     "collectCoverage": true,
