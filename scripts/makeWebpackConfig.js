@@ -28,13 +28,16 @@ export default function makeWebpackConfig(buildType) {
     },
   };
 
-  if (buildType === 'example') {
+  if (buildType === 'examples') {
     return Object.assign(baseConfig, {
-      entry: './example/index.js',
+      entry: {
+        basic: './examples/basic',
+        'issue-49/fill': './examples/issue-49/fill',
+        'issue-49/swap': './examples/issue-49/swap',
+      },
       externals: {},
       output: {
-        filename: 'bundle.js',
-        path: path.join(__dirname, '../example'),
+        filename: '[name]/bundle.js',
       },
     });
   }
