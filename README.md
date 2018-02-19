@@ -25,7 +25,7 @@ ReactDOM.render(
 );
 ```
 
-There is a working version of the above in the `example` dir. First run `npm start`, then point a browser at `localhost:8080`.
+There is a working version of the above in the `examples/basic` dir. First run `npm start`, then point a browser at `localhost:8080/basic`.
 
 ## API
 

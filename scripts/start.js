@@ -2,8 +2,8 @@ import WebpackDevServer from 'webpack-dev-server';
 import webpack from 'webpack';
 import makeWebpackConfig from './makeWebpackConfig';
 
-new WebpackDevServer(webpack(makeWebpackConfig('example')), {
-  contentBase: 'example/',
+new WebpackDevServer(webpack(makeWebpackConfig('examples')), {
+  contentBase: 'examples/',
   filename: 'bundle.js',
   stats: {
     assets: true,
