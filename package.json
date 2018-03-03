@@ -74,7 +74,7 @@
     "rimraf": "^2.5.4",
     "sinon": "^4.4.2",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.11.1"
+    "webpack-dev-server": "^2.11.2"
   },
   "jest": {
     "collectCoverage": true,
