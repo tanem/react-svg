@@ -73,8 +73,8 @@
     "react-test-renderer": "^16.2.0",
     "rimraf": "^2.5.4",
     "sinon": "^4.4.2",
-    "webpack": "^4.0.1",
-    "webpack-dev-server": "^3.1.0"
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1"
   },
   "jest": {
     "collectCoverage": true,
