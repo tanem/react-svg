@@ -35,21 +35,23 @@ export default class ReactSVG extends React.Component {
   };
 
   renderSVG(props = this.props) {
-    const {callback: each, className, evalScripts, path, style} = props;
+    if (this.container instanceof Node) {
+      const {callback: each, className, evalScripts, path, style} = props;
 
-    const div = document.createElement('div');
-    div.innerHTML = ReactDOMServer.renderToStaticMarkup(
-      <div>
-        <div className={className} data-src={path} style={style} />
-      </div>,
-    );
+      const div = document.createElement('div');
+      div.innerHTML = ReactDOMServer.renderToStaticMarkup(
+        <div>
+          <div className={className} data-src={path} style={style} />
+        </div>,
+      );
 
-    const wrapper = this.container.appendChild(div.firstChild);
+      const wrapper = this.container.appendChild(div.firstChild);
 
-    SVGInjector(wrapper.firstChild, {
-      evalScripts,
-      each,
-    });
+      SVGInjector(wrapper.firstChild, {
+        evalScripts,
+        each,
+      });
+    }
   }
 
   removeSVG() {
