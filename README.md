@@ -1,7 +1,7 @@
 # react-svg
 
-[![build status](https://img.shields.io/travis/atomic-app/react-svg/master.svg?style=flat-square)](https://travis-ci.org/atomic-app/react-svg)
-[![coverage status](https://img.shields.io/coveralls/atomic-app/react-svg.svg?style=flat-square)](https://coveralls.io/r/atomic-app/react-svg)
+[![build status](https://img.shields.io/travis/tanem/react-svg/master.svg?style=flat-square)](https://travis-ci.org/tanem/react-svg)
+[![coverage status](https://img.shields.io/coveralls/tanem/react-svg.svg?style=flat-square)](https://coveralls.io/r/tanem/react-svg)
 [![npm version](https://img.shields.io/npm/v/react-svg.svg?style=flat-square)](https://www.npmjs.com/package/react-svg)
 [![npm downloads](https://img.shields.io/npm/dm/react-svg.svg?style=flat-square)](https://www.npmjs.com/package/react-svg)
 

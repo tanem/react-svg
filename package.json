@@ -25,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/atomic-app/react-svg"
+    "url": "https://github.com/tanem/react-svg.git"
   },
   "keywords": [
     "javascript",
@@ -33,12 +33,15 @@
     "svg",
     "svginjector"
   ],
-  "author": "PrototypeAlex (http://www.console.nz)",
+  "authors": [
+    "PrototypeAlex (https://github.com/PrototypeAlex)",
+    "Tane Morgan (https://github.com/tanem)"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/atomic-app/react-svg/issues"
+    "url": "https://github.com/tanem/react-svg/issues"
   },
-  "homepage": "https://github.com/atomic-app/react-svg",
+  "homepage": "https://github.com/tanem/react-svg",
   "peerDependencies": {
     "react": "^15.5.4 || ^16.0.0",
     "react-dom": "^15.5.4 || ^16.0.0"
