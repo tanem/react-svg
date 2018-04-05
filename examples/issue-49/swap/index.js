@@ -1,26 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import ReactSVG from '../../../src';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import ReactSVG from '../../../src'
 
 class Swap extends React.Component {
   state = {
-    isHovered: false,
-  };
+    isHovered: false
+  }
 
   render() {
     return (
       <div
-        onMouseEnter={() => this.setState({isHovered: true})}
-        onMouseOut={() => this.setState({isHovered: false})}
-        style={{display: 'inline-block'}}>
+        onMouseEnter={() => this.setState({ isHovered: true })}
+        onMouseOut={() => this.setState({ isHovered: false })}
+        style={{ display: 'inline-block' }}
+      >
         <ReactSVG
           path={this.state.isHovered ? 'atomic-black.svg' : 'atomic-blue.svg'}
           className="class-name"
           wrapperClassName="wrapper-class-name"
         />
       </div>
-    );
+    )
   }
 }
 
-ReactDOM.render(<Swap />, document.querySelector('.Root'));
+ReactDOM.render(<Swap />, document.querySelector('.Root'))

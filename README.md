@@ -10,19 +10,21 @@
 ## Usage
 
 ```js
-import React from 'react';
-import ReactDOM from 'react-dom';
-import ReactSVG from 'react-svg';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import ReactSVG from 'react-svg'
 
 ReactDOM.render(
   <ReactSVG
     path="atomic.svg"
-    callback={svg => console.log(svg)}
+    callback={svg => {
+      console.log(svg)
+    }}
     className="class-name"
     wrapperClassName="wrapper-class-name"
   />,
   document.querySelector('.Root')
-);
+)
 ```
 
 There is a working version of the above in the `examples/basic` dir. First run `npm start`, then point a browser at `localhost:8080/basic`.
@@ -43,11 +45,13 @@ __Example__
 ```js
 <ReactSVG
   path="atomic.svg"
-  callback={svg => console.log(svg)}
+  callback={svg => {
+    console.log(svg)
+  }}
   className="example"
   wrapperClassName="example-wrapper-classname"
   evalScript="always"
-  style={{width: 200}}
+  style={{ width: 200 }}
 />
 ```
 

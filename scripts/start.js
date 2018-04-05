@@ -1,6 +1,6 @@
-import WebpackDevServer from 'webpack-dev-server';
-import webpack from 'webpack';
-import makeWebpackConfig from './makeWebpackConfig';
+import WebpackDevServer from 'webpack-dev-server'
+import webpack from 'webpack'
+import makeWebpackConfig from './makeWebpackConfig'
 
 new WebpackDevServer(webpack(makeWebpackConfig('examples')), {
   contentBase: 'examples/',
@@ -11,9 +11,9 @@ new WebpackDevServer(webpack(makeWebpackConfig('examples')), {
     colors: true,
     hash: false,
     timings: false,
-    version: false,
-  },
+    version: false
+  }
 }).listen(8080, 'localhost', () => {
   // eslint-disable-next-line no-console
-  console.log('listening on localhost:8080');
-});
+  console.log('listening on localhost:8080')
+})

@@ -1,11 +1,11 @@
-import webpack from 'webpack';
-import makeWebpackConfig from './makeWebpackConfig';
+import webpack from 'webpack'
+import makeWebpackConfig from './makeWebpackConfig'
 
-const [, , buildType] = process.argv;
+const [, , buildType] = process.argv
 
 webpack(makeWebpackConfig(buildType), (error, stats) => {
   if (error) {
-    throw new Error(error);
+    throw new Error(error)
   }
 
   // eslint-disable-next-line no-console
@@ -16,7 +16,7 @@ webpack(makeWebpackConfig(buildType), (error, stats) => {
       colors: true,
       hash: false,
       timings: false,
-      version: false,
-    }),
-  );
-});
+      version: false
+    })
+  )
+})
