@@ -13,9 +13,10 @@
     "format:check": "prettier --list-different \"{examples,src,test}/**/*.js\"",
     "lint": "eslint .",
     "postversion": "git push && git push --tags && npm publish",
-    "preversion": "npm run clean && npm run format:check && npm run lint && npm test",
+    "preversion": "npm test",
     "release": "npm version -m 'Release v%s'",
     "start": "babel-node ./scripts/start.js",
+    "pretest": "npm run clean && npm run format:check && npm run lint",
     "test": "jest && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js || true",
     "version": "npm run build"
   },
