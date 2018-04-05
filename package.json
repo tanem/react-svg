@@ -17,7 +17,7 @@
     "release": "npm version -m 'Release v%s'",
     "start": "babel-node ./scripts/start.js",
     "pretest": "npm run clean && npm run format:check && npm run lint",
-    "test": "jest && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js || true",
+    "test": "jest",
     "version": "npm run build"
   },
   "repository": {
