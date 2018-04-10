@@ -1,5 +1,6 @@
 import path from 'path'
 import webpack from 'webpack'
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
 
 export default function makeWebpackConfig(buildType) {
   const baseConfig = {
@@ -18,10 +19,10 @@ export default function makeWebpackConfig(buildType) {
       }
     },
     module: {
-      loaders: [
+      rules: [
         {
           test: /\.js$/,
-          loader: 'babel-loader',
+          use: 'babel-loader',
           exclude: /node_modules/
         }
       ]
@@ -30,6 +31,7 @@ export default function makeWebpackConfig(buildType) {
 
   if (buildType === 'examples') {
     return Object.assign(baseConfig, {
+      mode: 'none',
       entry: {
         basic: './examples/basic',
         'issue-49/fill': './examples/issue-49/fill',
@@ -44,6 +46,7 @@ export default function makeWebpackConfig(buildType) {
 
   if (buildType === 'umd') {
     return Object.assign(baseConfig, {
+      mode: 'none',
       entry: './src/index.js',
       output: {
         filename: 'ReactSVG.js',
@@ -53,7 +56,9 @@ export default function makeWebpackConfig(buildType) {
       },
       plugins: [
         new webpack.DefinePlugin({
-          'process.env.NODE_ENV': JSON.stringify('production')
+          'process.env': {
+            NODE_ENV: JSON.stringify('production')
+          }
         })
       ]
     })
@@ -61,6 +66,7 @@ export default function makeWebpackConfig(buildType) {
 
   if (buildType === 'umd:min') {
     return Object.assign(baseConfig, {
+      mode: 'none',
       entry: './src/index.js',
       output: {
         filename: 'ReactSVG.min.js',
@@ -70,14 +76,14 @@ export default function makeWebpackConfig(buildType) {
       },
       plugins: [
         new webpack.DefinePlugin({
-          'process.env.NODE_ENV': JSON.stringify('production')
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-          compressor: {
-            screw_ie8: true,
-            warnings: false
+          'process.env': {
+            NODE_ENV: JSON.stringify('production')
           }
-        })
+        }),
+        new webpack.LoaderOptionsPlugin({
+          minimize: true
+        }),
+        new UglifyJsPlugin()
       ]
     })
   }
