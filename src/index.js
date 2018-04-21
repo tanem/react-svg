@@ -10,7 +10,7 @@ export default class ReactSVG extends React.Component {
   static defaultProps = {
     callback: () => {},
     className: null,
-    evalScripts: 'once',
+    evalScripts: 'never',
     style: {},
     wrapperClassName: null
   }
