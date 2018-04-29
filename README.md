@@ -34,6 +34,8 @@ There is a working version of the above in the `examples/basic` dir. First run `
 
 ## API
 
+:eyes: See [MIGRATING.md](MIGRATING.md) for moving between major versions of this component.
+
 __Props__
 
 - `path` - Path to the SVG.
