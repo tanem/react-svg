@@ -1,6 +1,6 @@
 {
   "name": "react-svg",
-  "version": "2.2.18",
+  "version": "3.0.0",
   "description": "A React component that uses SVGInjector to add SVG to the DOM.",
   "main": "lib/index.js",
   "scripts": {
