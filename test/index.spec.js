@@ -2,7 +2,7 @@ import React from 'react'
 import sinon from 'sinon'
 import { mount } from 'enzyme'
 import ReactSVG from '../src'
-import { sourceSVG, renderedSVG, updatedSVG } from './fixtures/svg'
+import { source, rendered, updated } from './fixtures'
 
 // Notes:
 //
@@ -34,66 +34,81 @@ describe('ReactSVG', () => {
     document.body.removeChild(container)
   })
 
-  it('should render correctly', done => {
+  it('should render correctly', () => {
     wrapper = mount(
       <ReactSVG
-        callback={svg => {
-          expect(svg.outerHTML).toBe(renderedSVG)
-          done()
-        }}
-        className="test-class"
+        className="wrapper-class-name"
         path="http://localhost/render-source.svg"
-        style={{ height: 200 }}
+        svgClassName="svg-class-name"
+        svgStyle={{ height: 200 }}
       />,
       { attachTo: container }
     )
 
-    requests[0].respond(200, {}, sourceSVG)
+    requests[0].respond(200, {}, source)
     jest.runAllTimers()
+
+    expect(wrapper.html()).toBe(rendered)
   })
 
-  it('should update correctly', done => {
-    let callCount = 0
-
+  it('should update correctly', () => {
     wrapper = mount(
       <ReactSVG
-        callback={svg => {
-          if (++callCount > 1) {
-            expect(svg.outerHTML).toBe(updatedSVG)
-            done()
-          }
-        }}
-        className="test-class"
+        className="wrapper-class-name"
         path="http://localhost/update-source.svg"
-        style={{ height: 200 }}
+        svgClassName="svg-class-name"
+        svgStyle={{ height: 200 }}
       />,
       { attachTo: container }
     )
 
-    requests[0].respond(200, {}, sourceSVG)
+    requests[0].respond(200, {}, source)
     jest.runAllTimers()
 
     wrapper.setProps({
-      className: 'update-class',
-      style: { height: 100 }
+      svgClassName: 'updated-svg-class-name',
+      svgStyle: { height: 100 }
     })
+
+    expect(wrapper.html()).toBe(updated)
   })
 
   it('should unmount correctly', () => {
     wrapper = mount(
       <ReactSVG
-        className="test-class"
+        svgClassName="svg-class-name"
         path="http://localhost/unmount-source.svg"
-        style={{ height: 200 }}
+        svgStyle={{ height: 200 }}
       />,
       { attachTo: container }
     )
 
-    requests[0].respond(200, {}, sourceSVG)
+    requests[0].respond(200, {}, source)
     jest.runAllTimers()
 
     wrapper.detach()
 
     expect(container.innerHTML).toBe('')
+  })
+
+  it('should ensure a parent node is always available when SVGInjector tries to access the DOM', () => {
+    // One way to test this scenario is to unmount the component, which removes
+    // the wrapper node, then let SVGInjector do it's usual DOM manipulation by
+    // running the timers.
+    expect(() => {
+      wrapper = mount(
+        <ReactSVG
+          svgClassName="svg-class-name"
+          path="http://localhost/parent-node-source.svg"
+          svgStyle={{ height: 200 }}
+        />,
+        { attachTo: container }
+      )
+
+      wrapper.detach()
+
+      requests[0].respond(200, {}, source)
+      jest.runAllTimers()
+    }).not.toThrow()
   })
 })

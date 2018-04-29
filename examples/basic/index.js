@@ -5,12 +5,14 @@ import ReactSVG from '../../src'
 ReactDOM.render(
   <ReactSVG
     path="atomic.svg"
-    callback={svg => {
-      // eslint-disable-next-line no-console
-      console.log(svg)
+    onInjected={svg => {
+      console.log('onInjected', svg)
     }}
-    className="class-name"
-    wrapperClassName="wrapper-class-name"
+    svgClassName="svg-class-name"
+    className="wrapper-class-name"
+    onClick={() => {
+      console.log('wrapper onClick')
+    }}
   />,
   document.querySelector('.Root')
 )
