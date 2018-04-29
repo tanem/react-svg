@@ -16,8 +16,8 @@ class Swap extends React.Component {
       >
         <ReactSVG
           path={this.state.isHovered ? 'atomic-black.svg' : 'atomic-blue.svg'}
-          className="class-name"
-          wrapperClassName="wrapper-class-name"
+          svgClassName="svg-class-name"
+          className="wrapper-class-name"
         />
       </div>
     )

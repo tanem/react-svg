@@ -8,20 +8,18 @@ const SVGInjector = isBrowser ? require('svg-injector') : undefined
 
 export default class ReactSVG extends React.Component {
   static defaultProps = {
-    callback: () => {},
-    className: null,
     evalScripts: 'never',
-    style: {},
-    wrapperClassName: null
+    onInjected: () => {},
+    svgClassName: null,
+    svgStyle: {}
   }
 
   static propTypes = {
-    callback: PropTypes.func,
-    className: PropTypes.string,
     evalScripts: PropTypes.oneOf(['always', 'once', 'never']),
+    onInjected: PropTypes.func,
     path: PropTypes.string.isRequired,
-    style: PropTypes.object,
-    wrapperClassName: PropTypes.string
+    svgClassName: PropTypes.string,
+    svgStyle: PropTypes.object
   }
 
   refCallback = container => {
@@ -36,20 +34,26 @@ export default class ReactSVG extends React.Component {
 
   renderSVG(props = this.props) {
     if (this.container instanceof Node) {
-      const { callback: each, className, evalScripts, path, style } = props
+      const {
+        evalScripts,
+        onInjected: each,
+        path,
+        svgClassName,
+        svgStyle
+      } = props
 
       const div = document.createElement('div')
       div.innerHTML = ReactDOMServer.renderToStaticMarkup(
         <div>
-          <div className={className} data-src={path} style={style} />
+          <div className={svgClassName} data-src={path} style={svgStyle} />
         </div>
       )
 
       const wrapper = this.container.appendChild(div.firstChild)
 
       SVGInjector(wrapper.firstChild, {
-        evalScripts,
-        each
+        each,
+        evalScripts
       })
     }
   }
@@ -73,8 +77,15 @@ export default class ReactSVG extends React.Component {
   }
 
   render() {
-    return (
-      <div ref={this.refCallback} className={this.props.wrapperClassName} />
-    )
+    const {
+      evalScripts,
+      onInjected,
+      path,
+      svgClassName,
+      svgStyle,
+      ...rest
+    } = this.props
+
+    return <div {...rest} ref={this.refCallback} />
   }
 }

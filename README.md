@@ -17,11 +17,14 @@ import ReactSVG from 'react-svg'
 ReactDOM.render(
   <ReactSVG
     path="atomic.svg"
-    callback={svg => {
-      console.log(svg)
+    onInjected={svg => {
+      console.log('onInjected', svg)
     }}
-    className="class-name"
-    wrapperClassName="wrapper-class-name"
+    svgClassName="svg-class-name"
+    className="wrapper-class-name"
+    onClick={() => {
+      console.log('wrapper onClick')
+    }}
   />,
   document.querySelector('.Root')
 )
@@ -34,24 +37,28 @@ There is a working version of the above in the `examples/basic` dir. First run `
 __Props__
 
 - `path` - Path to the SVG.
-- `callback` - *Optional* Function to call after the SVG is injected. Receives the newly injected SVG DOM element as a parameter. Defaults to `null`.
-- `className` - *Optional* Class name to be added to the SVG. Defaults to `''`.
-- `wrapperClassName` - *Optional* Class name to be added to the wrapping `div`. Defaults to `''`.
 - `evalScripts` - *Optional* Run any script blocks found in the SVG (`always`, `once`, or `never`). Defaults to `never`.
-- `style` - *Optional* Inline styles to be added to the SVG. Defaults to `{}`.
+- `onInjected` - *Optional* Function to call after the SVG is injected. Receives the injected SVG DOM element as a parameter. Defaults to `null`.
+- `svgClassName` - *Optional* Class name to be added to the injected SVG DOM element. Defaults to `null`.
+- `svgStyle` - *Optional* Inline styles to be added to the injected SVG DOM element. Defaults to `{}`.
+
+Other non-documented properties are applied to the wrapper element.
 
 __Example__
 
 ```js
 <ReactSVG
   path="atomic.svg"
-  callback={svg => {
-    console.log(svg)
+  evalScripts="always"
+  onInjected={svg => {
+    console.log('onInjected', svg)
   }}
-  className="example"
-  wrapperClassName="example-wrapper-classname"
-  evalScript="always"
-  style={{ width: 200 }}
+  svgClassName="svg-class-name"
+  svgStyle={{ width: 200 }}
+  className="wrapper-class-name"
+  onClick={() => {
+    console.log('wrapper onClick')
+  }}
 />
 ```
 
