@@ -66,6 +66,7 @@ describe('ReactSVG', () => {
     jest.runAllTimers()
 
     wrapper.setProps({
+      className: 'updated-wrapper-class-name',
       svgClassName: 'updated-svg-class-name',
       svgStyle: { height: 100 }
     })

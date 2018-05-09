@@ -73,7 +73,7 @@ export default class ReactSVG extends React.Component {
   }
 
   shouldComponentUpdate() {
-    return false
+    return true
   }
 
   render() {
