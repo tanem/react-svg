@@ -72,10 +72,6 @@ export default class ReactSVG extends React.Component {
     this.renderSVG(nextProps)
   }
 
-  shouldComponentUpdate() {
-    return true
-  }
-
   render() {
     const {
       evalScripts,
