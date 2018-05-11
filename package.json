@@ -73,6 +73,7 @@
     "react-dom": "^16.3.2",
     "react-test-renderer": "^16.3.2",
     "rimraf": "^2.5.4",
+    "shortid": "^2.2.8",
     "sinon": "^5.0.7",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "webpack": "^4.8.1",
