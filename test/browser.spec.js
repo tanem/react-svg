@@ -1,4 +1,5 @@
 import React from 'react'
+import shortid from 'shortid'
 import sinon from 'sinon'
 import { mount } from 'enzyme'
 import ReactSVG from '../src'
@@ -14,7 +15,7 @@ import { source, rendered, updated } from './fixtures'
 
 jest.useFakeTimers()
 
-describe('ReactSVG', () => {
+describe('while running in a browser environment', () => {
   let container
   let xhr
   let requests
@@ -35,10 +36,12 @@ describe('ReactSVG', () => {
   })
 
   it('should render correctly', () => {
+    const svgName = shortid.generate()
+
     wrapper = mount(
       <ReactSVG
         className="wrapper-class-name"
-        path="http://localhost/render-source.svg"
+        path={`http://localhost/${svgName}.svg`}
         svgClassName="svg-class-name"
         svgStyle={{ height: 200 }}
       />,
@@ -48,14 +51,16 @@ describe('ReactSVG', () => {
     requests[0].respond(200, {}, source)
     jest.runAllTimers()
 
-    expect(wrapper.html()).toBe(rendered)
+    expect(wrapper.html()).toBe(rendered(svgName))
   })
 
   it('should update correctly', () => {
+    const svgName = shortid.generate()
+
     wrapper = mount(
       <ReactSVG
         className="wrapper-class-name"
-        path="http://localhost/update-source.svg"
+        path={`http://localhost/${svgName}.svg`}
         svgClassName="svg-class-name"
         svgStyle={{ height: 200 }}
       />,
@@ -71,14 +76,14 @@ describe('ReactSVG', () => {
       svgStyle: { height: 100 }
     })
 
-    expect(wrapper.html()).toBe(updated)
+    expect(wrapper.html()).toBe(updated(svgName))
   })
 
   it('should unmount correctly', () => {
     wrapper = mount(
       <ReactSVG
         svgClassName="svg-class-name"
-        path="http://localhost/unmount-source.svg"
+        path={`http://localhost/${shortid.generate()}.svg`}
         svgStyle={{ height: 200 }}
       />,
       { attachTo: container }
@@ -87,12 +92,12 @@ describe('ReactSVG', () => {
     requests[0].respond(200, {}, source)
     jest.runAllTimers()
 
-    wrapper.detach()
+    wrapper.unmount()
 
     expect(container.innerHTML).toBe('')
   })
 
-  it('should ensure a parent node is always available when SVGInjector tries to access the DOM', () => {
+  it('should ensure a parent node is always available', () => {
     // One way to test this scenario is to unmount the component, which removes
     // the wrapper node, then let SVGInjector do it's usual DOM manipulation by
     // running the timers.
@@ -100,16 +105,54 @@ describe('ReactSVG', () => {
       wrapper = mount(
         <ReactSVG
           svgClassName="svg-class-name"
-          path="http://localhost/parent-node-source.svg"
+          path={`http://localhost/${shortid.generate()}.svg`}
           svgStyle={{ height: 200 }}
         />,
         { attachTo: container }
       )
 
-      wrapper.detach()
+      wrapper.unmount()
 
       requests[0].respond(200, {}, source)
       jest.runAllTimers()
+    }).not.toThrow()
+  })
+
+  it('should not throw if the container is not present when mounting', () => {
+    expect(() => {
+      wrapper = mount(
+        <ReactSVG
+          svgClassName="svg-class-name"
+          path={`http://localhost/${shortid.generate()}.svg`}
+          svgStyle={{ height: 200 }}
+        />,
+        { attachTo: container }
+      )
+
+      requests[0].respond(200, {}, source)
+      jest.runAllTimers()
+      wrapper.instance().container = null
+
+      wrapper.mount()
+    }).not.toThrow()
+  })
+
+  it('should not throw if the container is not present when unmounting', () => {
+    expect(() => {
+      wrapper = mount(
+        <ReactSVG
+          svgClassName="svg-class-name"
+          path={`http://localhost/${shortid.generate()}.svg`}
+          svgStyle={{ height: 200 }}
+        />,
+        { attachTo: container }
+      )
+
+      requests[0].respond(200, {}, source)
+      jest.runAllTimers()
+      wrapper.instance().container = null
+
+      wrapper.unmount()
     }).not.toThrow()
   })
 })

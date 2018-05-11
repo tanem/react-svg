@@ -23,16 +23,10 @@ export default class ReactSVG extends React.Component {
   }
 
   refCallback = container => {
-    if (!container) {
-      this.removeSVG()
-      return
-    }
-
     this.container = container
-    this.renderSVG()
   }
 
-  renderSVG(props = this.props) {
+  renderSVG() {
     if (this.container instanceof Node) {
       const {
         evalScripts,
@@ -40,7 +34,7 @@ export default class ReactSVG extends React.Component {
         path,
         svgClassName,
         svgStyle
-      } = props
+      } = this.props
 
       const div = document.createElement('div')
       div.innerHTML = ReactDOMServer.renderToStaticMarkup(
@@ -67,9 +61,17 @@ export default class ReactSVG extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidMount() {
+    this.renderSVG()
+  }
+
+  componentDidUpdate() {
     this.removeSVG()
-    this.renderSVG(nextProps)
+    this.renderSVG()
+  }
+
+  componentWillUnmount() {
+    this.removeSVG()
   }
 
   render() {
