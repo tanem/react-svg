@@ -1,8 +1,8 @@
 import WebpackDevServer from 'webpack-dev-server'
 import webpack from 'webpack'
-import makeWebpackConfig from './makeWebpackConfig'
+import makeConfig from './makeConfig'
 
-new WebpackDevServer(webpack(makeWebpackConfig('examples')), {
+new WebpackDevServer(webpack(makeConfig('examples')), {
   contentBase: 'examples/',
   filename: 'bundle.js',
   stats: {
