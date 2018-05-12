@@ -52,12 +52,12 @@ export default function makeWebpackConfig(buildType) {
         filename: 'ReactSVG.js',
         library: 'ReactSVG',
         libraryTarget: 'umd',
-        path: path.join(__dirname, '../dist')
+        path: path.join(__dirname, '../../dist')
       },
       plugins: [
         new webpack.DefinePlugin({
           'process.env': {
-            NODE_ENV: JSON.stringify('production')
+            NODE_ENV: JSON.stringify('development')
           }
         })
       ]
@@ -72,7 +72,7 @@ export default function makeWebpackConfig(buildType) {
         filename: 'ReactSVG.min.js',
         library: 'ReactSVG',
         libraryTarget: 'umd',
-        path: path.join(__dirname, '../dist')
+        path: path.join(__dirname, '../../dist')
       },
       plugins: [
         new webpack.DefinePlugin({

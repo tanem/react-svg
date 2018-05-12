@@ -6,19 +6,20 @@
   "scripts": {
     "build": "npm run clean && npm run build:lib && npm run build:umd && npm run build:umd:min",
     "build:lib": "babel src -d lib",
-    "build:umd": "babel-node ./scripts/build.js umd",
-    "build:umd:min": "babel-node ./scripts/build.js umd:min",
-    "clean": "rimraf dist lib",
+    "build:umd": "babel-node ./scripts/webpack/build.js umd",
+    "build:umd:min": "babel-node ./scripts/webpack/build.js umd:min",
+    "clean": "rimraf coverage dist lib",
     "format": "prettier --write \"{examples,src,test}/**/*.js\"",
     "format:check": "prettier --list-different \"{examples,src,test}/**/*.js\"",
     "lint": "eslint .",
-    "postversion": "git push && git push --tags && npm publish",
-    "preversion": "npm test",
     "release": "npm version -m 'Release v%s'",
-    "start": "babel-node ./scripts/start.js",
-    "pretest": "npm run clean && npm run format:check && npm run lint",
-    "test": "jest",
-    "version": "npm run build"
+    "start": "babel-node ./scripts/webpack/start.js",
+    "test": "npm run format:check && npm run lint && npm run build && npm run test:lib && npm run test:src && npm run test:umd && npm run test:umd:min",
+    "test:lib": "jest --config ./scripts/jest/config.lib.js",
+    "test:src": "jest --config ./scripts/jest/config.src.js",
+    "test:umd": "jest --config ./scripts/jest/config.umd.js",
+    "test:umd:min": "jest --config ./scripts/jest/config.umd-min.js",
+    "version": "npm test && git push && git push --tags && npm publish"
   },
   "repository": {
     "type": "git",
@@ -78,20 +79,5 @@
     "uglifyjs-webpack-plugin": "^1.2.5",
     "webpack": "^4.8.1",
     "webpack-dev-server": "^3.1.4"
-  },
-  "jest": {
-    "collectCoverage": true,
-    "coveragePathIgnorePatterns": [
-      "<rootDir>/test/fixtures/",
-      "<rootDir>/node_modules/",
-      "<rootDir>/test/setup.js"
-    ],
-    "setupFiles": [
-      "raf/polyfill",
-      "<rootDir>/test/setup.js"
-    ],
-    "roots": [
-      "test"
-    ]
   }
 }

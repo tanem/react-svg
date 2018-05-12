@@ -1,9 +1,9 @@
 import webpack from 'webpack'
-import makeWebpackConfig from './makeWebpackConfig'
+import makeConfig from './makeConfig'
 
 const [, , buildType] = process.argv
 
-webpack(makeWebpackConfig(buildType), (error, stats) => {
+webpack(makeConfig(buildType), (error, stats) => {
   if (error) {
     throw new Error(error)
   }

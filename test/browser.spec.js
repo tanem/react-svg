@@ -3,7 +3,9 @@ import shortid from 'shortid'
 import sinon from 'sinon'
 import { mount } from 'enzyme'
 import ReactSVG from '../src'
-import { source, rendered, updated } from './fixtures'
+import rendered from './fixtures/rendered'
+import source from './fixtures/source'
+import updated from './fixtures/updated'
 
 // Notes:
 //
