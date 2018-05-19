@@ -35,7 +35,8 @@ export default function makeWebpackConfig(buildType) {
       entry: {
         basic: './examples/basic',
         'issue-49/fill': './examples/issue-49/fill',
-        'issue-49/swap': './examples/issue-49/swap'
+        'issue-49/swap': './examples/issue-49/swap',
+        'issue-68': './examples/issue-68'
       },
       externals: {},
       output: {
