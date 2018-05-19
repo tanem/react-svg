@@ -1,7 +1,7 @@
 {
   "name": "react-svg",
   "version": "3.0.6",
-  "description": "A React component that uses SVGInjector to add SVG to the DOM.",
+  "description": "A React component that uses SVGInjector2 to add SVG to the DOM.",
   "main": "lib/index.js",
   "scripts": {
     "build": "npm run clean && npm run build:lib && npm run build:umd && npm run build:umd:min",
@@ -29,7 +29,8 @@
     "javascript",
     "react",
     "svg",
-    "svginjector"
+    "svginjector",
+    "svginjector2"
   ],
   "authors": [
     "PrototypeAlex (https://github.com/PrototypeAlex)",
@@ -45,7 +46,7 @@
     "react-dom": "^15.5.4 || ^16.0.0"
   },
   "dependencies": {
-    "svg-injector": "^1.1.3"
+    "svg-injector-2": "^2.1.3"
   },
   "devDependencies": {
     "babel-cli": "^6.16.0",

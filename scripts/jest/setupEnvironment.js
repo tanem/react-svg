@@ -3,6 +3,16 @@ import { configure } from 'enzyme'
 
 configure({ adapter: new Adapter() })
 
-if (!global.SVGSVGElement && global.HTMLUnknownElement) {
-  global.SVGSVGElement = global.HTMLUnknownElement
+if (global.HTMLUnknownElement) {
+  if (!global.SVGDefsElement) {
+    global.SVGDefsElement = global.HTMLUnknownElement
+  }
+
+  if (!global.SVGTitleElement) {
+    global.SVGTitleElement = global.HTMLUnknownElement
+  }
+
+  if (!global.SVGDescElement) {
+    global.SVGDescElement = global.HTMLUnknownElement
+  }
 }
