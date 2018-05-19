@@ -4,7 +4,7 @@ import ReactDOMServer from 'react-dom/server'
 
 // See: https://github.com/webpack/react-starter/issues/37
 const isBrowser = typeof window !== 'undefined'
-const SVGInjector = isBrowser ? require('svg-injector-2') : undefined
+const SVGInjector2 = isBrowser ? require('svg-injector-2') : undefined
 
 export default class ReactSVG extends React.Component {
   static defaultProps = {
@@ -53,7 +53,7 @@ export default class ReactSVG extends React.Component {
   }
 
   componentDidMount() {
-    this.injector = new SVGInjector({ evalScripts: this.props.evalScripts })
+    this.injector = new SVGInjector2({ evalScripts: this.props.evalScripts })
     this.renderSVG()
   }
 

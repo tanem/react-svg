@@ -9,10 +9,10 @@ import updated from './fixtures/updated'
 
 // Notes:
 //
-// - SVGInjector uses setTimeout to process it's XHR queue, so we control
+// - SVGInjector2 uses setTimeout to process it's XHR queue, so we control
 //   request processing manually via Jest and Sinon.
 // - Even though we're always responding with `sourceSVG`, we use different
-//   `path` values when mounting within each test so that SVGInjector doesn't
+//   `path` values when mounting within each test so that SVGInjector2 doesn't
 //   use it's internal cache. This keeps the tests isolated from one another.
 
 jest.useFakeTimers()
@@ -101,7 +101,7 @@ describe('while running in a browser environment', () => {
 
   it('should ensure a parent node is always available', () => {
     // One way to test this scenario is to unmount the component, which removes
-    // the wrapper node, then let SVGInjector do it's usual DOM manipulation by
+    // the wrapper node, then let SVGInjector2 do it's usual DOM manipulation by
     // running the timers.
     expect(() => {
       wrapper = mount(
