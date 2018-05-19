@@ -19,7 +19,8 @@
     "test:src": "jest --config ./scripts/jest/config.src.js",
     "test:umd": "jest --config ./scripts/jest/config.umd.js",
     "test:umd:min": "jest --config ./scripts/jest/config.umd-min.js",
-    "version": "npm test && git push && git push --tags && npm publish"
+    "version": "npm test",
+    "postversion": "git push && git push --tags && npm publish"
   },
   "repository": {
     "type": "git",
