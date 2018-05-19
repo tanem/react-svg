@@ -64,7 +64,7 @@ __Example__
 />
 ```
 
-Refer to the SVGInjector2 [configuration docs](https://github.com/flobacher/SVGInjector2#full-example-incl-configuration) for more information.
+Refer to the [SVGInjector2 configuration docs](https://github.com/flobacher/SVGInjector2#full-example-incl-configuration) for more information.
 
 ## Install
 
