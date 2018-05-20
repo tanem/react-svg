@@ -4,7 +4,7 @@ import ReactDOMServer from 'react-dom/server'
 
 // See: https://github.com/webpack/react-starter/issues/37
 const isBrowser = typeof window !== 'undefined'
-const SVGInjector2 = isBrowser ? require('svg-injector-2') : undefined
+const SVGInjector = isBrowser ? require('@tanem/svg-injector') : undefined
 
 export default class ReactSVG extends React.Component {
   static defaultProps = {
@@ -28,7 +28,13 @@ export default class ReactSVG extends React.Component {
 
   renderSVG() {
     if (this.container instanceof Node) {
-      const { onInjected, path, svgClassName, svgStyle } = this.props
+      const {
+        evalScripts,
+        onInjected: each,
+        path,
+        svgClassName,
+        svgStyle
+      } = this.props
 
       const div = document.createElement('div')
       div.innerHTML = ReactDOMServer.renderToStaticMarkup(
@@ -39,7 +45,10 @@ export default class ReactSVG extends React.Component {
 
       const wrapper = this.container.appendChild(div.firstChild)
 
-      this.injector.inject(wrapper.firstChild, null, onInjected)
+      SVGInjector(wrapper.firstChild, {
+        each,
+        evalScripts
+      })
     }
   }
 
@@ -53,7 +62,6 @@ export default class ReactSVG extends React.Component {
   }
 
   componentDidMount() {
-    this.injector = new SVGInjector2({ evalScripts: this.props.evalScripts })
     this.renderSVG()
   }
 
@@ -63,7 +71,6 @@ export default class ReactSVG extends React.Component {
   }
 
   componentWillUnmount() {
-    this.injector = null
     this.removeSVG()
   }
 
