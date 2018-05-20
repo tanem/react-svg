@@ -5,7 +5,7 @@
 [![npm version](https://img.shields.io/npm/v/react-svg.svg?style=flat-square)](https://www.npmjs.com/package/react-svg)
 [![npm downloads](https://img.shields.io/npm/dm/react-svg.svg?style=flat-square)](https://www.npmjs.com/package/react-svg)
 
-> A React component that uses [SVGInjector2](https://github.com/flobacher/SVGInjector2) to add SVG to the DOM.
+> A React component that uses [SVGInjector](https://github.com/tanem/SVGInjector) to add SVG to the DOM.
 
 ## Usage
 
@@ -64,7 +64,7 @@ __Example__
 />
 ```
 
-Refer to the [SVGInjector2 configuration docs](https://github.com/flobacher/SVGInjector2#full-example-incl-configuration) for more information.
+Refer to the SVGInjector [configuration docs](https://github.com/tanem/SVGInjector#configuration) for more information.
 
 ## Install
 
