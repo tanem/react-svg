@@ -1,7 +1,7 @@
 # react-svg
 
 [![build status](https://img.shields.io/travis/tanem/react-svg/master.svg?style=flat-square)](https://travis-ci.org/tanem/react-svg)
-[![coverage status](https://img.shields.io/codecov/c/tanem/codecov/react-svg.svg?style=flat-square)](https://codecov.io/gh/tanem/react-svg)
+[![coverage status](https://img.shields.io/codecov/c/github/tanem/react-svg.svg?style=flat-square)](https://codecov.io/gh/tanem/react-svg)
 [![npm version](https://img.shields.io/npm/v/react-svg.svg?style=flat-square)](https://www.npmjs.com/package/react-svg)
 [![npm downloads](https://img.shields.io/npm/dm/react-svg.svg?style=flat-square)](https://www.npmjs.com/package/react-svg)
 
