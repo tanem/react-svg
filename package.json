@@ -14,7 +14,6 @@
     "release": "npm version -m 'Release v%s'",
     "start": "cross-env BABEL_OUTPUT=commonjs babel-node ./scripts/webpack/start.js",
     "test": "npm run format:check && npm run lint && npm run clean && npm run build && npm run test:main && npm run test:module && npm run test:src && npm run test:umd && npm run test:umd:min",
-    "posttest": "codecov",
     "test:main": "cross-env BABEL_OUTPUT=commonjs jest --config ./scripts/jest/config.main.js",
     "test:module": "cross-env BABEL_OUTPUT=commonjs jest --config ./scripts/jest/config.module.js",
     "test:src": "cross-env BABEL_OUTPUT=commonjs jest --config ./scripts/jest/config.src.js",
