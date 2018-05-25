@@ -1,6 +1,6 @@
 language: node_js
 notifications:
   email: false
-script:
-  - npm test
-  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js || true # ignore coveralls error
+env:
+  matrix:
+    secure: AoaDe132qQwmbPra7XBP7NmawmHsEEukN7BXzMk6JmAAX2hGA+MMuWV18kBIjhNQNksYowlQFBZObTo2jPLH4G6ES6FfwcjrQfTTjlA94+yPr8bMtZYHjwMXCf2M90ZFZ4lsWCplCK3KeStJrLGi0yJqRcsLHwXLxM/A4zEIfIE=

@@ -1,7 +1,7 @@
 # react-svg
 
 [![build status](https://img.shields.io/travis/tanem/react-svg/master.svg?style=flat-square)](https://travis-ci.org/tanem/react-svg)
-[![coverage status](https://img.shields.io/coveralls/tanem/react-svg.svg?style=flat-square)](https://coveralls.io/r/tanem/react-svg)
+[![coverage status](https://img.shields.io/codecov/c/tanem/codecov/react-svg.svg?style=flat-square)](https://codecov.io/gh/tanem/react-svg)
 [![npm version](https://img.shields.io/npm/v/react-svg.svg?style=flat-square)](https://www.npmjs.com/package/react-svg)
 [![npm downloads](https://img.shields.io/npm/dm/react-svg.svg?style=flat-square)](https://www.npmjs.com/package/react-svg)
 
@@ -36,17 +36,17 @@ There is a working version of the above in the `examples/basic` dir. First run `
 
 :eyes: See [MIGRATING.md](MIGRATING.md) for moving between major versions of this component.
 
-__Props__
+**Props**
 
-- `path` - Path to the SVG.
-- `evalScripts` - *Optional* Run any script blocks found in the SVG (`always`, `once`, or `never`). Defaults to `never`.
-- `onInjected` - *Optional* Function to call after the SVG is injected. Receives the injected SVG DOM element as a parameter. Defaults to `null`.
-- `svgClassName` - *Optional* Class name to be added to the injected SVG DOM element. Defaults to `null`.
-- `svgStyle` - *Optional* Inline styles to be added to the injected SVG DOM element. Defaults to `{}`.
+* `path` - Path to the SVG.
+* `evalScripts` - _Optional_ Run any script blocks found in the SVG (`always`, `once`, or `never`). Defaults to `never`.
+* `onInjected` - _Optional_ Function to call after the SVG is injected. Receives the injected SVG DOM element as a parameter. Defaults to `null`.
+* `svgClassName` - _Optional_ Class name to be added to the injected SVG DOM element. Defaults to `null`.
+* `svgStyle` - _Optional_ Inline styles to be added to the injected SVG DOM element. Defaults to `{}`.
 
 Other non-documented properties are applied to the wrapper element.
 
-__Example__
+**Example**
 
 ```js
 <ReactSVG
@@ -74,8 +74,8 @@ $ npm install react-svg --save
 
 There are also UMD builds available via [unpkg](https://unpkg.com/):
 
-- https://unpkg.com/react-svg/dist/ReactSVG.js
-- https://unpkg.com/react-svg/dist/ReactSVG.min.js
+* https://unpkg.com/react-svg/dist/ReactSVG.js
+* https://unpkg.com/react-svg/dist/ReactSVG.min.js
 
 If you use these, make sure you have already included React and ReactDOMServer as dependencies.
 
