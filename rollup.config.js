@@ -4,7 +4,7 @@ import ignore from 'rollup-plugin-ignore'
 import nodeResolve from 'rollup-plugin-node-resolve'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import replace from 'rollup-plugin-replace'
-import uglify from 'rollup-plugin-uglify'
+import { uglify } from 'rollup-plugin-uglify'
 
 const libConfig = {
   input: 'src/index.js',

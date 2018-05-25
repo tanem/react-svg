@@ -1,7 +1,7 @@
+import { mount } from 'enzyme'
 import React from 'react'
 import shortid from 'shortid'
 import sinon from 'sinon'
-import { mount } from 'enzyme'
 import ReactSVG from '../src'
 import rendered from './fixtures/rendered'
 import source from './fixtures/source'
