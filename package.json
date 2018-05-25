@@ -6,7 +6,6 @@
   "module": "esm/index.js",
   "jsnext:main": "esm/index.js",
   "scripts": {
-    "build": "npm run build:commonjs && npm run build:esm && npm run build:umd",
     "build:commonjs": "cross-env BABEL_OUTPUT=commonjs babel src -d lib",
     "build:esm": "babel src -d esm",
     "build:umd": "rollup -c",
@@ -17,7 +16,7 @@
     "postversion": "git push && git push --tags && npm publish",
     "release": "npm version -m 'Release v%s'",
     "start": "cross-env BABEL_OUTPUT=commonjs babel-node ./scripts/webpack/start.js",
-    "test": "npm run format:check && npm run lint && npm run clean && npm run build && npm run test:main && npm run test:module && npm run test:src && npm run test:umd && npm run test:umd:min",
+    "test": "for TASK in format:check lint clean build:commonjs build:esm build:umd test:main test:module test:src test:umd test:umd:min; do npm run $TASK; done",
     "test:main": "cross-env BABEL_OUTPUT=commonjs jest --config ./scripts/jest/config.main.js",
     "test:module": "cross-env BABEL_OUTPUT=commonjs jest --config ./scripts/jest/config.module.js",
     "test:src": "cross-env BABEL_OUTPUT=commonjs jest --config ./scripts/jest/config.src.js",
@@ -50,7 +49,7 @@
     "react-dom": "^15.5.4 || ^16.0.0"
   },
   "dependencies": {
-    "@tanem/svg-injector": "^1.1.6"
+    "@tanem/svg-injector": "^1.1.8"
   },
   "devDependencies": {
     "@babel/cli": "7.0.0-beta.44",
