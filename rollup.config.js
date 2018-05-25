@@ -6,26 +6,6 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import replace from 'rollup-plugin-replace'
 import { uglify } from 'rollup-plugin-uglify'
 
-const libConfig = {
-  input: 'src/index.js',
-  output: [
-    {
-      file: 'lib/index.js',
-      format: 'cjs'
-    },
-    {
-      file: 'lib/index.es.js',
-      format: 'es'
-    }
-  ],
-  plugins: [
-    peerDepsExternal(),
-    commonjs({ exclude: 'src/**' }),
-    nodeResolve(),
-    babel()
-  ]
-}
-
 const devConfig = {
   input: 'src/index.js',
   output: {
@@ -74,4 +54,4 @@ const prodConfig = {
   ]
 }
 
-export default [libConfig, devConfig, prodConfig]
+export default [devConfig, prodConfig]
