@@ -77,7 +77,18 @@ There are also UMD builds available via [unpkg](https://unpkg.com/):
 * https://unpkg.com/react-svg/dist/ReactSVG.js
 * https://unpkg.com/react-svg/dist/ReactSVG.min.js
 
-If you use these, make sure you have already included React and ReactDOMServer as dependencies.
+For the non-minified development version, make sure you have already included:
+
+* [`React`](https://unpkg.com/react/umd/react.development.js)
+* [`ReactDOM`](https://unpkg.com/react-dom/umd/react-dom.development.js)
+* [`ReactDOMServer`](https://unpkg.com/react-dom/umd/react-dom-server.browser.development.js)
+* [`PropTypes`](https://unpkg.com/prop-types/prop-types.js)
+
+For the minified production version, make sure you have already included:
+
+* [`React`](https://unpkg.com/react/umd/react.production.min.js)
+* [`ReactDOM`](https://unpkg.com/react-dom/umd/react-dom.production.min.js)
+* [`ReactDOMServer`](https://unpkg.com/react-dom/umd/react-dom-server.browser.production.min.js)
 
 ## License
 
