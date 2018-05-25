@@ -4,7 +4,8 @@ const options = {
     '@babel/react'
   ],
   plugins: [
-    ['@babel/proposal-class-properties', { loose: true }]
+    ['@babel/proposal-class-properties', { loose: true }],
+    'add-module-exports'
   ]
 }
 
