@@ -1,4 +1,4 @@
 coverage/*
-dist/*
 esm/*
 lib/*
+umd/*

@@ -9,7 +9,7 @@
     "build:commonjs": "cross-env BABEL_OUTPUT=commonjs babel src -d lib",
     "build:esm": "babel src -d esm",
     "build:umd": "rollup -c",
-    "clean": "rimraf coverage dist esm lib",
+    "clean": "rimraf coverage esm lib umd",
     "format": "prettier --write \"{examples,src,test}/**/*.js\"",
     "format:check": "prettier --list-different \"{examples,src,test}/**/*.js\"",
     "lint": "eslint .",
@@ -43,6 +43,11 @@
     "url": "https://github.com/tanem/react-svg/issues"
   },
   "homepage": "https://github.com/tanem/react-svg",
+  "files": [
+    "esm",
+    "lib",
+    "umd"
+  ],
   "peerDependencies": {
     "prop-types": "^15.6.1",
     "react": "^15.5.4 || ^16.0.0",
