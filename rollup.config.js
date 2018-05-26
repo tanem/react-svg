@@ -9,7 +9,7 @@ import { uglify } from 'rollup-plugin-uglify'
 const devConfig = {
   input: 'src/index.js',
   output: {
-    file: 'dist/ReactSVG.js',
+    file: 'umd/ReactSVG.js',
     format: 'umd',
     name: 'ReactSVG',
     globals: {
@@ -32,7 +32,7 @@ const devConfig = {
 const prodConfig = {
   input: 'src/index.js',
   output: {
-    file: 'dist/ReactSVG.min.js',
+    file: 'umd/ReactSVG.min.js',
     format: 'umd',
     name: 'ReactSVG',
     globals: {

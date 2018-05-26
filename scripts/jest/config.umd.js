@@ -3,6 +3,6 @@ const srcConfig = require('./config.src')
 module.exports = Object.assign({}, srcConfig, {
   collectCoverage: false,
   moduleNameMapper: {
-    '^../src$': `<rootDir>/dist/ReactSVG.js`
+    '^../src$': `<rootDir>/umd/ReactSVG.js`
   }
 })
