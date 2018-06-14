@@ -4,6 +4,7 @@
 [![coverage status](https://img.shields.io/codecov/c/github/tanem/react-svg.svg?style=flat-square)](https://codecov.io/gh/tanem/react-svg)
 [![npm version](https://img.shields.io/npm/v/react-svg.svg?style=flat-square)](https://www.npmjs.com/package/react-svg)
 [![npm downloads](https://img.shields.io/npm/dm/react-svg.svg?style=flat-square)](https://www.npmjs.com/package/react-svg)
+[![gzip size](https://img.badgesize.io/https://unpkg.com/react-svg/umd/ReactSVG.min.js?compression=gzip&label=gzip%20size&style=flat-square)](https://unpkg.com/react-svg/umd/)
 
 > A React component that uses [SVGInjector](https://github.com/tanem/SVGInjector) to add SVG to the DOM.
 
@@ -89,6 +90,14 @@ For the minified production version, make sure you have already included:
 * [`React`](https://unpkg.com/react/umd/react.production.min.js)
 * [`ReactDOM`](https://unpkg.com/react-dom/umd/react-dom.production.min.js)
 * [`ReactDOMServer`](https://unpkg.com/react-dom/umd/react-dom-server.browser.production.min.js)
+
+## Examples
+
+Examples exist on [codesandbox.io](https://codesandbox.io/search?refinementList%5Btags%5D%5B0%5D=react-svg):
+
+- [Basic](https://codesandbox.io/s/81lmrj4x28)
+- [UMD (Development)](https://codesandbox.io/s/kkm3jzpq57)
+- [UMD (Production)](https://codesandbox.io/s/7zy9rx82yq)
 
 ## License
 
