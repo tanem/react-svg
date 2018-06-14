@@ -91,6 +91,14 @@ For the minified production version, make sure you have already included:
 * [`ReactDOM`](https://unpkg.com/react-dom/umd/react-dom.production.min.js)
 * [`ReactDOMServer`](https://unpkg.com/react-dom/umd/react-dom-server.browser.production.min.js)
 
+## Examples
+
+Examples exist on [codesandbox.io](https://codesandbox.io/search?refinementList%5Btags%5D%5B0%5D=react-svg):
+
+- [Basic](https://codesandbox.io/s/81lmrj4x28)
+- [UMD (Development)](https://codesandbox.io/s/kkm3jzpq57)
+- [UMD (Production)](https://codesandbox.io/s/7zy9rx82yq)
+
 ## License
 
 MIT
