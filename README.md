@@ -10,7 +10,7 @@
 
 ## Basic Usage
 
-```js
+```jsx
 import React from 'react'
 import { render } from 'react-dom'
 import ReactSVG from 'react-svg'
@@ -41,7 +41,7 @@ Other non-documented properties are applied to the wrapper element.
 
 **Example**
 
-```js
+```jsx
 <ReactSVG
   path="svg.svg"
   evalScripts="always"
