@@ -10,8 +10,8 @@
     "build:esm": "babel src -d esm",
     "build:umd": "rollup -c",
     "clean": "rimraf coverage esm lib umd",
-    "format": "prettier --write \"{examples,src,test}/**/*.js\"",
-    "format:check": "prettier --list-different \"{examples,src,test}/**/*.js\"",
+    "format": "prettier --write \"{src,test}/**/*.js\"",
+    "format:check": "prettier --list-different \"{src,test}/**/*.js\"",
     "lint": "eslint .",
     "postversion": "git push && git push --tags && npm publish",
     "release": "npm version -m 'Release v%s'",
@@ -97,9 +97,6 @@
     "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-uglify": "^4.0.0",
     "shortid": "^2.2.8",
-    "sinon": "^5.0.10",
-    "uglifyjs-webpack-plugin": "^1.2.5",
-    "webpack": "^4.8.3",
-    "webpack-dev-server": "^3.1.4"
+    "sinon": "^5.0.10"
   }
 }
