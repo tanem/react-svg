@@ -54,7 +54,7 @@ Other non-documented properties are applied to the wrapper element.
   onClick={() => {
     console.log('wrapper onClick')
   }}
-  />
+/>
 ```
 
 ## Install
