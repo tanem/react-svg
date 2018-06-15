@@ -57,7 +57,7 @@ Other non-documented properties are applied to the wrapper element.
 />
 ```
 
-## Install
+## Installation
 
 ```
 $ npm install react-svg --save
