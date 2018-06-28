@@ -7,6 +7,7 @@ export default class ReactSVG extends React.Component {
   static defaultProps = {
     evalScripts: 'never',
     onInjected: () => {},
+    renumerateIRIElements: true,
     svgClassName: null,
     svgStyle: {}
   }
@@ -15,6 +16,7 @@ export default class ReactSVG extends React.Component {
     evalScripts: PropTypes.oneOf(['always', 'once', 'never']),
     onInjected: PropTypes.func,
     path: PropTypes.string.isRequired,
+    renumerateIRIElements: PropTypes.bool,
     svgClassName: PropTypes.string,
     svgStyle: PropTypes.object
   }
@@ -29,6 +31,7 @@ export default class ReactSVG extends React.Component {
         evalScripts,
         onInjected: each,
         path,
+        renumerateIRIElements,
         svgClassName,
         svgStyle
       } = this.props
@@ -44,7 +47,8 @@ export default class ReactSVG extends React.Component {
 
       SVGInjector(wrapper.firstChild, {
         each,
-        evalScripts
+        evalScripts,
+        renumerateIRIElements
       })
     }
   }
@@ -76,6 +80,7 @@ export default class ReactSVG extends React.Component {
       evalScripts,
       onInjected,
       path,
+      renumerateIRIElements,
       svgClassName,
       svgStyle,
       ...rest

@@ -20,10 +20,10 @@ render(<ReactSVG path="svg.svg" />, document.getElementById('root'))
 
 ## Live Examples
 
-- [Basic Usage](https://codesandbox.io/s/81lmrj4x28)
-- [API Example](https://codesandbox.io/s/1v112980xq)
-- [UMD Build (Development)](https://codesandbox.io/s/kkm3jzpq57)
-- [UMD Build (Production)](https://codesandbox.io/s/7zy9rx82yq)
+* [Basic Usage](https://codesandbox.io/s/81lmrj4x28)
+* [API Example](https://codesandbox.io/s/1v112980xq)
+* [UMD Build (Development)](https://codesandbox.io/s/kkm3jzpq57)
+* [UMD Build (Production)](https://codesandbox.io/s/7zy9rx82yq)
 
 ## API
 
@@ -34,6 +34,7 @@ render(<ReactSVG path="svg.svg" />, document.getElementById('root'))
 * `path` - Path to the SVG.
 * `evalScripts` - _Optional_ Run any script blocks found in the SVG. One of `'always'`, `'once'`, or `'never'`. Defaults to `'never'`.
 * `onInjected` - _Optional_ Function to call after the SVG is injected. Receives the injected SVG DOM element as a parameter. Defaults to `() => {}`.
+* `renumerateIRIElements` - _Optional_ Boolean indicating whether the SVG IRI addressable elements should be renumerated. Defaults to `true`.
 * `svgClassName` - _Optional_ Class name to be added to the injected SVG DOM element. Defaults to `null`.
 * `svgStyle` - _Optional_ Inline styles to be added to the injected SVG DOM element. Defaults to `{}`.
 
@@ -48,6 +49,7 @@ Other non-documented properties are applied to the wrapper element.
   onInjected={svg => {
     console.log('onInjected', svg)
   }}
+  renumerateIRIElements={false}
   svgClassName="svg-class-name"
   svgStyle={{ width: 200 }}
   className="wrapper-class-name"
