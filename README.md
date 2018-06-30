@@ -27,8 +27,6 @@ render(<ReactSVG path="svg.svg" />, document.getElementById('root'))
 
 ## API
 
-:eyes: See [MIGRATING.md](MIGRATING.md) for moving between major versions of this component.
-
 **Props**
 
 * `path` - Path to the SVG.
