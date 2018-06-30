@@ -6,6 +6,9 @@ import ReactSVG from '../src'
 import rendered from './fixtures/rendered'
 import source from './fixtures/source'
 import updated from './fixtures/updated'
+import iriSource from './fixtures/iri-source'
+import iriRenumerated from './fixtures/iri-renumerated'
+import iriNotRenumerated from './fixtures/iri-not-renumerated'
 
 // Notes:
 //
@@ -156,5 +159,37 @@ describe('while running in a browser environment', () => {
 
       wrapper.unmount()
     }).not.toThrow()
+  })
+
+  it('should renumerate IRI elements by default', () => {
+    const svgName = shortid.generate()
+
+    wrapper = mount(<ReactSVG path={`http://localhost/${svgName}.svg`} />, {
+      attachTo: container
+    })
+
+    requests[0].respond(200, {}, iriSource)
+    jest.runAllTimers()
+
+    expect(wrapper.html()).toBe(iriRenumerated(svgName))
+  })
+
+  it('should not renumerate IRI elements when renumerateIRIElements is false', () => {
+    const svgName = shortid.generate()
+
+    wrapper = mount(
+      <ReactSVG
+        path={`http://localhost/${svgName}.svg`}
+        renumerateIRIElements={false}
+      />,
+      {
+        attachTo: container
+      }
+    )
+
+    requests[0].respond(200, {}, iriSource)
+    jest.runAllTimers()
+
+    expect(wrapper.html()).toBe(iriNotRenumerated(svgName))
   })
 })
