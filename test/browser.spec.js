@@ -1,14 +1,10 @@
 import { mount } from 'enzyme'
+import faker from 'faker'
 import React from 'react'
-import shortid from 'shortid'
 import sinon from 'sinon'
 import ReactSVG from '../src'
-import rendered from './fixtures/rendered'
-import source from './fixtures/source'
-import updated from './fixtures/updated'
 import iriSource from './fixtures/iri-source'
-import iriRenumerated from './fixtures/iri-renumerated'
-import iriNotRenumerated from './fixtures/iri-not-renumerated'
+import source from './fixtures/source'
 
 // Notes:
 //
@@ -18,6 +14,7 @@ import iriNotRenumerated from './fixtures/iri-not-renumerated'
 //   `path` values when mounting within each test so that SVGInjector doesn't
 //   use it's internal cache. This keeps the tests isolated from one another.
 
+faker.seed(123)
 jest.useFakeTimers()
 
 describe('while running in a browser environment', () => {
@@ -41,7 +38,7 @@ describe('while running in a browser environment', () => {
   })
 
   it('should render correctly', () => {
-    const svgName = shortid.generate()
+    const svgName = faker.random.uuid()
 
     wrapper = mount(
       <ReactSVG
@@ -56,11 +53,11 @@ describe('while running in a browser environment', () => {
     requests[0].respond(200, {}, source)
     jest.runAllTimers()
 
-    expect(wrapper.html()).toBe(rendered(svgName))
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   it('should update correctly', () => {
-    const svgName = shortid.generate()
+    const svgName = faker.random.uuid()
 
     wrapper = mount(
       <ReactSVG
@@ -81,14 +78,14 @@ describe('while running in a browser environment', () => {
       svgStyle: { height: 100 }
     })
 
-    expect(wrapper.html()).toBe(updated(svgName))
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   it('should unmount correctly', () => {
     wrapper = mount(
       <ReactSVG
         svgClassName="svg-class-name"
-        path={`http://localhost/${shortid.generate()}.svg`}
+        path={`http://localhost/${faker.random.uuid()}.svg`}
         svgStyle={{ height: 200 }}
       />,
       { attachTo: container }
@@ -110,7 +107,7 @@ describe('while running in a browser environment', () => {
       wrapper = mount(
         <ReactSVG
           svgClassName="svg-class-name"
-          path={`http://localhost/${shortid.generate()}.svg`}
+          path={`http://localhost/${faker.random.uuid()}.svg`}
           svgStyle={{ height: 200 }}
         />,
         { attachTo: container }
@@ -128,7 +125,7 @@ describe('while running in a browser environment', () => {
       wrapper = mount(
         <ReactSVG
           svgClassName="svg-class-name"
-          path={`http://localhost/${shortid.generate()}.svg`}
+          path={`http://localhost/${faker.random.uuid()}.svg`}
           svgStyle={{ height: 200 }}
         />,
         { attachTo: container }
@@ -147,7 +144,7 @@ describe('while running in a browser environment', () => {
       wrapper = mount(
         <ReactSVG
           svgClassName="svg-class-name"
-          path={`http://localhost/${shortid.generate()}.svg`}
+          path={`http://localhost/${faker.random.uuid()}.svg`}
           svgStyle={{ height: 200 }}
         />,
         { attachTo: container }
@@ -162,7 +159,7 @@ describe('while running in a browser environment', () => {
   })
 
   it('should renumerate IRI elements by default', () => {
-    const svgName = shortid.generate()
+    const svgName = faker.random.uuid()
 
     wrapper = mount(<ReactSVG path={`http://localhost/${svgName}.svg`} />, {
       attachTo: container
@@ -171,11 +168,11 @@ describe('while running in a browser environment', () => {
     requests[0].respond(200, {}, iriSource)
     jest.runAllTimers()
 
-    expect(wrapper.html()).toBe(iriRenumerated(svgName))
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   it('should not renumerate IRI elements when renumerateIRIElements is false', () => {
-    const svgName = shortid.generate()
+    const svgName = faker.random.uuid()
 
     wrapper = mount(
       <ReactSVG
@@ -190,6 +187,6 @@ describe('while running in a browser environment', () => {
     requests[0].respond(200, {}, iriSource)
     jest.runAllTimers()
 
-    expect(wrapper.html()).toBe(iriNotRenumerated(svgName))
+    expect(wrapper.html()).toMatchSnapshot()
   })
 })

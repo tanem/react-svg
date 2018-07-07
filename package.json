@@ -79,6 +79,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.0",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.10.0",
+    "faker": "^4.1.0",
     "jest": "^23.3.0",
     "prettier": "^1.13.7",
     "prop-types": "^15.6.2",
@@ -96,7 +97,6 @@
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-uglify": "^4.0.0",
-    "shortid": "^2.2.8",
     "sinon": "^6.1.3"
   }
 }
