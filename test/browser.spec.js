@@ -38,12 +38,10 @@ describe('while running in a browser environment', () => {
   })
 
   it('should render correctly', () => {
-    const svgName = faker.random.uuid()
-
     wrapper = mount(
       <ReactSVG
         className="wrapper-class-name"
-        path={`http://localhost/${svgName}.svg`}
+        path={`http://localhost/${faker.random.uuid()}.svg`}
         svgClassName="svg-class-name"
         svgStyle={{ height: 200 }}
       />,
@@ -57,12 +55,10 @@ describe('while running in a browser environment', () => {
   })
 
   it('should update correctly', () => {
-    const svgName = faker.random.uuid()
-
     wrapper = mount(
       <ReactSVG
         className="wrapper-class-name"
-        path={`http://localhost/${svgName}.svg`}
+        path={`http://localhost/${faker.random.uuid()}.svg`}
         svgClassName="svg-class-name"
         svgStyle={{ height: 200 }}
       />,
@@ -159,11 +155,12 @@ describe('while running in a browser environment', () => {
   })
 
   it('should renumerate IRI elements by default', () => {
-    const svgName = faker.random.uuid()
-
-    wrapper = mount(<ReactSVG path={`http://localhost/${svgName}.svg`} />, {
-      attachTo: container
-    })
+    wrapper = mount(
+      <ReactSVG path={`http://localhost/${faker.random.uuid()}.svg`} />,
+      {
+        attachTo: container
+      }
+    )
 
     requests[0].respond(200, {}, iriSource)
     jest.runAllTimers()
@@ -172,11 +169,9 @@ describe('while running in a browser environment', () => {
   })
 
   it('should not renumerate IRI elements when renumerateIRIElements is false', () => {
-    const svgName = faker.random.uuid()
-
     wrapper = mount(
       <ReactSVG
-        path={`http://localhost/${svgName}.svg`}
+        path={`http://localhost/${faker.random.uuid()}.svg`}
         renumerateIRIElements={false}
       />,
       {
