@@ -1,7 +1,7 @@
 import { mount } from 'enzyme'
 import faker from 'faker'
+import { fakeXhr } from 'nise'
 import React from 'react'
-import sinon from 'sinon'
 import ReactSVG from '../src'
 import iriSource from './fixtures/iri-source'
 import source from './fixtures/source'
@@ -25,7 +25,7 @@ describe('while running in a browser environment', () => {
 
   beforeEach(() => {
     container = document.body.appendChild(document.createElement('div'))
-    xhr = sinon.useFakeXMLHttpRequest()
+    xhr = fakeXhr.useFakeXMLHttpRequest()
     requests = []
     xhr.onCreate = xhr => {
       requests.push(xhr)
