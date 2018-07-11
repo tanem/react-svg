@@ -34,9 +34,14 @@
     "svg",
     "svginjector"
   ],
-  "authors": [
+  "author": "Tane Morgan (https://github.com/tanem)",
+  "contributors": [
     "PrototypeAlex (https://github.com/PrototypeAlex)",
-    "Tane Morgan (https://github.com/tanem)"
+    "ChrisGarber-Medlever (https://github.com/ChrisGarber-Medlever)",
+    "Ron Perris (https://github.com/ronperris)",
+    "Jason Pettett (https://github.com/deadbeef404)",
+    "Michael Robinson (https://github.com/faceleg)",
+    "Thomas Groutars (https://github.com/tgroutars)"
   ],
   "license": "MIT",
   "bugs": {
