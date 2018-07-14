@@ -1,9 +1,13 @@
 module.exports = {
   collectCoverage: true,
-  collectCoverageFrom: [
-    'src/*.js'
-  ],
+  collectCoverageFrom: ['src/index.tsx'],
+  globals: {
+    'ts-jest': { tsConfigFile: require.resolve('../../tsconfig.test.json') }
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js'],
   rootDir: process.cwd(),
   roots: ['<rootDir>/test'],
-  setupFiles: ['raf/polyfill', require.resolve('./setupEnvironment')]
+  setupFiles: ['raf/polyfill', require.resolve('./setupEnvironment')],
+  testMatch: ['<rootDir>/test/browser.spec.tsx'],
+  transform: { '^.+\\.(js|tsx?)$': 'ts-jest' }
 }

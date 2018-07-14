@@ -1,7 +1,10 @@
-import { mount } from 'enzyme'
+import { mount, ReactWrapper } from 'enzyme'
 import faker from 'faker'
-import { fakeXhr } from 'nise'
-import React from 'react'
+import * as React from 'react'
+import sinon, {
+  SinonFakeXMLHttpRequest,
+  SinonFakeXMLHttpRequestStatic
+} from 'sinon'
 import ReactSVG from '../src'
 import iriSource from './fixtures/iri-source'
 import source from './fixtures/source'
@@ -18,22 +21,22 @@ faker.seed(123)
 jest.useFakeTimers()
 
 describe('while running in a browser environment', () => {
-  let container
-  let xhr
-  let requests
-  let wrapper
+  let container: HTMLDivElement
+  let fakeXHR: SinonFakeXMLHttpRequestStatic
+  let requests: SinonFakeXMLHttpRequest[]
+  let wrapper: ReactWrapper<{}, {}, ReactSVG>
 
   beforeEach(() => {
     container = document.body.appendChild(document.createElement('div'))
-    xhr = fakeXhr.useFakeXMLHttpRequest()
+    fakeXHR = sinon.useFakeXMLHttpRequest()
     requests = []
-    xhr.onCreate = xhr => {
+    fakeXHR.onCreate = xhr => {
       requests.push(xhr)
     }
   })
 
   afterEach(() => {
-    xhr.restore()
+    fakeXHR.restore()
     document.body.removeChild(container)
   })
 

@@ -1,12 +1,27 @@
 import SVGInjector from '@tanem/svg-injector'
-import PropTypes from 'prop-types'
-import React from 'react'
+import * as PropTypes from 'prop-types'
+import * as React from 'react'
 import ReactDOMServer from 'react-dom/server'
 
-export default class ReactSVG extends React.Component {
+interface Props {
+  evalScripts?: 'always' | 'once' | 'never'
+  onInjected?: (svg: SVGSVGElement) => void
+  path: string
+  renumerateIRIElements?: boolean
+  svgClassName?: string
+  svgStyle?: React.CSSProperties
+}
+
+export default class ReactSVG extends React.Component<
+  Props &
+    React.DetailedHTMLProps<
+      React.HTMLAttributes<HTMLDivElement>,
+      HTMLDivElement
+    >
+> {
   static defaultProps = {
     evalScripts: 'never',
-    onInjected: () => {},
+    onInjected: () => undefined,
     renumerateIRIElements: true,
     svgClassName: null,
     svgStyle: {}
@@ -21,7 +36,9 @@ export default class ReactSVG extends React.Component {
     svgStyle: PropTypes.object
   }
 
-  refCallback = container => {
+  container?: HTMLDivElement | null
+
+  refCallback: React.Ref<HTMLDivElement> = container => {
     this.container = container
   }
 
@@ -43,7 +60,9 @@ export default class ReactSVG extends React.Component {
         </div>
       )
 
-      const wrapper = this.container.appendChild(div.firstChild)
+      const wrapper = this.container.appendChild(
+        div.firstChild as HTMLDivElement
+      )
 
       SVGInjector(wrapper.firstChild, {
         each,
