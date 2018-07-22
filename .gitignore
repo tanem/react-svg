@@ -1,7 +1,10 @@
 *.log
+*.tgz
 .DS_Store
+.vscode
+cjs
 coverage
-esm
-lib
+es
+index.d.ts
 node_modules
 umd
