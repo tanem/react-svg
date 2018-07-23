@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+git shortlog -se \
+  | perl -spe 's/^\s+\d+\s+//' \
+  > AUTHORS
