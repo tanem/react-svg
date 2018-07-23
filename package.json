@@ -13,6 +13,7 @@
     "umd"
   ],
   "scripts": {
+    "authors": "scripts/authors",
     "build": "run-s clean compile bundle",
     "bundle": "rollup -c",
     "check:format": "prettier --list-different \"**/*.{js,ts,tsx}\"",
@@ -34,7 +35,7 @@
     "test:src": "jest --config ./scripts/jest/config.src.js",
     "test:umd": "jest --config ./scripts/jest/config.umd.js",
     "test:umdprod": "jest --config ./scripts/jest/config.umdprod.js",
-    "version": "npm t"
+    "version": "run-s test authors && git add ."
   },
   "repository": {
     "type": "git",
@@ -47,14 +48,6 @@
     "svginjector"
   ],
   "author": "Tane Morgan (https://github.com/tanem)",
-  "contributors": [
-    "PrototypeAlex (https://github.com/PrototypeAlex)",
-    "ChrisGarber-Medlever (https://github.com/ChrisGarber-Medlever)",
-    "Ron Perris (https://github.com/ronperris)",
-    "Jason Pettett (https://github.com/deadbeef404)",
-    "Michael Robinson (https://github.com/faceleg)",
-    "Thomas Groutars (https://github.com/tgroutars)"
-  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/tanem/react-svg/issues"
