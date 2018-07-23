@@ -22,6 +22,8 @@ render(<ReactSVG path="svg.svg" />, document.getElementById('root'))
 
 - [Basic Usage](https://codesandbox.io/s/81lmrj4x28)
 - [API Example](https://codesandbox.io/s/1v112980xq)
+- [External Stylesheet](https://codesandbox.io/s/qzwkmxr84w)
+- [CSS-in-JS](https://codesandbox.io/s/w27npvv2nk)
 - [UMD Build (Development)](https://codesandbox.io/s/kkm3jzpq57)
 - [UMD Build (Production)](https://codesandbox.io/s/7zy9rx82yq)
 
