@@ -22,6 +22,7 @@
     "clean:cjs": "rimraf cjs",
     "clean:coverage": "rimraf coverage",
     "clean:es": "rimraf es",
+    "clean:typings": "rm index.d.ts",
     "clean:umd": "rimraf umd",
     "compile": "tsc --emitDeclarationOnly",
     "format": "prettier --write \"**/*.{js,ts,tsx}\"",
