@@ -4,6 +4,3 @@ notifications:
 script:
   - npm t
   - $(npm bin)/codecov
-env:
-  matrix:
-    secure: AoaDe132qQwmbPra7XBP7NmawmHsEEukN7BXzMk6JmAAX2hGA+MMuWV18kBIjhNQNksYowlQFBZObTo2jPLH4G6ES6FfwcjrQfTTjlA94+yPr8bMtZYHjwMXCf2M90ZFZ4lsWCplCK3KeStJrLGi0yJqRcsLHwXLxM/A4zEIfIE=
