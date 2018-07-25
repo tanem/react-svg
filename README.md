@@ -4,7 +4,7 @@
 [![coverage status](https://img.shields.io/codecov/c/github/tanem/react-svg.svg?style=flat-square)](https://codecov.io/gh/tanem/react-svg)
 [![npm version](https://img.shields.io/npm/v/react-svg.svg?style=flat-square)](https://www.npmjs.com/package/react-svg)
 [![npm downloads](https://img.shields.io/npm/dm/react-svg.svg?style=flat-square)](https://www.npmjs.com/package/react-svg)
-[![gzip size](https://img.badgesize.io/https://unpkg.com/react-svg@5.0.0/umd/react-svg.production.min.js?compression=gzip&label=gzip%20size&style=flat-square)](https://unpkg.com/react-svg/umd/)
+[![gzip size](https://img.badgesize.io/https://unpkg.com/react-svg/umd/react-svg.production.min.js?compression=gzip&label=gzip%20size&style=flat-square)](https://unpkg.com/react-svg/umd/)
 
 > A React component that uses [SVGInjector](https://github.com/tanem/SVGInjector) to add SVG to the DOM.
 
@@ -67,8 +67,8 @@ $ npm install react-svg --save
 
 There are also UMD builds available via [unpkg](https://unpkg.com/):
 
-- https://unpkg.com/react-svg/umd/ReactSVG.js
-- https://unpkg.com/react-svg/umd/ReactSVG.min.js
+- https://unpkg.com/react-svg/umd/react-svg.development.js
+- https://unpkg.com/react-svg/umd/react-svg.production.min.js
 
 For the non-minified development version, make sure you have already included:
 
