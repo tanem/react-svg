@@ -38,10 +38,7 @@ const getBabelConfig = bundleType => {
     babelrc: false,
     exclude: 'node_modules/**',
     presets: [
-      [
-        '@babel/env',
-        { loose: true, modules: process.env.BABEL_OUTPUT || false }
-      ],
+      ['@babel/env', { loose: true, modules: false }],
       '@babel/react',
       '@babel/typescript'
     ],
