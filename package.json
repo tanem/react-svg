@@ -46,7 +46,8 @@
     "javascript",
     "react",
     "svg",
-    "svginjector"
+    "svginjector",
+    "typescript"
   ],
   "author": "Tane Morgan (https://github.com/tanem)",
   "license": "MIT",
