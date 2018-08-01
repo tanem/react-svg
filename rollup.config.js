@@ -83,11 +83,12 @@ const getPlugins = bundleType => [
     }
   }),
   babel(getBabelConfig(bundleType)),
-  replace({
-    'process.env.NODE_ENV': JSON.stringify(
-      isProduction(bundleType) ? 'production' : 'development'
-    )
-  }),
+  bundleType !== ES &&
+    replace({
+      'process.env.NODE_ENV': JSON.stringify(
+        isProduction(bundleType) ? 'production' : 'development'
+      )
+    }),
   sourcemaps(),
   ...(isProduction(bundleType) ? [filesize(), uglify()] : [])
 ]
