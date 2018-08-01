@@ -93,7 +93,7 @@ const getPlugins = bundleType => [
   ...(isProduction(bundleType) ? [filesize(), uglify()] : [])
 ]
 
-const buildCjs = bundleType => ({
+const getCjsConfig = bundleType => ({
   input,
   external: getExternal(bundleType),
   output: {
@@ -106,7 +106,7 @@ const buildCjs = bundleType => ({
   plugins: getPlugins(bundleType)
 })
 
-const buildEs = () => ({
+const getEsConfig = () => ({
   input,
   external: getExternal(ES),
   output: {
@@ -117,7 +117,7 @@ const buildEs = () => ({
   plugins: getPlugins(ES)
 })
 
-const buildUmd = bundleType => ({
+const getUmdConfig = bundleType => ({
   input,
   external: getExternal(bundleType),
   output: {
@@ -137,9 +137,9 @@ const buildUmd = bundleType => ({
 })
 
 export default [
-  buildCjs(CJS_DEV),
-  buildCjs(CJS_PROD),
-  buildEs(),
-  buildUmd(UMD_DEV),
-  buildUmd(UMD_PROD)
+  getCjsConfig(CJS_DEV),
+  getCjsConfig(CJS_PROD),
+  getEsConfig(),
+  getUmdConfig(UMD_DEV),
+  getUmdConfig(UMD_PROD)
 ]
