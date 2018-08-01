@@ -16,17 +16,27 @@ const UMD_PROD = 'UMD_PROD'
 const input = './src/index.tsx'
 
 const getExternal = bundleType => {
-  const modules = ['react', 'react-dom/server']
+  const peerDependencies = Object.keys(pkg.peerDependencies)
+  const dependencies = Object.keys(pkg.dependencies)
+
+  // Hat-tip: https://github.com/rollup/rollup-plugin-babel/issues/148#issuecomment-399696316.
+  const makeExternalPredicate = externals => {
+    if (externals.length === 0) {
+      return () => false
+    }
+    const pattern = new RegExp(`^(${externals.join('|')})($|/)`)
+    return id => pattern.test(id)
+  }
 
   switch (bundleType) {
     case CJS_DEV:
     case CJS_PROD:
     case ES:
-      return [...modules, '@tanem/svg-injector', 'prop-types']
+      return makeExternalPredicate([...peerDependencies, ...dependencies])
     case UMD_DEV:
-      return [...modules, 'prop-types']
+      return makeExternalPredicate([...peerDependencies, 'prop-types'])
     default:
-      return modules
+      return makeExternalPredicate(peerDependencies)
   }
 }
 
@@ -42,7 +52,11 @@ const getBabelConfig = bundleType => {
       '@babel/react',
       '@babel/typescript'
     ],
-    plugins: [['@babel/proposal-class-properties', { loose: true }]]
+    plugins: [
+      ['@babel/proposal-class-properties', { loose: true }],
+      '@babel/transform-runtime'
+    ],
+    runtimeHelpers: true
   }
 
   switch (bundleType) {
@@ -83,16 +97,17 @@ const getPlugins = bundleType => [
     }
   }),
   babel(getBabelConfig(bundleType)),
-  replace({
-    'process.env.NODE_ENV': JSON.stringify(
-      isProduction(bundleType) ? 'production' : 'development'
-    )
-  }),
+  bundleType !== ES &&
+    replace({
+      'process.env.NODE_ENV': JSON.stringify(
+        isProduction(bundleType) ? 'production' : 'development'
+      )
+    }),
   sourcemaps(),
   ...(isProduction(bundleType) ? [filesize(), uglify()] : [])
 ]
 
-const buildCjs = bundleType => ({
+const getCjsConfig = bundleType => ({
   input,
   external: getExternal(bundleType),
   output: {
@@ -105,7 +120,7 @@ const buildCjs = bundleType => ({
   plugins: getPlugins(bundleType)
 })
 
-const buildEs = () => ({
+const getEsConfig = () => ({
   input,
   external: getExternal(ES),
   output: {
@@ -116,7 +131,7 @@ const buildEs = () => ({
   plugins: getPlugins(ES)
 })
 
-const buildUmd = bundleType => ({
+const getUmdConfig = bundleType => ({
   input,
   external: getExternal(bundleType),
   output: {
@@ -136,9 +151,9 @@ const buildUmd = bundleType => ({
 })
 
 export default [
-  buildCjs(CJS_DEV),
-  buildCjs(CJS_PROD),
-  buildEs(),
-  buildUmd(UMD_DEV),
-  buildUmd(UMD_PROD)
+  getCjsConfig(CJS_DEV),
+  getCjsConfig(CJS_PROD),
+  getEsConfig(),
+  getUmdConfig(UMD_DEV),
+  getUmdConfig(UMD_PROD)
 ]
