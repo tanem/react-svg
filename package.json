@@ -38,10 +38,7 @@
     "test:umdprod": "jest --config ./scripts/jest/config.umdprod.js",
     "version": "run-s test authors && git add ."
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/tanem/react-svg.git"
-  },
+  "repository": "github:tanem/react-svg",
   "keywords": [
     "javascript",
     "react",
@@ -51,9 +48,7 @@
   ],
   "author": "Tane Morgan (https://github.com/tanem)",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/tanem/react-svg/issues"
-  },
+  "bugs": "https://github.com/tanem/react-svg/issues",
   "homepage": "https://github.com/tanem/react-svg",
   "peerDependencies": {
     "react": "^15.5.4 || ^16.0.0",
