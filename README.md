@@ -20,7 +20,7 @@ render(<ReactSVG path="svg.svg" />, document.getElementById('root'))
 ## Live Examples
 
 - **Basic Usage**: [Source](https://github.com/tanem/react-svg/tree/master/examples/basic-usage) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/basic-usage)
-- [API Example](https://codesandbox.io/s/1v112980xq)
+- **API Usage**: [Source](https://github.com/tanem/react-svg/tree/master/examples/api-usage) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/api-usage)
 - [External Stylesheet](https://codesandbox.io/s/qzwkmxr84w)
 - [CSS-in-JS](https://codesandbox.io/s/w27npvv2nk)
 - [UMD Build (Development)](https://codesandbox.io/s/kkm3jzpq57)
