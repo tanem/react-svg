@@ -23,7 +23,7 @@ render(<ReactSVG path="svg.svg" />, document.getElementById('root'))
 - **API Usage**: [Source](https://github.com/tanem/react-svg/tree/master/examples/api-usage) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/api-usage)
 - **External Stylesheet**: [Source](https://github.com/tanem/react-svg/tree/master/examples/external-stylesheet) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/external-stylesheet)
 - **Typescript**: [Source](https://github.com/tanem/react-svg/tree/master/examples/typescript) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/typescript)
-- [CSS-in-JS](https://codesandbox.io/s/w27npvv2nk)
+- **CSS-in-JS**: [Source](https://github.com/tanem/react-svg/tree/master/examples/css-in-js) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/css-in-js)
 - [UMD Build (Development)](https://codesandbox.io/s/kkm3jzpq57)
 - [UMD Build (Production)](https://codesandbox.io/s/7zy9rx82yq)
 
