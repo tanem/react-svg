@@ -1,0 +1,20 @@
+body {
+  align-items: center;
+  background-color: gray;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.wrapper svg {
+  height: 200px;
+  width: 200px;
+}
+
+.wrapper rect {
+  fill: aqua;
+  height: 190px;
+  stroke: darkmagenta;
+  width: 190px;
+}
