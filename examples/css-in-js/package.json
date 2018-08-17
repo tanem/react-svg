@@ -1,5 +1,6 @@
 {
   "name": "css-in-js",
+  "description": "ReactSVG CSS-in-JS Example",
   "keywords": [
     "react-svg"
   ],

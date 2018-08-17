@@ -1,5 +1,6 @@
 {
   "name": "umd-prod",
+  "description": "ReactSVG UMD Prod Example",
   "keywords": [
     "react-svg"
   ],
