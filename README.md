@@ -7,6 +7,12 @@
 
 > A React component that uses [SVGInjector](https://github.com/tanem/SVGInjector) to add SVG to the DOM.
 
+## Why?
+
+To quote [the original SVGInjector docs](https://github.com/iconic/SVGInjector#why):
+
+> There are a number of ways to use SVG on a page (object, embed, iframe, img, CSS background-image) but to unlock the full potential of SVG, including full element-level CSS styling and evaluation of embedded JavaScript, the full SVG markup must be included directly in the DOM.
+
 ## Basic Usage
 
 ```jsx
