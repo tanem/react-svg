@@ -1,0 +1,16 @@
+{
+  "name": "umd-dev",
+  "keywords": [
+    "react-svg"
+  ],
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.6.1"
+  }
+}
