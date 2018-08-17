@@ -1,5 +1,6 @@
 {
   "name": "api-usage",
+  "description": "ReactSVG API Usage Example",
   "keywords": [
     "react-svg"
   ],

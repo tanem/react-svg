@@ -1,5 +1,6 @@
 {
   "name": "external-stylesheet",
+  "description": "ReactSVG External Stylesheet Example",
   "keywords": [
     "react-svg"
   ],

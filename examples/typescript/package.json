@@ -1,5 +1,6 @@
 {
   "name": "typescript",
+  "description": "ReactSVG Typescript Example",
   "keywords": [
     "react-svg"
   ],
