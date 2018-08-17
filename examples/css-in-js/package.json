@@ -1,5 +1,8 @@
 {
   "name": "css-in-js",
+  "keywords": [
+    "react-svg"
+  ],
   "version": "0.1.0",
   "private": true,
   "dependencies": {
