@@ -1,5 +1,6 @@
 {
   "name": "basic-usage",
+  "description": "ReactSVG Basic Usage Example",
   "keywords": [
     "react-svg"
   ],
