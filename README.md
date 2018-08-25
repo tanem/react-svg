@@ -5,13 +5,11 @@
 [![npm version](https://img.shields.io/npm/v/react-svg.svg?style=flat-square)](https://www.npmjs.com/package/react-svg)
 [![npm downloads](https://img.shields.io/npm/dm/react-svg.svg?style=flat-square)](https://www.npmjs.com/package/react-svg)
 
-> A React component that uses [SVGInjector](https://github.com/tanem/SVGInjector) to add SVG to the DOM.
+> A React component that injects SVG into the DOM.
 
-## Why?
+## Background
 
-To quote [the original SVGInjector docs](https://github.com/iconic/SVGInjector#why):
-
-> There are a number of ways to use SVG on a page (object, embed, iframe, img, CSS background-image) but to unlock the full potential of SVG, including full element-level CSS styling and evaluation of embedded JavaScript, the full SVG markup must be included directly in the DOM.
+Let's say you have an SVG and you'd like to inject it into the DOM [because reasons](https://github.com/tanem/svg-injector#why). This module will do the heavy lifting for you by delegating the process to [SVGInjector](https://github.com/tanem/svg-injector), which will make an AJAX request for the SVG and then swap in the SVG markup inline. The async loaded SVG is also cached so multiple uses of an SVG only require a single server request.
 
 ## Basic Usage
 
@@ -91,8 +89,7 @@ For the minified production version, make sure you have already included:
 
 ## Credits
 
-- [PrototypeAlex](https://github.com/PrototypeAlex) for authoring the original versions.
-- The [Atomic](https://github.com/atomic-app) crew for allowing me to take ownership of the repo.
+Thanks to the author(s) of [the original SVGInjector](https://github.com/iconic/SVGInjector), without which none of this would have been possible :clap:
 
 ## License
 
