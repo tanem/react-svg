@@ -1,7 +1,7 @@
 {
   "name": "react-svg",
   "version": "5.0.22",
-  "description": "A React component that uses SVGInjector to add SVG to the DOM.",
+  "description": "A React component that injects SVG into the DOM.",
   "main": "index.js",
   "module": "es/react-svg.js",
   "jsnext:main": "es/react-svg.js",
