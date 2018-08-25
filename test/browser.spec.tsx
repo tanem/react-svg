@@ -14,7 +14,7 @@ import source from './fixtures/source'
 // - SVGInjector uses setTimeout to process it's XHR queue, so we control
 //   request processing manually via Jest and Sinon.
 // - Even though we're always responding with `sourceSVG`, we use different
-//   `path` values when mounting within each test so that SVGInjector doesn't
+//   `src` values when mounting within each test so that SVGInjector doesn't
 //   use it's internal cache. This keeps the tests isolated from one another.
 
 faker.seed(123)
@@ -44,7 +44,7 @@ describe('while running in a browser environment', () => {
     wrapper = mount(
       <ReactSVG
         className="wrapper-class-name"
-        path={`http://localhost/${faker.random.uuid()}.svg`}
+        src={`http://localhost/${faker.random.uuid()}.svg`}
         svgClassName="svg-class-name"
         svgStyle={{ height: 200 }}
       />,
@@ -61,7 +61,7 @@ describe('while running in a browser environment', () => {
     wrapper = mount(
       <ReactSVG
         className="wrapper-class-name"
-        path={`http://localhost/${faker.random.uuid()}.svg`}
+        src={`http://localhost/${faker.random.uuid()}.svg`}
         svgClassName="svg-class-name"
         svgStyle={{ height: 200 }}
       />,
@@ -84,7 +84,7 @@ describe('while running in a browser environment', () => {
     wrapper = mount(
       <ReactSVG
         svgClassName="svg-class-name"
-        path={`http://localhost/${faker.random.uuid()}.svg`}
+        src={`http://localhost/${faker.random.uuid()}.svg`}
         svgStyle={{ height: 200 }}
       />,
       { attachTo: container }
@@ -106,7 +106,7 @@ describe('while running in a browser environment', () => {
       wrapper = mount(
         <ReactSVG
           svgClassName="svg-class-name"
-          path={`http://localhost/${faker.random.uuid()}.svg`}
+          src={`http://localhost/${faker.random.uuid()}.svg`}
           svgStyle={{ height: 200 }}
         />,
         { attachTo: container }
@@ -124,7 +124,7 @@ describe('while running in a browser environment', () => {
       wrapper = mount(
         <ReactSVG
           svgClassName="svg-class-name"
-          path={`http://localhost/${faker.random.uuid()}.svg`}
+          src={`http://localhost/${faker.random.uuid()}.svg`}
           svgStyle={{ height: 200 }}
         />,
         { attachTo: container }
@@ -143,7 +143,7 @@ describe('while running in a browser environment', () => {
       wrapper = mount(
         <ReactSVG
           svgClassName="svg-class-name"
-          path={`http://localhost/${faker.random.uuid()}.svg`}
+          src={`http://localhost/${faker.random.uuid()}.svg`}
           svgStyle={{ height: 200 }}
         />,
         { attachTo: container }
@@ -159,7 +159,7 @@ describe('while running in a browser environment', () => {
 
   it('should renumerate IRI elements by default', () => {
     wrapper = mount(
-      <ReactSVG path={`http://localhost/${faker.random.uuid()}.svg`} />,
+      <ReactSVG src={`http://localhost/${faker.random.uuid()}.svg`} />,
       {
         attachTo: container
       }
@@ -174,7 +174,7 @@ describe('while running in a browser environment', () => {
   it('should not renumerate IRI elements when renumerateIRIElements is false', () => {
     wrapper = mount(
       <ReactSVG
-        path={`http://localhost/${faker.random.uuid()}.svg`}
+        src={`http://localhost/${faker.random.uuid()}.svg`}
         renumerateIRIElements={false}
       />,
       {

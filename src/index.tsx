@@ -6,8 +6,8 @@ import ReactDOMServer from 'react-dom/server'
 interface Props {
   evalScripts?: 'always' | 'once' | 'never'
   onInjected?: (svg: SVGSVGElement) => void
-  path: string
   renumerateIRIElements?: boolean
+  src: string
   svgClassName?: string
   svgStyle?: React.CSSProperties
 }
@@ -30,8 +30,8 @@ export default class ReactSVG extends React.Component<
   static propTypes = {
     evalScripts: PropTypes.oneOf(['always', 'once', 'never']),
     onInjected: PropTypes.func,
-    path: PropTypes.string.isRequired,
     renumerateIRIElements: PropTypes.bool,
+    src: PropTypes.string.isRequired,
     svgClassName: PropTypes.string,
     svgStyle: PropTypes.object
   }
@@ -47,8 +47,8 @@ export default class ReactSVG extends React.Component<
       const {
         evalScripts,
         onInjected: each,
-        path,
         renumerateIRIElements,
+        src,
         svgClassName,
         svgStyle
       } = this.props
@@ -56,7 +56,7 @@ export default class ReactSVG extends React.Component<
       const div = document.createElement('div')
       div.innerHTML = ReactDOMServer.renderToStaticMarkup(
         <div>
-          <div className={svgClassName} data-src={path} style={svgStyle} />
+          <div className={svgClassName} data-src={src} style={svgStyle} />
         </div>
       )
 
@@ -98,8 +98,8 @@ export default class ReactSVG extends React.Component<
     const {
       evalScripts,
       onInjected,
-      path,
       renumerateIRIElements,
+      src,
       svgClassName,
       svgStyle,
       ...rest
