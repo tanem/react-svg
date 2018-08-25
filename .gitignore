@@ -5,6 +5,7 @@
 cjs
 coverage
 es
+examples/*/package-lock.json
 index.d.ts
 node_modules
 umd
