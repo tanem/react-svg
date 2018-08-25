@@ -11,15 +11,15 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-scripts-ts": "2.17.0",
-    "react-svg": "^5.0.16"
+    "react-svg": "latest"
   },
   "scripts": {
     "start": "react-scripts-ts start"
   },
   "devDependencies": {
     "@types/jest": "^23.3.1",
-    "@types/node": "^10.5.8",
-    "@types/react": "^16.4.9",
+    "@types/node": "^10.9.2",
+    "@types/react": "^16.4.11",
     "@types/react-dom": "^16.0.7",
     "typescript": "^3.0.1"
   }
