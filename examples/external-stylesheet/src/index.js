@@ -4,6 +4,6 @@ import ReactSVG from 'react-svg'
 import './style.css'
 
 ReactDOM.render(
-  <ReactSVG className="wrapper" path="svg.svg" />,
+  <ReactSVG className="wrapper" src="svg.svg" />,
   document.getElementById('root')
 )

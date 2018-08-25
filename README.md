@@ -18,7 +18,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import ReactSVG from 'react-svg'
 
-render(<ReactSVG path="svg.svg" />, document.getElementById('root'))
+render(<ReactSVG src="svg.svg" />, document.getElementById('root'))
 ```
 
 ## Live Examples
@@ -35,7 +35,7 @@ render(<ReactSVG path="svg.svg" />, document.getElementById('root'))
 
 **Props**
 
-- `path` - Path to the SVG.
+- `src` - The SVG URL.
 - `evalScripts` - _Optional_ Run any script blocks found in the SVG. One of `'always'`, `'once'`, or `'never'`. Defaults to `'never'`.
 - `onInjected` - _Optional_ Function to call after the SVG is injected. Receives the injected SVG DOM element as a parameter. Defaults to `() => {}`.
 - `renumerateIRIElements` - _Optional_ Boolean indicating whether the SVG IRI addressable elements should be renumerated. Defaults to `true`.
@@ -48,7 +48,7 @@ Other non-documented properties are applied to the wrapper element.
 
 ```jsx
 <ReactSVG
-  path="svg.svg"
+  src="svg.svg"
   evalScripts="always"
   onInjected={svg => {
     console.log('onInjected', svg)

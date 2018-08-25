@@ -5,7 +5,7 @@ import ReactSVG from 'react-svg'
 ReactDOM.render(
   <ReactSVG
     // Required props.
-    path="svg.svg"
+    src="svg.svg"
     // Optional props.
     evalScripts="always"
     onInjected={svg => {

@@ -25,4 +25,4 @@ const styles = css({
   }
 })
 
-render(<ReactSVG path="svg.svg" {...styles} />, document.getElementById('root'))
+render(<ReactSVG src="svg.svg" {...styles} />, document.getElementById('root'))
