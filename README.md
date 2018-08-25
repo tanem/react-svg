@@ -1,15 +1,15 @@
 # react-svg
 
+[![npm version](https://img.shields.io/npm/v/react-svg.svg?style=flat-square)](https://www.npmjs.com/package/react-svg)
 [![build status](https://img.shields.io/travis/tanem/react-svg/master.svg?style=flat-square)](https://travis-ci.org/tanem/react-svg)
 [![coverage status](https://img.shields.io/codecov/c/github/tanem/react-svg.svg?style=flat-square)](https://codecov.io/gh/tanem/react-svg)
-[![npm version](https://img.shields.io/npm/v/react-svg.svg?style=flat-square)](https://www.npmjs.com/package/react-svg)
 [![npm downloads](https://img.shields.io/npm/dm/react-svg.svg?style=flat-square)](https://www.npmjs.com/package/react-svg)
 
 > A React component that injects SVG into the DOM.
 
 ## Background
 
-Let's say you have an SVG and you'd like to inject it into the DOM [because reasons](https://github.com/tanem/svg-injector#why). This module will do the heavy lifting for you by delegating the process to [SVGInjector](https://github.com/tanem/svg-injector), which will make an AJAX request for the SVG and then swap in the SVG markup inline. The async loaded SVG is also cached so multiple uses of an SVG only require a single server request.
+Let's say you have an SVG available at some URL, and you'd like to inject it into the DOM [because reasons](https://github.com/tanem/svg-injector#why). This module does the heavy lifting for you by delegating the process to [SVGInjector](https://github.com/tanem/svg-injector), which makes an AJAX request for the SVG and then swaps in the SVG markup inline. The async loaded SVG is also cached, so multiple uses of an SVG only require a single server request.
 
 ## Basic Usage
 
