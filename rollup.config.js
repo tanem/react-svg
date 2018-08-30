@@ -1,3 +1,4 @@
+import { DEFAULT_EXTENSIONS } from '@babel/core'
 import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import filesize from 'rollup-plugin-filesize'
@@ -56,7 +57,8 @@ const getBabelConfig = bundleType => {
       ['@babel/proposal-class-properties', { loose: true }],
       '@babel/transform-runtime'
     ],
-    runtimeHelpers: true
+    runtimeHelpers: true,
+    extensions: [...DEFAULT_EXTENSIONS, '.ts', '.tsx']
   }
 
   switch (bundleType) {
