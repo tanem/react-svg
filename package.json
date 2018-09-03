@@ -16,6 +16,7 @@
     "authors": "scripts/authors",
     "build": "run-s clean compile bundle",
     "bundle": "rollup -c",
+    "changelog": "github_changelog_generator --no-issues --header-label \"# Changelog\" --future-release v$npm_package_version",
     "check:format": "prettier --list-different \"**/*.{js,ts,tsx}\"",
     "check:types": "tsc --noEmit",
     "clean": "run-p clean:*",
