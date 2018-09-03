@@ -1,5 +1,13 @@
 # Changelog
 
+## [v6.0.6](https://github.com/tanem/react-svg/tree/v6.0.6) (2018-09-03)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v6.0.5...v6.0.6)
+
+**Merged pull requests:**
+
+- Fix version script [\#144](https://github.com/tanem/react-svg/pull/144) ([tanem](https://github.com/tanem))
+- Add changelog and update authors script [\#143](https://github.com/tanem/react-svg/pull/143) ([tanem](https://github.com/tanem))
+
 ## [v6.0.5](https://github.com/tanem/react-svg/tree/v6.0.5) (2018-08-31)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v6.0.4...v6.0.5)
 
