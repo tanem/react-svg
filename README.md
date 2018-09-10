@@ -66,7 +66,7 @@ Other non-documented properties are applied to the wrapper element.
 ## Installation
 
 ```
-$ npm install react-svg --save
+$ npm install react-svg
 ```
 
 There are also UMD builds available via [unpkg](https://unpkg.com/):
