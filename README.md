@@ -9,7 +9,7 @@
 
 ## Background
 
-Let's say you have an SVG available at some URL, and you'd like to inject it into the DOM [because reasons](https://github.com/tanem/svg-injector#why). This module does the heavy lifting for you by delegating the process to [SVGInjector](https://github.com/tanem/svg-injector), which makes an AJAX request for the SVG and then swaps in the SVG markup inline. The async loaded SVG is also cached, so multiple uses of an SVG only require a single server request.
+Let's say you have an SVG available at some URL, and you'd like to inject it into the DOM [for various reasons](https://github.com/tanem/svg-injector#why). This module does the heavy lifting for you by delegating the process to [SVGInjector](https://github.com/tanem/svg-injector), which makes an AJAX request for the SVG and then swaps in the SVG markup inline. The async loaded SVG is also cached, so multiple uses of an SVG only require a single server request.
 
 ## Basic Usage
 
