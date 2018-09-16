@@ -8,4 +8,11 @@ glob
     shell.exec(`ncu -a --packageFile ${packageFile}`)
   })
 
-shell.exec('npm i')
+if (
+  shell
+    .exec('git ls-files --exclude-standard --modified --others')
+    .split('\n')
+    .some(f => f === 'package.json')
+) {
+  shell.exec('npm i')
+}
