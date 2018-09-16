@@ -21,13 +21,11 @@ faker.seed(123)
 jest.useFakeTimers()
 
 describe('while running in a browser environment', () => {
-  let container: HTMLDivElement
   let fakeXHR: SinonFakeXMLHttpRequestStatic
   let requests: SinonFakeXMLHttpRequest[]
   let wrapper: ReactWrapper<{}, {}, ReactSVG>
 
   beforeEach(() => {
-    container = document.body.appendChild(document.createElement('div'))
     fakeXHR = sinon.useFakeXMLHttpRequest()
     requests = []
     fakeXHR.onCreate = xhr => {
@@ -37,7 +35,6 @@ describe('while running in a browser environment', () => {
 
   afterEach(() => {
     fakeXHR.restore()
-    document.body.removeChild(container)
   })
 
   it('should render correctly', () => {
@@ -47,8 +44,7 @@ describe('while running in a browser environment', () => {
         src={`http://localhost/${faker.random.uuid()}.svg`}
         svgClassName="svg-class-name"
         svgStyle={{ height: 200 }}
-      />,
-      { attachTo: container }
+      />
     )
 
     requests[0].respond(200, {}, source)
@@ -64,8 +60,7 @@ describe('while running in a browser environment', () => {
         src={`http://localhost/${faker.random.uuid()}.svg`}
         svgClassName="svg-class-name"
         svgStyle={{ height: 200 }}
-      />,
-      { attachTo: container }
+      />
     )
 
     requests[0].respond(200, {}, source)
@@ -86,8 +81,7 @@ describe('while running in a browser environment', () => {
         svgClassName="svg-class-name"
         src={`http://localhost/${faker.random.uuid()}.svg`}
         svgStyle={{ height: 200 }}
-      />,
-      { attachTo: container }
+      />
     )
 
     requests[0].respond(200, {}, source)
@@ -95,7 +89,7 @@ describe('while running in a browser environment', () => {
 
     wrapper.unmount()
 
-    expect(container.innerHTML).toBe('')
+    expect(wrapper.exists()).toBe(false)
   })
 
   it('should ensure a parent node is always available', () => {
@@ -108,8 +102,7 @@ describe('while running in a browser environment', () => {
           svgClassName="svg-class-name"
           src={`http://localhost/${faker.random.uuid()}.svg`}
           svgStyle={{ height: 200 }}
-        />,
-        { attachTo: container }
+        />
       )
 
       wrapper.unmount()
@@ -126,8 +119,7 @@ describe('while running in a browser environment', () => {
           svgClassName="svg-class-name"
           src={`http://localhost/${faker.random.uuid()}.svg`}
           svgStyle={{ height: 200 }}
-        />,
-        { attachTo: container }
+        />
       )
 
       requests[0].respond(200, {}, source)
@@ -145,8 +137,7 @@ describe('while running in a browser environment', () => {
           svgClassName="svg-class-name"
           src={`http://localhost/${faker.random.uuid()}.svg`}
           svgStyle={{ height: 200 }}
-        />,
-        { attachTo: container }
+        />
       )
 
       requests[0].respond(200, {}, source)
@@ -159,10 +150,7 @@ describe('while running in a browser environment', () => {
 
   it('should renumerate IRI elements by default', () => {
     wrapper = mount(
-      <ReactSVG src={`http://localhost/${faker.random.uuid()}.svg`} />,
-      {
-        attachTo: container
-      }
+      <ReactSVG src={`http://localhost/${faker.random.uuid()}.svg`} />
     )
 
     requests[0].respond(200, {}, iriSource)
@@ -176,10 +164,7 @@ describe('while running in a browser environment', () => {
       <ReactSVG
         src={`http://localhost/${faker.random.uuid()}.svg`}
         renumerateIRIElements={false}
-      />,
-      {
-        attachTo: container
-      }
+      />
     )
 
     requests[0].respond(200, {}, iriSource)
