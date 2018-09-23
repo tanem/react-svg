@@ -1,6 +1,13 @@
 # Changelog
 
-## [v6.0.14](https://github.com/tanem/react-svg/tree/v6.0.14) (2018-09-22)
+## [v6.0.15](https://github.com/tanem/react-svg/tree/v6.0.15) (2018-09-23)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v6.0.14...v6.0.15)
+
+**Merged pull requests:**
+
+- Fix dep. warnings in Jest config [\#160](https://github.com/tanem/react-svg/pull/160) ([tanem](https://github.com/tanem))
+
+## [v6.0.14](https://github.com/tanem/react-svg/tree/v6.0.14) (2018-09-21)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v6.0.13...v6.0.14)
 
 **Merged pull requests:**
