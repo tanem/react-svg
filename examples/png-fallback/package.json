@@ -9,8 +9,8 @@
   "dependencies": {
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-scripts": "2.0.4",
-    "react-svg": "latest"
+    "react-scripts": "2.0.5",
+    "react-svg": "git://github.com/tanem/react-svg.git#png-fallback"
   },
   "scripts": {
     "start": "react-scripts start"

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`while running in a browser environment should handle png fallbacks 1`] = `"<div><div><img data-fallback=\\"http://localhost/e4f94b98-c56a-4bd2-a9fd-5fd11603e7e8.png\\" data-src=\\"http://localhost/3104de39-071c-47b8-86b4-d62ccc4a4fa6.svg\\" src=\\"http://localhost/e4f94b98-c56a-4bd2-a9fd-5fd11603e7e8.png\\"></div></div>"`;
+exports[`while running in a browser environment should handle png fallbacks if the browser does not support SVG 1`] = `"<div><div><img data-fallback=\\"http://localhost/e4f94b98-c56a-4bd2-a9fd-5fd11603e7e8.png\\" data-src=\\"http://localhost/3104de39-071c-47b8-86b4-d62ccc4a4fa6.svg\\" src=\\"http://localhost/e4f94b98-c56a-4bd2-a9fd-5fd11603e7e8.png\\"></div></div>"`;
 
 exports[`while running in a browser environment should not renumerate IRI elements when renumerateIRIElements is false 1`] = `"<div><div><svg width=\\"120\\" height=\\"120\\" xmlns=\\"http://www.w3.org/2000/svg\\" class=\\"injected-svg\\" data-src=\\"http://localhost/86a5c5d2-6d05-4788-9984-0efae5384784.svg\\" xmlns:xlink=\\"http://www.w3.org/1999/xlink\\"><defs><linearGradient id=\\"MyGradient\\"><stop offset=\\"5%\\" stop-color=\\"green\\"></stop><stop offset=\\"95%\\" stop-color=\\"gold\\"></stop></linearGradient></defs><rect fill=\\"url(#MyGradient)\\" x=\\"10\\" y=\\"10\\" width=\\"100\\" height=\\"100\\"></rect></svg></div></div>"`;
 
