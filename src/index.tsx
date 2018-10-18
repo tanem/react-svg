@@ -6,6 +6,7 @@ import ReactDOMServer from 'react-dom/server'
 interface Props {
   evalScripts?: 'always' | 'once' | 'never'
   onInjected?: (svg: SVGSVGElement) => void
+  pngFallback?: string
   renumerateIRIElements?: boolean
   src: string
   svgClassName?: string
@@ -22,6 +23,7 @@ export default class ReactSVG extends React.Component<
   static defaultProps = {
     evalScripts: 'never',
     onInjected: () => undefined,
+    pngFallback: null,
     renumerateIRIElements: true,
     svgClassName: null,
     svgStyle: {}
@@ -47,6 +49,7 @@ export default class ReactSVG extends React.Component<
       const {
         evalScripts,
         onInjected: each,
+        pngFallback,
         renumerateIRIElements,
         src,
         svgClassName,
@@ -56,7 +59,12 @@ export default class ReactSVG extends React.Component<
       const div = document.createElement('div')
       div.innerHTML = ReactDOMServer.renderToStaticMarkup(
         <div>
-          <div className={svgClassName} data-src={src} style={svgStyle} />
+          <img
+            className={svgClassName}
+            data-fallback={pngFallback}
+            data-src={src}
+            style={svgStyle}
+          />
         </div>
       )
 
@@ -98,6 +106,7 @@ export default class ReactSVG extends React.Component<
     const {
       evalScripts,
       onInjected,
+      pngFallback,
       renumerateIRIElements,
       src,
       svgClassName,

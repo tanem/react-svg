@@ -172,4 +172,21 @@ describe('while running in a browser environment', () => {
 
     expect(wrapper.html()).toMatchSnapshot()
   })
+
+  it('should handle png fallbacks if the browser does not support SVG', () => {
+    const mock = jest
+      .spyOn(document.implementation, 'hasFeature')
+      .mockImplementation(() => false)
+
+    wrapper = mount(
+      <ReactSVG
+        pngFallback={`http://localhost/${faker.random.uuid()}.png`}
+        src={`http://localhost/${faker.random.uuid()}.svg`}
+      />
+    )
+
+    expect(wrapper.html()).toMatchSnapshot()
+
+    mock.mockRestore()
+  })
 })

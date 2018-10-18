@@ -11,6 +11,7 @@ ReactDOM.render(
     onInjected={svg => {
       console.log('onInjected', svg)
     }}
+    pngFallback="png.png"
     renumerateIRIElements={false}
     svgClassName="svg-class-name"
     svgStyle={{ width: 200 }}
