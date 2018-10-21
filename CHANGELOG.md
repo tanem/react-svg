@@ -1,6 +1,13 @@
 # Changelog
 
-## [v6.0.19](https://github.com/tanem/react-svg/tree/v6.0.19) (2018-10-22)
+## [v6.0.20](https://github.com/tanem/react-svg/tree/v6.0.20) (2018-10-22)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v6.0.19...v6.0.20)
+
+**Merged pull requests:**
+
+- Add gzip size badge [\#168](https://github.com/tanem/react-svg/pull/168) ([tanem](https://github.com/tanem))
+
+## [v6.0.19](https://github.com/tanem/react-svg/tree/v6.0.19) (2018-10-21)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v6.0.18...v6.0.19)
 
 **Merged pull requests:**
