@@ -1,5 +1,13 @@
 # Changelog
 
+## [v6.0.19](https://github.com/tanem/react-svg/tree/v6.0.19) (2018-10-22)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v6.0.18...v6.0.19)
+
+**Merged pull requests:**
+
+- Update deps [\#167](https://github.com/tanem/react-svg/pull/167) ([tanem](https://github.com/tanem))
+- Remove prop-types from umd prod example [\#166](https://github.com/tanem/react-svg/pull/166) ([tanem](https://github.com/tanem))
+
 ## [v6.0.18](https://github.com/tanem/react-svg/tree/v6.0.18) (2018-10-11)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v6.0.17...v6.0.18)
 
