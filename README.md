@@ -27,6 +27,7 @@ render(<ReactSVG src="svg.svg" />, document.getElementById('root'))
 - Basic Usage: [Source](https://github.com/tanem/react-svg/tree/master/examples/basic-usage) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/basic-usage)
 - API Usage: [Source](https://github.com/tanem/react-svg/tree/master/examples/api-usage) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/api-usage)
 - External Stylesheet: [Source](https://github.com/tanem/react-svg/tree/master/examples/external-stylesheet) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/external-stylesheet)
+- Fallback: [Source](https://github.com/tanem/react-svg/tree/master/examples/fallback) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/fallback)
 - Typescript: [Source](https://github.com/tanem/react-svg/tree/master/examples/typescript) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/typescript)
 - CSS-in-JS: [Source](https://github.com/tanem/react-svg/tree/master/examples/css-in-js) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/css-in-js)
 - UMD Build (Development): [Source](https://github.com/tanem/react-svg/tree/master/examples/umd-dev) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/umd-dev)
@@ -38,7 +39,7 @@ render(<ReactSVG src="svg.svg" />, document.getElementById('root'))
 
 - `src` - The SVG URL.
 - `evalScripts` - _Optional_ Run any script blocks found in the SVG. One of `'always'`, `'once'`, or `'never'`. Defaults to `'never'`.
-- `onInjected` - _Optional_ Function to call after the SVG is injected. Receives the injected SVG DOM element as a parameter. Defaults to `() => {}`.
+- `onInjected` - _Optional_ Function to call after the SVG is injected. If an injection error occurs, this function receives an `Error` object as the first parameter. If no injection error occurs, the first parameter is `null` and the second parameter is the injected SVG DOM element. Defaults to `() => {}`.
 - `renumerateIRIElements` - _Optional_ Boolean indicating whether the SVG IRI addressable elements should be renumerated. Defaults to `true`.
 - `svgClassName` - _Optional_ Class name to be added to the injected SVG DOM element. Defaults to `null`.
 - `svgStyle` - _Optional_ Inline styles to be added to the injected SVG DOM element. Defaults to `{}`.
@@ -51,8 +52,8 @@ Other non-documented properties are applied to the wrapper element.
 <ReactSVG
   src="svg.svg"
   evalScripts="always"
-  onInjected={svg => {
-    console.log('onInjected', svg)
+  onInjected={(error, svg) => {
+    console.log('onInjected', error, svg)
   }}
   renumerateIRIElements={false}
   svgClassName="svg-class-name"

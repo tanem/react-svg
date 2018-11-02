@@ -1,15 +1,23 @@
 import SVGInjector from '@tanem/svg-injector'
+import isEqual from 'lodash/isEqual'
 import * as PropTypes from 'prop-types'
 import * as React from 'react'
 import ReactDOMServer from 'react-dom/server'
 
+export type OnInjected = (error: Error | null, svg?: SVGSVGElement) => void
+
 interface Props {
-  evalScripts?: 'always' | 'once' | 'never'
-  onInjected?: (svg: SVGSVGElement) => void
-  renumerateIRIElements?: boolean
+  evalScripts: 'always' | 'once' | 'never'
+  fallback: React.ReactNode
+  onInjected: OnInjected
+  renumerateIRIElements: boolean
   src: string
-  svgClassName?: string
-  svgStyle?: React.CSSProperties
+  svgClassName: string
+  svgStyle: React.CSSProperties
+}
+
+interface State {
+  hasError: boolean
 }
 
 export default class ReactSVG extends React.Component<
@@ -17,10 +25,12 @@ export default class ReactSVG extends React.Component<
     React.DetailedHTMLProps<
       React.HTMLAttributes<HTMLDivElement>,
       HTMLDivElement
-    >
+    >,
+  State
 > {
   static defaultProps = {
     evalScripts: 'never',
+    fallback: null,
     onInjected: () => undefined,
     renumerateIRIElements: true,
     svgClassName: null,
@@ -29,12 +39,19 @@ export default class ReactSVG extends React.Component<
 
   static propTypes = {
     evalScripts: PropTypes.oneOf(['always', 'once', 'never']),
+    fallback: PropTypes.element,
     onInjected: PropTypes.func,
     renumerateIRIElements: PropTypes.bool,
     src: PropTypes.string.isRequired,
     svgClassName: PropTypes.string,
     svgStyle: PropTypes.object
   }
+
+  initialState = {
+    hasError: false
+  }
+
+  state = this.initialState
 
   container?: HTMLDivElement | null
 
@@ -46,7 +63,7 @@ export default class ReactSVG extends React.Component<
     if (this.container instanceof Node) {
       const {
         evalScripts,
-        onInjected: each,
+        onInjected,
         renumerateIRIElements,
         src,
         svgClassName,
@@ -63,6 +80,21 @@ export default class ReactSVG extends React.Component<
       const wrapper = this.container.appendChild(
         div.firstChild as HTMLDivElement
       )
+
+      const each: OnInjected = (error, svg) => {
+        if (error) {
+          this.removeSVG()
+        }
+
+        this.setState(
+          () => ({
+            hasError: !!error
+          }),
+          () => {
+            onInjected(error, svg)
+          }
+        )
+      }
 
       SVGInjector(wrapper.firstChild, {
         each,
@@ -85,9 +117,11 @@ export default class ReactSVG extends React.Component<
     this.renderSVG()
   }
 
-  componentDidUpdate() {
-    this.removeSVG()
-    this.renderSVG()
+  componentDidUpdate(prevProps: Props) {
+    if (!isEqual(prevProps, this.props)) {
+      this.removeSVG()
+      this.setState(() => this.initialState, () => this.renderSVG())
+    }
   }
 
   componentWillUnmount() {
@@ -97,6 +131,7 @@ export default class ReactSVG extends React.Component<
   render() {
     const {
       evalScripts,
+      fallback,
       onInjected,
       renumerateIRIElements,
       src,
@@ -105,6 +140,10 @@ export default class ReactSVG extends React.Component<
       ...rest
     } = this.props
 
-    return <div {...rest} ref={this.refCallback} />
+    return (
+      <div {...rest} ref={this.refCallback}>
+        {this.state.hasError && fallback}
+      </div>
+    )
   }
 }

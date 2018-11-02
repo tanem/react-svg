@@ -58,7 +58,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.1.2",
-    "@tanem/svg-injector": "^1.2.1",
+    "@tanem/svg-injector": "^2.0.2",
+    "lodash": "^4.17.11",
     "prop-types": "^15.6.2"
   },
   "devDependencies": {
@@ -71,6 +72,7 @@
     "@types/enzyme": "^3.1.14",
     "@types/faker": "^4.1.4",
     "@types/jest": "^23.3.9",
+    "@types/lodash": "^4.14.117",
     "@types/prop-types": "^15.5.6",
     "@types/react": "^16.4.18",
     "@types/react-dom": "^16.0.9",

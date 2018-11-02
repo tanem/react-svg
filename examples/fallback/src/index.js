@@ -3,6 +3,6 @@ import ReactDOM from 'react-dom'
 import ReactSVG from 'react-svg'
 
 ReactDOM.render(
-  <ReactSVG fallback={<span>Error!</span>} src="svg.svg" />,
+  <ReactSVG fallback={<img alt="doge" src="doge.png" />} src="notfound.svg" />,
   document.getElementById('root')
 )
