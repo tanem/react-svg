@@ -93,9 +93,6 @@ describe('while running in a browser environment', () => {
   })
 
   it('should ensure a parent node is always available', () => {
-    // One way to test this scenario is to unmount the component, which removes
-    // the wrapper node, then let SVGInjector do it's usual DOM manipulation by
-    // running the timers.
     expect(() => {
       wrapper = mount(
         <ReactSVG
@@ -105,7 +102,7 @@ describe('while running in a browser environment', () => {
         />
       )
 
-      wrapper.unmount()
+      wrapper.instance().removeSVG()
 
       requests[0].respond(200, {}, source)
       jest.runAllTimers()
