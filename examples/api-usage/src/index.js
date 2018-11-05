@@ -9,7 +9,11 @@ ReactDOM.render(
     // Optional props.
     evalScripts="always"
     onInjected={(error, svg) => {
-      console.log('onInjected', error, svg)
+      if (error) {
+        console.error(error)
+        return
+      }
+      console.log(svg)
     }}
     renumerateIRIElements={false}
     svgClassName="svg-class-name"

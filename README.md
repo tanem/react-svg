@@ -39,8 +39,8 @@ render(<ReactSVG src="svg.svg" />, document.getElementById('root'))
 
 - `src` - The SVG URL.
 - `evalScripts` - _Optional_ Run any script blocks found in the SVG. One of `'always'`, `'once'`, or `'never'`. Defaults to `'never'`.
-- `onInjected` - _Optional_ Function to call after the SVG is injected. If an injection error occurs, this function receives an `Error` object as the first parameter. If no injection error occurs, the first parameter is `null` and the second parameter is the injected SVG DOM element. Defaults to `() => {}`.
-- `renumerateIRIElements` - _Optional_ Boolean indicating whether the SVG IRI addressable elements should be renumerated. Defaults to `true`.
+- `onInjected` - _Optional_ Function to call after the SVG is injected. If an injection error occurs, this function receives an `Error` object as the first parameter. Otherwise, the first parameter is `null` and the second parameter is the injected SVG DOM element. Defaults to `() => {}`.
+- `renumerateIRIElements` - _Optional_ Boolean indicating if SVG IRI addressable elements should be renumerated. Defaults to `true`.
 - `svgClassName` - _Optional_ Class name to be added to the injected SVG DOM element. Defaults to `null`.
 - `svgStyle` - _Optional_ Inline styles to be added to the injected SVG DOM element. Defaults to `{}`.
 
@@ -53,7 +53,11 @@ Other non-documented properties are applied to the wrapper element.
   src="svg.svg"
   evalScripts="always"
   onInjected={(error, svg) => {
-    console.log('onInjected', error, svg)
+    if (error) {
+      console.error(error)
+      return
+    }
+    console.log(svg)
   }}
   renumerateIRIElements={false}
   svgClassName="svg-class-name"
