@@ -28,6 +28,7 @@
     "compile": "tsc --emitDeclarationOnly",
     "format": "prettier --write \"**/*.{js,ts,tsx}\"",
     "lint": "tslint -t stylish -p .",
+    "postcompile": "del '*.d.ts' '!index.d.ts'",
     "postversion": "git push && git push --tags && npm publish",
     "release": "npm version -m 'Release v%s'",
     "test": "run-s check:* lint build test:*",
@@ -59,7 +60,6 @@
   "dependencies": {
     "@babel/runtime": "^7.1.2",
     "@tanem/svg-injector": "^2.0.2",
-    "lodash": "^4.17.11",
     "prop-types": "^15.6.2"
   },
   "devDependencies": {

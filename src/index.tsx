@@ -1,8 +1,8 @@
 import SVGInjector from '@tanem/svg-injector'
-import isEqual from 'lodash/isEqual'
 import * as PropTypes from 'prop-types'
 import * as React from 'react'
 import ReactDOMServer from 'react-dom/server'
+import shallowDiffers from './shallow-differs'
 
 export type OnInjected = (error: Error | null, svg?: SVGSVGElement) => void
 
@@ -118,7 +118,7 @@ export default class ReactSVG extends React.Component<
   }
 
   componentDidUpdate(prevProps: Props) {
-    if (!isEqual(prevProps, this.props)) {
+    if (shallowDiffers(prevProps, this.props)) {
       this.removeSVG()
       this.setState(() => this.initialState, () => this.renderSVG())
     }
