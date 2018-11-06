@@ -55,6 +55,8 @@ export default class ReactSVG extends React.Component<
 
   container?: HTMLDivElement | null
 
+  svgWrapper?: HTMLDivElement | null
+
   refCallback: React.Ref<HTMLDivElement> = container => {
     this.container = container
   }
@@ -77,7 +79,7 @@ export default class ReactSVG extends React.Component<
         </div>
       )
 
-      const wrapper = this.container.appendChild(
+      this.svgWrapper = this.container.appendChild(
         div.firstChild as HTMLDivElement
       )
 
@@ -96,7 +98,7 @@ export default class ReactSVG extends React.Component<
         )
       }
 
-      SVGInjector(wrapper.firstChild, {
+      SVGInjector(this.svgWrapper.firstChild, {
         each,
         evalScripts,
         renumerateIRIElements
@@ -105,11 +107,9 @@ export default class ReactSVG extends React.Component<
   }
 
   removeSVG() {
-    if (
-      this.container instanceof Node &&
-      this.container.firstChild instanceof Node
-    ) {
-      this.container.removeChild(this.container.firstChild)
+    if (this.container instanceof Node && this.svgWrapper instanceof Node) {
+      this.container.removeChild(this.svgWrapper)
+      this.svgWrapper = null
     }
   }
 
@@ -119,8 +119,13 @@ export default class ReactSVG extends React.Component<
 
   componentDidUpdate(prevProps: Props) {
     if (shallowDiffers(prevProps, this.props)) {
-      this.removeSVG()
-      this.setState(() => this.initialState, () => this.renderSVG())
+      this.setState(
+        () => this.initialState,
+        () => {
+          this.removeSVG()
+          this.renderSVG()
+        }
+      )
     }
   }
 
