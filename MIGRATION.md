@@ -2,6 +2,16 @@
 
 Details relating to major changes that aren't presently in `CHANGELOG.md`, due to limitations with how that file is being generated.
 
+## v7.0.0
+
+**Added**
+
+- `fallback` option.
+
+**Changed**
+
+- `onInjected` is now an error-first callback.
+
 ## v6.0.0
 
 **Changed**
