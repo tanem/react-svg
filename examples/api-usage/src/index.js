@@ -8,6 +8,7 @@ ReactDOM.render(
     src="svg.svg"
     // Optional props.
     evalScripts="always"
+    fallback={<span>Error!</span>}
     onInjected={(error, svg) => {
       if (error) {
         console.error(error)
