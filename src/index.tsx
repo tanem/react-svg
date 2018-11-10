@@ -151,7 +151,7 @@ export default class ReactSVG extends React.Component<
 
     return (
       <div {...rest} ref={this.refCallback}>
-        {this.state.hasError && <Fallback />}
+        {this.state.hasError && Fallback && <Fallback />}
       </div>
     )
   }

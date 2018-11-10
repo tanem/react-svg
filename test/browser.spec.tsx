@@ -205,7 +205,7 @@ describe('while running in a browser environment', () => {
   })
 
   it('should render the specified fallback if injection is unsuccessful', () => {
-    const fallback = <span>fallback</span>
+    const fallback = () => <span>fallback</span>
 
     wrapper = mount(
       <ReactSVG
