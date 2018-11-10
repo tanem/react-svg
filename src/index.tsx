@@ -8,7 +8,7 @@ export type OnInjected = (error: Error | null, svg?: SVGSVGElement) => void
 
 interface Props {
   evalScripts: 'always' | 'once' | 'never'
-  fallback: React.ReactNode
+  fallback: React.ReactType
   onInjected: OnInjected
   renumerateIRIElements: boolean
   src: string
@@ -39,7 +39,11 @@ export default class ReactSVG extends React.Component<
 
   static propTypes = {
     evalScripts: PropTypes.oneOf(['always', 'once', 'never']),
-    fallback: PropTypes.element,
+    fallback: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.object,
+      PropTypes.string
+    ]),
     onInjected: PropTypes.func,
     renumerateIRIElements: PropTypes.bool,
     src: PropTypes.string.isRequired,
@@ -136,7 +140,7 @@ export default class ReactSVG extends React.Component<
   render() {
     const {
       evalScripts,
-      fallback,
+      fallback: Fallback,
       onInjected,
       renumerateIRIElements,
       src,
@@ -147,7 +151,7 @@ export default class ReactSVG extends React.Component<
 
     return (
       <div {...rest} ref={this.refCallback}>
-        {this.state.hasError && fallback}
+        {this.state.hasError && <Fallback />}
       </div>
     )
   }
