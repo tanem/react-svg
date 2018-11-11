@@ -1,6 +1,13 @@
 # Changelog
 
-## [v7.0.0](https://github.com/tanem/react-svg/tree/v7.0.0) (2018-11-12)
+## [v7.0.1](https://github.com/tanem/react-svg/tree/v7.0.1) (2018-11-12)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v7.0.0...v7.0.1)
+
+**Merged pull requests:**
+
+- Update component type naming [\#177](https://github.com/tanem/react-svg/pull/177) ([tanem](https://github.com/tanem))
+
+## [v7.0.0](https://github.com/tanem/react-svg/tree/v7.0.0) (2018-11-11)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v6.0.24...v7.0.0)
 
 **Merged pull requests:**
