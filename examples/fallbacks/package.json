@@ -1,6 +1,6 @@
 {
-  "name": "fallback",
-  "description": "ReactSVG Fallback Example",
+  "name": "fallbacks",
+  "description": "ReactSVG Fallbacks Example",
   "keywords": [
     "react-svg"
   ],
