@@ -2,14 +2,25 @@ import SVGInjector from '@tanem/svg-injector'
 import * as PropTypes from 'prop-types'
 import * as React from 'react'
 import ReactDOMServer from 'react-dom/server'
+import shallowDiffers from './shallow-differs'
+
+export type OnInjected = (
+  error: Error | null,
+  svg: SVGSVGElement | undefined
+) => void
 
 interface Props {
-  evalScripts?: 'always' | 'once' | 'never'
-  onInjected?: (svg: SVGSVGElement) => void
-  renumerateIRIElements?: boolean
+  evalScripts: 'always' | 'once' | 'never'
+  fallback: React.ReactType
+  onInjected: OnInjected
+  renumerateIRIElements: boolean
   src: string
-  svgClassName?: string
-  svgStyle?: React.CSSProperties
+  svgClassName: string
+  svgStyle: React.CSSProperties
+}
+
+interface State {
+  hasError: boolean
 }
 
 export default class ReactSVG extends React.Component<
@@ -17,10 +28,12 @@ export default class ReactSVG extends React.Component<
     React.DetailedHTMLProps<
       React.HTMLAttributes<HTMLDivElement>,
       HTMLDivElement
-    >
+    >,
+  State
 > {
   static defaultProps = {
     evalScripts: 'never',
+    fallback: null,
     onInjected: () => undefined,
     renumerateIRIElements: true,
     svgClassName: null,
@@ -29,6 +42,11 @@ export default class ReactSVG extends React.Component<
 
   static propTypes = {
     evalScripts: PropTypes.oneOf(['always', 'once', 'never']),
+    fallback: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.object,
+      PropTypes.string
+    ]),
     onInjected: PropTypes.func,
     renumerateIRIElements: PropTypes.bool,
     src: PropTypes.string.isRequired,
@@ -36,7 +54,15 @@ export default class ReactSVG extends React.Component<
     svgStyle: PropTypes.object
   }
 
-  container?: HTMLDivElement | null
+  initialState = {
+    hasError: false
+  }
+
+  state = this.initialState
+
+  container: HTMLDivElement | null | undefined
+
+  svgWrapper: HTMLDivElement | null | undefined
 
   refCallback: React.Ref<HTMLDivElement> = container => {
     this.container = container
@@ -46,7 +72,7 @@ export default class ReactSVG extends React.Component<
     if (this.container instanceof Node) {
       const {
         evalScripts,
-        onInjected: each,
+        onInjected,
         renumerateIRIElements,
         src,
         svgClassName,
@@ -60,11 +86,26 @@ export default class ReactSVG extends React.Component<
         </div>
       )
 
-      const wrapper = this.container.appendChild(
+      this.svgWrapper = this.container.appendChild(
         div.firstChild as HTMLDivElement
       )
 
-      SVGInjector(wrapper.firstChild, {
+      const each: OnInjected = (error, svg) => {
+        if (error) {
+          this.removeSVG()
+        }
+
+        this.setState(
+          () => ({
+            hasError: !!error
+          }),
+          () => {
+            onInjected(error, svg)
+          }
+        )
+      }
+
+      SVGInjector(this.svgWrapper.firstChild, {
         each,
         evalScripts,
         renumerateIRIElements
@@ -73,11 +114,9 @@ export default class ReactSVG extends React.Component<
   }
 
   removeSVG() {
-    if (
-      this.container instanceof Node &&
-      this.container.firstChild instanceof Node
-    ) {
-      this.container.removeChild(this.container.firstChild)
+    if (this.container instanceof Node && this.svgWrapper instanceof Node) {
+      this.container.removeChild(this.svgWrapper)
+      this.svgWrapper = null
     }
   }
 
@@ -85,9 +124,16 @@ export default class ReactSVG extends React.Component<
     this.renderSVG()
   }
 
-  componentDidUpdate() {
-    this.removeSVG()
-    this.renderSVG()
+  componentDidUpdate(prevProps: Props) {
+    if (shallowDiffers(prevProps, this.props)) {
+      this.setState(
+        () => this.initialState,
+        () => {
+          this.removeSVG()
+          this.renderSVG()
+        }
+      )
+    }
   }
 
   componentWillUnmount() {
@@ -97,6 +143,7 @@ export default class ReactSVG extends React.Component<
   render() {
     const {
       evalScripts,
+      fallback: Fallback,
       onInjected,
       renumerateIRIElements,
       src,
@@ -105,6 +152,10 @@ export default class ReactSVG extends React.Component<
       ...rest
     } = this.props
 
-    return <div {...rest} ref={this.refCallback} />
+    return (
+      <div {...rest} ref={this.refCallback}>
+        {this.state.hasError && Fallback && <Fallback />}
+      </div>
+    )
   }
 }

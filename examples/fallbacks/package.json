@@ -1,6 +1,6 @@
 {
-  "name": "api-usage",
-  "description": "ReactSVG API Usage Example",
+  "name": "fallbacks",
+  "description": "ReactSVG Fallbacks Example",
   "keywords": [
     "react-svg"
   ],

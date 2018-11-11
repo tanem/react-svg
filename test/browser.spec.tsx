@@ -5,7 +5,7 @@ import sinon, {
   SinonFakeXMLHttpRequest,
   SinonFakeXMLHttpRequestStatic
 } from 'sinon'
-import ReactSVG from '../src'
+import ReactSVG, { OnInjected } from '../src'
 import iriSource from './fixtures/iri-source'
 import source from './fixtures/source'
 
@@ -93,9 +93,6 @@ describe('while running in a browser environment', () => {
   })
 
   it('should ensure a parent node is always available', () => {
-    // One way to test this scenario is to unmount the component, which removes
-    // the wrapper node, then let SVGInjector do it's usual DOM manipulation by
-    // running the timers.
     expect(() => {
       wrapper = mount(
         <ReactSVG
@@ -105,7 +102,7 @@ describe('while running in a browser environment', () => {
         />
       )
 
-      wrapper.unmount()
+      wrapper.instance().removeSVG()
 
       requests[0].respond(200, {}, source)
       jest.runAllTimers()
@@ -168,6 +165,56 @@ describe('while running in a browser environment', () => {
     )
 
     requests[0].respond(200, {}, iriSource)
+    jest.runAllTimers()
+
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  it('should call onInjected correctly when injection is unsuccessful', () => {
+    expect.assertions(2)
+
+    const src = `http://localhost/${faker.random.uuid()}.svg`
+    const handleInjected: OnInjected = (error, svg) => {
+      expect(error).toEqual(new Error(`Unable to load SVG file: ${src}`))
+      expect(svg).toBeUndefined()
+    }
+
+    wrapper = mount(<ReactSVG onInjected={handleInjected} src={src} />)
+
+    requests[0].respond(404, {}, '')
+    jest.runAllTimers()
+  })
+
+  it('should call onInjected correctly when injection is successful', () => {
+    expect.assertions(2)
+
+    const handleInjected: OnInjected = (error, svg) => {
+      expect(error).toBeNull()
+      expect(svg).toMatchSnapshot()
+    }
+
+    wrapper = mount(
+      <ReactSVG
+        onInjected={handleInjected}
+        src={`http://localhost/${faker.random.uuid()}.svg`}
+      />
+    )
+
+    requests[0].respond(200, {}, source)
+    jest.runAllTimers()
+  })
+
+  it('should render the specified fallback if injection is unsuccessful', () => {
+    const fallback = () => <span>fallback</span>
+
+    wrapper = mount(
+      <ReactSVG
+        fallback={fallback}
+        src={`http://localhost/${faker.random.uuid()}.svg`}
+      />
+    )
+
+    requests[0].respond(404, {}, '')
     jest.runAllTimers()
 
     expect(wrapper.html()).toMatchSnapshot()

@@ -8,8 +8,13 @@ ReactDOM.render(
     src="svg.svg"
     // Optional props.
     evalScripts="always"
-    onInjected={svg => {
-      console.log('onInjected', svg)
+    fallback={() => <span>Error!</span>}
+    onInjected={(error, svg) => {
+      if (error) {
+        console.error(error)
+        return
+      }
+      console.log(svg)
     }}
     renumerateIRIElements={false}
     svgClassName="svg-class-name"
