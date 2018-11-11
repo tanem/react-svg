@@ -4,7 +4,10 @@ import * as React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import shallowDiffers from './shallow-differs'
 
-export type OnInjected = (error: Error | null, svg?: SVGSVGElement) => void
+export type OnInjected = (
+  error: Error | null,
+  svg: SVGSVGElement | undefined
+) => void
 
 interface Props {
   evalScripts: 'always' | 'once' | 'never'
@@ -57,9 +60,9 @@ export default class ReactSVG extends React.Component<
 
   state = this.initialState
 
-  container?: HTMLDivElement | null
+  container: HTMLDivElement | null | undefined
 
-  svgWrapper?: HTMLDivElement | null
+  svgWrapper: HTMLDivElement | null | undefined
 
   refCallback: React.Ref<HTMLDivElement> = container => {
     this.container = container
