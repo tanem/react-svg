@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import ReactSVG from 'react-svg'
 
-class ComponentFallback extends React.Component {
+class ClassFallback extends React.Component {
   render() {
     return <img alt="nyan" src="nyan.jpg" />
   }
@@ -12,7 +12,7 @@ const StringFallback = 'div'
 
 ReactDOM.render(
   <React.Fragment>
-    <ReactSVG fallback={ComponentFallback} src="notfound.svg" />
+    <ReactSVG fallback={ClassFallback} src="notfound.svg" />
     <ReactSVG fallback={FunctionFallback} src="notfound.svg" />
     <ReactSVG fallback={StringFallback} src="notfound.svg" />
   </React.Fragment>,
