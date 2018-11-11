@@ -53,7 +53,7 @@ Other non-documented properties are applied to the wrapper element.
 <ReactSVG
   src="svg.svg"
   evalScripts="always"
-  fallback={'p'}
+  fallback={() => <span>Error!</span>}
   onInjected={(error, svg) => {
     if (error) {
       console.error(error)
