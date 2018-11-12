@@ -12,6 +12,7 @@ export type OnInjected = (
 interface Props {
   evalScripts: 'always' | 'once' | 'never'
   fallback: React.ReactType
+  loading: React.ReactType
   onInjected: OnInjected
   renumerateIRIElements: boolean
   src: string
@@ -21,6 +22,7 @@ interface Props {
 
 interface State {
   hasError: boolean
+  isLoading: boolean
 }
 
 export default class ReactSVG extends React.Component<
@@ -34,6 +36,7 @@ export default class ReactSVG extends React.Component<
   static defaultProps = {
     evalScripts: 'never',
     fallback: null,
+    loading: null,
     onInjected: () => undefined,
     renumerateIRIElements: true,
     svgClassName: null,
@@ -47,6 +50,11 @@ export default class ReactSVG extends React.Component<
       PropTypes.object,
       PropTypes.string
     ]),
+    loading: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.object,
+      PropTypes.string
+    ]),
     onInjected: PropTypes.func,
     renumerateIRIElements: PropTypes.bool,
     src: PropTypes.string.isRequired,
@@ -55,7 +63,8 @@ export default class ReactSVG extends React.Component<
   }
 
   initialState = {
-    hasError: false
+    hasError: false,
+    isLoading: true
   }
 
   state = this.initialState
@@ -97,7 +106,8 @@ export default class ReactSVG extends React.Component<
 
         this.setState(
           () => ({
-            hasError: !!error
+            hasError: !!error,
+            isLoading: false
           }),
           () => {
             onInjected(error, svg)
@@ -144,6 +154,7 @@ export default class ReactSVG extends React.Component<
     const {
       evalScripts,
       fallback: Fallback,
+      loading: Loading,
       onInjected,
       renumerateIRIElements,
       src,
@@ -154,6 +165,7 @@ export default class ReactSVG extends React.Component<
 
     return (
       <div {...rest} ref={this.refCallback}>
+        {this.state.isLoading && Loading && <Loading />}
         {this.state.hasError && Fallback && <Fallback />}
       </div>
     )
