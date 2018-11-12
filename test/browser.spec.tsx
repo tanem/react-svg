@@ -230,8 +230,6 @@ describe('while running in a browser environment', () => {
       />
     )
 
-    // Don't respond so the loading content remains.
-
     expect(wrapper.html()).toMatchSnapshot()
   })
 })
