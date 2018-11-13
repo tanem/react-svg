@@ -43,8 +43,13 @@
   },
   "repository": "github:tanem/react-svg",
   "keywords": [
+    "dom",
+    "html",
+    "images",
+    "img",
     "javascript",
     "react",
+    "scalable vector graphics",
     "svg",
     "svginjector",
     "typescript"
