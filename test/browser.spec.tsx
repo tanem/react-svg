@@ -219,4 +219,17 @@ describe('while running in a browser environment', () => {
 
     expect(wrapper.html()).toMatchSnapshot()
   })
+
+  it('should render the specified loader when injecting', () => {
+    const loading = () => <span>loading</span>
+
+    wrapper = mount(
+      <ReactSVG
+        loading={loading}
+        src={`http://localhost/${faker.random.uuid()}.svg`}
+      />
+    )
+
+    expect(wrapper.html()).toMatchSnapshot()
+  })
 })
