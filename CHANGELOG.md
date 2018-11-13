@@ -1,6 +1,15 @@
 # Changelog
 
-## [v7.0.1](https://github.com/tanem/react-svg/tree/v7.0.1) (2018-11-12)
+## [v7.1.0](https://github.com/tanem/react-svg/tree/v7.1.0) (2018-11-14)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v7.0.1...v7.1.0)
+
+**Merged pull requests:**
+
+- Update keywords [\#180](https://github.com/tanem/react-svg/pull/180) ([tanem](https://github.com/tanem))
+- Update deps [\#179](https://github.com/tanem/react-svg/pull/179) ([tanem](https://github.com/tanem))
+- Add loading prop [\#178](https://github.com/tanem/react-svg/pull/178) ([tanem](https://github.com/tanem))
+
+## [v7.0.1](https://github.com/tanem/react-svg/tree/v7.0.1) (2018-11-11)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v7.0.0...v7.0.1)
 
 **Merged pull requests:**
