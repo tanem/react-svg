@@ -110,7 +110,7 @@ export default class ReactSVG extends React.Component<
             isLoading: false
           }),
           () => {
-            onInjected(error, svg)
+            onInjected!(error, svg)
           }
         )
       }
