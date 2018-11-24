@@ -10,14 +10,14 @@ export type OnInjected = (
 ) => void
 
 interface Props {
-  evalScripts: 'always' | 'once' | 'never'
-  fallback: React.ReactType
-  loading: React.ReactType
-  onInjected: OnInjected
-  renumerateIRIElements: boolean
+  evalScripts?: 'always' | 'once' | 'never'
+  fallback?: React.ReactType
+  loading?: React.ReactType
+  onInjected?: OnInjected
+  renumerateIRIElements?: boolean
   src: string
-  svgClassName: string
-  svgStyle: React.CSSProperties
+  svgClassName?: string
+  svgStyle?: React.CSSProperties
 }
 
 interface State {
@@ -110,7 +110,7 @@ export default class ReactSVG extends React.Component<
             isLoading: false
           }),
           () => {
-            onInjected(error, svg)
+            onInjected!(error, svg)
           }
         )
       }
