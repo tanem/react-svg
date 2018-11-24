@@ -1,6 +1,14 @@
 # Changelog
 
-## [v7.1.0](https://github.com/tanem/react-svg/tree/v7.1.0) (2018-11-14)
+## [v7.1.1](https://github.com/tanem/react-svg/tree/v7.1.1) (2018-11-25)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v7.1.0...v7.1.1)
+
+**Merged pull requests:**
+
+- Update deps [\#185](https://github.com/tanem/react-svg/pull/185) ([tanem](https://github.com/tanem))
+- More accurate typescript typings [\#184](https://github.com/tanem/react-svg/pull/184) ([illBeRoy](https://github.com/illBeRoy))
+
+## [v7.1.0](https://github.com/tanem/react-svg/tree/v7.1.0) (2018-11-13)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v7.0.1...v7.1.0)
 
 **Merged pull requests:**
