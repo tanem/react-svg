@@ -232,4 +232,18 @@ describe('while running in a browser environment', () => {
 
     expect(wrapper.html()).toMatchSnapshot()
   })
+
+  it('allows rendering of span wrappers', () => {
+    wrapper = mount(
+      <ReactSVG
+        src={`http://localhost/${faker.random.uuid()}.svg`}
+        wrapper="span"
+      />
+    )
+
+    requests[0].respond(200, {}, source)
+    jest.runAllTimers()
+
+    expect(wrapper.html()).toMatchSnapshot()
+  })
 })
