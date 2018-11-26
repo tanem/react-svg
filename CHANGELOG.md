@@ -1,6 +1,13 @@
 # Changelog
 
-## [v7.1.1](https://github.com/tanem/react-svg/tree/v7.1.1) (2018-11-25)
+## [v7.2.0](https://github.com/tanem/react-svg/tree/v7.2.0) (2018-11-27)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v7.1.1...v7.2.0)
+
+**Merged pull requests:**
+
+- Add ability to specify span wrappers [\#186](https://github.com/tanem/react-svg/pull/186) ([tanem](https://github.com/tanem))
+
+## [v7.1.1](https://github.com/tanem/react-svg/tree/v7.1.1) (2018-11-24)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v7.1.0...v7.1.1)
 
 **Merged pull requests:**
