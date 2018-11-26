@@ -47,8 +47,9 @@ render(<ReactSVG src="svg.svg" />, document.getElementById('root'))
 - `renumerateIRIElements` - _Optional_ Boolean indicating if SVG IRI addressable elements should be renumerated. Defaults to `true`.
 - `svgClassName` - _Optional_ Class name to be added to the injected SVG DOM element. Defaults to `null`.
 - `svgStyle` - _Optional_ Inline styles to be added to the injected SVG DOM element. Defaults to `{}`.
+- `wrapper` - _Optional_ Wrapper element types. One of `'div'` or `'span'`. Defaults to `'div'`.
 
-Other non-documented properties are applied to the wrapper element.
+Other non-documented properties are applied to the outermost wrapper element.
 
 **Example**
 
@@ -68,6 +69,7 @@ Other non-documented properties are applied to the wrapper element.
   renumerateIRIElements={false}
   svgClassName="svg-class-name"
   svgStyle={{ width: 200 }}
+  wrapper="span"
   className="wrapper-class-name"
   onClick={() => {
     console.log('wrapper onClick')
