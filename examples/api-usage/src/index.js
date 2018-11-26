@@ -20,6 +20,7 @@ ReactDOM.render(
     renumerateIRIElements={false}
     svgClassName="svg-class-name"
     svgStyle={{ width: 200 }}
+    wrapper="span"
     // Non-documented props.
     className="wrapper-class-name"
     onClick={() => {

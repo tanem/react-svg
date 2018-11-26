@@ -18,6 +18,7 @@ interface Props {
   src: string
   svgClassName?: string
   svgStyle?: React.CSSProperties
+  wrapper?: 'div' | 'span'
 }
 
 interface State {
@@ -28,8 +29,8 @@ interface State {
 export default class ReactSVG extends React.Component<
   Props &
     React.DetailedHTMLProps<
-      React.HTMLAttributes<HTMLDivElement>,
-      HTMLDivElement
+      React.HTMLAttributes<HTMLSpanElement | HTMLDivElement>,
+      HTMLSpanElement | HTMLDivElement
     >,
   State
 > {
@@ -40,7 +41,8 @@ export default class ReactSVG extends React.Component<
     onInjected: () => undefined,
     renumerateIRIElements: true,
     svgClassName: null,
-    svgStyle: {}
+    svgStyle: {},
+    wrapper: 'div'
   }
 
   static propTypes = {
@@ -59,7 +61,8 @@ export default class ReactSVG extends React.Component<
     renumerateIRIElements: PropTypes.bool,
     src: PropTypes.string.isRequired,
     svgClassName: PropTypes.string,
-    svgStyle: PropTypes.object
+    svgStyle: PropTypes.object,
+    wrapper: PropTypes.oneOf(['div', 'span'])
   }
 
   initialState = {
@@ -69,11 +72,11 @@ export default class ReactSVG extends React.Component<
 
   state = this.initialState
 
-  container: HTMLDivElement | null | undefined
+  container?: HTMLSpanElement | HTMLDivElement | null
 
-  svgWrapper: HTMLDivElement | null | undefined
+  svgWrapper?: HTMLSpanElement | HTMLDivElement | null
 
-  refCallback: React.Ref<HTMLDivElement> = container => {
+  refCallback: React.Ref<HTMLSpanElement | HTMLDivElement> = container => {
     this.container = container
   }
 
@@ -81,23 +84,24 @@ export default class ReactSVG extends React.Component<
     if (this.container instanceof Node) {
       const {
         evalScripts,
-        onInjected,
         renumerateIRIElements,
         src,
         svgClassName,
         svgStyle
       } = this.props
+      const onInjected = this.props.onInjected!
+      const Wrapper = this.props.wrapper!
 
-      const div = document.createElement('div')
-      div.innerHTML = ReactDOMServer.renderToStaticMarkup(
-        <div>
-          <div className={svgClassName} data-src={src} style={svgStyle} />
-        </div>
+      const wrapper = document.createElement(Wrapper)
+      wrapper.innerHTML = ReactDOMServer.renderToStaticMarkup(
+        <Wrapper>
+          <Wrapper className={svgClassName} data-src={src} style={svgStyle} />
+        </Wrapper>
       )
 
-      this.svgWrapper = this.container.appendChild(
-        div.firstChild as HTMLDivElement
-      )
+      this.svgWrapper = this.container.appendChild(wrapper.firstChild as
+        | HTMLSpanElement
+        | HTMLDivElement)
 
       const each: OnInjected = (error, svg) => {
         if (error) {
@@ -110,7 +114,7 @@ export default class ReactSVG extends React.Component<
             isLoading: false
           }),
           () => {
-            onInjected!(error, svg)
+            onInjected(error, svg)
           }
         )
       }
@@ -160,14 +164,16 @@ export default class ReactSVG extends React.Component<
       src,
       svgClassName,
       svgStyle,
+      wrapper,
       ...rest
     } = this.props
+    const Wrapper = wrapper!
 
     return (
-      <div {...rest} ref={this.refCallback}>
+      <Wrapper {...rest} ref={this.refCallback}>
         {this.state.isLoading && Loading && <Loading />}
         {this.state.hasError && Fallback && <Fallback />}
-      </div>
+      </Wrapper>
     )
   }
 }
