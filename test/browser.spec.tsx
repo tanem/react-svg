@@ -246,4 +246,27 @@ describe('while running in a browser environment', () => {
 
     expect(wrapper.html()).toMatchSnapshot()
   })
+
+  // TODO: When we have the ability to cleanly unsubscribe from SVGInjector
+  // callbacks, we can update this dicey test to instead ensure the callbacks
+  // aren't called.
+  it('does not call setState when the component is unmounted', () => {
+    /* tslint:disable:no-console */
+    const orglFn = console.error
+    console.error = jest.fn()
+
+    wrapper = mount(
+      <ReactSVG src={`http://localhost/${faker.random.uuid()}.svg`} />
+    )
+
+    wrapper.unmount()
+
+    requests[0].respond(200, {}, source)
+    jest.runAllTimers()
+
+    expect(console.error).not.toHaveBeenCalled()
+
+    console.error = orglFn
+    /* tslint:enable:no-console */
+  })
 })
