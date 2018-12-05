@@ -72,6 +72,9 @@ export default class ReactSVG extends React.Component<
 
   state = this.initialState
 
+  // tslint:disable-next-line:variable-name
+  _isMounted = false
+
   container?: HTMLSpanElement | HTMLDivElement | null
 
   svgWrapper?: HTMLSpanElement | HTMLDivElement | null
@@ -108,15 +111,19 @@ export default class ReactSVG extends React.Component<
           this.removeSVG()
         }
 
-        this.setState(
-          () => ({
-            hasError: !!error,
-            isLoading: false
-          }),
-          () => {
-            onInjected(error, svg)
-          }
-        )
+        // TODO: It'd be better to cleanly unsubscribe from SVGInjector
+        // callbacks instead of tracking a property like this.
+        if (this._isMounted) {
+          this.setState(
+            () => ({
+              hasError: !!error,
+              isLoading: false
+            }),
+            () => {
+              onInjected(error, svg)
+            }
+          )
+        }
       }
 
       SVGInjector(this.svgWrapper.firstChild, {
@@ -135,6 +142,7 @@ export default class ReactSVG extends React.Component<
   }
 
   componentDidMount() {
+    this._isMounted = true
     this.renderSVG()
   }
 
@@ -151,6 +159,7 @@ export default class ReactSVG extends React.Component<
   }
 
   componentWillUnmount() {
+    this._isMounted = false
     this.removeSVG()
   }
 
