@@ -1,6 +1,13 @@
 # Changelog
 
-## [v7.2.0](https://github.com/tanem/react-svg/tree/v7.2.0) (2018-11-27)
+## [v7.2.1](https://github.com/tanem/react-svg/tree/v7.2.1) (2018-12-06)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v7.2.0...v7.2.1)
+
+**Merged pull requests:**
+
+- Ensure setState isn't called when the component is unmounted [\#188](https://github.com/tanem/react-svg/pull/188) ([tanem](https://github.com/tanem))
+
+## [v7.2.0](https://github.com/tanem/react-svg/tree/v7.2.0) (2018-11-26)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v7.1.1...v7.2.0)
 
 **Merged pull requests:**
