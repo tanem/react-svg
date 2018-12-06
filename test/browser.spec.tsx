@@ -251,9 +251,9 @@ describe('while running in a browser environment', () => {
   // callbacks, we can update this dicey test to instead ensure the callbacks
   // aren't called.
   it('does not call setState when the component is unmounted', () => {
-    /* tslint:disable:no-console */
-    const orglFn = console.error
-    console.error = jest.fn()
+    const warnSpy = jest
+      .spyOn(console, 'warn')
+      .mockImplementation(() => undefined)
 
     wrapper = mount(
       <ReactSVG src={`http://localhost/${faker.random.uuid()}.svg`} />
@@ -264,9 +264,8 @@ describe('while running in a browser environment', () => {
     requests[0].respond(200, {}, source)
     jest.runAllTimers()
 
-    expect(console.error).not.toHaveBeenCalled()
+    expect(warnSpy).not.toHaveBeenCalled()
 
-    console.error = orglFn
-    /* tslint:enable:no-console */
+    warnSpy.mockRestore()
   })
 })
