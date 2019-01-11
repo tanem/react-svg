@@ -1,7 +1,7 @@
 import SVGInjector from '@tanem/svg-injector'
 import * as PropTypes from 'prop-types'
 import * as React from 'react'
-import { server } from 'react-dom/server'
+import { server } from 'react-dom'
 import shallowDiffers from './shallow-differs'
 
 export type OnInjected = (
