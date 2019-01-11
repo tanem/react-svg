@@ -1,7 +1,7 @@
 import SVGInjector from '@tanem/svg-injector'
 import * as PropTypes from 'prop-types'
 import * as React from 'react'
-import ReactDOMServer from 'react-dom/server'
+import { server } from 'react-dom/server'
 import shallowDiffers from './shallow-differs'
 
 export type OnInjected = (
@@ -96,7 +96,7 @@ export default class ReactSVG extends React.Component<
       const Wrapper = this.props.wrapper!
 
       const wrapper = document.createElement(Wrapper)
-      wrapper.innerHTML = ReactDOMServer.renderToStaticMarkup(
+      wrapper.innerHTML = server.renderToStaticMarkup(
         <Wrapper>
           <Wrapper className={svgClassName} data-src={src} style={svgStyle} />
         </Wrapper>
