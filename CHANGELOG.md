@@ -1,6 +1,13 @@
 # Changelog
 
-## [v7.2.2](https://github.com/tanem/react-svg/tree/v7.2.2) (2018-12-07)
+## [v7.2.3](https://github.com/tanem/react-svg/tree/v7.2.3) (2019-01-13)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v7.2.2...v7.2.3)
+
+**Merged pull requests:**
+
+- Update svg-injector to latest [\#195](https://github.com/tanem/react-svg/pull/195) ([tanem](https://github.com/tanem))
+
+## [v7.2.2](https://github.com/tanem/react-svg/tree/v7.2.2) (2018-12-06)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v7.2.1...v7.2.2)
 
 **Merged pull requests:**
