@@ -1,6 +1,13 @@
 # Changelog
 
-## [v7.2.4](https://github.com/tanem/react-svg/tree/v7.2.4) (2019-01-21)
+## [v7.2.5](https://github.com/tanem/react-svg/tree/v7.2.5) (2019-01-27)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v7.2.4...v7.2.5)
+
+**Merged pull requests:**
+
+- Update deps [\#199](https://github.com/tanem/react-svg/pull/199) ([tanem](https://github.com/tanem))
+
+## [v7.2.4](https://github.com/tanem/react-svg/tree/v7.2.4) (2019-01-20)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v7.2.3...v7.2.4)
 
 **Merged pull requests:**
