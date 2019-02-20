@@ -9,6 +9,8 @@ export type OnInjected = (
   svg: SVGSVGElement | undefined
 ) => void
 
+type WrapperType = HTMLSpanElement | HTMLDivElement
+
 interface Props {
   evalScripts?: 'always' | 'once' | 'never'
   fallback?: React.ReactType
@@ -28,10 +30,7 @@ interface State {
 
 export default class ReactSVG extends React.Component<
   Props &
-    React.DetailedHTMLProps<
-      React.HTMLAttributes<HTMLSpanElement | HTMLDivElement>,
-      HTMLSpanElement | HTMLDivElement
-    >,
+    React.DetailedHTMLProps<React.HTMLAttributes<WrapperType>, WrapperType>,
   State
 > {
   static defaultProps = {
@@ -75,11 +74,11 @@ export default class ReactSVG extends React.Component<
   // tslint:disable-next-line:variable-name
   _isMounted = false
 
-  container?: HTMLSpanElement | HTMLDivElement | null
+  container?: WrapperType | null
 
-  svgWrapper?: HTMLSpanElement | HTMLDivElement | null
+  svgWrapper?: WrapperType | null
 
-  refCallback: React.Ref<HTMLSpanElement | HTMLDivElement> = container => {
+  refCallback = (container: WrapperType | null) => {
     this.container = container
   }
 
@@ -102,9 +101,9 @@ export default class ReactSVG extends React.Component<
         </Wrapper>
       )
 
-      this.svgWrapper = this.container.appendChild(wrapper.firstChild as
-        | HTMLSpanElement
-        | HTMLDivElement)
+      this.svgWrapper = this.container.appendChild(
+        wrapper.firstChild as WrapperType
+      )
 
       const each: OnInjected = (error, svg) => {
         if (error) {
