@@ -1,6 +1,30 @@
 # Changelog
 
-## [v7.2.7](https://github.com/tanem/react-svg/tree/v7.2.7) (2019-02-21)
+## [v7.2.8](https://github.com/tanem/react-svg/tree/v7.2.8) (2019-03-09)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v7.2.7...v7.2.8)
+
+**Merged pull requests:**
+
+- Update react monorepo to v16.8.4 [\#222](https://github.com/tanem/react-svg/pull/222) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency typescript to v3.3.3333 [\#221](https://github.com/tanem/react-svg/pull/221) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency tslint to v5.13.1 [\#220](https://github.com/tanem/react-svg/pull/220) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ts-node to v8.0.3 [\#219](https://github.com/tanem/react-svg/pull/219) ([renovate[bot]](https://github.com/apps/renovate))
+- Reconfigure Renovate [\#218](https://github.com/tanem/react-svg/pull/218) ([tanem](https://github.com/tanem))
+- Update dependency rollup-plugin-node-resolve to v4.0.1 [\#217](https://github.com/tanem/react-svg/pull/217) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup-plugin-commonjs to v9.2.1 [\#216](https://github.com/tanem/react-svg/pull/216) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup to v1.6.0 [\#215](https://github.com/tanem/react-svg/pull/215) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency jest to v24.3.1 [\#214](https://github.com/tanem/react-svg/pull/214) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency enzyme-adapter-react-16 to v1.10.0 [\#213](https://github.com/tanem/react-svg/pull/213) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/sinon to v7.0.9 [\#212](https://github.com/tanem/react-svg/pull/212) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/react to v16.8.7 [\#211](https://github.com/tanem/react-svg/pull/211) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/prop-types to v15.7.0 [\#210](https://github.com/tanem/react-svg/pull/210) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/jest to v24.0.9 [\#209](https://github.com/tanem/react-svg/pull/209) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/enzyme to v3.9.0 [\#208](https://github.com/tanem/react-svg/pull/208) ([renovate[bot]](https://github.com/apps/renovate))
+- Update babel monorepo to v7.3.4 [\#207](https://github.com/tanem/react-svg/pull/207) ([renovate[bot]](https://github.com/apps/renovate))
+- Pin dependencies [\#205](https://github.com/tanem/react-svg/pull/205) ([renovate[bot]](https://github.com/apps/renovate))
+- Configure Renovate [\#204](https://github.com/tanem/react-svg/pull/204) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v7.2.7](https://github.com/tanem/react-svg/tree/v7.2.7) (2019-02-20)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v7.2.6...v7.2.7)
 
 **Merged pull requests:**
