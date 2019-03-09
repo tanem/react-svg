@@ -1,6 +1,13 @@
 # Changelog
 
-## [v7.2.8](https://github.com/tanem/react-svg/tree/v7.2.8) (2019-03-09)
+## [v7.2.9](https://github.com/tanem/react-svg/tree/v7.2.9) (2019-03-09)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v7.2.8...v7.2.9)
+
+**Merged pull requests:**
+
+- Update dependency @types/jest to v24.0.11 [\#223](https://github.com/tanem/react-svg/pull/223) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v7.2.8](https://github.com/tanem/react-svg/tree/v7.2.8) (2019-03-08)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v7.2.7...v7.2.8)
 
 **Merged pull requests:**
