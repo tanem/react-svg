@@ -9,7 +9,7 @@
   "dependencies": {
     "react": "16.8.4",
     "react-dom": "16.8.4",
-    "react-scripts": "2.1.5",
+    "react-scripts": "2.1.8",
     "react-svg": "latest"
   },
   "scripts": {
