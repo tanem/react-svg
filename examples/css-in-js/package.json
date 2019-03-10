@@ -7,9 +7,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "glamor": "^2.20.40",
-    "react": "^16.8.2",
-    "react-dom": "^16.8.2",
+    "glamor": "2.20.40",
+    "react": "16.8.4",
+    "react-dom": "16.8.4",
     "react-scripts": "2.1.5",
     "react-svg": "latest"
   },
