@@ -1,5 +1,6 @@
 {
   "extends": ["config:base", ":disableRateLimiting"],
+  "ignorePaths": ["**/node_modules/**"],
   "packageRules": [
     {
       "packageNames": ["@tanem/svg-injector"],
