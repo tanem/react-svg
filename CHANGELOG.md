@@ -1,5 +1,12 @@
 # Changelog
 
+## [v7.2.11](https://github.com/tanem/react-svg/tree/v7.2.11) (2019-03-12)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v7.2.10...v7.2.11)
+
+**Merged pull requests:**
+
+- Update dependency jest to v24.4.0 [\#229](https://github.com/tanem/react-svg/pull/229) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v7.2.10](https://github.com/tanem/react-svg/tree/v7.2.10) (2019-03-11)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v7.2.9...v7.2.10)
 
