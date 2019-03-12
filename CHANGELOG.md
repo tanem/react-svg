@@ -1,6 +1,13 @@
 # Changelog
 
-## [v7.2.11](https://github.com/tanem/react-svg/tree/v7.2.11) (2019-03-12)
+## [v7.2.12](https://github.com/tanem/react-svg/tree/v7.2.12) (2019-03-13)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v7.2.11...v7.2.12)
+
+**Merged pull requests:**
+
+- Update dependency @types/node to v11.11.1 - autoclosed [\#230](https://github.com/tanem/react-svg/pull/230) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v7.2.11](https://github.com/tanem/react-svg/tree/v7.2.11) (2019-03-11)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v7.2.10...v7.2.11)
 
 **Merged pull requests:**
