@@ -74,7 +74,7 @@
     "@babel/preset-env": "7.3.4",
     "@babel/preset-react": "7.0.0",
     "@babel/preset-typescript": "7.3.3",
-    "@starptech/prettyhtml": "^0.8.16",
+    "@starptech/prettyhtml": "0.8.16",
     "@types/enzyme": "3.9.0",
     "@types/faker": "4.1.5",
     "@types/glob": "7.1.1",
