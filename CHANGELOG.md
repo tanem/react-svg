@@ -1,6 +1,20 @@
 # Changelog
 
-## [v7.2.12](https://github.com/tanem/react-svg/tree/v7.2.12) (2019-03-13)
+## [v7.2.13](https://github.com/tanem/react-svg/tree/v7.2.13) (2019-03-15)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v7.2.12...v7.2.13)
+
+**Merged pull requests:**
+
+- Make snapshots more readable [\#239](https://github.com/tanem/react-svg/pull/239) ([tanem](https://github.com/tanem))
+- Update dependency @types/sinon to v7.0.10 [\#238](https://github.com/tanem/react-svg/pull/238) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency enzyme-adapter-react-16 to v1.11.2 [\#236](https://github.com/tanem/react-svg/pull/236) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency tslint to v5.14.0 [\#235](https://github.com/tanem/react-svg/pull/235) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/react to v16.8.8 [\#234](https://github.com/tanem/react-svg/pull/234) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency parcel-bundler to v1.12.2 [\#233](https://github.com/tanem/react-svg/pull/233) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v11.11.3 [\#232](https://github.com/tanem/react-svg/pull/232) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency jest to v24.5.0 [\#231](https://github.com/tanem/react-svg/pull/231) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v7.2.12](https://github.com/tanem/react-svg/tree/v7.2.12) (2019-03-12)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v7.2.11...v7.2.12)
 
 **Merged pull requests:**
