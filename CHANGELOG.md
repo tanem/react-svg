@@ -1,6 +1,13 @@
 # Changelog
 
-## [v7.2.13](https://github.com/tanem/react-svg/tree/v7.2.13) (2019-03-15)
+## [v7.2.14](https://github.com/tanem/react-svg/tree/v7.2.14) (2019-03-15)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v7.2.13...v7.2.14)
+
+**Merged pull requests:**
+
+- Pin dependency @starptech/prettyhtml to 0.8.16 [\#240](https://github.com/tanem/react-svg/pull/240) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v7.2.13](https://github.com/tanem/react-svg/tree/v7.2.13) (2019-03-14)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v7.2.12...v7.2.13)
 
 **Merged pull requests:**
