@@ -3,10 +3,6 @@
   "ignorePaths": ["**/node_modules/**"],
   "packageRules": [
     {
-      "packageNames": ["@tanem/svg-injector"],
-      "allowedVersions": "<3"
-    },
-    {
       "paths": ["examples/typescript-2.x/package.json"],
       "packageNames": ["typescript"],
       "allowedVersions": "<3"

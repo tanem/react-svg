@@ -2,6 +2,12 @@
 
 Details relating to major changes that aren't presently in `CHANGELOG.md`, due to limitations with how that file is being generated.
 
+## v8.0.0
+
+**Changed**
+
+- [`@tanem/svg-injector`](https://github.com/tanem/svg-injector) updated to it's latest version. This dependency had undergone significant refactoring, so even though there were no breaking API changes made to `react-svg`, it was decided to bump the major version in order to reduce the chance of breaking changes slipping into consuming code.
+
 ## v7.0.0
 
 **Added**

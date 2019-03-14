@@ -5,7 +5,7 @@ import sinon, {
   SinonFakeXMLHttpRequest,
   SinonFakeXMLHttpRequestStatic
 } from 'sinon'
-import ReactSVG, { OnInjected } from '../src'
+import ReactSVG from '../src'
 import { format } from './helpers'
 import iriSource from './iri-source.fixture'
 import source from './source.fixture'
@@ -175,12 +175,16 @@ describe('while running in a browser environment', () => {
     expect.assertions(2)
 
     const src = `http://localhost/${faker.random.uuid()}.svg`
-    const handleInjected: OnInjected = (error, svg) => {
-      expect(error).toEqual(new Error(`Unable to load SVG file: ${src}`))
-      expect(svg).toBeUndefined()
-    }
 
-    wrapper = mount(<ReactSVG onInjected={handleInjected} src={src} />)
+    wrapper = mount(
+      <ReactSVG
+        onInjected={(error, svg) => {
+          expect(error).toEqual(new Error(`Unable to load SVG file: ${src}`))
+          expect(svg).toBeUndefined()
+        }}
+        src={src}
+      />
+    )
 
     requests[0].respond(404, {}, '')
     jest.runAllTimers()
@@ -189,14 +193,12 @@ describe('while running in a browser environment', () => {
   it('should call onInjected correctly when injection is successful', () => {
     expect.assertions(2)
 
-    const handleInjected: OnInjected = (error, svg) => {
-      expect(error).toBeNull()
-      expect(format((svg as SVGSVGElement).outerHTML)).toMatchSnapshot()
-    }
-
     wrapper = mount(
       <ReactSVG
-        onInjected={handleInjected}
+        onInjected={(error, svg) => {
+          expect(error).toBeNull()
+          expect(format((svg as SVGSVGElement).outerHTML)).toMatchSnapshot()
+        }}
         src={`http://localhost/${faker.random.uuid()}.svg`}
       />
     )
