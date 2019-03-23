@@ -1,6 +1,24 @@
 # Changelog
 
-## [v8.0.0](https://github.com/tanem/react-svg/tree/v8.0.0) (2019-03-15)
+## [v8.0.1](https://github.com/tanem/react-svg/tree/v8.0.1) (2019-03-23)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v8.0.0...v8.0.1)
+
+**Merged pull requests:**
+
+- Update prod deps [\#252](https://github.com/tanem/react-svg/pull/252) ([tanem](https://github.com/tanem))
+- Update react monorepo to v16.8.5 [\#251](https://github.com/tanem/react-svg/pull/251) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/react-dom to v16.8.3 [\#250](https://github.com/tanem/react-svg/pull/250) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency parcel-bundler to v1.12.3 [\#249](https://github.com/tanem/react-svg/pull/249) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency regenerator-runtime to v0.13.2 [\#248](https://github.com/tanem/react-svg/pull/248) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency sinon to v7.3.0 [\#247](https://github.com/tanem/react-svg/pull/247) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup to v1.7.0 [\#246](https://github.com/tanem/react-svg/pull/246) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency typescript to v3.3.4000 [\#245](https://github.com/tanem/react-svg/pull/245) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v11.11.6 [\#244](https://github.com/tanem/react-svg/pull/244) ([renovate[bot]](https://github.com/apps/renovate))
+- Update babel monorepo [\#243](https://github.com/tanem/react-svg/pull/243) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/enzyme to v3.9.1 [\#242](https://github.com/tanem/react-svg/pull/242) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup-plugin-replace to v2.1.1 [\#241](https://github.com/tanem/react-svg/pull/241) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v8.0.0](https://github.com/tanem/react-svg/tree/v8.0.0) (2019-03-14)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v7.2.14...v8.0.0)
 
 **Merged pull requests:**
