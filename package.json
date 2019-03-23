@@ -63,8 +63,8 @@
     "react-dom": "^15.5.4 || ^16.0.0"
   },
   "dependencies": {
-    "@babel/runtime": "^7.3.1",
-    "@tanem/svg-injector": "^7.0.6",
+    "@babel/runtime": "^7.4.2",
+    "@tanem/svg-injector": "^7.0.8",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
