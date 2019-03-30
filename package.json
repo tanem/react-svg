@@ -80,7 +80,7 @@
     "@types/glob": "7.1.1",
     "@types/jest": "24.0.11",
     "@types/prop-types": "15.7.0",
-    "@types/react": "16.8.8",
+    "@types/react": "16.8.10",
     "@types/react-dom": "16.8.3",
     "@types/shelljs": "0.8.3",
     "@types/sinon": "7.0.10",
