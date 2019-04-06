@@ -5,7 +5,7 @@
     {
       "paths": ["examples/typescript-2.x/package.json"],
       "packageNames": ["typescript"],
-      "allowedVersions": "<3"
+      "allowedVersions": ">=2 <3"
     }
   ]
 }
