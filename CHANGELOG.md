@@ -1,5 +1,28 @@
 # Changelog
 
+## [v8.0.3](https://github.com/tanem/react-svg/tree/v8.0.3) (2019-04-07)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v8.0.2...v8.0.3)
+
+**Merged pull requests:**
+
+- Reconfigure Renovate [\#279](https://github.com/tanem/react-svg/pull/279) ([tanem](https://github.com/tanem))
+- Update dependency rollup-plugin-node-resolve to v4.2.1 [\#278](https://github.com/tanem/react-svg/pull/278) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency enzyme-adapter-react-16 to v1.12.1 [\#277](https://github.com/tanem/react-svg/pull/277) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency enzyme-adapter-react-16 to v1.12.0 [\#276](https://github.com/tanem/react-svg/pull/276) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency typescript to v3.4.2 [\#275](https://github.com/tanem/react-svg/pull/275) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup-plugin-node-resolve to v4.2.0 [\#274](https://github.com/tanem/react-svg/pull/274) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/react to v16.8.12 [\#273](https://github.com/tanem/react-svg/pull/273) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency codecov to v3.3.0 [\#272](https://github.com/tanem/react-svg/pull/272) ([renovate[bot]](https://github.com/apps/renovate))
+- Update babel monorepo to v7.4.3 [\#270](https://github.com/tanem/react-svg/pull/270) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup-plugin-commonjs to v9.3.4 [\#269](https://github.com/tanem/react-svg/pull/269) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup to v1.9.0 [\#267](https://github.com/tanem/react-svg/pull/267) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency tslint to v5.15.0 [\#266](https://github.com/tanem/react-svg/pull/266) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency jest to v24.7.1 [\#265](https://github.com/tanem/react-svg/pull/265) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/shelljs to v0.8.4 [\#264](https://github.com/tanem/react-svg/pull/264) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ts-jest to v24.0.2 [\#263](https://github.com/tanem/react-svg/pull/263) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/sinon to v7.0.11 [\#262](https://github.com/tanem/react-svg/pull/262) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v11.13.0 [\#261](https://github.com/tanem/react-svg/pull/261) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v8.0.2](https://github.com/tanem/react-svg/tree/v8.0.2) (2019-03-30)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v8.0.1...v8.0.2)
 
