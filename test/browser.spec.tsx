@@ -6,7 +6,6 @@ import sinon, {
   SinonFakeXMLHttpRequestStatic
 } from 'sinon'
 import ReactSVG from '../src'
-import { format } from './helpers'
 import iriSource from './iri-source.fixture'
 import source from './source.fixture'
 
@@ -51,7 +50,7 @@ describe('while running in a browser environment', () => {
     requests[0].respond(200, {}, source)
     jest.runAllTimers()
 
-    expect(format(wrapper.html())).toMatchSnapshot()
+    expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
   })
 
   it('should update correctly', () => {
@@ -73,7 +72,7 @@ describe('while running in a browser environment', () => {
       svgStyle: { height: 100 }
     })
 
-    expect(format(wrapper.html())).toMatchSnapshot()
+    expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
   })
 
   it('should unmount correctly', () => {
@@ -154,7 +153,7 @@ describe('while running in a browser environment', () => {
     requests[0].respond(200, {}, iriSource)
     jest.runAllTimers()
 
-    expect(format(wrapper.html())).toMatchSnapshot()
+    expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
   })
 
   it('should not renumerate IRI elements when renumerateIRIElements is false', () => {
@@ -168,7 +167,7 @@ describe('while running in a browser environment', () => {
     requests[0].respond(200, {}, iriSource)
     jest.runAllTimers()
 
-    expect(format(wrapper.html())).toMatchSnapshot()
+    expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
   })
 
   it('should call onInjected correctly when injection is unsuccessful', () => {
@@ -197,7 +196,7 @@ describe('while running in a browser environment', () => {
       <ReactSVG
         onInjected={(error, svg) => {
           expect(error).toBeNull()
-          expect(format((svg as SVGSVGElement).outerHTML)).toMatchSnapshot()
+          expect((svg as Element).outerHTML).toMatchPrettyHtmlSnapshot()
         }}
         src={`http://localhost/${faker.random.uuid()}.svg`}
       />
@@ -220,7 +219,7 @@ describe('while running in a browser environment', () => {
     requests[0].respond(404, {}, '')
     jest.runAllTimers()
 
-    expect(format(wrapper.html())).toMatchSnapshot()
+    expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
   })
 
   it('should render the specified loader when injecting', () => {
@@ -233,7 +232,7 @@ describe('while running in a browser environment', () => {
       />
     )
 
-    expect(format(wrapper.html())).toMatchSnapshot()
+    expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
   })
 
   it('allows rendering of span wrappers', () => {
@@ -247,7 +246,7 @@ describe('while running in a browser environment', () => {
     requests[0].respond(200, {}, source)
     jest.runAllTimers()
 
-    expect(format(wrapper.html())).toMatchSnapshot()
+    expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
   })
 
   // TODO: When we have the ability to cleanly unsubscribe from SVGInjector
