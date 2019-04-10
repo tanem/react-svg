@@ -1,6 +1,24 @@
 # Changelog
 
-## [v8.0.3](https://github.com/tanem/react-svg/tree/v8.0.3) (2019-04-07)
+## [v8.0.4](https://github.com/tanem/react-svg/tree/v8.0.4) (2019-04-11)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v8.0.3...v8.0.4)
+
+**Merged pull requests:**
+
+- Update @tanem/svg-injector [\#292](https://github.com/tanem/react-svg/pull/292) ([tanem](https://github.com/tanem))
+- Update dependency jest-prettyhtml-matchers to v1.0.3 [\#291](https://github.com/tanem/react-svg/pull/291) ([renovate[bot]](https://github.com/apps/renovate))
+- Remove @starptech/prettyhtml [\#290](https://github.com/tanem/react-svg/pull/290) ([tanem](https://github.com/tanem))
+- Pin dependency jest-prettyhtml-matchers to 1.0.2 [\#289](https://github.com/tanem/react-svg/pull/289) ([renovate[bot]](https://github.com/apps/renovate))
+- Use jest-prettyhtml-matchers [\#288](https://github.com/tanem/react-svg/pull/288) ([tanem](https://github.com/tanem))
+- Update dependency rollup-plugin-replace to v2.2.0 [\#287](https://github.com/tanem/react-svg/pull/287) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup-plugin-node-resolve to v4.2.2 [\#286](https://github.com/tanem/react-svg/pull/286) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup to v1.9.3 [\#285](https://github.com/tanem/react-svg/pull/285) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency typescript to v3.4.3 [\#284](https://github.com/tanem/react-svg/pull/284) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v11.13.4 [\#283](https://github.com/tanem/react-svg/pull/283) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/react to v16.8.13 [\#282](https://github.com/tanem/react-svg/pull/282) ([renovate[bot]](https://github.com/apps/renovate))
+- Update prod deps [\#280](https://github.com/tanem/react-svg/pull/280) ([tanem](https://github.com/tanem))
+
+## [v8.0.3](https://github.com/tanem/react-svg/tree/v8.0.3) (2019-04-06)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v8.0.2...v8.0.3)
 
 **Merged pull requests:**
