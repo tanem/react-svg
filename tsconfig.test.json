@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src", "test"],
+  "include": ["scripts/jest/setupJest.js", "src", "test"],
   "compilerOptions": {
     "allowJs": true,
     "module": "commonjs"
