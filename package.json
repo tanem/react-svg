@@ -80,7 +80,7 @@
     "@types/jest": "24.0.11",
     "@types/prop-types": "15.7.0",
     "@types/react": "16.8.13",
-    "@types/react-dom": "16.8.3",
+    "@types/react-dom": "16.8.4",
     "@types/shelljs": "0.8.4",
     "@types/sinon": "7.0.11",
     "babel-core": "6.26.3",
