@@ -1,6 +1,19 @@
 # Changelog
 
-## [v8.0.4](https://github.com/tanem/react-svg/tree/v8.0.4) (2019-04-11)
+## [v8.0.5](https://github.com/tanem/react-svg/tree/v8.0.5) (2019-04-13)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v8.0.4...v8.0.5)
+
+**Merged pull requests:**
+
+- Update dependency jest-prettyhtml-matchers to v1.0.4 [\#300](https://github.com/tanem/react-svg/pull/300) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @tanem/svg-injector to ^7.0.13 [\#299](https://github.com/tanem/react-svg/pull/299) ([renovate[bot]](https://github.com/apps/renovate))
+- Reconfigure Renovate [\#298](https://github.com/tanem/react-svg/pull/298) ([tanem](https://github.com/tanem))
+- Update dependency prettier to v1.17.0 [\#297](https://github.com/tanem/react-svg/pull/297) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/react-dom to v16.8.4 [\#296](https://github.com/tanem/react-svg/pull/296) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup to v1.10.0 [\#295](https://github.com/tanem/react-svg/pull/295) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup-plugin-node-resolve to v4.2.3 [\#294](https://github.com/tanem/react-svg/pull/294) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v8.0.4](https://github.com/tanem/react-svg/tree/v8.0.4) (2019-04-10)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v8.0.3...v8.0.4)
 
 **Merged pull requests:**
