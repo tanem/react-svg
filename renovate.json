@@ -7,5 +7,6 @@
       "packageNames": ["typescript"],
       "allowedVersions": ">=2 <3"
     }
-  ]
+  ],
+  "rangeStrategy": "bump"
 }
