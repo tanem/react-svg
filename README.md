@@ -103,10 +103,6 @@ For the minified production version, make sure you have already included:
 - [`ReactDOM`](https://unpkg.com/react-dom/umd/react-dom.production.min.js)
 - [`ReactDOMServer`](https://unpkg.com/react-dom/umd/react-dom-server.browser.production.min.js)
 
-## Credits
-
-Thanks to the author(s) of [the original SVGInjector](https://github.com/iconic/SVGInjector), without which none of this would have been possible :clap:
-
 ## License
 
 MIT
