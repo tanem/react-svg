@@ -79,6 +79,8 @@ Other non-documented properties are applied to the outermost wrapper element.
 
 ## Installation
 
+> ⚠️This library depends on [@tanem/svg-injector](https://github.com/tanem/svg-injector), which uses [`Array.from()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from). If you're targeting [browsers that don't support that method](https://kangax.github.io/compat-table/es6/#test-Array_static_methods), you'll need to ensure an appropriate polyfill is included manually. See [this issue comment](https://github.com/tanem/svg-injector/issues/97#issuecomment-483365473) for further detail.
+
 ```
 $ npm install react-svg
 ```
@@ -100,10 +102,6 @@ For the minified production version, make sure you have already included:
 - [`React`](https://unpkg.com/react/umd/react.production.min.js)
 - [`ReactDOM`](https://unpkg.com/react-dom/umd/react-dom.production.min.js)
 - [`ReactDOMServer`](https://unpkg.com/react-dom/umd/react-dom-server.browser.production.min.js)
-
-## Credits
-
-Thanks to the author(s) of [the original SVGInjector](https://github.com/iconic/SVGInjector), without which none of this would have been possible :clap:
 
 ## License
 
