@@ -1,5 +1,17 @@
 # Changelog
 
+## [v8.0.6](https://github.com/tanem/react-svg/tree/v8.0.6) (2019-04-17)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v8.0.5...v8.0.6)
+
+**Merged pull requests:**
+
+- Fix npm audit issue [\#306](https://github.com/tanem/react-svg/pull/306) ([tanem](https://github.com/tanem))
+- Update dependency @tanem/svg-injector to ^7.0.14 [\#305](https://github.com/tanem/react-svg/pull/305) ([renovate[bot]](https://github.com/apps/renovate))
+- Add polyfill note to docs [\#304](https://github.com/tanem/react-svg/pull/304) ([tanem](https://github.com/tanem))
+- Update dependency @types/shelljs to v0.8.5 [\#303](https://github.com/tanem/react-svg/pull/303) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency jest-prettyhtml-matchers to v1.0.5 [\#302](https://github.com/tanem/react-svg/pull/302) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ts-node to v8.1.0 [\#301](https://github.com/tanem/react-svg/pull/301) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v8.0.5](https://github.com/tanem/react-svg/tree/v8.0.5) (2019-04-13)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v8.0.4...v8.0.5)
 
