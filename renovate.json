@@ -6,6 +6,18 @@
       "paths": ["examples/typescript-2.x/package.json"],
       "packageNames": ["typescript"],
       "allowedVersions": ">=2 <3"
+    },
+    {
+      "packagePatterns": ["^@types"],
+      "groupName": "@types"
+    },
+    {
+      "packagePatterns": ["^ts-", "^tslint", "^typescript"],
+      "groupName": "typescript"
+    },
+    {
+      "packagePatterns": ["^rollup"],
+      "groupName": "rollup"
     }
   ],
   "rangeStrategy": "bump"
