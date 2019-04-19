@@ -110,7 +110,7 @@
     "rollup-plugin-uglify": "6.0.2",
     "shelljs": "0.8.3",
     "shelljs-plugin-authors": "2.0.6",
-    "sinon": "7.3.1",
+    "sinon": "7.3.2",
     "ts-jest": "24.0.2",
     "ts-node": "8.1.0",
     "tslint": "5.15.0",
