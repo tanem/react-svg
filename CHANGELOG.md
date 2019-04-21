@@ -1,6 +1,15 @@
 # Changelog
 
-## [v8.0.7](https://github.com/tanem/react-svg/tree/v8.0.7) (2019-04-20)
+## [v8.0.8](https://github.com/tanem/react-svg/tree/v8.0.8) (2019-04-21)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v8.0.7...v8.0.8)
+
+**Merged pull requests:**
+
+- Update dependency jest-prettyhtml-matchers to v1.0.7 [\#323](https://github.com/tanem/react-svg/pull/323) ([renovate[bot]](https://github.com/apps/renovate))
+- Reconfigure Renovate [\#322](https://github.com/tanem/react-svg/pull/322) ([tanem](https://github.com/tanem))
+- Update dependency @tanem/svg-injector to ^7.0.15 [\#320](https://github.com/tanem/react-svg/pull/320) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v8.0.7](https://github.com/tanem/react-svg/tree/v8.0.7) (2019-04-19)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v8.0.6...v8.0.7)
 
 **Merged pull requests:**
