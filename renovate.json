@@ -8,16 +8,12 @@
       "allowedVersions": ">=2 <3"
     },
     {
-      "packagePatterns": ["^@types"],
-      "groupName": "@types"
+      "depTypeList": ["peerDependencies"],
+      "rangeStrategy": "widen"
     },
     {
-      "packagePatterns": ["^ts-", "^tslint", "^typescript"],
-      "groupName": "typescript"
-    },
-    {
-      "packagePatterns": ["^rollup"],
-      "groupName": "rollup"
+      "depTypeList": ["devDependencies"],
+      "groupName": "dev dependencies"
     }
   ],
   "rangeStrategy": "bump"
