@@ -1,5 +1,12 @@
 # Changelog
 
+## [v9.0.0](https://github.com/tanem/react-svg/tree/v9.0.0) (2019-04-22)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v8.0.8...v9.0.0)
+
+**Merged pull requests:**
+
+- Refactor tooling [\#324](https://github.com/tanem/react-svg/pull/324) ([tanem](https://github.com/tanem))
+
 ## [v8.0.8](https://github.com/tanem/react-svg/tree/v8.0.8) (2019-04-21)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v8.0.7...v8.0.8)
 

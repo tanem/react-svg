@@ -1,21 +1,21 @@
 {
   "dist/react-svg.cjs.production.js": {
-    "bundled": 4879,
+    "bundled": 5164,
     "minified": 2594,
     "gzipped": 1018
   },
   "dist/react-svg.umd.production.js": {
-    "bundled": 16336,
+    "bundled": 16631,
     "minified": 7068,
     "gzipped": 2930
   },
   "dist/react-svg.cjs.development.js": {
-    "bundled": 5393,
+    "bundled": 5678,
     "minified": 3054,
     "gzipped": 1138
   },
   "dist/react-svg.esm.js": {
-    "bundled": 5059,
+    "bundled": 5344,
     "minified": 2764,
     "gzipped": 1079,
     "treeshaked": {
@@ -29,7 +29,7 @@
     }
   },
   "dist/react-svg.umd.development.js": {
-    "bundled": 16899,
+    "bundled": 17194,
     "minified": 7418,
     "gzipped": 3028
   }
