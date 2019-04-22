@@ -1,11 +1,7 @@
 *.log
-*.tgz
 .DS_Store
 .vscode
-cjs
+compiled
 coverage
-es
-examples/*/package-lock.json
-index.d.ts
+dist
 node_modules
-umd

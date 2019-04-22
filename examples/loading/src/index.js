@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Spinner from 'react-spinkit'
@@ -6,6 +7,10 @@ import ReactSVG from 'react-svg'
 const Loading = ({ size }) => (
   <Spinner name="cube-grid" style={{ height: size, width: size }} />
 )
+
+Loading.propTypes = {
+  size: PropTypes.number.isRequired
+}
 
 ReactDOM.render(
   <React.Fragment>

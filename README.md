@@ -4,7 +4,6 @@
 [![build status](https://img.shields.io/travis/tanem/react-svg/master.svg?style=flat-square)](https://travis-ci.org/tanem/react-svg)
 [![coverage status](https://img.shields.io/codecov/c/github/tanem/react-svg.svg?style=flat-square)](https://codecov.io/gh/tanem/react-svg)
 [![npm downloads](https://img.shields.io/npm/dm/react-svg.svg?style=flat-square)](https://www.npmjs.com/package/react-svg)
-[![gzip size](http://img.badgesize.io/https://unpkg.com/react-svg/umd/react-svg.production.min.js?style=flat-square&compression=gzip)](https://unpkg.com/react-svg/umd/react-svg.production.min.js)
 
 > A React component that injects SVG into the DOM.
 
@@ -87,8 +86,8 @@ $ npm install react-svg
 
 There are also UMD builds available via [unpkg](https://unpkg.com/):
 
-- https://unpkg.com/react-svg/umd/react-svg.development.js
-- https://unpkg.com/react-svg/umd/react-svg.production.min.js
+- https://unpkg.com/react-svg/dist/react-svg.development.js
+- https://unpkg.com/react-svg/dist/react-svg.production.js
 
 For the non-minified development version, make sure you have already included:
 

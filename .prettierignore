@@ -1,6 +1,4 @@
-cjs
+complied
 coverage
-es
-index.d.ts
+dist
 package.json
-umd
