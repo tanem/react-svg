@@ -1,5 +1,12 @@
 # Changelog
 
+## [v9.0.1](https://github.com/tanem/react-svg/tree/v9.0.1) (2019-04-22)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v9.0.0...v9.0.1)
+
+**Merged pull requests:**
+
+- Fix umd links [\#325](https://github.com/tanem/react-svg/pull/325) ([tanem](https://github.com/tanem))
+
 ## [v9.0.0](https://github.com/tanem/react-svg/tree/v9.0.0) (2019-04-22)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v8.0.8...v9.0.0)
 
