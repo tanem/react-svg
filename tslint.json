@@ -1,9 +1,0 @@
-{
-  "defaultSeverity": "error",
-  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
-  "rules": {
-    "interface-name": [true, "never-prefix"],
-    "jsx-no-lambda": false,
-    "member-access": [true, "no-public"]
-  }
-}

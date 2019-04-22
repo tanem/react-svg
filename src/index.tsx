@@ -66,7 +66,6 @@ export default class ReactSVG extends React.Component<
 
   state = this.initialState
 
-  // tslint:disable-next-line:variable-name
   _isMounted = false
 
   container?: WrapperType | null
@@ -86,8 +85,11 @@ export default class ReactSVG extends React.Component<
         svgClassName,
         svgStyle
       } = this.props
+
+      /* eslint-disable @typescript-eslint/no-non-null-assertion */
       const onInjected = this.props.onInjected!
       const Wrapper = this.props.wrapper!
+      /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
       const wrapper = document.createElement(Wrapper)
       wrapper.innerHTML = ReactDOMServer.renderToStaticMarkup(
@@ -158,6 +160,7 @@ export default class ReactSVG extends React.Component<
   }
 
   render() {
+    /* eslint-disable @typescript-eslint/no-unused-vars */
     const {
       evalScripts,
       fallback: Fallback,
@@ -170,6 +173,9 @@ export default class ReactSVG extends React.Component<
       wrapper,
       ...rest
     } = this.props
+    /* eslint-enable @typescript-eslint/no-unused-vars */
+
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const Wrapper = wrapper!
 
     return (
