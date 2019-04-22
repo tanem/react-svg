@@ -1,5 +1,15 @@
 # Changelog
 
+## [v9.0.2](https://github.com/tanem/react-svg/tree/v9.0.2) (2019-04-23)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v9.0.1...v9.0.2)
+
+**Merged pull requests:**
+
+- Update dependency react-scripts to v3 [\#330](https://github.com/tanem/react-svg/pull/330) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v11.13.7 [\#329](https://github.com/tanem/react-svg/pull/329) ([renovate[bot]](https://github.com/apps/renovate))
+- Pin dependencies [\#328](https://github.com/tanem/react-svg/pull/328) ([renovate[bot]](https://github.com/apps/renovate))
+- Reconfigure renovate [\#327](https://github.com/tanem/react-svg/pull/327) ([tanem](https://github.com/tanem))
+
 ## [v9.0.1](https://github.com/tanem/react-svg/tree/v9.0.1) (2019-04-22)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v9.0.0...v9.0.1)
 
