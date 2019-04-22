@@ -86,8 +86,8 @@ $ npm install react-svg
 
 There are also UMD builds available via [unpkg](https://unpkg.com/):
 
-- https://unpkg.com/react-svg/dist/react-svg.development.js
-- https://unpkg.com/react-svg/dist/react-svg.production.js
+- https://unpkg.com/react-svg/dist/react-svg.umd.development.js
+- https://unpkg.com/react-svg/dist/react-svg.umd.production.js
 
 For the non-minified development version, make sure you have already included:
 
