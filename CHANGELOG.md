@@ -1,6 +1,14 @@
 # Changelog
 
-## [v9.0.3](https://github.com/tanem/react-svg/tree/v9.0.3) (2019-04-27)
+## [v9.0.4](https://github.com/tanem/react-svg/tree/v9.0.4) (2019-04-30)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v9.0.3...v9.0.4)
+
+**Merged pull requests:**
+
+- Update dependency @tanem/svg-injector to ^7.0.17 [\#335](https://github.com/tanem/react-svg/pull/335) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dev dependencies [\#334](https://github.com/tanem/react-svg/pull/334) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v9.0.3](https://github.com/tanem/react-svg/tree/v9.0.3) (2019-04-26)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v9.0.2...v9.0.3)
 
 **Merged pull requests:**
