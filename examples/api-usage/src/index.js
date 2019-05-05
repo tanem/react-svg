@@ -20,6 +20,7 @@ ReactDOM.render(
     fallback={() => <span>Error!</span>}
     loading={() => <span>Loading</span>}
     renumerateIRIElements={false}
+    wrapper="span"
     className="wrapper-class-name"
     onClick={() => {
       console.log('wrapper onClick')
