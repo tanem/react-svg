@@ -42,11 +42,16 @@ render(<ReactSVG src="svg.svg" />, document.getElementById('root'))
 - `evalScripts` - _Optional_ Run any script blocks found in the SVG. One of `'always'`, `'once'`, or `'never'`. Defaults to `'never'`.
 - `fallback` - _Optional_ Fallback to use if an injection error occurs. Can be a string, class component, or function component. Defaults to `null`.
 - `loading` - _Optional_ Component to use during loading. Can be a string, class component, or function component. Defaults to `null`.
-- `onInjected` - _Optional_ Function to call after the SVG is injected. If an injection error occurs, this function receives an `Error` object as the first parameter. Otherwise, the first parameter is `null` and the second parameter is the injected SVG DOM element. Defaults to `() => {}`.
+- `beforeInjection(svg)` - _Optional_ Function to call just before the SVG is injected. `svg` is the SVG DOM element which is about to be injected. Defaults to `() => {}`.
+- `afterInjection(err, svg)` - _Optional_ Function to call after the SVG is injected. If an injection error occurs, `err` is an `Error` object. Otherwise, `err` is `null` and `svg` is the injected SVG DOM element. Defaults to `() => {}`.
 - `renumerateIRIElements` - _Optional_ Boolean indicating if SVG IRI addressable elements should be renumerated. Defaults to `true`.
+
+- `wrapper` - _Optional_ Wrapper element types. One of `'div'` or `'span'`. Defaults to `'div'`.
+
+provide examples of doing this with beforeInjection
+
 - `svgClassName` - _Optional_ Class name to be added to the injected SVG DOM element. Defaults to `null`.
 - `svgStyle` - _Optional_ Inline styles to be added to the injected SVG DOM element. Defaults to `{}`.
-- `wrapper` - _Optional_ Wrapper element types. One of `'div'` or `'span'`. Defaults to `'div'`.
 
 Other non-documented properties are applied to the outermost wrapper element.
 
@@ -55,20 +60,21 @@ Other non-documented properties are applied to the outermost wrapper element.
 ```jsx
 <ReactSVG
   src="svg.svg"
-  evalScripts="always"
-  fallback={() => <span>Error!</span>}
-  loading={() => <span>Loading</span>}
-  onInjected={(error, svg) => {
+  afterInjection={(error, svg) => {
     if (error) {
       console.error(error)
       return
     }
     console.log(svg)
   }}
+  beforeInjection={svg => {
+    svg.setAttribute('class', 'svg-class-name')
+    svg.setAttribute('style', 'width: 200px')
+  }}
+  evalScripts="always"
+  fallback={() => <span>Error!</span>}
+  loading={() => <span>Loading</span>}
   renumerateIRIElements={false}
-  svgClassName="svg-class-name"
-  svgStyle={{ width: 200 }}
-  wrapper="span"
   className="wrapper-class-name"
   onClick={() => {
     console.log('wrapper onClick')

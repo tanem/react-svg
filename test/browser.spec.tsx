@@ -42,8 +42,6 @@ describe('while running in a browser environment', () => {
       <ReactSVG
         className="wrapper-class-name"
         src={`http://localhost/${faker.random.uuid()}.svg`}
-        svgClassName="svg-class-name"
-        svgStyle={{ height: 200 }}
       />
     )
 
@@ -58,8 +56,6 @@ describe('while running in a browser environment', () => {
       <ReactSVG
         className="wrapper-class-name"
         src={`http://localhost/${faker.random.uuid()}.svg`}
-        svgClassName="svg-class-name"
-        svgStyle={{ height: 200 }}
       />
     )
 
@@ -67,9 +63,7 @@ describe('while running in a browser environment', () => {
     jest.runAllTimers()
 
     wrapper.setProps({
-      className: 'updated-wrapper-class-name',
-      svgClassName: 'updated-svg-class-name',
-      svgStyle: { height: 100 }
+      className: 'updated-wrapper-class-name'
     })
 
     expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
@@ -77,11 +71,7 @@ describe('while running in a browser environment', () => {
 
   it('should unmount correctly', () => {
     wrapper = mount(
-      <ReactSVG
-        svgClassName="svg-class-name"
-        src={`http://localhost/${faker.random.uuid()}.svg`}
-        svgStyle={{ height: 200 }}
-      />
+      <ReactSVG src={`http://localhost/${faker.random.uuid()}.svg`} />
     )
 
     requests[0].respond(200, {}, source)
@@ -95,11 +85,7 @@ describe('while running in a browser environment', () => {
   it('should ensure a parent node is always available', () => {
     expect(() => {
       wrapper = mount(
-        <ReactSVG
-          svgClassName="svg-class-name"
-          src={`http://localhost/${faker.random.uuid()}.svg`}
-          svgStyle={{ height: 200 }}
-        />
+        <ReactSVG src={`http://localhost/${faker.random.uuid()}.svg`} />
       )
 
       wrapper.instance().removeSVG()
@@ -112,11 +98,7 @@ describe('while running in a browser environment', () => {
   it('should not throw if the container is not present when mounting', () => {
     expect(() => {
       wrapper = mount(
-        <ReactSVG
-          svgClassName="svg-class-name"
-          src={`http://localhost/${faker.random.uuid()}.svg`}
-          svgStyle={{ height: 200 }}
-        />
+        <ReactSVG src={`http://localhost/${faker.random.uuid()}.svg`} />
       )
 
       requests[0].respond(200, {}, source)
@@ -130,11 +112,7 @@ describe('while running in a browser environment', () => {
   it('should not throw if the container is not present when unmounting', () => {
     expect(() => {
       wrapper = mount(
-        <ReactSVG
-          svgClassName="svg-class-name"
-          src={`http://localhost/${faker.random.uuid()}.svg`}
-          svgStyle={{ height: 200 }}
-        />
+        <ReactSVG src={`http://localhost/${faker.random.uuid()}.svg`} />
       )
 
       requests[0].respond(200, {}, source)
@@ -170,14 +148,14 @@ describe('while running in a browser environment', () => {
     expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
   })
 
-  it('should call onInjected correctly when injection is unsuccessful', () => {
+  it('should call afterInjection correctly when injection is unsuccessful', () => {
     expect.assertions(2)
 
     const src = `http://localhost/${faker.random.uuid()}.svg`
 
     wrapper = mount(
       <ReactSVG
-        onInjected={(error, svg) => {
+        afterInjection={(error, svg) => {
           expect(error).toEqual(new Error(`Unable to load SVG file: ${src}`))
           expect(svg).toBeUndefined()
         }}
@@ -189,12 +167,12 @@ describe('while running in a browser environment', () => {
     jest.runAllTimers()
   })
 
-  it('should call onInjected correctly when injection is successful', () => {
+  it('should call afterInjection correctly when injection is successful', () => {
     expect.assertions(2)
 
     wrapper = mount(
       <ReactSVG
-        onInjected={(error, svg) => {
+        afterInjection={(error, svg) => {
           expect(error).toBeNull()
           expect((svg as Element).outerHTML).toMatchPrettyHtmlSnapshot()
         }}
@@ -269,5 +247,24 @@ describe('while running in a browser environment', () => {
     expect(warnSpy).not.toHaveBeenCalled()
 
     warnSpy.mockRestore()
+  })
+
+  it('should allow modification of the SVG via the beforeInjection callback', () => {
+    // TODO!!!! AND fix examples!!!
+
+    expect.assertions(2)
+
+    wrapper = mount(
+      <ReactSVG
+        afterInjection={(error, svg) => {
+          expect(error).toBeNull()
+          expect((svg as Element).outerHTML).toMatchPrettyHtmlSnapshot()
+        }}
+        src={`http://localhost/${faker.random.uuid()}.svg`}
+      />
+    )
+
+    requests[0].respond(200, {}, source)
+    jest.runAllTimers()
   })
 })
