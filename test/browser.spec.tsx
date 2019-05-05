@@ -250,15 +250,12 @@ describe('while running in a browser environment', () => {
   })
 
   it('should allow modification of the SVG via the beforeInjection callback', () => {
-    // TODO!!!! AND fix examples!!!
-
-    expect.assertions(2)
-
     wrapper = mount(
       <ReactSVG
-        afterInjection={(error, svg) => {
-          expect(error).toBeNull()
-          expect((svg as Element).outerHTML).toMatchPrettyHtmlSnapshot()
+        beforeInjection={svg => {
+          svg.classList.add('svg-class-name')
+          svg.setAttribute('style', 'width: 200px')
+          // TODO: Style child element fills.
         }}
         src={`http://localhost/${faker.random.uuid()}.svg`}
       />
@@ -266,5 +263,7 @@ describe('while running in a browser environment', () => {
 
     requests[0].respond(200, {}, source)
     jest.runAllTimers()
+
+    expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
   })
 })

@@ -13,8 +13,9 @@ ReactDOM.render(
       console.log(svg)
     }}
     beforeInjection={svg => {
-      svg.setAttribute('class', 'svg-class-name')
+      svg.classList.add('svg-class-name')
       svg.setAttribute('style', 'width: 200px')
+      // TODO: Style child element fills.
     }}
     evalScripts="always"
     fallback={() => <span>Error!</span>}

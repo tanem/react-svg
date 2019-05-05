@@ -62,8 +62,10 @@ Other non-documented properties are applied to the outermost wrapper element.
     console.log(svg)
   }}
   beforeInjection={svg => {
-    svg.setAttribute('class', 'svg-class-name')
+    // TODO: Add note around classList polyfill.
+    svg.classList.add('svg-class-name')
     svg.setAttribute('style', 'width: 200px')
+    // TODO: Style child element fills.
   }}
   evalScripts="always"
   fallback={() => <span>Error!</span>}
