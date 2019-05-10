@@ -1,6 +1,16 @@
 # Changelog
 
-## [v9.0.4](https://github.com/tanem/react-svg/tree/v9.0.4) (2019-04-30)
+## [v10.0.0](https://github.com/tanem/react-svg/tree/v10.0.0) (2019-05-11)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v9.0.4...v10.0.0)
+
+**Merged pull requests:**
+
+- Update dependency react-scripts to v3.0.1 [\#340](https://github.com/tanem/react-svg/pull/340) ([renovate[bot]](https://github.com/apps/renovate))
+- Add beforeInjection prop and rework existing API [\#338](https://github.com/tanem/react-svg/pull/338) ([tanem](https://github.com/tanem))
+- Update dependency @tanem/svg-injector to ^8.0.2 [\#337](https://github.com/tanem/react-svg/pull/337) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dev dependencies [\#336](https://github.com/tanem/react-svg/pull/336) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v9.0.4](https://github.com/tanem/react-svg/tree/v9.0.4) (2019-04-29)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v9.0.3...v9.0.4)
 
 **Merged pull requests:**
