@@ -2,6 +2,21 @@
 
 Details relating to major changes that aren't presently in `CHANGELOG.md`, due to limitations with how that file is being generated.
 
+## v10.0.0
+
+**Added**
+
+- `beforeInjection` prop.
+
+**Changed**
+
+- `onInjected` prop renamed to `afterInjection`.
+
+**Removed**
+
+- `svgClassName` prop has been removed. Instead, use `beforeInjection` to add the class name to the SVG DOM element.
+- `svgStyle` prop has been removed. Instead, use `beforeInjection` to add the style attribute to the SVG DOM element.
+
 ## v8.0.0
 
 **Changed**
@@ -12,7 +27,7 @@ Details relating to major changes that aren't presently in `CHANGELOG.md`, due t
 
 **Added**
 
-- `fallback` option.
+- `fallback` prop.
 
 **Changed**
 
@@ -38,4 +53,4 @@ Details relating to major changes that aren't presently in `CHANGELOG.md`, due t
 
 **Removed**
 
-- `wrapperClassName` has been removed. Instead, just pass `className` since it will be spread onto the wrapper element.
+- `wrapperClassName` has been removed. Instead, pass `className` since it will be spread onto the wrapper element.
