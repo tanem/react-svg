@@ -25,6 +25,7 @@ render(<ReactSVG src="svg.svg" />, document.getElementById('root'))
 
 - API Usage: [Source](https://github.com/tanem/react-svg/tree/master/examples/api-usage) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/api-usage)
 - Basic Usage: [Source](https://github.com/tanem/react-svg/tree/master/examples/basic-usage) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/basic-usage)
+- Before Injection: [Source](https://github.com/tanem/react-svg/tree/master/examples/before-injection) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/before-injection)
 - CSS-in-JS: [Source](https://github.com/tanem/react-svg/tree/master/examples/css-in-js) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/css-in-js)
 - External Stylesheet: [Source](https://github.com/tanem/react-svg/tree/master/examples/external-stylesheet) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/external-stylesheet)
 - Fallbacks: [Source](https://github.com/tanem/react-svg/tree/master/examples/fallbacks) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/fallbacks)
@@ -62,10 +63,8 @@ Other non-documented properties are applied to the outermost wrapper element.
     console.log(svg)
   }}
   beforeInjection={svg => {
-    // TODO: Add note around classList polyfill.
     svg.classList.add('svg-class-name')
     svg.setAttribute('style', 'width: 200px')
-    // TODO: Style child element fills.
   }}
   evalScripts="always"
   fallback={() => <span>Error!</span>}
