@@ -1,6 +1,25 @@
 # Changelog
 
-## [v10.0.6](https://github.com/tanem/react-svg/tree/v10.0.6) (2019-06-02)
+## [v10.0.7](https://github.com/tanem/react-svg/tree/v10.0.7) (2019-06-09)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v10.0.6...v10.0.7)
+
+**Merged pull requests:**
+
+- Update dependency @tanem/svg-injector to ^8.0.11 [\#379](https://github.com/tanem/react-svg/pull/379) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency shelljs-plugin-authors to v2.0.9 [\#378](https://github.com/tanem/react-svg/pull/378) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup to v1.14.4 [\#377](https://github.com/tanem/react-svg/pull/377) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency prettier to v1.18.2 [\#376](https://github.com/tanem/react-svg/pull/376) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency prettier to v1.18.0 [\#375](https://github.com/tanem/react-svg/pull/375) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup to v1.14.3 [\#374](https://github.com/tanem/react-svg/pull/374) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency shelljs-plugin-authors to v2.0.8 [\#373](https://github.com/tanem/react-svg/pull/373) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup to v1.14.2 [\#372](https://github.com/tanem/react-svg/pull/372) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup to v1.14.1 [\#371](https://github.com/tanem/react-svg/pull/371) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup to v1.14.0 [\#369](https://github.com/tanem/react-svg/pull/369) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency enzyme to v3.10.0 [\#368](https://github.com/tanem/react-svg/pull/368) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency enzyme-adapter-react-16 to v1.14.0 [\#367](https://github.com/tanem/react-svg/pull/367) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @tanem/svg-injector to ^8.0.10 [\#366](https://github.com/tanem/react-svg/pull/366) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v10.0.6](https://github.com/tanem/react-svg/tree/v10.0.6) (2019-06-01)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v10.0.5...v10.0.6)
 
 **Merged pull requests:**
