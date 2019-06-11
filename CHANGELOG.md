@@ -1,6 +1,19 @@
 # Changelog
 
-## [v10.0.7](https://github.com/tanem/react-svg/tree/v10.0.7) (2019-06-09)
+## [v10.0.8](https://github.com/tanem/react-svg/tree/v10.0.8) (2019-06-12)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v10.0.7...v10.0.8)
+
+**Merged pull requests:**
+
+- Update dependency @tanem/svg-injector to ^8.0.12 [\#386](https://github.com/tanem/react-svg/pull/386) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup to v1.15.1 [\#385](https://github.com/tanem/react-svg/pull/385) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup to v1.15.0 [\#384](https://github.com/tanem/react-svg/pull/384) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup to v1.14.6 [\#383](https://github.com/tanem/react-svg/pull/383) ([renovate[bot]](https://github.com/apps/renovate))
+- Update typescript-eslint monorepo to v1.10.2 [\#382](https://github.com/tanem/react-svg/pull/382) ([renovate[bot]](https://github.com/apps/renovate))
+- Update typescript-eslint monorepo to v1.10.1 [\#381](https://github.com/tanem/react-svg/pull/381) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup to v1.14.5 [\#380](https://github.com/tanem/react-svg/pull/380) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v10.0.7](https://github.com/tanem/react-svg/tree/v10.0.7) (2019-06-08)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v10.0.6...v10.0.7)
 
 **Merged pull requests:**
