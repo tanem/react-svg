@@ -110,6 +110,6 @@
     "shelljs-plugin-authors": "2.0.9",
     "sinon": "7.3.2",
     "ts-jest": "24.0.2",
-    "typescript": "3.5.1"
+    "typescript": "3.5.2"
   }
 }
