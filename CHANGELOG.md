@@ -1,6 +1,30 @@
 # Changelog
 
-## [v10.0.8](https://github.com/tanem/react-svg/tree/v10.0.8) (2019-06-12)
+## [v10.0.9](https://github.com/tanem/react-svg/tree/v10.0.9) (2019-06-19)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v10.0.8...v10.0.9)
+
+**Merged pull requests:**
+
+- Update dependency eslint-config-prettier to v5 [\#406](https://github.com/tanem/react-svg/pull/406) ([renovate[bot]](https://github.com/apps/renovate))
+- Reconfigure renovate [\#405](https://github.com/tanem/react-svg/pull/405) ([tanem](https://github.com/tanem))
+- Update dependency @tanem/svg-injector to ^8.0.14 [\#404](https://github.com/tanem/react-svg/pull/404) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency jest-prettyhtml-matchers to v1.0.17 [\#403](https://github.com/tanem/react-svg/pull/403) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @tanem/svg-injector to ^8.0.13 [\#402](https://github.com/tanem/react-svg/pull/402) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup-plugin-node-resolve to v5.0.3 [\#401](https://github.com/tanem/react-svg/pull/401) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/jest to v24.0.15 [\#400](https://github.com/tanem/react-svg/pull/400) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup to v1.15.6 [\#399](https://github.com/tanem/react-svg/pull/399) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup to v1.15.5 [\#397](https://github.com/tanem/react-svg/pull/397) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup to v1.15.4 [\#396](https://github.com/tanem/react-svg/pull/396) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/react to v16.8.20 [\#395](https://github.com/tanem/react-svg/pull/395) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency typescript to v3.5.2 [\#394](https://github.com/tanem/react-svg/pull/394) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup to v1.15.3 [\#392](https://github.com/tanem/react-svg/pull/392) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup-plugin-node-resolve to v5.0.2 [\#391](https://github.com/tanem/react-svg/pull/391) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup to v1.15.2 [\#390](https://github.com/tanem/react-svg/pull/390) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/jest to v24.0.14 [\#389](https://github.com/tanem/react-svg/pull/389) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/sinon to v7.0.13 [\#388](https://github.com/tanem/react-svg/pull/388) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v11.13.14 [\#387](https://github.com/tanem/react-svg/pull/387) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v10.0.8](https://github.com/tanem/react-svg/tree/v10.0.8) (2019-06-11)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v10.0.7...v10.0.8)
 
 **Merged pull requests:**
@@ -473,7 +497,6 @@
 **Merged pull requests:**
 
 - Update deps [\#167](https://github.com/tanem/react-svg/pull/167) ([tanem](https://github.com/tanem))
-- Remove prop-types from umd prod example [\#166](https://github.com/tanem/react-svg/pull/166) ([tanem](https://github.com/tanem))
 
 ## [v6.0.18](https://github.com/tanem/react-svg/tree/v6.0.18) (2018-10-11)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v6.0.17...v6.0.18)
@@ -538,6 +561,7 @@
 
 **Merged pull requests:**
 
+- Remove prop-types from umd prod example [\#166](https://github.com/tanem/react-svg/pull/166) ([tanem](https://github.com/tanem))
 - Update deps [\#151](https://github.com/tanem/react-svg/pull/151) ([tanem](https://github.com/tanem))
 
 ## [v6.0.9](https://github.com/tanem/react-svg/tree/v6.0.9) (2018-09-10)

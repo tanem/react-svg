@@ -5,7 +5,7 @@
     "gzipped": 998
   },
   "dist/react-svg.umd.production.js": {
-    "bundled": 16633,
+    "bundled": 16615,
     "minified": 7006,
     "gzipped": 2909
   },
@@ -29,7 +29,7 @@
     }
   },
   "dist/react-svg.umd.development.js": {
-    "bundled": 17169,
+    "bundled": 17151,
     "minified": 7343,
     "gzipped": 3010
   }
