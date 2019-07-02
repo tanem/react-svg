@@ -1,6 +1,17 @@
 # Changelog
 
-## [v10.0.9](https://github.com/tanem/react-svg/tree/v10.0.9) (2019-06-19)
+## [v10.0.10](https://github.com/tanem/react-svg/tree/v10.0.10) (2019-07-02)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v10.0.9...v10.0.10)
+
+**Merged pull requests:**
+
+- Update dependency @tanem/svg-injector to ^8.0.18 [\#411](https://github.com/tanem/react-svg/pull/411) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/enzyme to v3.10.1 [\#410](https://github.com/tanem/react-svg/pull/410) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @tanem/svg-injector to ^8.0.17 [\#409](https://github.com/tanem/react-svg/pull/409) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dev dependencies \(major\) [\#408](https://github.com/tanem/react-svg/pull/408) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dev dependencies [\#407](https://github.com/tanem/react-svg/pull/407) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v10.0.9](https://github.com/tanem/react-svg/tree/v10.0.9) (2019-06-18)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v10.0.8...v10.0.9)
 
 **Merged pull requests:**
@@ -497,6 +508,7 @@
 **Merged pull requests:**
 
 - Update deps [\#167](https://github.com/tanem/react-svg/pull/167) ([tanem](https://github.com/tanem))
+- Remove prop-types from umd prod example [\#166](https://github.com/tanem/react-svg/pull/166) ([tanem](https://github.com/tanem))
 
 ## [v6.0.18](https://github.com/tanem/react-svg/tree/v6.0.18) (2018-10-11)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v6.0.17...v6.0.18)
@@ -561,7 +573,6 @@
 
 **Merged pull requests:**
 
-- Remove prop-types from umd prod example [\#166](https://github.com/tanem/react-svg/pull/166) ([tanem](https://github.com/tanem))
 - Update deps [\#151](https://github.com/tanem/react-svg/pull/151) ([tanem](https://github.com/tanem))
 
 ## [v6.0.9](https://github.com/tanem/react-svg/tree/v6.0.9) (2018-09-10)

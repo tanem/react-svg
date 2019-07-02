@@ -15,7 +15,7 @@
     "gzipped": 1113
   },
   "dist/react-svg.esm.js": {
-    "bundled": 5315,
+    "bundled": 5317,
     "minified": 2740,
     "gzipped": 1052,
     "treeshaked": {
