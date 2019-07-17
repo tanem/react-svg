@@ -10,6 +10,7 @@
     "dist"
   ],
   "scripts": {
+    "audit:fix": "tanem-scripts audit -f",
     "authors": "shelljs-authors > AUTHORS",
     "build": "run-s clean compile bundle",
     "bundle": "rollup -c",
@@ -109,6 +110,7 @@
     "shelljs": "0.8.3",
     "shelljs-plugin-authors": "2.0.11",
     "sinon": "7.3.2",
+    "tanem-scripts": "0.0.2",
     "ts-jest": "24.0.2",
     "typescript": "3.5.3"
   }
