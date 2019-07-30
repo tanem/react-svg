@@ -1,5 +1,10 @@
 {
-  "extends": ["config:base", ":disableRateLimiting", ":rebaseStalePrs"],
+  "extends": [
+    "config:base",
+    ":disableRateLimiting",
+    ":rebaseStalePrs",
+    ":enableVulnerabilityAlerts"
+  ],
   "ignorePaths": ["**/node_modules/**"],
   "packageRules": [
     {
