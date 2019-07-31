@@ -1,5 +1,20 @@
 # Changelog
 
+## [v10.0.14](https://github.com/tanem/react-svg/tree/v10.0.14) (2019-07-31)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v10.0.13...v10.0.14)
+
+**Merged pull requests:**
+
+- Fix props interface [#437](https://github.com/tanem/react-svg/pull/437) ([Danilo-Zekovic](https://github.com/Danilo-Zekovic))
+- Update dev dependencies [#429](https://github.com/tanem/react-svg/pull/429) ([renovate[bot]](https://github.com/apps/renovate))
+- Remove audit:fix script [#438](https://github.com/tanem/react-svg/pull/438) ([tanem](https://github.com/tanem))
+- Bump lodash.template from 4.4.0 to 4.5.0 in /examples/loading [#434](https://github.com/tanem/react-svg/pull/434) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump lodash.template from 4.4.0 to 4.5.0 in /examples/api-usage [#433](https://github.com/tanem/react-svg/pull/433) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump lodash.template from 4.4.0 to 4.5.0 in /examples/fallbacks [#432](https://github.com/tanem/react-svg/pull/432) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump lodash.template from 4.4.0 to 4.5.0 in /examples/basic-usage [#431](https://github.com/tanem/react-svg/pull/431) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Reconfigure renovate [#436](https://github.com/tanem/react-svg/pull/436) ([tanem](https://github.com/tanem))
+- Reconfigure renovate [#435](https://github.com/tanem/react-svg/pull/435) ([tanem](https://github.com/tanem))
+
 ## [v10.0.13](https://github.com/tanem/react-svg/tree/v10.0.13) (2019-07-27)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v10.0.12...v10.0.13)
 
