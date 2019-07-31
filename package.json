@@ -10,7 +10,6 @@
     "dist"
   ],
   "scripts": {
-    "audit:fix": "tanem-scripts audit -f",
     "authors": "authors > AUTHORS",
     "build": "run-s clean compile bundle",
     "bundle": "rollup -c",
@@ -110,7 +109,6 @@
     "rollup-plugin-sourcemaps": "0.4.2",
     "rollup-plugin-terser": "5.1.1",
     "sinon": "7.3.2",
-    "tanem-scripts": "0.0.5",
     "ts-jest": "24.0.2",
     "typescript": "3.5.3"
   }
