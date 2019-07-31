@@ -10,7 +10,6 @@
     "dist"
   ],
   "scripts": {
-    "audit:fix": "tanem-scripts audit -f",
     "authors": "authors > AUTHORS",
     "build": "run-s clean compile bundle",
     "bundle": "rollup -c",
@@ -67,13 +66,13 @@
     "@babel/plugin-transform-runtime": "7.5.5",
     "@babel/preset-env": "7.5.5",
     "@babel/preset-react": "7.0.0",
-    "@tanem/authors": "1.0.0",
-    "@tanem/github-changelog-generator": "1.0.2",
+    "@tanem/authors": "1.0.1",
+    "@tanem/github-changelog-generator": "1.0.5",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.5",
     "@types/faker": "4.1.5",
     "@types/glob": "7.1.1",
-    "@types/jest": "24.0.15",
+    "@types/jest": "24.0.16",
     "@types/jsdom": "12.2.4",
     "@types/prop-types": "15.7.1",
     "@types/react": "16.8.23",
@@ -95,7 +94,7 @@
     "eslint-plugin-react": "7.14.3",
     "faker": "4.1.0",
     "jest": "24.8.0",
-    "jest-prettyhtml-matchers": "1.0.24",
+    "jest-prettyhtml-matchers": "1.0.25",
     "npm-run-all": "4.1.5",
     "prettier": "1.18.2",
     "raf": "3.4.1",
@@ -110,7 +109,6 @@
     "rollup-plugin-sourcemaps": "0.4.2",
     "rollup-plugin-terser": "5.1.1",
     "sinon": "7.3.2",
-    "tanem-scripts": "0.0.5",
     "ts-jest": "24.0.2",
     "typescript": "3.5.3"
   }
