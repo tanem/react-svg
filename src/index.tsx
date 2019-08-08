@@ -79,6 +79,7 @@ export default class ReactSVG extends React.Component<
   }
 
   renderSVG() {
+    /* istanbul ignore else */
     if (this.container instanceof Node) {
       const {
         beforeInjection,
