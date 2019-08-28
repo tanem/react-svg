@@ -1,5 +1,21 @@
 # Changelog
 
+## [v10.0.20](https://github.com/tanem/react-svg/tree/v10.0.20) (2019-08-29)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v10.0.19...v10.0.20)
+
+**Merged pull requests:**
+
+- Update dependency @tanem/svg-injector to ^8.0.30 [#463](https://github.com/tanem/react-svg/pull/463) ([renovate[bot]](https://github.com/apps/renovate))
+- Bump eslint-utils from 1.3.1 to 1.4.2 in /examples/loading [#457](https://github.com/tanem/react-svg/pull/457) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump eslint-utils from 1.4.0 to 1.4.2 in /examples/external-stylesheet [#461](https://github.com/tanem/react-svg/pull/461) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump eslint-utils from 1.4.0 to 1.4.2 in /examples/before-injection [#460](https://github.com/tanem/react-svg/pull/460) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump eslint-utils from 1.3.1 to 1.4.2 in /examples/api-usage [#458](https://github.com/tanem/react-svg/pull/458) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump eslint-utils from 1.3.1 to 1.4.2 in /examples/basic-usage [#456](https://github.com/tanem/react-svg/pull/456) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump eslint-utils from 1.4.0 to 1.4.2 in /examples/css-in-js [#459](https://github.com/tanem/react-svg/pull/459) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump eslint-utils from 1.3.1 to 1.4.2 in /examples/fallbacks [#455](https://github.com/tanem/react-svg/pull/455) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump eslint-utils from 1.4.0 to 1.4.2 [#454](https://github.com/tanem/react-svg/pull/454) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update dev dependencies [#453](https://github.com/tanem/react-svg/pull/453) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v10.0.19](https://github.com/tanem/react-svg/tree/v10.0.19) (2019-08-25)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v10.0.18...v10.0.19)
 
