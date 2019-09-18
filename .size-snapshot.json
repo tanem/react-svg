@@ -1,36 +1,36 @@
 {
   "dist/react-svg.cjs.production.js": {
     "bundled": 5181,
-    "minified": 2581,
-    "gzipped": 998
+    "minified": 2589,
+    "gzipped": 1001
   },
   "dist/react-svg.umd.production.js": {
-    "bundled": 16648,
-    "minified": 7006,
-    "gzipped": 2909
+    "bundled": 16985,
+    "minified": 7209,
+    "gzipped": 2992
   },
   "dist/react-svg.cjs.development.js": {
     "bundled": 5670,
-    "minified": 3020,
-    "gzipped": 1113
+    "minified": 3028,
+    "gzipped": 1116
   },
   "dist/react-svg.esm.js": {
     "bundled": 5348,
-    "minified": 2740,
-    "gzipped": 1052,
+    "minified": 2748,
+    "gzipped": 1055,
     "treeshaked": {
       "rollup": {
-        "code": 2462,
+        "code": 2470,
         "import_statements": 348
       },
       "webpack": {
-        "code": 3767
+        "code": 3775
       }
     }
   },
   "dist/react-svg.umd.development.js": {
-    "bundled": 17184,
-    "minified": 7343,
-    "gzipped": 3010
+    "bundled": 17521,
+    "minified": 7546,
+    "gzipped": 3094
   }
 }
