@@ -81,7 +81,7 @@
     "@typescript-eslint/parser": "2.3.0",
     "babel-core": "6.26.3",
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
-    "codecov": "3.5.0",
+    "codecov": "3.6.1",
     "cp-cli": "2.0.0",
     "cross-env": "6.0.0",
     "del-cli": "3.0.0",
@@ -92,7 +92,7 @@
     "eslint-plugin-react": "7.14.3",
     "faker": "4.1.0",
     "jest": "24.9.0",
-    "jest-prettyhtml-matchers": "1.0.38",
+    "jest-prettyhtml-matchers": "1.0.39",
     "npm-run-all": "4.1.5",
     "prettier": "1.18.2",
     "raf": "3.4.1",
@@ -107,7 +107,7 @@
     "rollup-plugin-sourcemaps": "0.4.2",
     "rollup-plugin-terser": "5.1.2",
     "sinon": "7.4.2",
-    "tanem-scripts": "2.0.9",
+    "tanem-scripts": "2.0.10",
     "ts-jest": "24.1.0",
     "typescript": "3.6.3"
   }
