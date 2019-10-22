@@ -19,7 +19,7 @@ interface Props {
   loading?: React.ReactType
   renumerateIRIElements?: boolean
   src: string
-  wrapper?: 'div' | 'span',
+  wrapper?: 'div' | 'span'
   className?: string
 }
 
