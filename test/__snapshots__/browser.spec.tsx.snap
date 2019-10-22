@@ -176,7 +176,7 @@ exports[`while running in a browser environment should not renumerate IRI elemen
 
 exports[`while running in a browser environment should render correctly 1`] = `
 "<div class='wrapper-class-name'>
-  <div>
+  <div class='wrapper-class-name'>
     <svg
       class='injected-svg'
       data-src='http://localhost/bb463b8b-b76c-4f6a-9726-65ab5730b69b.svg'
@@ -279,7 +279,7 @@ exports[`while running in a browser environment should renumerate IRI elements b
 
 exports[`while running in a browser environment should update correctly 1`] = `
 "<div class='updated-wrapper-class-name'>
-  <div>
+  <div class='updated-wrapper-class-name'>
     <svg
       class='injected-svg'
       data-src='http://localhost/a27218b8-6a4d-47bb-95b6-5a55334fac1c.svg'
