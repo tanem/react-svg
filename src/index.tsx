@@ -19,7 +19,8 @@ interface Props {
   loading?: React.ReactType
   renumerateIRIElements?: boolean
   src: string
-  wrapper?: 'div' | 'span'
+  wrapper?: 'div' | 'span',
+  className?: string
 }
 
 interface State {
@@ -58,7 +59,8 @@ export default class ReactSVG extends React.Component<
     ]),
     renumerateIRIElements: PropTypes.bool,
     src: PropTypes.string.isRequired,
-    wrapper: PropTypes.oneOf(['div', 'span'])
+    wrapper: PropTypes.oneOf(['div', 'span']),
+    className: PropTypes.string
   }
 
   initialState = {
@@ -85,7 +87,8 @@ export default class ReactSVG extends React.Component<
         beforeInjection,
         evalScripts,
         renumerateIRIElements,
-        src
+        src,
+        className
       } = this.props
 
       /* eslint-disable @typescript-eslint/no-non-null-assertion */
@@ -95,7 +98,7 @@ export default class ReactSVG extends React.Component<
 
       const wrapper = document.createElement(Wrapper)
       wrapper.innerHTML = ReactDOMServer.renderToStaticMarkup(
-        <Wrapper>
+        <Wrapper className={className}>
           <Wrapper data-src={src} />
         </Wrapper>
       )
