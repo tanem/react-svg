@@ -11,7 +11,7 @@ import shallowDiffers from './shallow-differs'
 
 type WrapperType = HTMLSpanElement | HTMLDivElement
 
-interface Props {
+export interface Props {
   afterInjection?: Errback
   beforeInjection?: BeforeEach
   evalScripts?: EvalScripts
