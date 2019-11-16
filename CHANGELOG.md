@@ -1,5 +1,12 @@
 # Changelog
 
+## [v10.0.25](https://github.com/tanem/react-svg/tree/v10.0.25) (2019-11-17)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v10.0.24...v10.0.25)
+
+**Merged pull requests:**
+
+- Revert "Tweak types" [#488](https://github.com/tanem/react-svg/pull/488) ([tanem](https://github.com/tanem))
+
 ## [v10.0.24](https://github.com/tanem/react-svg/tree/v10.0.24) (2019-11-17)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v10.0.23...v10.0.24)
 
