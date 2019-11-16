@@ -28,8 +28,7 @@ interface State {
 }
 
 export default class ReactSVG extends React.Component<
-  Props &
-    React.DetailedHTMLProps<React.HTMLAttributes<WrapperType>, WrapperType>,
+  Props & React.HTMLAttributes<WrapperType>,
   State
 > {
   static defaultProps = {
