@@ -5,7 +5,7 @@ import sinon, {
   SinonFakeXMLHttpRequest,
   SinonFakeXMLHttpRequestStatic
 } from 'sinon'
-import ReactSVG from '../src'
+import { ReactSVG } from '../src'
 import iriSource from './iri-source.fixture'
 import source from './source.fixture'
 

@@ -1,37 +1,11 @@
-import {
-  BeforeEach,
-  Errback,
-  EvalScripts,
-  SVGInjector
-} from '@tanem/svg-injector'
+import { SVGInjector } from '@tanem/svg-injector'
 import * as PropTypes from 'prop-types'
 import * as React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import shallowDiffers from './shallow-differs'
+import { Props, State, WrapperType } from './types'
 
-type WrapperType = HTMLSpanElement | HTMLDivElement
-
-interface Props {
-  afterInjection?: Errback
-  beforeInjection?: BeforeEach
-  evalScripts?: EvalScripts
-  fallback?: React.ReactType
-  loading?: React.ReactType
-  renumerateIRIElements?: boolean
-  src: string
-  wrapper?: 'div' | 'span'
-}
-
-interface State {
-  hasError: boolean
-  isLoading: boolean
-}
-
-export default class ReactSVG extends React.Component<
-  Props &
-    React.DetailedHTMLProps<React.HTMLAttributes<WrapperType>, WrapperType>,
-  State
-> {
+export class ReactSVG extends React.Component<Props, State> {
   static defaultProps = {
     afterInjection: () => undefined,
     beforeInjection: () => undefined,
@@ -104,7 +78,7 @@ export default class ReactSVG extends React.Component<
         wrapper.firstChild as WrapperType
       )
 
-      const afterEach: Errback = (error, svg) => {
+      const afterEach = (error: Error | null, svg?: Element) => {
         if (error) {
           this.removeSVG()
         }
