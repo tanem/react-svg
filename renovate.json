@@ -1,25 +1,23 @@
 {
   "extends": [
-    "config:base",
-    ":disableRateLimiting",
+    "config:js-lib",
     ":rebaseStalePrs",
-    ":enableVulnerabilityAlerts"
+    ":automergeMinor",
+    ":label(internal)",
+    ":masterIssue",
+    ":assignee(tanem)"
   ],
+  "stabilityDays": 3,
+  "prCreation": "not-pending",
   "packageRules": [
+    {
+      "updateTypes": ["major"],
+      "masterIssueApproval": true
+    },
     {
       "paths": ["examples/typescript-2.x/package.json"],
       "packageNames": ["typescript"],
       "allowedVersions": ">=2 <3"
-    },
-    {
-      "depTypeList": ["peerDependencies"],
-      "rangeStrategy": "widen"
-    },
-    {
-      "depTypeList": ["devDependencies"],
-      "groupName": "dev dependencies",
-      "rangeStrategy": "pin"
     }
-  ],
-  "rangeStrategy": "bump"
+  ]
 }
