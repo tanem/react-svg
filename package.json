@@ -21,6 +21,7 @@
     "clean:coverage": "del coverage",
     "clean:dist": "del dist",
     "compile": "tsc -p tsconfig.base.json",
+    "coverage": "codecov",
     "format": "prettier --write \"**/*.{js,ts,tsx}\"",
     "lint": "eslint .",
     "postbundle": "del compiled && cp-cli ./index.js ./dist/index.js",
