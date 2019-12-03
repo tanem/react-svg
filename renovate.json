@@ -18,6 +18,10 @@
       "paths": ["examples/typescript-2.x/package.json"],
       "packageNames": ["typescript"],
       "allowedVersions": ">=2 <3"
+    },
+    {
+      "packageNames": ["tanem-scripts"],
+      "stabilityDays": 0
     }
   ]
 }
