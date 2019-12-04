@@ -2,6 +2,16 @@
 
 Details relating to major changes that aren't presently in `CHANGELOG.md`, due to limitations with how that file is being generated.
 
+## v11.0.0
+
+**Added**
+
+- Named type definition exports.
+
+**Changed**
+
+- `ReactSVG` is now a named export.
+
 ## v10.0.0
 
 **Added**
