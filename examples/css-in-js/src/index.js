@@ -1,7 +1,7 @@
 import { css } from 'glamor'
 import React from 'react'
 import { render } from 'react-dom'
-import ReactSVG from 'react-svg'
+import { ReactSVG } from 'react-svg'
 
 css.global('body', {
   alignItems: 'center',
