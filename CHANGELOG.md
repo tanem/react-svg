@@ -1,5 +1,16 @@
 # Changelog
 
+## [v11.0.0](https://github.com/tanem/react-svg/tree/v11.0.0) (2019-12-04)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v10.0.26...v11.0.0)
+
+#### :boom: Breaking Change
+
+- [#507](https://github.com/tanem/react-svg/pull/507) Export type definitions ([@tanem](https://github.com/tanem))
+
+#### :house: Internal
+
+- [#508](https://github.com/tanem/react-svg/pull/508) Remove master issue approval for major dep updates ([@tanem](https://github.com/tanem))
+
 ## [v10.0.26](https://github.com/tanem/react-svg/tree/v10.0.26) (2019-12-03)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v10.0.25...v10.0.26)
 
@@ -73,10 +84,6 @@
 #### :house: Internal
 
 - [#463](https://github.com/tanem/react-svg/pull/463) Update dependency @tanem/svg-injector to ^8.0.30 ([@renovate[bot]](https://github.com/apps/renovate))
-- [#453](https://github.com/tanem/react-svg/pull/453) Update dev dependencies ([@renovate[bot]](https://github.com/apps/renovate))
-
-#### :question: Unlabelled
-
 - [#457](https://github.com/tanem/react-svg/pull/457) Bump eslint-utils from 1.3.1 to 1.4.2 in /examples/loading ([@dependabot[bot]](https://github.com/apps/dependabot))
 - [#461](https://github.com/tanem/react-svg/pull/461) Bump eslint-utils from 1.4.0 to 1.4.2 in /examples/external-stylesheet ([@dependabot[bot]](https://github.com/apps/dependabot))
 - [#460](https://github.com/tanem/react-svg/pull/460) Bump eslint-utils from 1.4.0 to 1.4.2 in /examples/before-injection ([@dependabot[bot]](https://github.com/apps/dependabot))
@@ -85,6 +92,7 @@
 - [#459](https://github.com/tanem/react-svg/pull/459) Bump eslint-utils from 1.4.0 to 1.4.2 in /examples/css-in-js ([@dependabot[bot]](https://github.com/apps/dependabot))
 - [#455](https://github.com/tanem/react-svg/pull/455) Bump eslint-utils from 1.3.1 to 1.4.2 in /examples/fallbacks ([@dependabot[bot]](https://github.com/apps/dependabot))
 - [#454](https://github.com/tanem/react-svg/pull/454) Bump eslint-utils from 1.4.0 to 1.4.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+- [#453](https://github.com/tanem/react-svg/pull/453) Update dev dependencies ([@renovate[bot]](https://github.com/apps/renovate))
 
 ## [v10.0.19](https://github.com/tanem/react-svg/tree/v10.0.19) (2019-08-24)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v10.0.18...v10.0.19)
@@ -138,15 +146,12 @@
 
 - [#429](https://github.com/tanem/react-svg/pull/429) Update dev dependencies ([@renovate[bot]](https://github.com/apps/renovate))
 - [#438](https://github.com/tanem/react-svg/pull/438) Remove audit:fix script ([@tanem](https://github.com/tanem))
-- [#436](https://github.com/tanem/react-svg/pull/436) Reconfigure renovate ([@tanem](https://github.com/tanem))
-- [#435](https://github.com/tanem/react-svg/pull/435) Reconfigure renovate ([@tanem](https://github.com/tanem))
-
-#### :question: Unlabelled
-
 - [#434](https://github.com/tanem/react-svg/pull/434) Bump lodash.template from 4.4.0 to 4.5.0 in /examples/loading ([@dependabot[bot]](https://github.com/apps/dependabot))
 - [#433](https://github.com/tanem/react-svg/pull/433) Bump lodash.template from 4.4.0 to 4.5.0 in /examples/api-usage ([@dependabot[bot]](https://github.com/apps/dependabot))
 - [#432](https://github.com/tanem/react-svg/pull/432) Bump lodash.template from 4.4.0 to 4.5.0 in /examples/fallbacks ([@dependabot[bot]](https://github.com/apps/dependabot))
 - [#431](https://github.com/tanem/react-svg/pull/431) Bump lodash.template from 4.4.0 to 4.5.0 in /examples/basic-usage ([@dependabot[bot]](https://github.com/apps/dependabot))
+- [#436](https://github.com/tanem/react-svg/pull/436) Reconfigure renovate ([@tanem](https://github.com/tanem))
+- [#435](https://github.com/tanem/react-svg/pull/435) Reconfigure renovate ([@tanem](https://github.com/tanem))
 
 ## [v10.0.13](https://github.com/tanem/react-svg/tree/v10.0.13) (2019-07-26)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v10.0.12...v10.0.13)
