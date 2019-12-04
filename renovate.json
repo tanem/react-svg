@@ -11,10 +11,6 @@
   "prCreation": "not-pending",
   "packageRules": [
     {
-      "updateTypes": ["major"],
-      "masterIssueApproval": true
-    },
-    {
       "paths": ["examples/typescript-2.x/package.json"],
       "packageNames": ["typescript"],
       "allowedVersions": ">=2 <3"
