@@ -7,6 +7,7 @@
     ":masterIssue"
   ],
   "stabilityDays": 3,
+  "prCreation": "not-pending",
   "packageRules": [
     {
       "paths": ["examples/typescript-2.x/package.json"],
@@ -15,6 +16,7 @@
     },
     {
       "packageNames": ["@tanem/svg-injector", "tanem-scripts"],
+      "prCreation": "immediate",
       "stabilityDays": 0
     }
   ]
