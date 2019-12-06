@@ -10,10 +10,8 @@
     "dist"
   ],
   "scripts": {
-    "authors": "tanem-scripts authors > AUTHORS",
     "build": "run-s clean compile bundle",
     "bundle": "rollup -c",
-    "changelog": "tanem-scripts changelog -f v$npm_package_version > CHANGELOG.md",
     "check:format": "prettier --list-different \"**/*.{js,ts,tsx}\"",
     "check:types": "tsc --noEmit",
     "clean": "run-p clean:*",
@@ -32,8 +30,7 @@
     "test:es": "jest --config ./scripts/jest/config.es.js",
     "test:src": "jest --config ./scripts/jest/config.src.js",
     "test:umd": "jest --config ./scripts/jest/config.umd.js",
-    "test:umdprod": "jest --config ./scripts/jest/config.umdprod.js",
-    "version": "run-s test changelog authors && git add ."
+    "test:umdprod": "jest --config ./scripts/jest/config.umdprod.js"
   },
   "repository": "github:tanem/react-svg",
   "keywords": [
@@ -106,7 +103,7 @@
     "rollup-plugin-sourcemaps": "0.4.2",
     "rollup-plugin-terser": "5.1.2",
     "sinon": "7.5.0",
-    "tanem-scripts": "4.0.7",
+    "tanem-scripts": "5.0.2",
     "ts-jest": "24.2.0",
     "typescript": "3.7.2"
   }
