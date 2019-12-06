@@ -1,5 +1,12 @@
 # Changelog
 
+## [v11.0.2](https://github.com/tanem/react-svg/tree/v11.0.2) (2019-12-06)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.1...v11.0.2)
+
+#### :house: Internal
+
+- [#516](https://github.com/tanem/react-svg/pull/516) Simplify pr creation config ([@tanem](https://github.com/tanem))
+
 ## [v11.0.1](https://github.com/tanem/react-svg/tree/v11.0.1) (2019-12-06)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.0...v11.0.1)
 
