@@ -4,8 +4,7 @@
     ":rebaseStalePrs",
     ":automergeMinor",
     ":label(internal)",
-    ":masterIssue",
-    ":assignee(tanem)"
+    ":masterIssue"
   ],
   "stabilityDays": 3,
   "prCreation": "not-pending",
