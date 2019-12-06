@@ -1,5 +1,17 @@
 # Changelog
 
+## [v11.0.1](https://github.com/tanem/react-svg/tree/v11.0.1) (2019-12-06)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.0...v11.0.1)
+
+#### :house: Internal
+
+- [#515](https://github.com/tanem/react-svg/pull/515) Revert "Release v11.0.1" ([@tanem](https://github.com/tanem))
+- [#513](https://github.com/tanem/react-svg/pull/513) Update dependency tanem-scripts to v5 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#514](https://github.com/tanem/react-svg/pull/514) Don't auto-assign PRs to tanem ([@tanem](https://github.com/tanem))
+- [#512](https://github.com/tanem/react-svg/pull/512) Set immediate PR creation for tanem deps ([@tanem](https://github.com/tanem))
+- [#511](https://github.com/tanem/react-svg/pull/511) Update typescript-eslint monorepo to v2.10.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#509](https://github.com/tanem/react-svg/pull/509) Update dependency rollup to v1.27.8 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v11.0.0](https://github.com/tanem/react-svg/tree/v11.0.0) (2019-12-04)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v10.0.26...v11.0.0)
 
