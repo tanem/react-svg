@@ -16,7 +16,8 @@
       "allowedVersions": ">=2 <3"
     },
     {
-      "packageNames": ["tanem-scripts"],
+      "packageNames": ["@tanem/svg-injector", "tanem-scripts"],
+      "prCreation": "immediate",
       "stabilityDays": 0
     }
   ]
