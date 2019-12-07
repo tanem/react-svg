@@ -7,6 +7,11 @@
     ":masterIssue",
     ":enableVulnerabilityAlerts"
   ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": "at any time",
+    "stabilityDays": 0
+  },
   "stabilityDays": 3,
   "prCreation": "not-pending",
   "packageRules": [
