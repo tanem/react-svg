@@ -9,6 +9,7 @@
   ],
   "lockFileMaintenance": {
     "enabled": true,
+    "ignorePaths": [],
     "schedule": "at any time",
     "stabilityDays": 0
   },
