@@ -4,7 +4,8 @@
     ":rebaseStalePrs",
     ":automergeMinor",
     ":label(internal)",
-    ":masterIssue"
+    ":masterIssue",
+    ":enableVulnerabilityAlerts"
   ],
   "stabilityDays": 3,
   "prCreation": "not-pending",
