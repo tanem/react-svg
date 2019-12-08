@@ -1,5 +1,32 @@
 # Changelog
 
+## [v11.0.3](https://github.com/tanem/react-svg/tree/v11.0.3) (2019-12-08)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.2...v11.0.3)
+
+#### :memo: Documentation
+
+- [#524](https://github.com/tanem/react-svg/pull/524) Remove typescript 2.x example ([@tanem](https://github.com/tanem))
+
+#### :house: Internal
+
+- [#535](https://github.com/tanem/react-svg/pull/535) Run travis tasks on branches ([@tanem](https://github.com/tanem))
+- [#534](https://github.com/tanem/react-svg/pull/534) Require renovate master issue approval ([@tanem](https://github.com/tanem))
+- [#533](https://github.com/tanem/react-svg/pull/533) Update react monorepo to v16.12.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#532](https://github.com/tanem/react-svg/pull/532) Update dependency react-scripts to v3.3.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#529](https://github.com/tanem/react-svg/pull/529) Update dependency parcel-bundler to v1.12.4 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#531](https://github.com/tanem/react-svg/pull/531) Update dependency @types/react to v16.9.15 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#530](https://github.com/tanem/react-svg/pull/530) Update renovate ignore paths and package rules ([@tanem](https://github.com/tanem))
+- [#527](https://github.com/tanem/react-svg/pull/527) Update dependency @types/react-dom to v16.9.4 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#528](https://github.com/tanem/react-svg/pull/528) Lock file maintenance ([@tanem](https://github.com/tanem))
+- [#525](https://github.com/tanem/react-svg/pull/525) Update dependency @types/node to v11.15.3 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#523](https://github.com/tanem/react-svg/pull/523) Update dependency @types/jest to v24.0.23 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#522](https://github.com/tanem/react-svg/pull/522) Don't ignore examples dir in renovate config ([@tanem](https://github.com/tanem))
+- [#521](https://github.com/tanem/react-svg/pull/521) Enable lockfile maint. on subfolders ([@tanem](https://github.com/tanem))
+- [#520](https://github.com/tanem/react-svg/pull/520) Enable renovate lockfile maintenance ([@tanem](https://github.com/tanem))
+- [#519](https://github.com/tanem/react-svg/pull/519) Enable renovate vulnerability alerts ([@tanem](https://github.com/tanem))
+- [#518](https://github.com/tanem/react-svg/pull/518) Update dependency typescript to v3.7.3 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#517](https://github.com/tanem/react-svg/pull/517) Reduce pr creation noise ([@tanem](https://github.com/tanem))
+
 ## [v11.0.2](https://github.com/tanem/react-svg/tree/v11.0.2) (2019-12-06)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.1...v11.0.2)
 
