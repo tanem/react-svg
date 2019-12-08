@@ -4,22 +4,25 @@
     ":rebaseStalePrs",
     ":automergeMinor",
     ":label(internal)",
-    ":masterIssue",
-    ":enableVulnerabilityAlerts"
+    ":masterIssue"
   ],
   "ignorePaths": ["**/node_modules/**"],
   "lockFileMaintenance": {
     "enabled": true,
     "schedule": "at any time",
-    "stabilityDays": 0
+    "stabilityDays": 0,
+    "masterIssueApproval": true
   },
   "stabilityDays": 3,
   "prCreation": "not-pending",
   "packageRules": [
     {
       "sourceUrlPrefixes": ["https://github.com/tanem/"],
-      "prCreation": "immediate",
       "stabilityDays": 0
+    },
+    {
+      "updateTypes": ["major"],
+      "masterIssueApproval": true
     }
   ]
 }
