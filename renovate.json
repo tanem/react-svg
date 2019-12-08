@@ -7,14 +7,7 @@
     ":masterIssue",
     ":enableVulnerabilityAlerts"
   ],
-  "ignorePaths": [
-    "**/node_modules/**",
-    "**/bower_components/**",
-    "**/vendor/**",
-    "**/__tests__/**",
-    "**/test/**",
-    "**/tests/**"
-  ],
+  "ignorePaths": ["**/node_modules/**"],
   "lockFileMaintenance": {
     "enabled": true,
     "schedule": "at any time",
