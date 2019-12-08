@@ -17,7 +17,7 @@
   "prCreation": "not-pending",
   "packageRules": [
     {
-      "packageNames": ["@tanem/svg-injector", "tanem-scripts"],
+      "sourceUrlPrefixes": ["https://github.com/tanem/"],
       "prCreation": "immediate",
       "stabilityDays": 0
     }
