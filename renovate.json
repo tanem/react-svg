@@ -10,8 +10,7 @@
   "lockFileMaintenance": {
     "enabled": true,
     "schedule": "at any time",
-    "stabilityDays": 0,
-    "masterIssueApproval": true
+    "stabilityDays": 0
   },
   "stabilityDays": 3,
   "prCreation": "not-pending",
@@ -19,10 +18,6 @@
     {
       "sourceUrlPrefixes": ["https://github.com/tanem/"],
       "stabilityDays": 0
-    },
-    {
-      "updateTypes": ["major"],
-      "masterIssueApproval": true
     }
   ]
 }
