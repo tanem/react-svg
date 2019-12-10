@@ -3,8 +3,7 @@
     "config:js-lib",
     ":rebaseStalePrs",
     ":automergeMinor",
-    ":label(internal)",
-    ":masterIssue"
+    ":label(internal)"
   ],
   "ignorePaths": ["**/node_modules/**"],
   "lockFileMaintenance": {
