@@ -1,5 +1,22 @@
 {
   "extends": [
-    "config:base"
+    "config:js-lib",
+    ":rebaseStalePrs",
+    ":automergeMinor",
+    ":label(internal)",
+    ":masterIssue"
+  ],
+  "ignorePaths": ["**/node_modules/**"],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": "at any time",
+    "stabilityDays": 0
+  },
+  "stabilityDays": 3,
+  "packageRules": [
+    {
+      "sourceUrlPrefixes": ["https://github.com/tanem/"],
+      "stabilityDays": 0
+    }
   ]
 }
