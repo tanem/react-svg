@@ -8,15 +8,17 @@
   ],
   "ignorePaths": ["**/node_modules/**"],
   "lockFileMaintenance": {
-    "enabled": true,
-    "schedule": "at any time",
-    "stabilityDays": 0
+    "enabled": true
   },
   "stabilityDays": 3,
   "packageRules": [
     {
       "sourceUrlPrefixes": ["https://github.com/tanem/"],
       "stabilityDays": 0
+    },
+    {
+      "depTypeList": ["dependencies"],
+      "rangeStrategy": "bump"
     }
   ]
 }
