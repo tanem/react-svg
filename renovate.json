@@ -15,6 +15,10 @@
     {
       "sourceUrlPrefixes": ["https://github.com/tanem/"],
       "stabilityDays": 0
+    },
+    {
+      "depTypeList": ["dependencies"],
+      "rangeStrategy": "bump"
     }
   ]
 }
