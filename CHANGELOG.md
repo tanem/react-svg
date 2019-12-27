@@ -1,5 +1,24 @@
 # Changelog
 
+## [v11.0.5](https://github.com/tanem/react-svg/tree/v11.0.5) (2019-12-27)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.4...v11.0.5)
+
+#### :house: Internal
+
+- [#597](https://github.com/tanem/react-svg/pull/597) Update dependency sinon to v8 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#599](https://github.com/tanem/react-svg/pull/599) Update typescript-eslint monorepo to v2.13.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#596](https://github.com/tanem/react-svg/pull/596) Update dependency rollup to v1.27.14 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#595](https://github.com/tanem/react-svg/pull/595) Update dependency typescript to v3.7.4 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#594](https://github.com/tanem/react-svg/pull/594) Update dependency eslint to v6.8.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#593](https://github.com/tanem/react-svg/pull/593) Update dependency @types/react to v16.9.17 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#598](https://github.com/tanem/react-svg/pull/598) Lock file maintenance ([@renovate[bot]](https://github.com/apps/renovate))
+- [#592](https://github.com/tanem/react-svg/pull/592) Update dependency enzyme to v3.11.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#591](https://github.com/tanem/react-svg/pull/591) Update dependency enzyme-adapter-react-16 to v1.15.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#590](https://github.com/tanem/react-svg/pull/590) Update babel monorepo to v7.7.7 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#589](https://github.com/tanem/react-svg/pull/589) Update dependency @types/jest to v24.0.24 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#580](https://github.com/tanem/react-svg/pull/580) Update typescript-eslint monorepo to v2.12.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#555](https://github.com/tanem/react-svg/pull/555) Update dependency rollup to v1.27.13 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v11.0.4](https://github.com/tanem/react-svg/tree/v11.0.4) (2019-12-17)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.3...v11.0.4)
 
