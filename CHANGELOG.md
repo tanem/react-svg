@@ -1,5 +1,27 @@
 # Changelog
 
+## [v11.0.7](https://github.com/tanem/react-svg/tree/v11.0.7) (2020-01-15)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.6...v11.0.7)
+
+#### :house: Internal
+
+- [#626](https://github.com/tanem/react-svg/pull/626) Update dependency tanem-scripts to v5.0.5 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#621](https://github.com/tanem/react-svg/pull/621) Update dependency rollup-plugin-terser to v5.2.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#620](https://github.com/tanem/react-svg/pull/620) Update dependency @types/faker to v4.1.9 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#623](https://github.com/tanem/react-svg/pull/623) Lock file maintenance ([@renovate[bot]](https://github.com/apps/renovate))
+- [#619](https://github.com/tanem/react-svg/pull/619) Update dependency rollup to v1.29.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#618](https://github.com/tanem/react-svg/pull/618) Update dependency ts-jest to v24.3.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#617](https://github.com/tanem/react-svg/pull/617) Update typescript-eslint monorepo to v2.15.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#616](https://github.com/tanem/react-svg/pull/616) Update dependency sinon to v8.0.4 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#612](https://github.com/tanem/react-svg/pull/612) Update dependency rollup to v1.28.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#609](https://github.com/tanem/react-svg/pull/609) Update dependency @types/node to v11.15.4 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#608](https://github.com/tanem/react-svg/pull/608) Update dependency rollup-plugin-sourcemaps to v0.5.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#615](https://github.com/tanem/react-svg/pull/615) Lock file maintenance ([@renovate[bot]](https://github.com/apps/renovate))
+- [#614](https://github.com/tanem/react-svg/pull/614) Lock file maintenance ([@renovate[bot]](https://github.com/apps/renovate))
+- [#613](https://github.com/tanem/react-svg/pull/613) Lock file maintenance ([@renovate[bot]](https://github.com/apps/renovate))
+- [#611](https://github.com/tanem/react-svg/pull/611) Update dependency @tanem/svg-injector to ^8.0.38 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#610](https://github.com/tanem/react-svg/pull/610) Update dependency tanem-scripts to v5.0.4 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v11.0.6](https://github.com/tanem/react-svg/tree/v11.0.6) (2020-01-04)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.5...v11.0.6)
 
