@@ -20,7 +20,7 @@
     "@types/jest": "24.9.0",
     "@types/node": "11.15.4",
     "@types/react": "16.9.17",
-    "@types/react-dom": "16.9.4",
+    "@types/react-dom": "16.9.5",
     "typescript": "3.7.5"
   },
   "browserslist": [
