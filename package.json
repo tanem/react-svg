@@ -80,7 +80,7 @@
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
     "codecov": "3.6.2",
     "cp-cli": "2.0.0",
-    "cross-env": "6.0.3",
+    "cross-env": "7.0.0",
     "del-cli": "3.0.0",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.2",
