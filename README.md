@@ -25,6 +25,7 @@ render(<ReactSVG src="svg.svg" />, document.getElementById('root'))
 
 ## Live Examples
 
+- Accessibility: [Source](https://github.com/tanem/react-svg/tree/master/examples/accessibility) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/accessibility)
 - API Usage: [Source](https://github.com/tanem/react-svg/tree/master/examples/api-usage) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/api-usage)
 - Basic Usage: [Source](https://github.com/tanem/react-svg/tree/master/examples/basic-usage) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/basic-usage)
 - Before Injection: [Source](https://github.com/tanem/react-svg/tree/master/examples/before-injection) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/before-injection)
@@ -104,6 +105,43 @@ For the minified production version, make sure you have already included:
 - [`React`](https://unpkg.com/react/umd/react.production.min.js)
 - [`ReactDOM`](https://unpkg.com/react-dom/umd/react-dom.production.min.js)
 - [`ReactDOMServer`](https://unpkg.com/react-dom/umd/react-dom-server.browser.production.min.js)
+
+## FAQ
+
+<details>
+
+<summary>
+How can I improve the accessibility of the rendered output?
+</summary>
+
+Let's assume we want to add `role` and `aria-label` attributes to the outermost wrapper element, plus `title` and `desc` elements to the SVG.
+
+Since non-documented properties are applied to the outermost wrapper element, and the `beforeInjection` function allows us to modify the SVG DOM, we can do something like the following:
+
+```jsx
+<ReactSVG
+  src="svg.svg"
+  role="img"
+  aria-label="Description of the overall image"
+  beforeInjection={svg => {
+    const desc = document.createElement('desc')
+    desc.innerHTML = 'A description'
+    svg.prepend(desc)
+
+    const title = document.createElement('title')
+    title.innerHTML = 'A title'
+    svg.prepend(title)
+  }}
+/>
+```
+
+A live example is available [here](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/accessibility).
+
+Related issues:
+
+- [#639](https://github.com/tanem/react-svg/issues/639).
+
+</details>
 
 ## License
 
