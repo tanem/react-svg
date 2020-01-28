@@ -1,5 +1,17 @@
 # Changelog
 
+## [v11.0.9](https://github.com/tanem/react-svg/tree/v11.0.9) (2020-01-28)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.8...v11.0.9)
+
+#### :memo: Documentation
+
+- [#655](https://github.com/tanem/react-svg/pull/655) Update FAQ ([@tanem](https://github.com/tanem))
+
+#### :house: Internal
+
+- [#649](https://github.com/tanem/react-svg/pull/649) Lock file maintenance ([@renovate[bot]](https://github.com/apps/renovate))
+- [#643](https://github.com/tanem/react-svg/pull/643) Update dependency @types/jest to v24.9.1 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v11.0.8](https://github.com/tanem/react-svg/tree/v11.0.8) (2020-01-26)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.7...v11.0.8)
 
