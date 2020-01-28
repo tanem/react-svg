@@ -9,9 +9,11 @@
 
 > A React component that injects SVG into the DOM.
 
+[Background](#background) | [Basic Usage](#basic-usage) | [Live Examples](#live-examples) | [API](#api) | [Installation](#installation) | [FAQ](#faq) | [License](#license)
+
 ## Background
 
-Let's say you have an SVG available at some URL, and you'd like to inject it into the DOM [for various reasons](https://github.com/tanem/svg-injector#why). This module does the heavy lifting for you by delegating the process to [SVGInjector](https://github.com/tanem/svg-injector), which makes an AJAX request for the SVG and then swaps in the SVG markup inline. The async loaded SVG is also cached, so multiple uses of an SVG only require a single server request.
+Let's say you have an SVG available at some URL, and you'd like to inject it into the DOM [for various reasons](https://github.com/tanem/svg-injector#why). This module does the heavy lifting for you by delegating the process to [@tanem/svg-injector](https://github.com/tanem/svg-injector), which makes an AJAX request for the SVG and then swaps in the SVG markup inline. The async loaded SVG is also cached, so multiple uses of an SVG only require a single server request.
 
 ## Basic Usage
 
@@ -111,6 +113,37 @@ For the minified production version, make sure you have already included:
 <details>
 
 <summary>
+Why are there two wrapping elements?
+</summary>
+
+This module delegates it's core behaviour to [@tanem/svg-injector](https://github.com/tanem/svg-injector), which requires the presence of a parent node when swapping in the SVG element. The swapping in occurs outside of React flow, so we don't want React updates to conflict with the DOM nodes `@tanem/svg-injector` is managing.
+
+Example output, assuming a `div` wrapper:
+
+```html
+<div> <!-- The wrapper, managed by React -->
+  <div> <!-- The parent node, managed by @tanem/svg-injector -->
+    <svg>...</svg> <!-- The swapped-in SVG, managed by @tanem/svg-injector -->
+  </div>
+</div>
+```
+
+See:
+
+- [Integrating with Other Libraries](https://reactjs.org/docs/integrating-with-other-libraries.html).
+
+Related issues and PRs:
+
+- [#24](https://github.com/tanem/react-svg/issues/24).
+- [#30](https://github.com/tanem/react-svg/issues/30).
+- [#36](https://github.com/tanem/react-svg/pull/36).
+- [#48](https://github.com/tanem/react-svg/issues/48).
+
+</details>
+
+<details>
+
+<summary>
 How can I improve the accessibility of the rendered output?
 </summary>
 
@@ -137,7 +170,7 @@ Since non-documented properties are applied to the outermost wrapper element, an
 
 A live example is available [here](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/accessibility).
 
-Related issues:
+Related issue:
 
 - [#639](https://github.com/tanem/react-svg/issues/639).
 
