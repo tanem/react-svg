@@ -9,15 +9,7 @@
 
 > A React component that injects SVG into the DOM.
 
-## Table of Contents
-
-- [Background](#background)
-- [Basic Usage](#basic-usage)
-- [Live Examples](#live-examples)
-- [API](#api)
-- [Installation](#installation)
-- [FAQ](#faq)
-- [License](#license)
+[Background](#background) | [Basic Usage](#basic-usage) | [Live Examples](#live-examples) | [API](#api) | [Installation](#installation) | [FAQ](#faq) | [License](#license)
 
 ## Background
 
