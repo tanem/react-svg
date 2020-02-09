@@ -67,7 +67,7 @@
     "@types/enzyme-adapter-react-16": "1.0.5",
     "@types/faker": "4.1.9",
     "@types/glob": "7.1.1",
-    "@types/jest": "25.1.1",
+    "@types/jest": "25.1.2",
     "@types/jsdom": "12.2.4",
     "@types/prop-types": "15.7.3",
     "@types/react": "16.9.19",
