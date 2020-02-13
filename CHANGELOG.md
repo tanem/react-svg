@@ -1,5 +1,34 @@
 # Changelog
 
+## [v11.0.10](https://github.com/tanem/react-svg/tree/v11.0.10) (2020-02-13)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.9...v11.0.10)
+
+#### :house: Internal
+
+- [#674](https://github.com/tanem/react-svg/pull/674) Update dependency @types/enzyme-adapter-react-16 to v1.0.6 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#673](https://github.com/tanem/react-svg/pull/673) Update dependency @types/enzyme to v3.10.5 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#672](https://github.com/tanem/react-svg/pull/672) Update dependency codecov to v3.6.5 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#671](https://github.com/tanem/react-svg/pull/671) Update dependency @types/jest to v25.1.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#669](https://github.com/tanem/react-svg/pull/669) Update dependency ts-jest to v25.2.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#668](https://github.com/tanem/react-svg/pull/668) Update typescript-eslint monorepo to v2.19.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#663](https://github.com/tanem/react-svg/pull/663) Update dependency eslint-plugin-react to v7.18.3 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#653](https://github.com/tanem/react-svg/pull/653) Update dependency @types/jest to v25 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#670](https://github.com/tanem/react-svg/pull/670) Reconfigure renovate ([@tanem](https://github.com/tanem))
+- [#662](https://github.com/tanem/react-svg/pull/662) Update dependency codecov to v3.6.4 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#661](https://github.com/tanem/react-svg/pull/661) Update dependency rollup to v1.31.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#660](https://github.com/tanem/react-svg/pull/660) Update dependency react-scripts to v3.3.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#667](https://github.com/tanem/react-svg/pull/667) Lock file maintenance ([@renovate[bot]](https://github.com/apps/renovate))
+- [#666](https://github.com/tanem/react-svg/pull/666) Lock file maintenance ([@renovate[bot]](https://github.com/apps/renovate))
+- [#665](https://github.com/tanem/react-svg/pull/665) Lock file maintenance ([@renovate[bot]](https://github.com/apps/renovate))
+- [#664](https://github.com/tanem/react-svg/pull/664) Update dependency jest-prettyhtml-matchers to v1.0.47 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#658](https://github.com/tanem/react-svg/pull/658) Update babel monorepo to v7.8.4 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#657](https://github.com/tanem/react-svg/pull/657) Update dependency ts-jest to v25.1.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#656](https://github.com/tanem/react-svg/pull/656) Update dependency @types/node to v11.15.5 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#654](https://github.com/tanem/react-svg/pull/654) Update dependency eslint-config-prettier to v6.10.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#652](https://github.com/tanem/react-svg/pull/652) Update typescript-eslint monorepo to v2.18.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#650](https://github.com/tanem/react-svg/pull/650) Update dependency rollup to v1.30.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#659](https://github.com/tanem/react-svg/pull/659) Update dependency tanem-scripts to v5.0.6 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v11.0.9](https://github.com/tanem/react-svg/tree/v11.0.9) (2020-01-28)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.8...v11.0.9)
 
