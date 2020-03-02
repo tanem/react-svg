@@ -105,6 +105,6 @@
     "sinon": "9.0.0",
     "tanem-scripts": "5.0.12",
     "ts-jest": "25.2.1",
-    "typescript": "3.8.2"
+    "typescript": "3.8.3"
   }
 }
