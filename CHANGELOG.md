@@ -1,5 +1,18 @@
 # Changelog
 
+## [v11.0.13](https://github.com/tanem/react-svg/tree/v11.0.13) (2020-03-07)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.12...v11.0.13)
+
+#### :house: Internal
+
+- [#702](https://github.com/tanem/react-svg/pull/702) Update typescript-eslint monorepo to v2.22.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#701](https://github.com/tanem/react-svg/pull/701) Update dependency tanem-scripts to v5.0.13 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#700](https://github.com/tanem/react-svg/pull/700) Update dependency @tanem/svg-injector to ^8.0.42 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#699](https://github.com/tanem/react-svg/pull/699) Update dependency typescript to v3.8.3 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#697](https://github.com/tanem/react-svg/pull/697) Update dependency rollup to v1.32.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#696](https://github.com/tanem/react-svg/pull/696) Update babel monorepo to v7.8.6 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#695](https://github.com/tanem/react-svg/pull/695) Update react monorepo to v16.13.0 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v11.0.12](https://github.com/tanem/react-svg/tree/v11.0.12) (2020-02-29)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.11...v11.0.12)
 
