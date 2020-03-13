@@ -1,5 +1,21 @@
 # Changelog
 
+## [v11.0.14](https://github.com/tanem/react-svg/tree/v11.0.14) (2020-03-13)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.13...v11.0.14)
+
+#### :house: Internal
+
+- [#712](https://github.com/tanem/react-svg/pull/712) Update dependency sinon to v9.0.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#711](https://github.com/tanem/react-svg/pull/711) Update typescript-eslint monorepo to v2.23.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#709](https://github.com/tanem/react-svg/pull/709) Update dependency tanem-scripts to v5.0.14 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#710](https://github.com/tanem/react-svg/pull/710) Update dependency rollup-plugin-terser to v5.3.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#708](https://github.com/tanem/react-svg/pull/708) Update dependency @tanem/svg-injector to ^8.0.43 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#707](https://github.com/tanem/react-svg/pull/707) Update dependency rollup-plugin-babel to v4.4.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#706](https://github.com/tanem/react-svg/pull/706) Update dependency eslint-plugin-react to v7.19.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#705](https://github.com/tanem/react-svg/pull/705) Update dependency @types/jest to v25.1.4 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#704](https://github.com/tanem/react-svg/pull/704) Update dependency cross-env to v7.0.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#703](https://github.com/tanem/react-svg/pull/703) Update babel monorepo to v7.8.7 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v11.0.13](https://github.com/tanem/react-svg/tree/v11.0.13) (2020-03-07)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.12...v11.0.13)
 
