@@ -1,5 +1,14 @@
 # Changelog
 
+## [v11.0.15](https://github.com/tanem/react-svg/tree/v11.0.15) (2020-03-21)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.14...v11.0.15)
+
+#### :house: Internal
+
+- [#715](https://github.com/tanem/react-svg/pull/715) Update typescript-eslint monorepo to v2.24.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#714](https://github.com/tanem/react-svg/pull/714) Update dependency tanem-scripts to v5.0.15 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#713](https://github.com/tanem/react-svg/pull/713) Update dependency rollup to v2 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v11.0.14](https://github.com/tanem/react-svg/tree/v11.0.14) (2020-03-13)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.13...v11.0.14)
 
