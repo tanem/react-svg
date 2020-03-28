@@ -8,5 +8,5 @@ module.exports = {
   setupFiles: ['raf/polyfill', '<rootDir>/scripts/jest/setupEnvironment.ts'],
   setupFilesAfterEnv: ['<rootDir>/scripts/jest/setupJest.ts'],
   testMatch: ['<rootDir>/test/*.spec.ts?(x)'],
-  transform: { '^.+\\.(js|tsx?)$': 'ts-jest' }
+  transform: { '^.+\\.(js|tsx?)$': 'ts-jest' },
 }

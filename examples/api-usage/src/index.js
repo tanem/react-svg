@@ -12,7 +12,7 @@ ReactDOM.render(
       }
       console.log(svg)
     }}
-    beforeInjection={svg => {
+    beforeInjection={(svg) => {
       svg.classList.add('svg-class-name')
       svg.setAttribute('style', 'width: 200px')
     }}

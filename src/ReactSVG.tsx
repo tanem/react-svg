@@ -13,7 +13,7 @@ export class ReactSVG extends React.Component<Props, State> {
     fallback: null,
     loading: null,
     renumerateIRIElements: true,
-    wrapper: 'div'
+    wrapper: 'div',
   }
 
   static propTypes = {
@@ -23,21 +23,21 @@ export class ReactSVG extends React.Component<Props, State> {
     fallback: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.object,
-      PropTypes.string
+      PropTypes.string,
     ]),
     loading: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.object,
-      PropTypes.string
+      PropTypes.string,
     ]),
     renumerateIRIElements: PropTypes.bool,
     src: PropTypes.string.isRequired,
-    wrapper: PropTypes.oneOf(['div', 'span'])
+    wrapper: PropTypes.oneOf(['div', 'span']),
   }
 
   initialState = {
     hasError: false,
-    isLoading: true
+    isLoading: true,
   }
 
   state = this.initialState
@@ -59,7 +59,7 @@ export class ReactSVG extends React.Component<Props, State> {
         beforeInjection,
         evalScripts,
         renumerateIRIElements,
-        src
+        src,
       } = this.props
 
       /* eslint-disable @typescript-eslint/no-non-null-assertion */
@@ -89,7 +89,7 @@ export class ReactSVG extends React.Component<Props, State> {
           this.setState(
             () => ({
               hasError: !!error,
-              isLoading: false
+              isLoading: false,
             }),
             () => {
               afterInjection(error, svg)
@@ -102,7 +102,7 @@ export class ReactSVG extends React.Component<Props, State> {
         afterEach,
         beforeEach: beforeInjection,
         evalScripts,
-        renumerateIRIElements
+        renumerateIRIElements,
       })
     }
   }

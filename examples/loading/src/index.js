@@ -9,7 +9,7 @@ const Loading = ({ size }) => (
 )
 
 Loading.propTypes = {
-  size: PropTypes.number.isRequired
+  size: PropTypes.number.isRequired,
 }
 
 ReactDOM.render(

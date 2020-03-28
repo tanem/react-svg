@@ -4,6 +4,6 @@ expect.extend(
   createPrettyHtmlMatchers({
     singleQuote: true,
     sortAttributes: true,
-    wrapAttributes: true
+    wrapAttributes: true,
   })
 )

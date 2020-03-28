@@ -3,7 +3,7 @@ import faker from 'faker'
 import * as React from 'react'
 import sinon, {
   SinonFakeXMLHttpRequest,
-  SinonFakeXMLHttpRequestStatic
+  SinonFakeXMLHttpRequestStatic,
 } from 'sinon'
 import { ReactSVG } from '../src'
 import iriSource from './iri-source.fixture'
@@ -28,7 +28,7 @@ describe('while running in a browser environment', () => {
   beforeEach(() => {
     fakeXHR = sinon.useFakeXMLHttpRequest()
     requests = []
-    fakeXHR.onCreate = xhr => {
+    fakeXHR.onCreate = (xhr) => {
       requests.push(xhr)
     }
   })
@@ -63,7 +63,7 @@ describe('while running in a browser environment', () => {
     jest.runAllTimers()
 
     wrapper.setProps({
-      className: 'updated-wrapper-class-name'
+      className: 'updated-wrapper-class-name',
     })
 
     expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
@@ -252,7 +252,7 @@ describe('while running in a browser environment', () => {
   it('should allow modification of the SVG via the beforeInjection callback', () => {
     wrapper = mount(
       <ReactSVG
-        beforeInjection={svg => {
+        beforeInjection={(svg) => {
           svg.classList.add('svg-class-name')
           svg.setAttribute('style', 'width: 200px')
           // TODO: Style child element fills.
