@@ -5,7 +5,7 @@ import { ReactSVG } from 'react-svg'
 ReactDOM.render(
   <ReactSVG
     src="svg.svg"
-    beforeInjection={svg => {
+    beforeInjection={(svg) => {
       // Add a class name to the SVG element. Note: You'll need a classList
       // polyfill if you're using this in older browsers.
       svg.classList.add('svg-class-name')

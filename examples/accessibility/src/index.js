@@ -7,7 +7,7 @@ ReactDOM.render(
     src="svg.svg"
     role="img"
     aria-label="Description of the overall image"
-    beforeInjection={svg => {
+    beforeInjection={(svg) => {
       const desc = document.createElement('desc')
       desc.innerHTML = 'A description'
       svg.prepend(desc)

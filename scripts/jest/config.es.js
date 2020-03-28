@@ -3,6 +3,6 @@ const srcConfig = require('./config.src')
 module.exports = Object.assign({}, srcConfig, {
   collectCoverage: false,
   moduleNameMapper: {
-    '^../src$': `<rootDir>/dist/react-svg.esm.js`
-  }
+    '^../src$': `<rootDir>/dist/react-svg.esm.js`,
+  },
 })

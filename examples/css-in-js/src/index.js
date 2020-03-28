@@ -9,20 +9,20 @@ css.global('body', {
   display: 'flex',
   justifyContent: 'center',
   height: '100vh',
-  margin: 0
+  margin: 0,
 })
 
 const styles = css({
   ' svg': {
     height: 200,
-    width: 200
+    width: 200,
   },
   ' rect': {
     fill: 'aqua',
     height: 190,
     stroke: 'darkmagenta',
-    width: 190
-  }
+    width: 190,
+  },
 })
 
 render(<ReactSVG src="svg.svg" {...styles} />, document.getElementById('root'))
