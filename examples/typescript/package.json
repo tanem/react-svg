@@ -19,7 +19,7 @@
   "devDependencies": {
     "@types/jest": "25.1.4",
     "@types/node": "11.15.5",
-    "@types/react": "16.9.25",
+    "@types/react": "16.9.32",
     "@types/react-dom": "16.9.6",
     "typescript": "3.8.3"
   },
