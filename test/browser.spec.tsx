@@ -174,7 +174,7 @@ describe('while running in a browser environment', () => {
       <ReactSVG
         afterInjection={(error, svg) => {
           expect(error).toBeNull()
-          expect((svg as Element).outerHTML).toMatchPrettyHtmlSnapshot()
+          expect((svg as SVGElement).outerHTML).toMatchPrettyHtmlSnapshot()
         }}
         src={`http://localhost/${faker.random.uuid()}.svg`}
       />
