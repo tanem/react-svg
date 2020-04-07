@@ -1,5 +1,5 @@
 *.md
-complied
+compiled
 coverage
 dist
 package.json
