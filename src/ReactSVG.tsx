@@ -78,7 +78,7 @@ export class ReactSVG extends React.Component<Props, State> {
         wrapper.firstChild as WrapperType
       )
 
-      const afterEach = (error: Error | null, svg?: Element) => {
+      const afterEach = (error: Error | null, svg?: SVGElement) => {
         if (error) {
           this.removeSVG()
         }
