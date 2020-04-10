@@ -60,7 +60,7 @@
   "devDependencies": {
     "@babel/core": "7.9.0",
     "@babel/plugin-transform-runtime": "7.9.0",
-    "@babel/preset-env": "7.9.0",
+    "@babel/preset-env": "7.9.5",
     "@babel/preset-react": "7.9.4",
     "@types/enzyme": "3.10.5",
     "@types/enzyme-adapter-react-16": "1.0.6",
