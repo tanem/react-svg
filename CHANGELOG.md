@@ -1,5 +1,14 @@
 # Changelog
 
+## [v11.0.18](https://github.com/tanem/react-svg/tree/v11.0.18) (2020-04-11)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.17...v11.0.18)
+
+#### :house: Internal
+
+- [#750](https://github.com/tanem/react-svg/pull/750) Update dependency @babel/preset-env to v7.9.5 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#749](https://github.com/tanem/react-svg/pull/749) Update typescript-eslint monorepo to v2.27.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#748](https://github.com/tanem/react-svg/pull/748) Update dependency prettier to v2.0.4 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v11.0.17](https://github.com/tanem/react-svg/tree/v11.0.17) (2020-04-07)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.16...v11.0.17)
 
