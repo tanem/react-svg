@@ -1,5 +1,17 @@
 # Changelog
 
+## [v11.0.21](https://github.com/tanem/react-svg/tree/v11.0.21) (2020-05-02)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.20...v11.0.21)
+
+#### :house: Internal
+
+- [#775](https://github.com/tanem/react-svg/pull/775) Update dependency @types/react-dom to v16.9.7 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#774](https://github.com/tanem/react-svg/pull/774) Update typescript-eslint monorepo to v2.30.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#772](https://github.com/tanem/react-svg/pull/772) Update dependency tanem-scripts to v5.0.21 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#771](https://github.com/tanem/react-svg/pull/771) Update dependency jest-prettyhtml-matchers to v1.0.54 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#770](https://github.com/tanem/react-svg/pull/770) Update dependency @tanem/svg-injector to ^8.0.49 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#769](https://github.com/tanem/react-svg/pull/769) Update dependency rollup to v2.7.2 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v11.0.20](https://github.com/tanem/react-svg/tree/v11.0.20) (2020-04-24)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.19...v11.0.20)
 
