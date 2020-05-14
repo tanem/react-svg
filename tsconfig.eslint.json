@@ -5,5 +5,5 @@
     "checkJs": true
   },
   "include": ["examples", "scripts", "src", "test"],
-  "files": ["index.js", "rollup.config.js"]
+  "files": [".eslintrc.js", "index.js", "rollup.config.js"]
 }
