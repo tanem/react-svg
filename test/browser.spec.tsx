@@ -23,7 +23,11 @@ jest.useFakeTimers()
 describe('while running in a browser environment', () => {
   let fakeXHR: SinonFakeXMLHttpRequestStatic
   let requests: SinonFakeXMLHttpRequest[]
-  let wrapper: ReactWrapper<{}, {}, ReactSVG>
+  let wrapper: ReactWrapper<
+    Record<string, unknown>,
+    Record<string, unknown>,
+    ReactSVG
+  >
 
   beforeEach(() => {
     fakeXHR = sinon.useFakeXMLHttpRequest()
