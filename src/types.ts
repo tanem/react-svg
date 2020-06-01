@@ -2,6 +2,7 @@ import { BeforeEach, Errback, EvalScripts } from '@tanem/svg-injector'
 import * as React from 'react'
 
 interface BaseProps {
+  [key: string]: unknown
   afterInjection?: Errback
   beforeInjection?: BeforeEach
   evalScripts?: EvalScripts

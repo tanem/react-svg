@@ -1,7 +1,7 @@
 // Hat-tip: https://github.com/developit/preact-compat/blob/master/src/index.js#L402.
 
 interface O {
-  [key: string]: any
+  [key: string]: unknown
 }
 
 const shallowDiffers = (a: O, b: O) => {
