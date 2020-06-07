@@ -21,7 +21,7 @@
     "@types/node": "11.15.5",
     "@types/react": "16.9.35",
     "@types/react-dom": "16.9.8",
-    "typescript": "3.9.3"
+    "typescript": "3.9.5"
   },
   "browserslist": [
     ">0.2%",
