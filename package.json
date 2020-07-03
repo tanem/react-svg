@@ -84,7 +84,7 @@
     "enzyme-adapter-react-16": "1.15.2",
     "eslint": "7.3.1",
     "eslint-config-prettier": "6.11.0",
-    "eslint-plugin-react": "7.20.0",
+    "eslint-plugin-react": "7.20.3",
     "faker": "4.1.0",
     "jest": "26.1.0",
     "jest-prettyhtml-matchers": "1.0.62",
