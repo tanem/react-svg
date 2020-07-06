@@ -87,7 +87,7 @@
     "eslint-plugin-react": "7.20.3",
     "faker": "4.1.0",
     "jest": "26.1.0",
-    "jest-prettyhtml-matchers": "1.0.62",
+    "jest-prettyhtml-matchers": "1.0.63",
     "npm-run-all": "4.1.5",
     "prettier": "2.0.5",
     "raf": "3.4.1",
