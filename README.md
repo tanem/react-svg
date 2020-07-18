@@ -66,7 +66,7 @@ Other non-documented properties are applied to the outermost wrapper element.
     }
     console.log(svg)
   }}
-  beforeInjection={svg => {
+  beforeInjection={(svg) => {
     svg.classList.add('svg-class-name')
     svg.setAttribute('style', 'width: 200px')
   }}
