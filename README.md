@@ -156,7 +156,7 @@ Since non-documented properties are applied to the outermost wrapper element, an
   src="svg.svg"
   role="img"
   aria-label="Description of the overall image"
-  beforeInjection={svg => {
+  beforeInjection={(svg) => {
     const desc = document.createElementNS(
       'http://www.w3.org/2000/svg',
       'desc'
