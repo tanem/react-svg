@@ -1,5 +1,27 @@
 # Changelog
 
+## [v11.0.32](https://github.com/tanem/react-svg/tree/v11.0.32) (2020-07-24)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.31...v11.0.32)
+
+#### :memo: Documentation
+
+- [#875](https://github.com/tanem/react-svg/pull/875) Tidy README code style ([@tanem](https://github.com/tanem))
+- [#874](https://github.com/tanem/react-svg/pull/874) Tidy README code style ([@tanem](https://github.com/tanem))
+- [#873](https://github.com/tanem/react-svg/pull/873) Fix a11y examples ([@tanem](https://github.com/tanem))
+
+#### :house: Internal
+
+- [#885](https://github.com/tanem/react-svg/pull/885) Update typescript-eslint monorepo to v3.7.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#884](https://github.com/tanem/react-svg/pull/884) Update dependency rollup to v2.22.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#883](https://github.com/tanem/react-svg/pull/883) Update dependency eslint to v7.5.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#882](https://github.com/tanem/react-svg/pull/882) Update dependency @types/jest to v26.0.5 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#880](https://github.com/tanem/react-svg/pull/880) Update dependency tanem-scripts to v5.0.32 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#879](https://github.com/tanem/react-svg/pull/879) Update dependency @tanem/svg-injector to ^8.0.59 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#878](https://github.com/tanem/react-svg/pull/878) Update dependency jest-prettyhtml-matchers to v1.0.65 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#877](https://github.com/tanem/react-svg/pull/877) Update dependency typescript to v3.9.7 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#876](https://github.com/tanem/react-svg/pull/876) Update dependency ts-jest to v26.1.3 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#872](https://github.com/tanem/react-svg/pull/872) Update babel monorepo to v7.10.5 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v11.0.31](https://github.com/tanem/react-svg/tree/v11.0.31) (2020-07-17)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.30...v11.0.31)
 
