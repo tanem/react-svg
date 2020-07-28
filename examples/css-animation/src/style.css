@@ -1,0 +1,12 @@
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.is-clicked {
+  animation: rotate 1s forwards;
+}
