@@ -146,13 +146,10 @@ export class ReactSVG extends React.Component<Props, State> {
       loading: Loading,
       renumerateIRIElements,
       src,
-      wrapper,
+      wrapper: Wrapper,
       ...rest
     } = this.props
     /* eslint-enable @typescript-eslint/no-unused-vars */
-
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const Wrapper = wrapper!
 
     return (
       <Wrapper {...rest} ref={this.refCallback}>
