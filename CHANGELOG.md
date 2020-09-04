@@ -1,5 +1,22 @@
 # Changelog
 
+## [v11.0.38](https://github.com/tanem/react-svg/tree/v11.0.38) (2020-09-04)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.37...v11.0.38)
+
+#### :house: Internal
+
+- [#947](https://github.com/tanem/react-svg/pull/947) Update typescript-eslint monorepo to v4 (major) ([@renovate[bot]](https://github.com/apps/renovate))
+- [#946](https://github.com/tanem/react-svg/pull/946) Update dependency @types/react to v16.9.49 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#944](https://github.com/tanem/react-svg/pull/944) Update dependency enzyme-adapter-react-16 to v1.15.4 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#943](https://github.com/tanem/react-svg/pull/943) Update dependency tanem-scripts to v5.0.38 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#942](https://github.com/tanem/react-svg/pull/942) Update dependency rollup-plugin-terser to v7.0.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#941](https://github.com/tanem/react-svg/pull/941) Update dependency jest-prettyhtml-matchers to v1.2.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#940](https://github.com/tanem/react-svg/pull/940) Update dependency @tanem/svg-injector to ^8.0.66 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#939](https://github.com/tanem/react-svg/pull/939) Update dependency faker to v5.1.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#938](https://github.com/tanem/react-svg/pull/938) Update dependency @types/react to v16.9.48 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#937](https://github.com/tanem/react-svg/pull/937) Update dependency ts-jest to v26.3.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#936](https://github.com/tanem/react-svg/pull/936) Update dependency prettier to v2.1.1 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v11.0.37](https://github.com/tanem/react-svg/tree/v11.0.37) (2020-08-28)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.36...v11.0.37)
 
