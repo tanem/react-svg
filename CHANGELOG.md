@@ -1,5 +1,24 @@
 # Changelog
 
+## [v11.0.39](https://github.com/tanem/react-svg/tree/v11.0.39) (2020-09-11)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.38...v11.0.39)
+
+#### :house: Internal
+
+- [#960](https://github.com/tanem/react-svg/pull/960) Update dependency @types/enzyme to v3.10.6 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#959](https://github.com/tanem/react-svg/pull/959) Update dependency rollup to v2.26.11 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#958](https://github.com/tanem/react-svg/pull/958) Update typescript-eslint monorepo to v4.1.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#957](https://github.com/tanem/react-svg/pull/957) Update dependency @types/faker to v5 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#956](https://github.com/tanem/react-svg/pull/956) Update dependency tanem-scripts to v5.0.39 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#955](https://github.com/tanem/react-svg/pull/955) Update dependency rollup-plugin-terser to v7.0.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#954](https://github.com/tanem/react-svg/pull/954) Update dependency jest-prettyhtml-matchers to v1.2.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#953](https://github.com/tanem/react-svg/pull/953) Update dependency @tanem/svg-injector to ^8.0.67 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#952](https://github.com/tanem/react-svg/pull/952) Update dependency rollup to v2.26.10 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#951](https://github.com/tanem/react-svg/pull/951) Update babel monorepo ([@renovate[bot]](https://github.com/apps/renovate))
+- [#950](https://github.com/tanem/react-svg/pull/950) Update dependency @types/jest to v26.0.13 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#949](https://github.com/tanem/react-svg/pull/949) Update dependency @types/jsdom to v16.2.4 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#948](https://github.com/tanem/react-svg/pull/948) Update dependency eslint to v7.8.1 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v11.0.38](https://github.com/tanem/react-svg/tree/v11.0.38) (2020-09-04)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.37...v11.0.38)
 
