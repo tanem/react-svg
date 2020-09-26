@@ -1,23 +1,14 @@
-import PropTypes from 'prop-types'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Spinner from 'react-spinkit'
+import ClipLoader from 'react-spinners/ClipLoader'
 import { ReactSVG } from 'react-svg'
-
-const Loading = ({ size }) => (
-  <Spinner name="cube-grid" style={{ height: size, width: size }} />
-)
-
-Loading.propTypes = {
-  size: PropTypes.number.isRequired,
-}
 
 ReactDOM.render(
   <React.Fragment>
-    <ReactSVG loading={() => <Loading size={40} />} src="svg.svg" />
+    <ReactSVG loading={() => <ClipLoader />} src="svg.svg" />
     <ReactSVG
       fallback={() => <img alt="doge" src="doge.png" />}
-      loading={() => <Loading size={60} />}
+      loading={() => <ClipLoader />}
       src="notfound.svg"
     />
   </React.Fragment>,
