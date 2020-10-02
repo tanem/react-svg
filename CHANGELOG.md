@@ -1,5 +1,30 @@
 # Changelog
 
+## [v11.0.42](https://github.com/tanem/react-svg/tree/v11.0.42) (2020-10-02)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.41...v11.0.42)
+
+#### :memo: Documentation
+
+- [#978](https://github.com/tanem/react-svg/pull/978) Add package-lock.json to ssr example ([@tanem](https://github.com/tanem))
+- [#977](https://github.com/tanem/react-svg/pull/977) Add SSR example ([@tanem](https://github.com/tanem))
+
+#### :house: Internal
+
+- [#992](https://github.com/tanem/react-svg/pull/992) Add .next to prettier ignore file ([@tanem](https://github.com/tanem))
+- [#991](https://github.com/tanem/react-svg/pull/991) Update dependency ts-jest to v26.4.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#990](https://github.com/tanem/react-svg/pull/990) Update typescript-eslint monorepo to v4.3.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#989](https://github.com/tanem/react-svg/pull/989) Update dependency eslint to v7.10.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#988](https://github.com/tanem/react-svg/pull/988) Update dependency @types/sinon to v9.0.6 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#987](https://github.com/tanem/react-svg/pull/987) Update dependency tanem-scripts to v5.0.42 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#986](https://github.com/tanem/react-svg/pull/986) Update dependency jest-prettyhtml-matchers to v1.2.4 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#985](https://github.com/tanem/react-svg/pull/985) Update dependency @tanem/svg-injector to ^8.0.70 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#984](https://github.com/tanem/react-svg/pull/984) Update dependency eslint-config-prettier to v6.12.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#983](https://github.com/tanem/react-svg/pull/983) Update dependency eslint-plugin-react to v7.21.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#982](https://github.com/tanem/react-svg/pull/982) Update dependency rollup to v2.28.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#981](https://github.com/tanem/react-svg/pull/981) Update dependency @types/faker to v5.1.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#980](https://github.com/tanem/react-svg/pull/980) Update dependency enzyme-adapter-react-16 to v1.15.5 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#979](https://github.com/tanem/react-svg/pull/979) Update dependency @types/enzyme to v3.10.7 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v11.0.41](https://github.com/tanem/react-svg/tree/v11.0.41) (2020-09-25)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.40...v11.0.41)
 
