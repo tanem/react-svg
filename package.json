@@ -1,6 +1,6 @@
 {
   "name": "react-svg",
-  "version": "11.0.43",
+  "version": "11.0.44",
   "description": "A React component that injects SVG into the DOM.",
   "main": "dist/index.js",
   "module": "dist/react-svg.esm.js",
