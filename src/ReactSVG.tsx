@@ -13,6 +13,7 @@ export class ReactSVG extends React.Component<Props, State> {
     fallback: null,
     loading: null,
     renumerateIRIElements: true,
+    useRequestCache: true,
     wrapper: 'div',
   }
 
@@ -32,6 +33,7 @@ export class ReactSVG extends React.Component<Props, State> {
     ]),
     renumerateIRIElements: PropTypes.bool,
     src: PropTypes.string.isRequired,
+    useRequestCache: PropTypes.bool,
     wrapper: PropTypes.oneOf(['div', 'span']),
   }
 
@@ -60,6 +62,7 @@ export class ReactSVG extends React.Component<Props, State> {
         evalScripts,
         renumerateIRIElements,
         src,
+        useRequestCache,
       } = this.props
 
       /* eslint-disable @typescript-eslint/no-non-null-assertion */
@@ -101,6 +104,7 @@ export class ReactSVG extends React.Component<Props, State> {
       SVGInjector(this.svgWrapper.firstChild as WrapperType, {
         afterEach,
         beforeEach: beforeInjection,
+        cacheRequests: useRequestCache,
         evalScripts,
         renumerateIRIElements,
       })
@@ -146,6 +150,7 @@ export class ReactSVG extends React.Component<Props, State> {
       loading: Loading,
       renumerateIRIElements,
       src,
+      useRequestCache,
       wrapper,
       ...rest
     } = this.props

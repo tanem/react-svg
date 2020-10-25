@@ -10,6 +10,7 @@ interface BaseProps {
   loading?: React.ReactType
   renumerateIRIElements?: boolean
   src: string
+  useRequestCache?: boolean
   wrapper?: 'div' | 'span'
 }
 

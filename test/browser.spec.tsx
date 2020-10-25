@@ -270,4 +270,24 @@ describe('while running in a browser environment', () => {
 
     expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
   })
+
+  it('should render correctly when bypassing the request cache', () => {
+    const src = `http://localhost/${faker.random.uuid()}.svg`
+    wrapper = mount(
+      <div>
+        <ReactSVG src={src} useRequestCache={false} />
+        <ReactSVG src={src} />
+        <ReactSVG src={src} />
+        <ReactSVG src={src} useRequestCache={false} />
+      </div>
+    )
+
+    requests[0].respond(200, {}, source)
+    requests[1].respond(200, {}, source)
+    requests[2].respond(200, {}, source)
+    jest.runAllTimers()
+
+    expect(requests).toHaveLength(3)
+    expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
+  })
 })

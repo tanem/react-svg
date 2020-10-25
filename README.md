@@ -52,6 +52,7 @@ render(<ReactSVG src="svg.svg" />, document.getElementById('root'))
 - `fallback` - _Optional_ Fallback to use if an injection error occurs. Can be a string, class component, or function component. Defaults to `null`.
 - `loading` - _Optional_ Component to use during loading. Can be a string, class component, or function component. Defaults to `null`.
 - `renumerateIRIElements` - _Optional_ Boolean indicating if SVG IRI addressable elements should be renumerated. Defaults to `true`.
+- `useRequestCache` - _Optional_ Use SVG request cache. Defaults to `true`.
 - `wrapper` - _Optional_ Wrapper element types. One of `'div'` or `'span'`. Defaults to `'div'`.
 
 Other non-documented properties are applied to the outermost wrapper element.
@@ -81,6 +82,7 @@ Other non-documented properties are applied to the outermost wrapper element.
   onClick={() => {
     console.log('wrapper onClick')
   }}
+  useRequestCache={false}
 />
 ```
 
