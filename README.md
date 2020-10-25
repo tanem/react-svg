@@ -77,12 +77,12 @@ Other non-documented properties are applied to the outermost wrapper element.
   fallback={() => <span>Error!</span>}
   loading={() => <span>Loading</span>}
   renumerateIRIElements={false}
+  useRequestCache={false}
   wrapper="span"
   className="wrapper-class-name"
   onClick={() => {
     console.log('wrapper onClick')
   }}
-  useRequestCache={false}
 />
 ```
 
