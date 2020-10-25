@@ -1,5 +1,33 @@
 # Changelog
 
+## [v11.1.0](https://github.com/tanem/react-svg/tree/v11.1.0) (2020-10-25)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.44...v11.1.0)
+
+#### :memo: Documentation
+
+- [#1028](https://github.com/tanem/react-svg/pull/1028) Tidy api example ([@tanem](https://github.com/tanem))
+
+#### :rocket: Enhancement
+
+- [#1025](https://github.com/tanem/react-svg/pull/1025) Add ability to bypass request cache ([@tanem](https://github.com/tanem))
+
+#### :house: Internal
+
+- [#1027](https://github.com/tanem/react-svg/pull/1027) Update dependency eslint-config-prettier to v6.14.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1026](https://github.com/tanem/react-svg/pull/1026) Update dependency rollup to v2.32.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1023](https://github.com/tanem/react-svg/pull/1023) Update dependency @types/jest to v26.0.15 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1022](https://github.com/tanem/react-svg/pull/1022) Update dependency eslint-plugin-react to v7.21.5 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1021](https://github.com/tanem/react-svg/pull/1021) Update typescript-eslint monorepo to v4.5.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1020](https://github.com/tanem/react-svg/pull/1020) Update dependency jest to v26.6.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1019](https://github.com/tanem/react-svg/pull/1019) Update babel monorepo ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1018](https://github.com/tanem/react-svg/pull/1018) Update dependency rollup to v2.32.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1017](https://github.com/tanem/react-svg/pull/1017) Update dependency @types/react to v16.9.53 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1016](https://github.com/tanem/react-svg/pull/1016) Update dependency eslint-config-prettier to v6.13.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1015](https://github.com/tanem/react-svg/pull/1015) Update react monorepo to v16.14.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1014](https://github.com/tanem/react-svg/pull/1014) Update typescript-eslint monorepo to v4.4.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1013](https://github.com/tanem/react-svg/pull/1013) Update dependency jest to v26.5.3 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1012](https://github.com/tanem/react-svg/pull/1012) Update dependency @types/react to v16.9.52 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v11.0.44](https://github.com/tanem/react-svg/tree/v11.0.44) (2020-10-13)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v11.0.43...v11.0.44)
 
