@@ -2,6 +2,7 @@ import { SVGInjector } from '@tanem/svg-injector'
 import * as PropTypes from 'prop-types'
 import * as React from 'react'
 import ReactDOMServer from 'react-dom/server'
+
 import shallowDiffers from './shallow-differs'
 import { Props, State, WrapperType } from './types'
 

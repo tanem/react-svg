@@ -60,7 +60,6 @@ Other non-documented properties are applied to the outermost wrapper element.
 
 ```jsx
 <ReactSVG
-  src="svg.svg"
   afterInjection={(error, svg) => {
     if (error) {
       console.error(error)
@@ -72,16 +71,17 @@ Other non-documented properties are applied to the outermost wrapper element.
     svg.classList.add('svg-class-name')
     svg.setAttribute('style', 'width: 200px')
   }}
+  className="wrapper-class-name"
   evalScripts="always"
   fallback={() => <span>Error!</span>}
   loading={() => <span>Loading</span>}
-  renumerateIRIElements={false}
-  useRequestCache={false}
-  wrapper="span"
-  className="wrapper-class-name"
   onClick={() => {
     console.log('wrapper onClick')
   }}
+  renumerateIRIElements={false}
+  src="svg.svg"
+  useRequestCache={false}
+  wrapper="span"
 />
 ```
 
@@ -156,8 +156,6 @@ Since non-documented properties are applied to the outermost wrapper element, an
 
 ```jsx
 <ReactSVG
-  src="svg.svg"
-  role="img"
   aria-label="Description of the overall image"
   beforeInjection={(svg) => {
     const desc = document.createElementNS(
@@ -174,6 +172,8 @@ Since non-documented properties are applied to the outermost wrapper element, an
     title.innerHTML = 'A title'
     svg.prepend(title)
   }}
+  role="img"
+  src="svg.svg"
 />
 ```
 

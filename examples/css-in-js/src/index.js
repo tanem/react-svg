@@ -7,21 +7,21 @@ css.global('body', {
   alignItems: 'center',
   backgroundColor: 'gray',
   display: 'flex',
-  justifyContent: 'center',
   height: '100vh',
+  justifyContent: 'center',
   margin: 0,
 })
 
 const styles = css({
-  ' svg': {
-    height: 200,
-    width: 200,
-  },
   ' rect': {
     fill: 'aqua',
     height: 190,
     stroke: 'darkmagenta',
     width: 190,
+  },
+  ' svg': {
+    height: 200,
+    width: 200,
   },
 })
 

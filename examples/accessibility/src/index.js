@@ -4,8 +4,6 @@ import { ReactSVG } from 'react-svg'
 
 ReactDOM.render(
   <ReactSVG
-    src="svg.svg"
-    role="img"
     aria-label="Description of the overall image"
     beforeInjection={(svg) => {
       const desc = document.createElementNS(
@@ -22,6 +20,8 @@ ReactDOM.render(
       title.innerHTML = 'A title'
       svg.prepend(title)
     }}
+    role="img"
+    src="svg.svg"
   />,
   document.getElementById('root')
 )
