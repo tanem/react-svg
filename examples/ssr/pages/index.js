@@ -1,5 +1,5 @@
-import { ReactSVG } from 'react-svg'
 import ClipLoader from 'react-spinners/ClipLoader'
+import { ReactSVG } from 'react-svg'
 
 export default function Home() {
   // eslint-disable-next-line react/react-in-jsx-scope

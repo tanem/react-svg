@@ -4,6 +4,7 @@ import nodeResolve from 'rollup-plugin-node-resolve'
 import replace from 'rollup-plugin-replace'
 import sourcemaps from 'rollup-plugin-sourcemaps'
 import { terser } from 'rollup-plugin-terser'
+
 import pkg from './package.json'
 
 const CJS_DEV = 'CJS_DEV'
@@ -46,8 +47,8 @@ const getBabelConfig = (bundleType) => {
   const options = {
     babelrc: false,
     exclude: 'node_modules/**',
-    presets: [['@babel/env', { loose: true, modules: false }], '@babel/react'],
     plugins: ['@babel/transform-runtime'],
+    presets: [['@babel/env', { loose: true, modules: false }], '@babel/react'],
     runtimeHelpers: true,
   }
 
@@ -98,20 +99,20 @@ const getPlugins = (bundleType) => [
   sourcemaps(),
   isProduction(bundleType) &&
     terser({
-      output: { comments: false },
       compress: {
         keep_infinity: true,
         pure_getters: true,
       },
-      warnings: true,
       ecma: 5,
+      output: { comments: false },
       toplevel: false,
+      warnings: true,
     }),
 ]
 
 const getCjsConfig = (bundleType) => ({
-  input,
   external: getExternal(bundleType),
+  input,
   output: {
     file: `dist/react-svg.cjs.${
       isProduction(bundleType) ? 'production' : 'development'
@@ -123,8 +124,8 @@ const getCjsConfig = (bundleType) => ({
 })
 
 const getEsConfig = () => ({
-  input,
   external: getExternal(ES),
+  input,
   output: {
     file: pkg.module,
     format: 'es',
@@ -134,8 +135,8 @@ const getEsConfig = () => ({
 })
 
 const getUmdConfig = (bundleType) => ({
-  input,
   external: getExternal(bundleType),
+  input,
   output: {
     file: `dist/react-svg.umd.${
       isProduction(bundleType) ? 'production' : 'development'
@@ -143,8 +144,8 @@ const getUmdConfig = (bundleType) => ({
     format: 'umd',
     globals: {
       ...(isProduction(bundleType) ? {} : { 'prop-types': 'PropTypes' }),
-      'react-dom/server': 'ReactDOMServer',
       react: 'React',
+      'react-dom/server': 'ReactDOMServer',
     },
     name: 'ReactSVG',
     sourcemap: true,

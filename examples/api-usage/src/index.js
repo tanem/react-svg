@@ -4,7 +4,6 @@ import { ReactSVG } from 'react-svg'
 
 ReactDOM.render(
   <ReactSVG
-    src="svg.svg"
     afterInjection={(error, svg) => {
       if (error) {
         console.error(error)
@@ -16,16 +15,17 @@ ReactDOM.render(
       svg.classList.add('svg-class-name')
       svg.setAttribute('style', 'width: 200px')
     }}
+    className="wrapper-class-name"
     evalScripts="always"
     fallback={() => <span>Error!</span>}
     loading={() => <span>Loading</span>}
-    renumerateIRIElements={false}
-    useRequestCache={false}
-    wrapper="span"
-    className="wrapper-class-name"
     onClick={() => {
       console.log('wrapper onClick')
     }}
+    renumerateIRIElements={false}
+    src="svg.svg"
+    useRequestCache={false}
+    wrapper="span"
   />,
   document.getElementById('root')
 )

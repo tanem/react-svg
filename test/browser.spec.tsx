@@ -5,6 +5,7 @@ import sinon, {
   SinonFakeXMLHttpRequest,
   SinonFakeXMLHttpRequestStatic,
 } from 'sinon'
+
 import { ReactSVG } from '../src'
 import iriSource from './iri-source.fixture'
 import source from './source.fixture'
@@ -141,8 +142,8 @@ describe('while running in a browser environment', () => {
   it('should not renumerate IRI elements when renumerateIRIElements is false', () => {
     wrapper = mount(
       <ReactSVG
-        src={`http://localhost/${faker.random.uuid()}.svg`}
         renumerateIRIElements={false}
+        src={`http://localhost/${faker.random.uuid()}.svg`}
       />
     )
 
