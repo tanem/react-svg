@@ -4,8 +4,7 @@
 [![build status](https://img.shields.io/travis/tanem/react-svg/master.svg?style=flat-square)](https://travis-ci.org/tanem/react-svg)
 [![coverage status](https://img.shields.io/codecov/c/github/tanem/react-svg.svg?style=flat-square)](https://codecov.io/gh/tanem/react-svg)
 [![npm downloads](https://img.shields.io/npm/dm/react-svg.svg?style=flat-square)](https://www.npmjs.com/package/react-svg)
-[![size](http://img.badgesize.io/https://unpkg.com/react-svg/dist/react-svg.umd.production.js?label=size&style=flat-square)](https://unpkg.com/react-svg/dist/)
-[![gzip-size](http://img.badgesize.io/https://unpkg.com/react-svg/dist/react-svg.umd.production.js?compression=gzip&label=gzip%20size&style=flat-square)](https://unpkg.com/react-svg/dist/)
+[![minzipped size](https://img.shields.io/bundlephobia/minzip/react-svg?style=flat-square)](https://bundlephobia.com/result?p=react-svg)
 
 > A React component that injects SVG into the DOM.
 
