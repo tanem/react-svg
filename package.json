@@ -86,7 +86,7 @@
     "eslint-plugin-simple-import-sort": "6.0.1",
     "faker": "5.1.0",
     "jest": "26.6.3",
-    "jest-prettyhtml-matchers": "1.4.1",
+    "jest-prettyhtml-matchers": "1.4.2",
     "npm-run-all": "4.1.5",
     "prettier": "2.2.0",
     "raf": "3.4.1",
