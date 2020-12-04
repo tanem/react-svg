@@ -1,5 +1,24 @@
 # Changelog
 
+## [v11.1.4](https://github.com/tanem/react-svg/tree/v11.1.4) (2020-12-04)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v11.1.3...v11.1.4)
+
+#### :memo: Documentation
+
+- [#1070](https://github.com/tanem/react-svg/pull/1070) Update size badge ([@tanem](https://github.com/tanem))
+
+#### :house: Internal
+
+- [#1079](https://github.com/tanem/react-svg/pull/1079) Update dependency @wojtekmaj/enzyme-adapter-react-17 to v0.3.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1078](https://github.com/tanem/react-svg/pull/1078) Housekeeping ([@tanem](https://github.com/tanem))
+- [#1077](https://github.com/tanem/react-svg/pull/1077) Update typescript-eslint monorepo to v4.9.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1076](https://github.com/tanem/react-svg/pull/1076) Update dependency rollup to v2.34.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1075](https://github.com/tanem/react-svg/pull/1075) Update dependency prettier to v2.2.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1074](https://github.com/tanem/react-svg/pull/1074) Update dependency tanem-scripts to v6.0.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1073](https://github.com/tanem/react-svg/pull/1073) Update dependency jest-prettyhtml-matchers to v1.4.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1071](https://github.com/tanem/react-svg/pull/1071) Update lint config ([@tanem](https://github.com/tanem))
+- [#1064](https://github.com/tanem/react-svg/pull/1064) Update babel monorepo ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v11.1.3](https://github.com/tanem/react-svg/tree/v11.1.3) (2020-11-27)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v11.1.2...v11.1.3)
 
