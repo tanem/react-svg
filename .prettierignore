@@ -1,5 +1,6 @@
 *.md
 .next
+build
 compiled
 coverage
 dist
