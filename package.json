@@ -58,10 +58,10 @@
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
-    "@babel/core": "7.12.9",
-    "@babel/plugin-transform-runtime": "7.12.1",
-    "@babel/preset-env": "7.12.7",
-    "@babel/preset-react": "7.12.7",
+    "@babel/core": "7.12.10",
+    "@babel/plugin-transform-runtime": "7.12.10",
+    "@babel/preset-env": "7.12.10",
+    "@babel/preset-react": "7.12.10",
     "@types/enzyme": "3.10.8",
     "@types/faker": "5.1.5",
     "@types/jest": "26.0.16",
