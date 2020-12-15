@@ -291,4 +291,18 @@ describe('while running in a browser environment', () => {
     expect(requests).toHaveLength(3)
     expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
   })
+
+  it('should render correctly with an extensionless svg', () => {
+    wrapper = mount(
+      <ReactSVG
+        className="wrapper-class-name"
+        src={`http://localhost/${faker.random.uuid()}`}
+      />
+    )
+
+    requests[0].respond(200, { 'Content-Type': 'image/svg+xml' }, source)
+    jest.runAllTimers()
+
+    expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
+  })
 })
