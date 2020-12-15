@@ -1,0 +1,33 @@
+{
+  "name": "no-extension",
+  "description": "ReactSVG No Extension Example",
+  "keywords": [
+    "react-svg"
+  ],
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "express": "4.17.1",
+    "npm-run-all": "4.1.5",
+    "open-cli": "6.0.1",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-scripts": "4.0.1",
+    "react-svg": "latest",
+    "wait-on": "5.2.0"
+  },
+  "scripts": {
+    "build": "react-scripts build",
+    "open": "open-cli http://localhost:8080",
+    "serve": "node serve",
+    "start": "npm-run-all build -p serve wait-and-open",
+    "wait": "wait-on http-get://localhost:8080",
+    "wait-and-open": "run-s wait open"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

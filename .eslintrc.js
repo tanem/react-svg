@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   extends: [
     'plugin:react/recommended',
@@ -18,7 +20,7 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    project: 'tsconfig.eslint.json',
+    project: path.join(__dirname, 'tsconfig.eslint.json'),
     sourceType: 'module',
   },
   plugins: ['react', 'react-hooks', '@typescript-eslint', 'simple-import-sort'],
