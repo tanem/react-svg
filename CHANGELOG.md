@@ -1,7 +1,15 @@
 # Changelog
 
+## [v11.2.1](https://github.com/tanem/react-svg/tree/v11.2.1) (2020-12-18)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v11.2.0...v11.2.1)
+
+#### :house: Internal
+
+- [#1100](https://github.com/tanem/react-svg/pull/1100) Update typescript-eslint monorepo to v4.10.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1099](https://github.com/tanem/react-svg/pull/1099) Update dependency rollup to v2.35.1 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v11.2.0](https://github.com/tanem/react-svg/tree/v11.2.0) (2020-12-15)
-[Full Changelog](https://github.com/tanem/react-svg/compare/v11.1.4...v11.2.0)
+[Full Changelog](https://github.com/tanem/react-svg/compare/list...v11.2.0)
 
 #### :rocket: Enhancement
 
@@ -16,6 +24,12 @@
 - [#1094](https://github.com/tanem/react-svg/pull/1094) Update dependency @types/jest to v26.0.19 ([@renovate[bot]](https://github.com/apps/renovate))
 - [#1093](https://github.com/tanem/react-svg/pull/1093) Update dependency @tanem/svg-injector to ^8.2.0 ([@renovate[bot]](https://github.com/apps/renovate))
 - [#1092](https://github.com/tanem/react-svg/pull/1092) Update babel monorepo to v7.12.10 ([@renovate[bot]](https://github.com/apps/renovate))
+
+## [list](https://github.com/tanem/react-svg/tree/list) (2020-12-12)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v11.1.4...list)
+
+#### :house: Internal
+
 - [#1091](https://github.com/tanem/react-svg/pull/1091) Update dependency eslint-plugin-simple-import-sort to v7 ([@renovate[bot]](https://github.com/apps/renovate))
 - [#1089](https://github.com/tanem/react-svg/pull/1089) Update typescript-eslint monorepo to v4.9.1 ([@renovate[bot]](https://github.com/apps/renovate))
 - [#1087](https://github.com/tanem/react-svg/pull/1087) Update dependency rollup to v2.34.2 ([@renovate[bot]](https://github.com/apps/renovate))
