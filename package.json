@@ -81,7 +81,7 @@
     "enzyme": "3.11.0",
     "eslint": "7.16.0",
     "eslint-config-prettier": "7.1.0",
-    "eslint-plugin-react": "7.21.5",
+    "eslint-plugin-react": "7.22.0",
     "eslint-plugin-react-hooks": "4.2.0",
     "eslint-plugin-simple-import-sort": "7.0.0",
     "faker": "5.1.0",
