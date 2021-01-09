@@ -92,7 +92,7 @@
     "raf": "3.4.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "rollup": "2.35.1",
+    "rollup": "2.36.1",
     "rollup-plugin-babel": "4.4.0",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-node-resolve": "5.2.0",
