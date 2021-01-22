@@ -1,5 +1,22 @@
 # Changelog
 
+## [v11.2.3](https://github.com/tanem/react-svg/tree/v11.2.3) (2021-01-22)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v11.2.2...v11.2.3)
+
+#### :house: Internal
+
+- [#1129](https://github.com/tanem/react-svg/pull/1129) Update dependency eslint-config-prettier to v7.2.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1128](https://github.com/tanem/react-svg/pull/1128) Update typescript-eslint monorepo to v4.14.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1125](https://github.com/tanem/react-svg/pull/1125) Update dependency eslint to v7.18.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1124](https://github.com/tanem/react-svg/pull/1124) Update dependency @types/jsdom to v16.2.6 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1123](https://github.com/tanem/react-svg/pull/1123) Update typescript-eslint monorepo to v4.13.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1122](https://github.com/tanem/react-svg/pull/1122) Update dependency tanem-scripts to v6.0.5 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1120](https://github.com/tanem/react-svg/pull/1120) Update dependency jest-prettyhtml-matchers to v1.4.5 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1119](https://github.com/tanem/react-svg/pull/1119) Update dependency @tanem/svg-injector to ^8.2.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1118](https://github.com/tanem/react-svg/pull/1118) Update dependency @types/jest to v26.0.20 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1117](https://github.com/tanem/react-svg/pull/1117) Update dependency sinon to v9.2.3 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1116](https://github.com/tanem/react-svg/pull/1116) Update dependency rollup to v2.36.1 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v11.2.2](https://github.com/tanem/react-svg/tree/v11.2.2) (2021-01-08)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v11.2.1...v11.2.2)
 
