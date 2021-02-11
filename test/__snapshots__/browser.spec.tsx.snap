@@ -5,7 +5,7 @@ exports[`while running in a browser environment allows rendering of span wrapper
   <span>
     <svg
       class='injected-svg'
-      data-src='http://localhost/0a87e996-34b4-46ba-909a-70ab67b1f811.svg'
+      data-src='http://localhost/3104de39-071c-47b8-86b4-d62ccc4a4fa6.svg'
       height='26'
       viewBox='0 0 115 26'
       width='115'
@@ -52,7 +52,7 @@ exports[`while running in a browser environment should allow modification of the
   <div>
     <svg
       class='injected-svg svg-class-name'
-      data-src='http://localhost/5adb2861-f732-4eae-81a7-5875d0231173.svg'
+      data-src='http://localhost/13a7e8b6-7270-4c99-81e9-9d752e0c295c.svg'
       height='26'
       style='width: 200px'
       viewBox='0 0 115 26'
@@ -98,7 +98,7 @@ exports[`while running in a browser environment should allow modification of the
 exports[`while running in a browser environment should call afterInjection correctly when injection is successful 1`] = `
 "<svg
   class='injected-svg'
-  data-src='http://localhost/3104de39-071c-47b8-86b4-d62ccc4a4fa6.svg'
+  data-src='http://localhost/c090be24-6c35-45d8-8a81-32e57a3d48dd.svg'
   height='26'
   viewBox='0 0 115 26'
   width='115'
@@ -143,7 +143,7 @@ exports[`while running in a browser environment should not renumerate IRI elemen
   <div>
     <svg
       class='injected-svg'
-      data-src='http://localhost/86a5c5d2-6d05-4788-9984-0efae5384784.svg'
+      data-src='http://localhost/94a8d215-ce32-4379-b18e-2aebf0794882.svg'
       height='120'
       width='120'
       xmlns='http://www.w3.org/2000/svg'
@@ -175,7 +175,7 @@ exports[`while running in a browser environment should not renumerate IRI elemen
 `;
 
 exports[`while running in a browser environment should render correctly 1`] = `
-"<div class='wrapper-class-name'>
+"<div>
   <div>
     <svg
       class='injected-svg'
@@ -227,7 +227,7 @@ exports[`while running in a browser environment should render correctly when byp
     <div>
       <svg
         class='injected-svg'
-        data-src='http://localhost/0c4e6054-5fd8-48a8-817c-f6611278f755.svg'
+        data-src='http://localhost/71ad3d9e-e211-472b-a16d-861737c57ecd.svg'
         height='26'
         viewBox='0 0 115 26'
         width='115'
@@ -270,7 +270,7 @@ exports[`while running in a browser environment should render correctly when byp
     <div>
       <svg
         class='injected-svg'
-        data-src='http://localhost/0c4e6054-5fd8-48a8-817c-f6611278f755.svg'
+        data-src='http://localhost/71ad3d9e-e211-472b-a16d-861737c57ecd.svg'
         height='26'
         viewBox='0 0 115 26'
         width='115'
@@ -313,7 +313,7 @@ exports[`while running in a browser environment should render correctly when byp
     <div>
       <svg
         class='injected-svg'
-        data-src='http://localhost/0c4e6054-5fd8-48a8-817c-f6611278f755.svg'
+        data-src='http://localhost/71ad3d9e-e211-472b-a16d-861737c57ecd.svg'
         height='26'
         viewBox='0 0 115 26'
         width='115'
@@ -356,7 +356,7 @@ exports[`while running in a browser environment should render correctly when byp
     <div>
       <svg
         class='injected-svg'
-        data-src='http://localhost/0c4e6054-5fd8-48a8-817c-f6611278f755.svg'
+        data-src='http://localhost/71ad3d9e-e211-472b-a16d-861737c57ecd.svg'
         height='26'
         viewBox='0 0 115 26'
         width='115'
@@ -400,11 +400,11 @@ exports[`while running in a browser environment should render correctly when byp
 `;
 
 exports[`while running in a browser environment should render correctly with an extensionless svg 1`] = `
-"<div class='wrapper-class-name'>
+"<div>
   <div>
     <svg
       class='injected-svg'
-      data-src='http://localhost/c1c93379-b46e-439f-baad-f0e408619f23'
+      data-src='http://localhost/0a87e996-34b4-46ba-909a-70ab67b1f811'
       height='26'
       viewBox='0 0 115 26'
       width='115'
@@ -458,7 +458,7 @@ exports[`while running in a browser environment should render the specified load
   <span>loading</span>
   <div>
     <div
-      data-src='http://localhost/71ad3d9e-e211-472b-a16d-861737c57ecd.svg'
+      data-src='http://localhost/e4f94b98-c56a-4bd2-a9fd-5fd11603e7e8.svg'
       src
     ></div>
   </div>
@@ -471,7 +471,7 @@ exports[`while running in a browser environment should renumerate IRI elements b
   <div>
     <svg
       class='injected-svg'
-      data-src='http://localhost/c090be24-6c35-45d8-8a81-32e57a3d48dd.svg'
+      data-src='http://localhost/7f3869c1-7dc9-4486-9045-6bade487a49d.svg'
       height='120'
       width='120'
       xmlns='http://www.w3.org/2000/svg'
