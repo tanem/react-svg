@@ -232,6 +232,20 @@ describe('while running in a browser environment', () => {
     expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
   })
 
+  it('allows rendering of svg wrappers', () => {
+    wrapper = mount(
+      <ReactSVG
+        src={`http://localhost/${faker.random.uuid()}.svg`}
+        wrapper="svg"
+      />
+    )
+
+    requests[0].respond(200, {}, source)
+    jest.runAllTimers()
+
+    expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
+  })
+
   // TODO: When we have the ability to cleanly unsubscribe from SVGInjector
   // callbacks, we can update this dicey test to instead ensure the callbacks
   // aren't called.
