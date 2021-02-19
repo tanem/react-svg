@@ -35,7 +35,7 @@ export class ReactSVG extends React.Component<Props, State> {
     renumerateIRIElements: PropTypes.bool,
     src: PropTypes.string.isRequired,
     useRequestCache: PropTypes.bool,
-    wrapper: PropTypes.oneOf(['div', 'span']),
+    wrapper: PropTypes.oneOf(['div', 'span', 'svg']),
   }
 
   initialState = {
@@ -71,7 +71,11 @@ export class ReactSVG extends React.Component<Props, State> {
       const Wrapper = this.props.wrapper!
       /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
-      const wrapper = document.createElement(Wrapper)
+      // createElement seems to work for svg, but createElementNS with an SVG namespace may be called for in some cases?
+      const wrapper =
+        Wrapper === 'svg'
+          ? document.createElement(Wrapper)
+          : document.createElement(Wrapper)
       wrapper.innerHTML = ReactDOMServer.renderToStaticMarkup(
         <Wrapper>
           <Wrapper data-src={src} />

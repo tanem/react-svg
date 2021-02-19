@@ -11,13 +11,19 @@ interface BaseProps {
   renumerateIRIElements?: boolean
   src: string
   useRequestCache?: boolean
-  wrapper?: 'div' | 'span'
+  wrapper?: 'div' | 'span' | 'svg'
 }
 
-export type WrapperType = HTMLSpanElement | HTMLDivElement
+type HTMLWrapperType = HTMLSpanElement | HTMLDivElement
+type SVGWrapperType = SVGSVGElement
+export type WrapperType = HTMLWrapperType | SVGWrapperType
 
 export type Props = BaseProps &
-  React.DetailedHTMLProps<React.HTMLAttributes<WrapperType>, WrapperType>
+  React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLWrapperType>,
+    HTMLWrapperType
+  > &
+  React.SVGProps<SVGWrapperType>
 
 export interface State {
   hasError: boolean
