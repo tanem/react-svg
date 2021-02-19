@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>%REACT_APP_DESCRIPTION%</title>
+  </head>
+
+  <body>
+    <h1>ReactSVG inside an SVG using <tt>wrapper='svg'</tt></h1>
+
+    <svg width="400" height="200">
+      <svg id="svg-root"></svg>
+      <switch>
+        <foreignObject
+          x="10"
+          y="50"
+          width="300"
+          height="100"
+          requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+        >
+          <p xmlns="http://www.w3.org/1999/xhtml">
+            <tt>svg</tt> wrappers fit in SVG elements, whereas
+            <tt>div</tt> wrappers do not! (Although you could use
+            <tt>foreignObject</tt> to make it work.)
+          </p>
+        </foreignObject>
+
+        <text x="10" y="50">SVG wrappers fit in SVG elements</text>
+      </switch>
+    </svg>
+
+    <h1>ReactSVG in normal HTML using <tt>wrapper='svg'</tt></h1>
+
+    <div id="html-root"></div>
+  </body>
+</html>
