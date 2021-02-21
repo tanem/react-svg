@@ -63,7 +63,7 @@
     "@babel/preset-env": "7.12.17",
     "@babel/preset-react": "7.12.13",
     "@types/enzyme": "3.10.8",
-    "@types/faker": "5.1.6",
+    "@types/faker": "5.1.7",
     "@types/jest": "26.0.20",
     "@types/jsdom": "16.2.6",
     "@types/prop-types": "15.7.3",
