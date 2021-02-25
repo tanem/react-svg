@@ -7,7 +7,6 @@ import { ReactSVG } from '../src'
 import iriSource from './iri-source.fixture'
 import source from './source.fixture'
 
-
 // NOTE: Even though we're always responding with `source`, we use different
 // `src` values when mounting within each test so that SVGInjector doesn't use
 // it's internal cache. This keeps the tests isolated from one another.

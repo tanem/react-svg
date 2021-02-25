@@ -16,6 +16,7 @@ interface BaseProps {
 
 type HTMLWrapperType = HTMLSpanElement | HTMLDivElement
 type SVGWrapperType = SVGSVGElement
+
 export type WrapperType = HTMLWrapperType | SVGWrapperType
 
 export type Props = BaseProps &
