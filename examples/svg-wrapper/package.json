@@ -1,5 +1,5 @@
 {
-  "name": "svg",
+  "name": "svg-wrapper",
   "description": "ReactSVG SVG Wrapper Example",
   "keywords": [
     "react-svg"
@@ -9,7 +9,7 @@
   "dependencies": {
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-scripts": "^2.0.5",
+    "react-scripts": "4.0.2",
     "react-svg": "latest"
   },
   "scripts": {
