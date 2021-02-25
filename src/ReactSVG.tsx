@@ -70,10 +70,9 @@ export class ReactSVG extends React.Component<Props, State> {
       const wrapper = this.props.wrapper!
       /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
-      // createElement seems to work for svg, but createElementNS with an SVG namespace may be called for in some cases?
       const nonReactElement =
         wrapper === 'svg'
-          ? document.createElement(wrapper)
+          ? document.createElementNS('http://www.w3.org/2000/svg', wrapper)
           : document.createElement(wrapper)
 
       nonReactElement.dataset.src = src
@@ -169,7 +168,11 @@ export class ReactSVG extends React.Component<Props, State> {
     const Wrapper = wrapper!
 
     return (
-      <Wrapper {...rest} ref={this.refCallback}>
+      <Wrapper
+        {...rest}
+        ref={this.refCallback}
+        {...(wrapper === 'svg' ? { xmlns: 'http://www.w3.org/2000/svg' } : {})}
+      >
         {this.state.isLoading && Loading && <Loading />}
         {this.state.hasError && Fallback && <Fallback />}
       </Wrapper>

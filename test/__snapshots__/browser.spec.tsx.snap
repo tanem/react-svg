@@ -46,7 +46,7 @@ exports[`while running in a browser environment allows rendering of span wrapper
 `;
 
 exports[`while running in a browser environment allows rendering of svg wrappers 1`] = `
-"<svg>
+"<svg xmlns='http://www.w3.org/2000/svg'>
   <svg
     class='injected-svg'
     data-src='http://localhost/5adb2861-f732-4eae-81a7-5875d0231173'
