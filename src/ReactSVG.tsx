@@ -1,7 +1,6 @@
 import { SVGInjector } from '@tanem/svg-injector'
 import * as PropTypes from 'prop-types'
 import * as React from 'react'
-import ReactDOMServer from 'react-dom/server'
 
 import shallowDiffers from './shallow-differs'
 import { Props, State, WrapperType } from './types'
@@ -49,7 +48,7 @@ export class ReactSVG extends React.Component<Props, State> {
 
   container?: WrapperType | null
 
-  svgWrapper?: WrapperType | null
+  nonReactElement?: WrapperType | SVGElement | null
 
   refCallback = (container: WrapperType | null) => {
     this.container = container
@@ -68,26 +67,27 @@ export class ReactSVG extends React.Component<Props, State> {
 
       /* eslint-disable @typescript-eslint/no-non-null-assertion */
       const afterInjection = this.props.afterInjection!
-      const Wrapper = this.props.wrapper!
+      const wrapper = this.props.wrapper!
       /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
-      const wrapper = document.createElement(Wrapper)
-      wrapper.innerHTML = ReactDOMServer.renderToStaticMarkup(
-        <Wrapper>
-          <Wrapper data-src={src} />
-        </Wrapper>
-      )
+      const nonReactElement = document.createElement(wrapper)
+      nonReactElement.dataset.src = src
 
-      this.svgWrapper = this.container.appendChild(
-        wrapper.firstChild as WrapperType
-      )
+      this.nonReactElement = this.container.appendChild(nonReactElement)
 
       const afterEach = (error: Error | null, svg?: SVGElement) => {
         if (error) {
           this.removeSVG()
+
+          if (!this._isMounted) {
+            afterInjection(error)
+            return
+          }
         }
 
-        // TODO: It'd be better to cleanly unsubscribe from SVGInjector
+        this.nonReactElement = svg
+
+        // TODO (Tane): It'd be better to cleanly unsubscribe from SVGInjector
         // callbacks instead of tracking a property like this.
         if (this._isMounted) {
           this.setState(
@@ -102,7 +102,7 @@ export class ReactSVG extends React.Component<Props, State> {
         }
       }
 
-      SVGInjector(this.svgWrapper.firstChild as WrapperType, {
+      SVGInjector(nonReactElement, {
         afterEach,
         beforeEach: beforeInjection,
         cacheRequests: useRequestCache,
@@ -113,9 +113,12 @@ export class ReactSVG extends React.Component<Props, State> {
   }
 
   removeSVG() {
-    if (this.container instanceof Node && this.svgWrapper instanceof Node) {
-      this.container.removeChild(this.svgWrapper)
-      this.svgWrapper = null
+    if (
+      this.container instanceof Node &&
+      this.nonReactElement instanceof Node
+    ) {
+      this.container.removeChild(this.nonReactElement)
+      this.nonReactElement = null
     }
   }
 

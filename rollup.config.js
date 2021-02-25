@@ -145,7 +145,6 @@ const getUmdConfig = (bundleType) => ({
     globals: {
       ...(isProduction(bundleType) ? {} : { 'prop-types': 'PropTypes' }),
       react: 'React',
-      'react-dom/server': 'ReactDOMServer',
     },
     name: 'ReactSVG',
     sourcemap: true,

@@ -1,280 +1,283 @@
-import { mount, ReactWrapper } from 'enzyme'
+import { render, screen, waitFor } from '@testing-library/react'
 import faker from 'faker'
+import nock from 'nock'
 import * as React from 'react'
-import sinon, {
-  SinonFakeXMLHttpRequest,
-  SinonFakeXMLHttpRequestStatic,
-} from 'sinon'
 
 import { ReactSVG } from '../src'
 import iriSource from './iri-source.fixture'
 import source from './source.fixture'
 
-// Notes:
-//
-// - SVGInjector uses setTimeout to process it's XHR queue, so we control
-//   request processing manually via Jest and Sinon.
-// - Even though we're always responding with `sourceSVG`, we use different
-//   `src` values when mounting within each test so that SVGInjector doesn't
-//   use it's internal cache. This keeps the tests isolated from one another.
+// NOTE: Even though we're always responding with `source`, we use different
+// `src` values when mounting within each test so that SVGInjector doesn't use
+// it's internal cache. This keeps the tests isolated from one another.
 
 faker.seed(123)
-jest.useFakeTimers()
 
 describe('while running in a browser environment', () => {
-  let fakeXHR: SinonFakeXMLHttpRequestStatic
-  let requests: SinonFakeXMLHttpRequest[]
-  let wrapper: ReactWrapper<
-    Record<string, unknown>,
-    Record<string, unknown>,
-    ReactSVG
-  >
-
-  beforeEach(() => {
-    fakeXHR = sinon.useFakeXMLHttpRequest()
-    requests = []
-    fakeXHR.onCreate = (xhr) => {
-      requests.push(xhr)
-    }
-  })
-
   afterEach(() => {
-    fakeXHR.restore()
+    nock.cleanAll()
   })
 
-  it('should render correctly', () => {
-    wrapper = mount(
+  it('should render correctly', async () => {
+    const uuid = faker.random.uuid()
+
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { container } = render(
+      <ReactSVG src={`http://localhost/${uuid}.svg`} />
+    )
+
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+    )
+
+    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
+  })
+
+  it('should update correctly', async () => {
+    const uuid = faker.random.uuid()
+
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { container, rerender } = render(
       <ReactSVG
         className="wrapper-class-name"
-        src={`http://localhost/${faker.random.uuid()}.svg`}
+        src={`http://localhost/${uuid}.svg`}
       />
     )
 
-    requests[0].respond(200, {}, source)
-    jest.runAllTimers()
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+    )
 
-    expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
-  })
-
-  it('should update correctly', () => {
-    wrapper = mount(
+    rerender(
       <ReactSVG
-        className="wrapper-class-name"
-        src={`http://localhost/${faker.random.uuid()}.svg`}
+        className="updated-wrapper-class-name"
+        src={`http://localhost/${uuid}.svg`}
       />
     )
 
-    requests[0].respond(200, {}, source)
-    jest.runAllTimers()
-
-    wrapper.setProps({
-      className: 'updated-wrapper-class-name',
-    })
-
-    expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
-  })
-
-  it('should unmount correctly', () => {
-    wrapper = mount(
-      <ReactSVG src={`http://localhost/${faker.random.uuid()}.svg`} />
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
     )
 
-    requests[0].respond(200, {}, source)
-    jest.runAllTimers()
-
-    wrapper.unmount()
-
-    expect(wrapper.exists()).toBe(false)
+    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
   })
 
-  it('should ensure a parent node is always available', () => {
-    expect(() => {
-      wrapper = mount(
-        <ReactSVG src={`http://localhost/${faker.random.uuid()}.svg`} />
-      )
+  it('should unmount correctly', async () => {
+    const uuid = faker.random.uuid()
 
-      wrapper.instance().removeSVG()
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
 
-      requests[0].respond(200, {}, source)
-      jest.runAllTimers()
-    }).not.toThrow()
-  })
-
-  it('should not throw if the container is not present when mounting', () => {
-    expect(() => {
-      wrapper = mount(
-        <ReactSVG src={`http://localhost/${faker.random.uuid()}.svg`} />
-      )
-
-      requests[0].respond(200, {}, source)
-      jest.runAllTimers()
-      wrapper.instance().container = null
-
-      wrapper.mount()
-    }).not.toThrow()
-  })
-
-  it('should not throw if the container is not present when unmounting', () => {
-    expect(() => {
-      wrapper = mount(
-        <ReactSVG src={`http://localhost/${faker.random.uuid()}.svg`} />
-      )
-
-      requests[0].respond(200, {}, source)
-      jest.runAllTimers()
-      wrapper.instance().container = null
-
-      wrapper.unmount()
-    }).not.toThrow()
-  })
-
-  it('should renumerate IRI elements by default', () => {
-    wrapper = mount(
-      <ReactSVG src={`http://localhost/${faker.random.uuid()}.svg`} />
+    const { container, unmount } = render(
+      <ReactSVG src={`http://localhost/${uuid}.svg`} />
     )
 
-    requests[0].respond(200, {}, iriSource)
-    jest.runAllTimers()
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+    )
 
-    expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
+    unmount()
+
+    expect(container.innerHTML).toBe('')
   })
 
-  it('should not renumerate IRI elements when renumerateIRIElements is false', () => {
-    wrapper = mount(
+  it('should return an error if a parent node is not available when injecting', (done) => {
+    const uuid = faker.random.uuid()
+
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { unmount } = render(
+      <ReactSVG
+        afterInjection={(error) => {
+          expect(error).toBeInstanceOf(Error)
+          done()
+        }}
+        src={`http://localhost/${uuid}.svg`}
+      />
+    )
+
+    unmount()
+  })
+
+  it('should renumerate IRI elements by default', async () => {
+    const uuid = faker.random.uuid()
+
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .reply(200, iriSource, { 'Content-Type': 'image/svg+xml' })
+
+    const { container } = render(
+      <ReactSVG src={`http://localhost/${uuid}.svg`} />
+    )
+
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+    )
+
+    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
+  })
+
+  it('should not renumerate IRI elements when renumerateIRIElements is false', async () => {
+    const uuid = faker.random.uuid()
+
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .reply(200, iriSource, { 'Content-Type': 'image/svg+xml' })
+
+    const { container } = render(
       <ReactSVG
         renumerateIRIElements={false}
-        src={`http://localhost/${faker.random.uuid()}.svg`}
+        src={`http://localhost/${uuid}.svg`}
       />
     )
 
-    requests[0].respond(200, {}, iriSource)
-    jest.runAllTimers()
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+    )
 
-    expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
+    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
   })
 
-  it('should call afterInjection correctly when injection is unsuccessful', () => {
+  it('should call afterInjection correctly when injection is unsuccessful', (done) => {
     expect.assertions(2)
 
-    const src = `http://localhost/${faker.random.uuid()}.svg`
+    const uuid = faker.random.uuid()
+    const src = `http://localhost/${uuid}.svg`
 
-    wrapper = mount(
+    nock('http://localhost').get(`/${uuid}.svg`).reply(404)
+
+    render(
       <ReactSVG
         afterInjection={(error, svg) => {
           expect(error).toEqual(new Error(`Unable to load SVG file: ${src}`))
           expect(svg).toBeUndefined()
+          done()
         }}
         src={src}
       />
     )
-
-    requests[0].respond(404, {}, '')
-    jest.runAllTimers()
   })
 
-  it('should call afterInjection correctly when injection is successful', () => {
+  it('should call afterInjection correctly when injection is successful', (done) => {
     expect.assertions(2)
 
-    wrapper = mount(
+    const uuid = faker.random.uuid()
+
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    render(
       <ReactSVG
         afterInjection={(error, svg) => {
           expect(error).toBeNull()
           expect((svg as SVGElement).outerHTML).toMatchPrettyHtmlSnapshot()
+          done()
         }}
-        src={`http://localhost/${faker.random.uuid()}.svg`}
+        src={`http://localhost/${uuid}.svg`}
       />
     )
-
-    requests[0].respond(200, {}, source)
-    jest.runAllTimers()
   })
 
-  it('should render the specified fallback if injection is unsuccessful', () => {
+  it('should render the specified fallback if injection is unsuccessful', async () => {
     const fallback = () => <span>fallback</span>
 
-    wrapper = mount(
-      <ReactSVG
-        fallback={fallback}
-        src={`http://localhost/${faker.random.uuid()}.svg`}
-      />
+    const uuid = faker.random.uuid()
+
+    nock('http://localhost').get(`/${uuid}.svg`).reply(404)
+
+    const { container } = render(
+      <ReactSVG fallback={fallback} src={`http://localhost/${uuid}.svg`} />
     )
 
-    requests[0].respond(404, {}, '')
-    jest.runAllTimers()
+    await waitFor(() => screen.findByText('fallback'))
 
-    expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
+    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
   })
 
-  it('should render the specified loader when injecting', () => {
+  it('should render the specified loader when injecting', async () => {
     const loading = () => <span>loading</span>
 
-    wrapper = mount(
-      <ReactSVG
-        loading={loading}
-        src={`http://localhost/${faker.random.uuid()}.svg`}
-      />
+    const uuid = faker.random.uuid()
+
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { container } = render(
+      <ReactSVG loading={loading} src={`http://localhost/${uuid}.svg`} />
     )
 
-    expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
+    // Checking before the query has been processed should give us the loader.
+    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
+
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+    )
   })
 
-  it('allows rendering of span wrappers', () => {
-    wrapper = mount(
-      <ReactSVG
-        src={`http://localhost/${faker.random.uuid()}.svg`}
-        wrapper="span"
-      />
+  it('allows rendering of span wrappers', async () => {
+    const uuid = faker.random.uuid()
+
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { container } = render(
+      <ReactSVG src={`http://localhost/${uuid}.svg`} wrapper="span" />
     )
 
-    requests[0].respond(200, {}, source)
-    jest.runAllTimers()
-
-    expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
-  })
-
-  // TODO: When we have the ability to cleanly unsubscribe from SVGInjector
-  // callbacks, we can update this dicey test to instead ensure the callbacks
-  // aren't called.
-  it('does not call setState when the component is unmounted', () => {
-    const warnSpy = jest
-      .spyOn(console, 'warn')
-      .mockImplementation(() => undefined)
-
-    wrapper = mount(
-      <ReactSVG src={`http://localhost/${faker.random.uuid()}.svg`} />
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
     )
 
-    wrapper.unmount()
-
-    requests[0].respond(200, {}, source)
-    jest.runAllTimers()
-
-    expect(warnSpy).not.toHaveBeenCalled()
-
-    warnSpy.mockRestore()
+    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
   })
 
-  it('should allow modification of the SVG via the beforeInjection callback', () => {
-    wrapper = mount(
+  it('should allow modification of the SVG via the beforeInjection callback', async () => {
+    const uuid = faker.random.uuid()
+
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { container } = render(
       <ReactSVG
         beforeInjection={(svg) => {
           svg.classList.add('svg-class-name')
           svg.setAttribute('style', 'width: 200px')
           // TODO: Style child element fills.
         }}
-        src={`http://localhost/${faker.random.uuid()}.svg`}
+        src={`http://localhost/${uuid}.svg`}
       />
     )
 
-    requests[0].respond(200, {}, source)
-    jest.runAllTimers()
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+    )
 
-    expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
+    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
   })
 
-  it('should render correctly when bypassing the request cache', () => {
-    const src = `http://localhost/${faker.random.uuid()}.svg`
-    wrapper = mount(
+  it('should render correctly when bypassing the request cache', async () => {
+    const uuid = faker.random.uuid()
+    const src = `http://localhost/${uuid}.svg`
+
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .times(3)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { container } = render(
       <div>
         <ReactSVG src={src} useRequestCache={false} />
         <ReactSVG src={src} />
@@ -283,26 +286,26 @@ describe('while running in a browser environment', () => {
       </div>
     )
 
-    requests[0].respond(200, {}, source)
-    requests[1].respond(200, {}, source)
-    requests[2].respond(200, {}, source)
-    jest.runAllTimers()
-
-    expect(requests).toHaveLength(3)
-    expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
-  })
-
-  it('should render correctly with an extensionless svg', () => {
-    wrapper = mount(
-      <ReactSVG
-        className="wrapper-class-name"
-        src={`http://localhost/${faker.random.uuid()}`}
-      />
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(4)
     )
 
-    requests[0].respond(200, { 'Content-Type': 'image/svg+xml' }, source)
-    jest.runAllTimers()
+    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
+  })
 
-    expect(wrapper.html()).toMatchPrettyHtmlSnapshot()
+  it('should render correctly with an extensionless svg', async () => {
+    const uuid = faker.random.uuid()
+
+    nock('http://localhost')
+      .get(`/${uuid}`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { container } = render(<ReactSVG src={`http://localhost/${uuid}`} />)
+
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+    )
+
+    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
   })
 })
