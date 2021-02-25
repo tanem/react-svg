@@ -103,47 +103,14 @@ For the non-minified development version, make sure you have already included:
 
 - [`React`](https://unpkg.com/react/umd/react.development.js)
 - [`ReactDOM`](https://unpkg.com/react-dom/umd/react-dom.development.js)
-- [`ReactDOMServer`](https://unpkg.com/react-dom/umd/react-dom-server.browser.development.js)
 - [`PropTypes`](https://unpkg.com/prop-types/prop-types.js)
 
 For the minified production version, make sure you have already included:
 
 - [`React`](https://unpkg.com/react/umd/react.production.min.js)
 - [`ReactDOM`](https://unpkg.com/react-dom/umd/react-dom.production.min.js)
-- [`ReactDOMServer`](https://unpkg.com/react-dom/umd/react-dom-server.browser.production.min.js)
 
 ## FAQ
-
-<details>
-
-<summary>
-Why are there two wrapping elements?
-</summary>
-
-This module delegates it's core behaviour to [@tanem/svg-injector](https://github.com/tanem/svg-injector), which requires the presence of a parent node when swapping in the SVG element. The swapping in occurs outside of React flow, so we don't want React updates to conflict with the DOM nodes `@tanem/svg-injector` is managing.
-
-Example output, assuming a `div` wrapper:
-
-```html
-<div> <!-- The wrapper, managed by React -->
-  <div> <!-- The parent node, managed by @tanem/svg-injector -->
-    <svg>...</svg> <!-- The swapped-in SVG, managed by @tanem/svg-injector -->
-  </div>
-</div>
-```
-
-See:
-
-- [Integrating with Other Libraries](https://reactjs.org/docs/integrating-with-other-libraries.html).
-
-Related issues and PRs:
-
-- [#24](https://github.com/tanem/react-svg/issues/24).
-- [#30](https://github.com/tanem/react-svg/issues/30).
-- [#36](https://github.com/tanem/react-svg/pull/36).
-- [#48](https://github.com/tanem/react-svg/issues/48).
-
-</details>
 
 <details>
 
