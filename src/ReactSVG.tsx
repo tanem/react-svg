@@ -5,9 +5,7 @@ import * as React from 'react'
 import shallowDiffers from './shallow-differs'
 import { Props, State, WrapperType } from './types'
 
-
-const SVG_NS = 'http://www.w3.org/2000/svg';
-
+const SVG_NS = 'http://www.w3.org/2000/svg'
 
 export class ReactSVG extends React.Component<Props, State> {
   static defaultProps = {
@@ -74,24 +72,20 @@ export class ReactSVG extends React.Component<Props, State> {
       const wrapper = this.props.wrapper!
       /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
-      let nonReactElement;
+      let nonReactElement
 
       if (wrapper === 'svg') {
-        nonReactElement = document.createElementNS('http://www.w3.org/2000/svg', wrapper);
-        nonReactElement.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
-
+        nonReactElement = document.createElementNS(SVG_NS, wrapper)
+        nonReactElement.setAttribute('xmlns', SVG_NS)
+      } else {
+        nonReactElement = document.createElement(wrapper)
       }
-
-      const nonReactElement =
-        wrapper === 'svg'
-          ? document.createElementNS('http://www.w3.org/2000/svg', wrapper)
-          : document.createElement(wrapper)
 
       nonReactElement.dataset.src = src
 
       this.nonReactElement = this.container.appendChild(nonReactElement)
 
-      const afterEach = (error: Error | null, svg?: SVGElement) => {
+      const afterEach = (error: Error | null, svg?: SVGSVGElement) => {
         if (error) {
           this.removeSVG()
 
