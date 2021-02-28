@@ -5,6 +5,10 @@ import * as React from 'react'
 import shallowDiffers from './shallow-differs'
 import { Props, State, WrapperType } from './types'
 
+
+const SVG_NS = 'http://www.w3.org/2000/svg';
+
+
 export class ReactSVG extends React.Component<Props, State> {
   static defaultProps = {
     afterInjection: () => undefined,
@@ -48,7 +52,7 @@ export class ReactSVG extends React.Component<Props, State> {
 
   container?: WrapperType | null
 
-  nonReactElement?: WrapperType | SVGElement | null
+  nonReactElement?: WrapperType | null
 
   refCallback = (container: WrapperType | null) => {
     this.container = container
@@ -69,6 +73,14 @@ export class ReactSVG extends React.Component<Props, State> {
       const afterInjection = this.props.afterInjection!
       const wrapper = this.props.wrapper!
       /* eslint-enable @typescript-eslint/no-non-null-assertion */
+
+      let nonReactElement;
+
+      if (wrapper === 'svg') {
+        nonReactElement = document.createElementNS('http://www.w3.org/2000/svg', wrapper);
+        nonReactElement.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+
+      }
 
       const nonReactElement =
         wrapper === 'svg'
