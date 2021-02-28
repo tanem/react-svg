@@ -5,7 +5,8 @@ import * as React from 'react'
 import shallowDiffers from './shallow-differs'
 import { Props, State, WrapperType } from './types'
 
-const SVG_NS = 'http://www.w3.org/2000/svg'
+const svgNamespace = 'http://www.w3.org/2000/svg'
+const xlinkNamespace = 'http://www.w3.org/1999/xlink'
 
 export class ReactSVG extends React.Component<Props, State> {
   static defaultProps = {
@@ -72,14 +73,10 @@ export class ReactSVG extends React.Component<Props, State> {
       const wrapper = this.props.wrapper!
       /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
-      let nonReactElement
-
-      if (wrapper === 'svg') {
-        nonReactElement = document.createElementNS(SVG_NS, wrapper)
-        nonReactElement.setAttribute('xmlns', SVG_NS)
-      } else {
-        nonReactElement = document.createElement(wrapper)
-      }
+      const nonReactElement =
+        wrapper === 'svg'
+          ? document.createElementNS(svgNamespace, wrapper)
+          : document.createElement(wrapper)
 
       nonReactElement.dataset.src = src
 
@@ -177,7 +174,12 @@ export class ReactSVG extends React.Component<Props, State> {
       <Wrapper
         {...rest}
         ref={this.refCallback}
-        {...(wrapper === 'svg' ? { xmlns: 'http://www.w3.org/2000/svg' } : {})}
+        {...(wrapper === 'svg'
+          ? {
+              xmlns: svgNamespace,
+              xmlnsXlink: xlinkNamespace,
+            }
+          : {})}
       >
         {this.state.isLoading && Loading && <Loading />}
         {this.state.hasError && Fallback && <Fallback />}
