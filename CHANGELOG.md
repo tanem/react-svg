@@ -1,5 +1,18 @@
 # Changelog
 
+## [v12.0.1](https://github.com/tanem/react-svg/tree/v12.0.1) (2021-03-02)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v12.0.0...v12.0.1)
+
+#### :house: Internal
+
+- [#1180](https://github.com/tanem/react-svg/pull/1180) Update dependency nock to v13.0.9 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1179](https://github.com/tanem/react-svg/pull/1179) Update dependency rollup to v2.40.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1178](https://github.com/tanem/react-svg/pull/1178) Update dependency ts-jest to v26.5.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1177](https://github.com/tanem/react-svg/pull/1177) Update dependency typescript to v4.2.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1176](https://github.com/tanem/react-svg/pull/1176) Update dependency rollup to v2.39.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1175](https://github.com/tanem/react-svg/pull/1175) Update typescript-eslint monorepo to v4.15.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1174](https://github.com/tanem/react-svg/pull/1174) Update dependency react-scripts to v4.0.3 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v12.0.0](https://github.com/tanem/react-svg/tree/v12.0.0) (2021-02-25)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v11.2.5...v12.0.0)
 
