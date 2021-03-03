@@ -73,10 +73,15 @@ export class ReactSVG extends React.Component<Props, State> {
       const wrapper = this.props.wrapper!
       /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
-      const nonReactElement =
-        wrapper === 'svg'
-          ? document.createElementNS(svgNamespace, wrapper)
-          : document.createElement(wrapper)
+      let nonReactElement
+
+      if (wrapper === 'svg') {
+        nonReactElement = document.createElementNS(svgNamespace, wrapper)
+        nonReactElement.setAttribute('xmlns', svgNamespace)
+        nonReactElement.setAttribute('xmlns:xlink', xlinkNamespace)
+      } else {
+        nonReactElement = document.createElement(wrapper)
+      }
 
       nonReactElement.dataset.src = src
 
