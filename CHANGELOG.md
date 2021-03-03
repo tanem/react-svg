@@ -1,5 +1,16 @@
 # Changelog
 
+## [v12.1.0](https://github.com/tanem/react-svg/tree/v12.1.0) (2021-03-03)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v12.0.1...v12.1.0)
+
+#### :rocket: Enhancement
+
+- [#1164](https://github.com/tanem/react-svg/pull/1164) Add svg as a wrapper option ([@steven-wolfman](https://github.com/steven-wolfman))
+
+#### :house: Internal
+
+- [#1181](https://github.com/tanem/react-svg/pull/1181) Update dependency eslint to v7.21.0 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v12.0.1](https://github.com/tanem/react-svg/tree/v12.0.1) (2021-03-02)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v12.0.0...v12.0.1)
 
