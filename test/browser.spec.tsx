@@ -180,7 +180,7 @@ describe('while running in a browser environment', () => {
       <ReactSVG
         afterInjection={(error, svg) => {
           expect(error).toBeNull()
-          expect((svg as SVGElement).outerHTML).toMatchPrettyHtmlSnapshot()
+          expect((svg as SVGSVGElement).outerHTML).toMatchPrettyHtmlSnapshot()
           done()
         }}
         src={`http://localhost/${uuid}.svg`}
@@ -301,6 +301,24 @@ describe('while running in a browser environment', () => {
       .reply(200, source, { 'Content-Type': 'image/svg+xml' })
 
     const { container } = render(<ReactSVG src={`http://localhost/${uuid}`} />)
+
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+    )
+
+    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
+  })
+
+  it('allows rendering of svg wrappers', async () => {
+    const uuid = faker.random.uuid()
+
+    nock('http://localhost')
+      .get(`/${uuid}`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { container } = render(
+      <ReactSVG src={`http://localhost/${uuid}`} wrapper="svg" />
+    )
 
     await waitFor(() =>
       expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)

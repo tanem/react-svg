@@ -5,6 +5,9 @@ import * as React from 'react'
 import shallowDiffers from './shallow-differs'
 import { Props, State, WrapperType } from './types'
 
+const svgNamespace = 'http://www.w3.org/2000/svg'
+const xlinkNamespace = 'http://www.w3.org/1999/xlink'
+
 export class ReactSVG extends React.Component<Props, State> {
   static defaultProps = {
     afterInjection: () => undefined,
@@ -34,7 +37,7 @@ export class ReactSVG extends React.Component<Props, State> {
     renumerateIRIElements: PropTypes.bool,
     src: PropTypes.string.isRequired,
     useRequestCache: PropTypes.bool,
-    wrapper: PropTypes.oneOf(['div', 'span']),
+    wrapper: PropTypes.oneOf(['div', 'span', 'svg']),
   }
 
   initialState = {
@@ -48,7 +51,7 @@ export class ReactSVG extends React.Component<Props, State> {
 
   container?: WrapperType | null
 
-  nonReactElement?: WrapperType | SVGElement | null
+  nonReactElement?: WrapperType | null
 
   refCallback = (container: WrapperType | null) => {
     this.container = container
@@ -70,12 +73,21 @@ export class ReactSVG extends React.Component<Props, State> {
       const wrapper = this.props.wrapper!
       /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
-      const nonReactElement = document.createElement(wrapper)
+      let nonReactElement
+
+      if (wrapper === 'svg') {
+        nonReactElement = document.createElementNS(svgNamespace, wrapper)
+        nonReactElement.setAttribute('xmlns', svgNamespace)
+        nonReactElement.setAttribute('xmlns:xlink', xlinkNamespace)
+      } else {
+        nonReactElement = document.createElement(wrapper)
+      }
+
       nonReactElement.dataset.src = src
 
       this.nonReactElement = this.container.appendChild(nonReactElement)
 
-      const afterEach = (error: Error | null, svg?: SVGElement) => {
+      const afterEach = (error: Error | null, svg?: SVGSVGElement) => {
         if (error) {
           this.removeSVG()
 
@@ -164,7 +176,16 @@ export class ReactSVG extends React.Component<Props, State> {
     const Wrapper = wrapper!
 
     return (
-      <Wrapper {...rest} ref={this.refCallback}>
+      <Wrapper
+        {...rest}
+        ref={this.refCallback}
+        {...(wrapper === 'svg'
+          ? {
+              xmlns: svgNamespace,
+              xmlnsXlink: xlinkNamespace,
+            }
+          : {})}
+      >
         {this.state.isLoading && Loading && <Loading />}
         {this.state.hasError && Fallback && <Fallback />}
       </Wrapper>
