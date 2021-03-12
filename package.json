@@ -65,7 +65,7 @@
     "@testing-library/react": "11.2.5",
     "@types/faker": "5.1.7",
     "@types/jest": "26.0.20",
-    "@types/jsdom": "16.2.6",
+    "@types/jsdom": "16.2.7",
     "@types/prop-types": "15.7.3",
     "@types/react": "17.0.3",
     "@types/react-dom": "17.0.2",
