@@ -12,6 +12,6 @@
     "build": "parcel build index.html"
   },
   "devDependencies": {
-    "parcel-bundler": "1.12.4"
+    "parcel-bundler": "1.12.5"
   }
 }
