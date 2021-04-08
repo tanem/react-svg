@@ -2,6 +2,12 @@
 
 Details relating to major changes that aren't presently in `CHANGELOG.md`, due to limitations with how that file is being generated.
 
+## v13.0.0
+
+**Changed**
+
+- Fetch errors are no longer cached (see [tanem/svg-injector#692](https://github.com/tanem/svg-injector/issues/692)).
+
 ## v12.0.0
 
 **Changed**
