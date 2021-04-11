@@ -1,5 +1,18 @@
 # Changelog
 
+## [v13.0.1](https://github.com/tanem/react-svg/tree/v13.0.1) (2021-04-11)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v13.0.0...v13.0.1)
+
+#### :bug: Bug Fix
+
+- [#1235](https://github.com/tanem/react-svg/pull/1235) Move @types/prop-types to dependencies ([@wdfinch](https://github.com/wdfinch))
+
+#### :house: Internal
+
+- [#1237](https://github.com/tanem/react-svg/pull/1237) Update babel monorepo to v7.13.15 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1236](https://github.com/tanem/react-svg/pull/1236) Update dependency typescript to v4.2.4 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1234](https://github.com/tanem/react-svg/pull/1234) Update typescript-eslint monorepo to v4.21.0 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v13.0.0](https://github.com/tanem/react-svg/tree/v13.0.0) (2021-04-08)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v12.1.0...v13.0.0)
 
