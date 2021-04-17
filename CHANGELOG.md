@@ -1,5 +1,18 @@
 # Changelog
 
+## [v13.0.2](https://github.com/tanem/react-svg/tree/v13.0.2) (2021-04-17)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v13.0.1...v13.0.2)
+
+#### :house: Internal
+
+- [#1244](https://github.com/tanem/react-svg/pull/1244) Update dependency eslint-config-prettier to v8.2.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1243](https://github.com/tanem/react-svg/pull/1243) Update dependency rollup to v2.45.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1242](https://github.com/tanem/react-svg/pull/1242) Update typescript-eslint monorepo to v4.22.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1241](https://github.com/tanem/react-svg/pull/1241) Update dependency eslint to v7.24.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1240](https://github.com/tanem/react-svg/pull/1240) Update dependency faker to v5.5.3 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1239](https://github.com/tanem/react-svg/pull/1239) Update dependency eslint-plugin-react to v7.23.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1238](https://github.com/tanem/react-svg/pull/1238) Fix audit issues ([@tanem](https://github.com/tanem))
+
 ## [v13.0.1](https://github.com/tanem/react-svg/tree/v13.0.1) (2021-04-11)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v13.0.0...v13.0.1)
 
