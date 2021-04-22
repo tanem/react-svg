@@ -1,5 +1,17 @@
 # Changelog
 
+## [v13.0.3](https://github.com/tanem/react-svg/tree/v13.0.3) (2021-04-22)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v13.0.2...v13.0.3)
+
+#### :house: Internal
+
+- [#1250](https://github.com/tanem/react-svg/pull/1250) Update dependency @types/faker to v5.5.3 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1249](https://github.com/tanem/react-svg/pull/1249) Update dependency tanem-scripts to v6.0.15 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1248](https://github.com/tanem/react-svg/pull/1248) Update dependency @tanem/svg-injector to ^10.0.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1247](https://github.com/tanem/react-svg/pull/1247) Update dependency ssri to 6.0.2 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1246](https://github.com/tanem/react-svg/pull/1246) Update dependency ts-jest to v26.5.5 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1245](https://github.com/tanem/react-svg/pull/1245) Update dependency @types/node to v11.15.52 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v13.0.2](https://github.com/tanem/react-svg/tree/v13.0.2) (2021-04-17)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v13.0.1...v13.0.2)
 
