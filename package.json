@@ -68,7 +68,7 @@
     "@types/jest": "26.0.23",
     "@types/jsdom": "16.2.10",
     "@types/react": "17.0.5",
-    "@types/react-dom": "17.0.3",
+    "@types/react-dom": "17.0.5",
     "@typescript-eslint/eslint-plugin": "4.23.0",
     "@typescript-eslint/parser": "4.23.0",
     "babel-core": "6.26.3",
