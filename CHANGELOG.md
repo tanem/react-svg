@@ -1,5 +1,22 @@
 # Changelog
 
+## [v13.0.6](https://github.com/tanem/react-svg/tree/v13.0.6) (2021-05-22)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v13.0.5...v13.0.6)
+
+#### :house: Internal
+
+- [#1282](https://github.com/tanem/react-svg/pull/1282) Update dependency @types/node to v14 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1281](https://github.com/tanem/react-svg/pull/1281) Update dependency @types/react to v17.0.6 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1280](https://github.com/tanem/react-svg/pull/1280) Update babel monorepo to v7.14.3 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1279](https://github.com/tanem/react-svg/pull/1279) Update typescript-eslint monorepo to v4.24.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1278](https://github.com/tanem/react-svg/pull/1278) Update dependency rollup to v2.48.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1277](https://github.com/tanem/react-svg/pull/1277) Update dependency tanem-scripts to v6.0.17 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1276](https://github.com/tanem/react-svg/pull/1276) Update dependency jest-prettyhtml-matchers to v1.4.14 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1275](https://github.com/tanem/react-svg/pull/1275) Update dependency @testing-library/react to v11.2.7 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1274](https://github.com/tanem/react-svg/pull/1274) Update dependency @types/react-dom to v17.0.5 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1273](https://github.com/tanem/react-svg/pull/1273) Update dependency @types/node to v11.15.54 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1272](https://github.com/tanem/react-svg/pull/1272) Update babel monorepo to v7.14.2 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v13.0.5](https://github.com/tanem/react-svg/tree/v13.0.5) (2021-05-14)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v13.0.4...v13.0.5)
 
