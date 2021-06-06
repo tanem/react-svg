@@ -2,6 +2,12 @@
 
 Details relating to major changes that aren't presently in `CHANGELOG.md`, due to limitations with how that file is being generated.
 
+## v14.0.0
+
+**Changed**
+
+- Restored extra wrapper element in rendered output.
+
 ## v13.0.0
 
 **Changed**

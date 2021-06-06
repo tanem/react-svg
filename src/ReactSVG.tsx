@@ -49,17 +49,17 @@ export class ReactSVG extends React.Component<Props, State> {
 
   _isMounted = false
 
-  container?: WrapperType | null
+  reactWrapper?: WrapperType | null
 
-  nonReactElement?: WrapperType | null
+  nonReactWrapper?: WrapperType | null
 
-  refCallback = (container: WrapperType | null) => {
-    this.container = container
+  refCallback = (reactWrapper: WrapperType | null) => {
+    this.reactWrapper = reactWrapper
   }
 
   renderSVG() {
     /* istanbul ignore else */
-    if (this.container instanceof Node) {
+    if (this.reactWrapper instanceof Node) {
       const {
         beforeInjection,
         evalScripts,
@@ -73,19 +73,23 @@ export class ReactSVG extends React.Component<Props, State> {
       const wrapper = this.props.wrapper!
       /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
-      let nonReactElement
+      let nonReactWrapper
+      let nonReactTarget
 
       if (wrapper === 'svg') {
-        nonReactElement = document.createElementNS(svgNamespace, wrapper)
-        nonReactElement.setAttribute('xmlns', svgNamespace)
-        nonReactElement.setAttribute('xmlns:xlink', xlinkNamespace)
+        nonReactWrapper = document.createElementNS(svgNamespace, wrapper)
+        nonReactWrapper.setAttribute('xmlns', svgNamespace)
+        nonReactWrapper.setAttribute('xmlns:xlink', xlinkNamespace)
+        nonReactTarget = document.createElementNS(svgNamespace, wrapper)
       } else {
-        nonReactElement = document.createElement(wrapper)
+        nonReactWrapper = document.createElement(wrapper)
+        nonReactTarget = document.createElement(wrapper)
       }
 
-      nonReactElement.dataset.src = src
+      nonReactWrapper.appendChild(nonReactTarget)
+      nonReactTarget.dataset.src = src
 
-      this.nonReactElement = this.container.appendChild(nonReactElement)
+      this.nonReactWrapper = this.reactWrapper.appendChild(nonReactWrapper)
 
       const afterEach = (error: Error | null, svg?: SVGSVGElement) => {
         if (error) {
@@ -96,8 +100,6 @@ export class ReactSVG extends React.Component<Props, State> {
             return
           }
         }
-
-        this.nonReactElement = svg
 
         // TODO (Tane): It'd be better to cleanly unsubscribe from SVGInjector
         // callbacks instead of tracking a property like this.
@@ -114,7 +116,7 @@ export class ReactSVG extends React.Component<Props, State> {
         }
       }
 
-      SVGInjector(nonReactElement, {
+      SVGInjector(nonReactTarget, {
         afterEach,
         beforeEach: beforeInjection,
         cacheRequests: useRequestCache,
@@ -125,12 +127,9 @@ export class ReactSVG extends React.Component<Props, State> {
   }
 
   removeSVG() {
-    if (
-      this.container instanceof Node &&
-      this.nonReactElement instanceof Node
-    ) {
-      this.container.removeChild(this.nonReactElement)
-      this.nonReactElement = null
+    if (this.nonReactWrapper?.parentNode) {
+      this.nonReactWrapper.parentNode.removeChild(this.nonReactWrapper)
+      this.nonReactWrapper = null
     }
   }
 

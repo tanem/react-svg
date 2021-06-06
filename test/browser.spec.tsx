@@ -19,7 +19,7 @@ describe('while running in a browser environment', () => {
   })
 
   it('should render correctly', async () => {
-    const uuid = faker.random.uuid()
+    const uuid = faker.datatype.uuid()
 
     nock('http://localhost')
       .get(`/${uuid}.svg`)
@@ -37,7 +37,7 @@ describe('while running in a browser environment', () => {
   })
 
   it('should update correctly', async () => {
-    const uuid = faker.random.uuid()
+    const uuid = faker.datatype.uuid()
 
     nock('http://localhost')
       .get(`/${uuid}.svg`)
@@ -69,7 +69,7 @@ describe('while running in a browser environment', () => {
   })
 
   it('should unmount correctly', async () => {
-    const uuid = faker.random.uuid()
+    const uuid = faker.datatype.uuid()
 
     nock('http://localhost')
       .get(`/${uuid}.svg`)
@@ -88,28 +88,8 @@ describe('while running in a browser environment', () => {
     expect(container.innerHTML).toBe('')
   })
 
-  it('should return an error if a parent node is not available when injecting', (done) => {
-    const uuid = faker.random.uuid()
-
-    nock('http://localhost')
-      .get(`/${uuid}.svg`)
-      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
-
-    const { unmount } = render(
-      <ReactSVG
-        afterInjection={(error) => {
-          expect(error).toBeInstanceOf(Error)
-          done()
-        }}
-        src={`http://localhost/${uuid}.svg`}
-      />
-    )
-
-    unmount()
-  })
-
   it('should renumerate IRI elements by default', async () => {
-    const uuid = faker.random.uuid()
+    const uuid = faker.datatype.uuid()
 
     nock('http://localhost')
       .get(`/${uuid}.svg`)
@@ -127,7 +107,7 @@ describe('while running in a browser environment', () => {
   })
 
   it('should not renumerate IRI elements when renumerateIRIElements is false', async () => {
-    const uuid = faker.random.uuid()
+    const uuid = faker.datatype.uuid()
 
     nock('http://localhost')
       .get(`/${uuid}.svg`)
@@ -150,7 +130,7 @@ describe('while running in a browser environment', () => {
   it('should call afterInjection correctly when injection is unsuccessful', (done) => {
     expect.assertions(2)
 
-    const uuid = faker.random.uuid()
+    const uuid = faker.datatype.uuid()
     const src = `http://localhost/${uuid}.svg`
 
     nock('http://localhost').get(`/${uuid}.svg`).reply(404)
@@ -170,7 +150,7 @@ describe('while running in a browser environment', () => {
   it('should call afterInjection correctly when injection is successful', (done) => {
     expect.assertions(2)
 
-    const uuid = faker.random.uuid()
+    const uuid = faker.datatype.uuid()
 
     nock('http://localhost')
       .get(`/${uuid}.svg`)
@@ -191,7 +171,7 @@ describe('while running in a browser environment', () => {
   it('should render the specified fallback if injection is unsuccessful', async () => {
     const fallback = () => <span>fallback</span>
 
-    const uuid = faker.random.uuid()
+    const uuid = faker.datatype.uuid()
 
     nock('http://localhost').get(`/${uuid}.svg`).reply(404)
 
@@ -207,7 +187,7 @@ describe('while running in a browser environment', () => {
   it('should render the specified loader when injecting', async () => {
     const loading = () => <span>loading</span>
 
-    const uuid = faker.random.uuid()
+    const uuid = faker.datatype.uuid()
 
     nock('http://localhost')
       .get(`/${uuid}.svg`)
@@ -226,7 +206,7 @@ describe('while running in a browser environment', () => {
   })
 
   it('allows rendering of span wrappers', async () => {
-    const uuid = faker.random.uuid()
+    const uuid = faker.datatype.uuid()
 
     nock('http://localhost')
       .get(`/${uuid}.svg`)
@@ -244,7 +224,7 @@ describe('while running in a browser environment', () => {
   })
 
   it('should allow modification of the SVG via the beforeInjection callback', async () => {
-    const uuid = faker.random.uuid()
+    const uuid = faker.datatype.uuid()
 
     nock('http://localhost')
       .get(`/${uuid}.svg`)
@@ -269,7 +249,7 @@ describe('while running in a browser environment', () => {
   })
 
   it('should render correctly when bypassing the request cache', async () => {
-    const uuid = faker.random.uuid()
+    const uuid = faker.datatype.uuid()
     const src = `http://localhost/${uuid}.svg`
 
     nock('http://localhost')
@@ -294,7 +274,7 @@ describe('while running in a browser environment', () => {
   })
 
   it('should render correctly with an extensionless svg', async () => {
-    const uuid = faker.random.uuid()
+    const uuid = faker.datatype.uuid()
 
     nock('http://localhost')
       .get(`/${uuid}`)
@@ -310,7 +290,7 @@ describe('while running in a browser environment', () => {
   })
 
   it('allows rendering of svg wrappers', async () => {
-    const uuid = faker.random.uuid()
+    const uuid = faker.datatype.uuid()
 
     nock('http://localhost')
       .get(`/${uuid}`)
@@ -325,5 +305,28 @@ describe('while running in a browser environment', () => {
     )
 
     expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
+  })
+
+  it('re-renders correctly into the same container', async () => {
+    const uuid = faker.datatype.uuid()
+    const src = `http://localhost/${uuid}`
+    const div = document.createElement('div')
+
+    nock('http://localhost')
+      .get(`/${uuid}`)
+      .times(2)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    render(<ReactSVG src={src} wrapper="svg" />, { container: div })
+    await waitFor(() =>
+      expect(div.querySelectorAll('.injected-svg')).toHaveLength(1)
+    )
+    expect(div.innerHTML).toMatchPrettyHtmlSnapshot()
+
+    render(<ReactSVG src={src} wrapper="span" />, { container: div })
+    await waitFor(() =>
+      expect(div.querySelectorAll('.injected-svg')).toHaveLength(1)
+    )
+    expect(div.innerHTML).toMatchPrettyHtmlSnapshot()
   })
 })
