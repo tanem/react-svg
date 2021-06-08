@@ -6,6 +6,7 @@ module.exports = {
   rootDir: process.cwd(),
   roots: ['<rootDir>/test'],
   setupFilesAfterEnv: ['<rootDir>/scripts/jest/setupJest.ts'],
+  testEnvironment: 'jsdom',
   testMatch: ['<rootDir>/test/*.spec.ts?(x)'],
   transform: { '^.+\\.(js|tsx?)$': 'ts-jest' },
 }
