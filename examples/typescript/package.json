@@ -17,7 +17,7 @@
     "start": "react-scripts start"
   },
   "devDependencies": {
-    "@types/jest": "26.0.23",
+    "@types/jest": "26.0.24",
     "@types/node": "14.17.4",
     "@types/react": "17.0.13",
     "@types/react-dom": "17.0.8",
