@@ -95,7 +95,7 @@
     "rollup-plugin-sourcemaps": "0.6.3",
     "rollup-plugin-terser": "7.0.2",
     "shx": "0.3.3",
-    "tanem-scripts": "6.0.22",
+    "tanem-scripts": "6.0.23",
     "ts-jest": "27.0.3",
     "typescript": "4.3.5"
   }
