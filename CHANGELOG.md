@@ -1,5 +1,22 @@
 # Changelog
 
+## [v14.0.9](https://github.com/tanem/react-svg/tree/v14.0.9) (2021-08-19)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v14.0.8...v14.0.9)
+
+#### :house: Internal
+
+- [#1410](https://github.com/tanem/react-svg/pull/1410) Update dependency @types/react to v17.0.18 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1409](https://github.com/tanem/react-svg/pull/1409) Update dependency @types/faker to v5.5.8 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1408](https://github.com/tanem/react-svg/pull/1408) Update dependency @types/jest to v27 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1407](https://github.com/tanem/react-svg/pull/1407) Update dependency @babel/runtime to ^7.15.3 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1406](https://github.com/tanem/react-svg/pull/1406) Update dependency @types/react to v17.0.17 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1405](https://github.com/tanem/react-svg/pull/1405) Update dependency rollup to v2.56.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1402](https://github.com/tanem/react-svg/pull/1402) Update typescript-eslint monorepo to v4.29.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1404](https://github.com/tanem/react-svg/pull/1404) Update dependency tanem-scripts to v6.0.28 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1403](https://github.com/tanem/react-svg/pull/1403) Update dependency @tanem/svg-injector to ^10.1.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1401](https://github.com/tanem/react-svg/pull/1401) Update dependency jest-prettyhtml-matchers to v1.5.8 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1400](https://github.com/tanem/react-svg/pull/1400) Update dependency path-parse to 1.0.7 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v14.0.8](https://github.com/tanem/react-svg/tree/v14.0.8) (2021-08-09)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v14.0.7...v14.0.8)
 
