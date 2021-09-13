@@ -1,5 +1,22 @@
 # Changelog
 
+## [v14.0.12](https://github.com/tanem/react-svg/tree/v14.0.12) (2021-09-13)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v14.0.11...v14.0.12)
+
+#### :house: Internal
+
+- [#1440](https://github.com/tanem/react-svg/pull/1440) Update dependency @babel/preset-env to v7.15.6 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1439](https://github.com/tanem/react-svg/pull/1439) Update dependency prettier to v2.4.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1438](https://github.com/tanem/react-svg/pull/1438) Update dependency jest to v27.1.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1437](https://github.com/tanem/react-svg/pull/1437) Update dependency @types/node to v14.17.15 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1436](https://github.com/tanem/react-svg/pull/1436) Update typescript-eslint monorepo to v4.31.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1435](https://github.com/tanem/react-svg/pull/1435) Update dependency @types/react to v17.0.20 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1434](https://github.com/tanem/react-svg/pull/1434) Update babel monorepo ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1433](https://github.com/tanem/react-svg/pull/1433) Update dependency tanem-scripts to v6.0.31 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1432](https://github.com/tanem/react-svg/pull/1432) Update dependency @tanem/svg-injector to ^10.1.4 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1431](https://github.com/tanem/react-svg/pull/1431) Update dependency jest-prettyhtml-matchers to v1.6.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1430](https://github.com/tanem/react-svg/pull/1430) Update dependency @types/node to v14.17.14 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v14.0.11](https://github.com/tanem/react-svg/tree/v14.0.11) (2021-09-03)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v14.0.10...v14.0.11)
 
