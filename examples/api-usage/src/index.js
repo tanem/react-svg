@@ -18,6 +18,7 @@ ReactDOM.render(
     className="wrapper-class-name"
     evalScripts="always"
     fallback={() => <span>Error!</span>}
+    httpRequestWithCredentials={true}
     loading={() => <span>Loading</span>}
     onClick={() => {
       console.log('wrapper onClick')

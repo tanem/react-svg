@@ -14,6 +14,7 @@ export class ReactSVG extends React.Component<Props, State> {
     beforeInjection: () => undefined,
     evalScripts: 'never',
     fallback: null,
+    httpRequestWithCredentials: false,
     loading: null,
     renumerateIRIElements: true,
     useRequestCache: true,
@@ -29,6 +30,7 @@ export class ReactSVG extends React.Component<Props, State> {
       PropTypes.object,
       PropTypes.string,
     ]),
+    httpRequestWithCredentials: PropTypes.bool,
     loading: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.object,
@@ -63,6 +65,7 @@ export class ReactSVG extends React.Component<Props, State> {
       const {
         beforeInjection,
         evalScripts,
+        httpRequestWithCredentials,
         renumerateIRIElements,
         src,
         useRequestCache,
@@ -121,6 +124,7 @@ export class ReactSVG extends React.Component<Props, State> {
         beforeEach: beforeInjection,
         cacheRequests: useRequestCache,
         evalScripts,
+        httpRequestWithCredentials,
         renumerateIRIElements,
       })
     }
@@ -162,6 +166,7 @@ export class ReactSVG extends React.Component<Props, State> {
       beforeInjection,
       evalScripts,
       fallback: Fallback,
+      httpRequestWithCredentials,
       loading: Loading,
       renumerateIRIElements,
       src,
