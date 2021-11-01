@@ -7,6 +7,7 @@ interface BaseProps {
   beforeInjection?: BeforeEach
   evalScripts?: EvalScripts
   fallback?: React.ReactType
+  httpRequestWithCredentials?: boolean
   loading?: React.ReactType
   renumerateIRIElements?: boolean
   src: string
