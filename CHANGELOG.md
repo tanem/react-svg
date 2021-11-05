@@ -1,5 +1,29 @@
 # Changelog
 
+## [v14.1.1](https://github.com/tanem/react-svg/tree/v14.1.1) (2021-11-05)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v14.1.0...v14.1.1)
+
+#### :memo: Documentation
+
+- [#1507](https://github.com/tanem/react-svg/pull/1507) Add missing docs around httpRequestWithCredentials option ([@tanem](https://github.com/tanem))
+
+#### :house: Internal
+
+- [#1520](https://github.com/tanem/react-svg/pull/1520) Update dependency url-parse to 1.5.2 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1521](https://github.com/tanem/react-svg/pull/1521) Update dependency ws to 7.4.6 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1518](https://github.com/tanem/react-svg/pull/1518) Update dependency ua-parser-js to 0.7.24 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1517](https://github.com/tanem/react-svg/pull/1517) Update dependency tar to 6.1.9 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1516](https://github.com/tanem/react-svg/pull/1516) Update dependency react-dev-utils to 11.0.4 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1515](https://github.com/tanem/react-svg/pull/1515) Update dependency postcss to 7.0.36 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1519](https://github.com/tanem/react-svg/pull/1519) Update dependency lodash to 4.17.21 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1514](https://github.com/tanem/react-svg/pull/1514) Update dependency is-svg to 4.2.2 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1512](https://github.com/tanem/react-svg/pull/1512) Update dependency browserslist to 4.16.5 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1513](https://github.com/tanem/react-svg/pull/1513) Update dependency color-string to 1.5.5 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1511](https://github.com/tanem/react-svg/pull/1511) Update dependency ansi-regex to 5.0.1 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1510](https://github.com/tanem/react-svg/pull/1510) Update typescript-eslint monorepo to v5.3.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1509](https://github.com/tanem/react-svg/pull/1509) Update dependency rollup to v2.59.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1508](https://github.com/tanem/react-svg/pull/1508) Update babel monorepo to v7.16.0 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v14.1.0](https://github.com/tanem/react-svg/tree/v14.1.0) (2021-11-01)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v14.0.17...v14.1.0)
 
