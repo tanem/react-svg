@@ -4,7 +4,8 @@
     ":rebaseStalePrs",
     ":automergeAll",
     ":label(internal)",
-    ":masterIssue"
+    ":masterIssue",
+    ":enableVulnerabilityAlerts"
   ],
   "ignorePaths": ["**/node_modules/**"],
   "lockFileMaintenance": {
