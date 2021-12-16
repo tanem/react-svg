@@ -53,16 +53,16 @@
     "react-dom": "^15.5.4 || ^16.0.0 || ^17.0.0"
   },
   "dependencies": {
-    "@babel/runtime": "^7.16.3",
+    "@babel/runtime": "^7.16.5",
     "@tanem/svg-injector": "^10.1.12",
     "@types/prop-types": "^15.7.4",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
-    "@babel/core": "7.16.0",
-    "@babel/plugin-transform-runtime": "7.16.4",
-    "@babel/preset-env": "7.16.4",
-    "@babel/preset-react": "7.16.0",
+    "@babel/core": "7.16.5",
+    "@babel/plugin-transform-runtime": "7.16.5",
+    "@babel/preset-env": "7.16.5",
+    "@babel/preset-react": "7.16.5",
     "@testing-library/react": "12.1.2",
     "@types/faker": "5.5.9",
     "@types/jest": "27.0.3",
