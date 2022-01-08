@@ -79,7 +79,7 @@
     "eslint-plugin-react": "7.28.0",
     "eslint-plugin-react-hooks": "4.3.0",
     "eslint-plugin-simple-import-sort": "7.0.0",
-    "faker": "5.5.3",
+    "faker": "6.6.6",
     "jest": "27.4.7",
     "jest-prettyhtml-matchers": "1.8.6",
     "nock": "13.2.1",
