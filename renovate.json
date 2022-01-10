@@ -15,6 +15,10 @@
     {
       "depTypeList": ["dependencies"],
       "rangeStrategy": "bump"
+    },
+    {
+      "matchPackageNames": ["faker"],
+      "allowedVersions": "< 6.0.0"
     }
   ],
   "prCreation": "not-pending",
