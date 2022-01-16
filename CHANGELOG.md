@@ -1,5 +1,24 @@
 # Changelog
 
+## [v14.1.8](https://github.com/tanem/react-svg/tree/v14.1.8) (2022-01-16)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v14.1.7...v14.1.8)
+
+#### :house: Internal
+
+- [#1616](https://github.com/tanem/react-svg/pull/1616) Update dependency nock to v13.2.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1615](https://github.com/tanem/react-svg/pull/1615) Update babel monorepo to v7.16.8 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1614](https://github.com/tanem/react-svg/pull/1614) Update typescript-eslint monorepo to v5.9.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1613](https://github.com/tanem/react-svg/pull/1613) Update dependency follow-redirects to 1.14.7 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1612](https://github.com/tanem/react-svg/pull/1612) Update dependency shx to v0.3.4 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1611](https://github.com/tanem/react-svg/pull/1611) Update dependency tanem-scripts to v6.0.36 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1610](https://github.com/tanem/react-svg/pull/1610) Update dependency jest-prettyhtml-matchers to v1.9.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1609](https://github.com/tanem/react-svg/pull/1609) Update dependency tmpl to 1.0.5 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1608](https://github.com/tanem/react-svg/pull/1608) Update dependency path-parse to 1.0.7 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1607](https://github.com/tanem/react-svg/pull/1607) Update dependency node-forge to 1.0.0 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1606](https://github.com/tanem/react-svg/pull/1606) Update dependency glob-parent to 5.1.2 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1605](https://github.com/tanem/react-svg/pull/1605) Update dependency dns-packet to 1.3.2 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1604](https://github.com/tanem/react-svg/pull/1604) Pin faker below 6 ([@tanem](https://github.com/tanem))
+
 ## [v14.1.7](https://github.com/tanem/react-svg/tree/v14.1.7) (2022-01-08)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v14.1.6...v14.1.7)
 
