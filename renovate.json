@@ -17,7 +17,10 @@
       "rangeStrategy": "bump"
     },
     {
-      "matchPackageNames": ["faker"],
+      "matchPackageNames": [
+        "@types/faker",
+        "faker"
+      ],
       "allowedVersions": "< 6.0.0"
     }
   ],
