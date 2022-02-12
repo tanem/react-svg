@@ -168,6 +168,24 @@ describe('while running in a browser environment', () => {
     )
   })
 
+  it('should call afterInjection correctly when injection is unsuccessful and the component is not mounted', async () => {
+    const mock = jest.fn()
+    const uuid = faker.datatype.uuid()
+    const src = `http://localhost/${uuid}.svg`
+
+    nock('http://localhost').get(`/${uuid}.svg`).reply(404)
+
+    const { unmount } = render(<ReactSVG afterInjection={mock} src={src} />)
+
+    unmount()
+
+    await waitFor(() => {
+      expect(mock).toHaveBeenCalledWith(
+        new Error(`Unable to load SVG file: ${src}`)
+      )
+    })
+  })
+
   it('should render the specified fallback if injection is unsuccessful', async () => {
     const fallback = () => <span>fallback</span>
 
