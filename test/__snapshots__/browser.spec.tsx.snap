@@ -5,7 +5,7 @@ exports[`while running in a browser environment allows rendering of span wrapper
   <span>
     <svg
       class='injected-svg'
-      data-src='http://localhost/3104de39-071c-47b8-86b4-d62ccc4a4fa6.svg'
+      data-src='http://localhost/13a7e8b6-7270-4c99-81e9-9d752e0c295c.svg'
       height='26'
       viewBox='0 0 115 26'
       width='115'
@@ -58,7 +58,7 @@ exports[`while running in a browser environment allows rendering of svg wrappers
   >
     <svg
       class='injected-svg'
-      data-src='http://localhost/0a9fcc89-e14b-47af-85c3-8465ca607c29'
+      data-src='http://localhost/5adb2861-f732-4eae-81a7-5875d0231173'
       height='26'
       viewBox='0 0 115 26'
       width='115'
@@ -111,7 +111,7 @@ exports[`while running in a browser environment re-renders correctly into the sa
   >
     <svg
       class='injected-svg'
-      data-src='http://localhost/5adb2861-f732-4eae-81a7-5875d0231173'
+      data-src='http://localhost/0c4e6054-5fd8-48a8-817c-f6611278f755'
       height='26'
       viewBox='0 0 115 26'
       width='115'
@@ -158,7 +158,7 @@ exports[`while running in a browser environment re-renders correctly into the sa
   <span>
     <svg
       class='injected-svg'
-      data-src='http://localhost/5adb2861-f732-4eae-81a7-5875d0231173'
+      data-src='http://localhost/0c4e6054-5fd8-48a8-817c-f6611278f755'
       height='26'
       viewBox='0 0 115 26'
       width='115'
@@ -205,7 +205,7 @@ exports[`while running in a browser environment should allow modification of the
   <div>
     <svg
       class='injected-svg svg-class-name'
-      data-src='http://localhost/13a7e8b6-7270-4c99-81e9-9d752e0c295c.svg'
+      data-src='http://localhost/71ad3d9e-e211-472b-a16d-861737c57ecd.svg'
       height='26'
       style='width: 200px'
       viewBox='0 0 115 26'
@@ -380,7 +380,7 @@ exports[`while running in a browser environment should render correctly when byp
     <div>
       <svg
         class='injected-svg'
-        data-src='http://localhost/71ad3d9e-e211-472b-a16d-861737c57ecd.svg'
+        data-src='http://localhost/0a87e996-34b4-46ba-909a-70ab67b1f811.svg'
         height='26'
         viewBox='0 0 115 26'
         width='115'
@@ -423,7 +423,7 @@ exports[`while running in a browser environment should render correctly when byp
     <div>
       <svg
         class='injected-svg'
-        data-src='http://localhost/71ad3d9e-e211-472b-a16d-861737c57ecd.svg'
+        data-src='http://localhost/0a87e996-34b4-46ba-909a-70ab67b1f811.svg'
         height='26'
         viewBox='0 0 115 26'
         width='115'
@@ -466,7 +466,7 @@ exports[`while running in a browser environment should render correctly when byp
     <div>
       <svg
         class='injected-svg'
-        data-src='http://localhost/71ad3d9e-e211-472b-a16d-861737c57ecd.svg'
+        data-src='http://localhost/0a87e996-34b4-46ba-909a-70ab67b1f811.svg'
         height='26'
         viewBox='0 0 115 26'
         width='115'
@@ -509,7 +509,7 @@ exports[`while running in a browser environment should render correctly when byp
     <div>
       <svg
         class='injected-svg'
-        data-src='http://localhost/71ad3d9e-e211-472b-a16d-861737c57ecd.svg'
+        data-src='http://localhost/0a87e996-34b4-46ba-909a-70ab67b1f811.svg'
         height='26'
         viewBox='0 0 115 26'
         width='115'
@@ -557,7 +557,7 @@ exports[`while running in a browser environment should render correctly with an 
   <div>
     <svg
       class='injected-svg'
-      data-src='http://localhost/0a87e996-34b4-46ba-909a-70ab67b1f811'
+      data-src='http://localhost/0a9fcc89-e14b-47af-85c3-8465ca607c29'
       height='26'
       viewBox='0 0 115 26'
       width='115'
@@ -611,7 +611,7 @@ exports[`while running in a browser environment should render the specified load
   <span>loading</span>
   <div>
     <div
-      data-src='http://localhost/e4f94b98-c56a-4bd2-a9fd-5fd11603e7e8.svg'
+      data-src='http://localhost/3104de39-071c-47b8-86b4-d62ccc4a4fa6.svg'
       src
     ></div>
   </div>
