@@ -1,5 +1,23 @@
 # Changelog
 
+## [v14.1.12](https://github.com/tanem/react-svg/tree/v14.1.12) (2022-02-18)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v14.1.11...v14.1.12)
+
+#### :house: Internal
+
+- [#1666](https://github.com/tanem/react-svg/pull/1666) Update dependency @types/node to v16.11.25 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1665](https://github.com/tanem/react-svg/pull/1665) Update typescript-eslint monorepo to v5.12.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1664](https://github.com/tanem/react-svg/pull/1664) Update dependency eslint to v8.9.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1663](https://github.com/tanem/react-svg/pull/1663) Update dependency jest-prettyhtml-matchers to v1.10.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1662](https://github.com/tanem/react-svg/pull/1662) Update dependency tanem-scripts to v6.0.41 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1661](https://github.com/tanem/react-svg/pull/1661) Update dependency @tanem/svg-injector to ^10.1.17 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1660](https://github.com/tanem/react-svg/pull/1660) Update dependency wait-on to v6.0.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1657](https://github.com/tanem/react-svg/pull/1657) Improve test coverage ([@tanem](https://github.com/tanem))
+- [#1659](https://github.com/tanem/react-svg/pull/1659) Update dependency @types/node to v16.11.24 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1658](https://github.com/tanem/react-svg/pull/1658) Update dependency rollup to v2.67.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1656](https://github.com/tanem/react-svg/pull/1656) Update dependency follow-redirects to 1.14.8 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1655](https://github.com/tanem/react-svg/pull/1655) Update dependency follow-redirects [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v14.1.11](https://github.com/tanem/react-svg/tree/v14.1.11) (2022-02-11)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v14.1.10...v14.1.11)
 
