@@ -8,8 +8,8 @@
   "private": true,
   "dependencies": {
     "prop-types": "^15.8.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
     "react-scripts": "5.0.0",
     "react-spinners": "0.11.0",
     "react-svg": "latest"
