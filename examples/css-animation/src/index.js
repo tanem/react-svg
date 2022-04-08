@@ -1,7 +1,7 @@
 import './style.css'
 
-import React, { useState } from 'react'
-import ReactDOM from 'react-dom'
+import { useState } from 'react'
+import { createRoot } from 'react-dom/client'
 import { ReactSVG } from 'react-svg'
 
 const C = () => {
@@ -28,4 +28,6 @@ const C = () => {
   )
 }
 
-ReactDOM.render(<C />, document.getElementById('root'))
+const container = document.getElementById('root')
+const root = createRoot(container)
+root.render(<C />)

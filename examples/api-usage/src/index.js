@@ -1,8 +1,9 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { ReactSVG } from 'react-svg'
 
-ReactDOM.render(
+const container = document.getElementById('root')
+const root = createRoot(container)
+root.render(
   <ReactSVG
     afterInjection={(error, svg) => {
       if (error) {
@@ -27,6 +28,5 @@ ReactDOM.render(
     src="svg.svg"
     useRequestCache={false}
     wrapper="span"
-  />,
-  document.getElementById('root')
+  />
 )

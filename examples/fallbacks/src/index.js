@@ -1,5 +1,5 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import { Fragment } from 'react'
+import { createRoot } from 'react-dom/client'
 import { ReactSVG } from 'react-svg'
 
 class ClassFallback extends React.Component {
@@ -10,11 +10,12 @@ class ClassFallback extends React.Component {
 const FunctionFallback = () => <img alt="doge" src="doge.png" />
 const StringFallback = 'div'
 
-ReactDOM.render(
-  <React.Fragment>
+const container = document.getElementById('root')
+const root = createRoot(container)
+root.render(
+  <Fragment>
     <ReactSVG fallback={ClassFallback} src="notfound.svg" />
     <ReactSVG fallback={FunctionFallback} src="notfound.svg" />
     <ReactSVG fallback={StringFallback} src="notfound.svg" />
-  </React.Fragment>,
-  document.getElementById('root')
+  </Fragment>
 )

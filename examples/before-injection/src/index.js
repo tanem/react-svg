@@ -1,8 +1,9 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { ReactSVG } from 'react-svg'
 
-ReactDOM.render(
+const container = document.getElementById('root')
+const root = createRoot(container)
+root.render(
   <ReactSVG
     beforeInjection={(svg) => {
       // Add a class name to the SVG element. Note: You'll need a classList
@@ -17,6 +18,5 @@ ReactDOM.render(
       firstGElement.setAttribute('fill', 'blue')
     }}
     src="svg.svg"
-  />,
-  document.getElementById('root')
+  />
 )
