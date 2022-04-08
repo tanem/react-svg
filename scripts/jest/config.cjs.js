@@ -5,4 +5,5 @@ module.exports = Object.assign({}, srcConfig, {
   moduleNameMapper: {
     '^../src$': `<rootDir>/dist/react-svg.cjs.development.js`,
   },
+  testMatch: ['<rootDir>/test/browser.spec.tsx'],
 })
