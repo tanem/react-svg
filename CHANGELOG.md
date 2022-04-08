@@ -1,5 +1,19 @@
 # Changelog
 
+## [v14.1.18](https://github.com/tanem/react-svg/tree/v14.1.18) (2022-04-08)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v14.1.17...v14.1.18)
+
+#### :house: Internal
+
+- [#1731](https://github.com/tanem/react-svg/pull/1731) Fix test setup ([@tanem](https://github.com/tanem))
+- [#1729](https://github.com/tanem/react-svg/pull/1729) Update typescript-eslint monorepo to v5.18.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1728](https://github.com/tanem/react-svg/pull/1728) Update dependency prettier to v2.6.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1726](https://github.com/tanem/react-svg/pull/1726) Update dependency tanem-scripts to v6.0.46 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1725](https://github.com/tanem/react-svg/pull/1725) Update dependency jest-prettyhtml-matchers to v1.10.6 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1724](https://github.com/tanem/react-svg/pull/1724) Update dependency @testing-library/react to v13 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1723](https://github.com/tanem/react-svg/pull/1723) Update react monorepo to v18 (major) ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1722](https://github.com/tanem/react-svg/pull/1722) Update dependency eslint-plugin-react-hooks to v4.4.0 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v14.1.17](https://github.com/tanem/react-svg/tree/v14.1.17) (2022-04-01)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v14.1.16...v14.1.17)
 
