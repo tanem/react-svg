@@ -17,11 +17,12 @@ Let's say you have an SVG available at some URL, and you'd like to inject it int
 ## Basic Usage
 
 ```jsx
-import React from 'react'
-import { render } from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { ReactSVG } from 'react-svg'
 
-render(<ReactSVG src="svg.svg" />, document.getElementById('root'))
+const container = document.getElementById('root')
+const root = createRoot(container)
+root.render(<ReactSVG src="svg.svg" />)
 ```
 
 ## Live Examples

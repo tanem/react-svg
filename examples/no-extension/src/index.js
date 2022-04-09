@@ -1,5 +1,6 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { ReactSVG } from 'react-svg'
 
-ReactDOM.render(<ReactSVG src="svg" />, document.getElementById('root'))
+const container = document.getElementById('root')
+const root = createRoot(container)
+root.render(<ReactSVG src="svg" />)

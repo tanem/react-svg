@@ -1,8 +1,9 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { ReactSVG } from 'react-svg'
 
-ReactDOM.render(
+const container = document.getElementById('root')
+const root = createRoot(container)
+root.render(
   <ReactSVG
     aria-label="Description of the overall image"
     beforeInjection={(svg) => {
@@ -22,6 +23,5 @@ ReactDOM.render(
     }}
     role="img"
     src="svg.svg"
-  />,
-  document.getElementById('root')
+  />
 )

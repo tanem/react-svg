@@ -1,6 +1,5 @@
 import { css } from 'glamor'
-import React from 'react'
-import { render } from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { ReactSVG } from 'react-svg'
 
 css.global('body', {
@@ -25,4 +24,6 @@ const styles = css({
   },
 })
 
-render(<ReactSVG src="svg.svg" {...styles} />, document.getElementById('root'))
+const container = document.getElementById('root')
+const root = createRoot(container)
+root.render(<ReactSVG src="svg.svg" {...styles} />)
