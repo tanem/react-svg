@@ -12,9 +12,10 @@
   <body>
     <div id="app"></div>
     <script type="text/babel">
-      const container = document.getElementById('root')
-      const root = ReactDOM.createRoot(container)
-      root.render(<ReactSVG src="svg.svg" />)
+      ReactDOM.render(
+        <ReactSVG.ReactSVG src="svg.svg" />,
+        document.getElementById('app')
+      )
     </script>
   </body>
 </html>
