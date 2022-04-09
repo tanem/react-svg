@@ -1,8 +1,8 @@
-import { Fragment } from 'react'
+import { Component, Fragment } from 'react'
 import { createRoot } from 'react-dom/client'
 import { ReactSVG } from 'react-svg'
 
-class ClassFallback extends React.Component {
+class ClassFallback extends Component {
   render() {
     return <img alt="nyan" src="nyan.jpg" />
   }
