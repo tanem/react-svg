@@ -63,7 +63,7 @@
     "@babel/plugin-transform-runtime": "7.17.0",
     "@babel/preset-env": "7.16.11",
     "@babel/preset-react": "7.16.7",
-    "@testing-library/react": "13.0.0",
+    "@testing-library/react": "13.0.1",
     "@types/faker": "5.5.9",
     "@types/jest": "27.4.1",
     "@types/jsdom": "16.2.14",
