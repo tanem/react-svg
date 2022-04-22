@@ -1,5 +1,34 @@
 # Changelog
 
+## [v14.1.19](https://github.com/tanem/react-svg/tree/v14.1.19) (2022-04-22)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v14.1.18...v14.1.19)
+
+#### :memo: Documentation
+
+- [#1734](https://github.com/tanem/react-svg/pull/1734) Fix umd prod example ([@tanem](https://github.com/tanem))
+- [#1733](https://github.com/tanem/react-svg/pull/1733) Update examples ([@tanem](https://github.com/tanem))
+
+#### :house: Internal
+
+- [#1752](https://github.com/tanem/react-svg/pull/1752) Update typescript-eslint monorepo to v5.20.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1751](https://github.com/tanem/react-svg/pull/1751) Update dependency async to 2.6.4 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1750](https://github.com/tanem/react-svg/pull/1750) Update dependency @testing-library/react to v13.1.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1749](https://github.com/tanem/react-svg/pull/1749) Update dependency rollup to v2.70.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1748](https://github.com/tanem/react-svg/pull/1748) Update dependency @types/react-dom to v18.0.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1746](https://github.com/tanem/react-svg/pull/1746) Update dependency @types/node to v16.11.27 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1745](https://github.com/tanem/react-svg/pull/1745) Update dependency react-scripts to v5.0.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1744](https://github.com/tanem/react-svg/pull/1744) Update typescript-eslint monorepo to v5.19.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1743](https://github.com/tanem/react-svg/pull/1743) Update dependency @testing-library/react to v13.0.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1741](https://github.com/tanem/react-svg/pull/1741) Update dependency eslint to v8.13.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1740](https://github.com/tanem/react-svg/pull/1740) Update dependency @types/react-dom to v18 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1739](https://github.com/tanem/react-svg/pull/1739) Update dependency @types/react-dom to v17.0.15 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1738](https://github.com/tanem/react-svg/pull/1738) Update dependency @types/react to v17.0.44 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1737](https://github.com/tanem/react-svg/pull/1737) Update dependency @types/prop-types to ^15.7.5 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1736](https://github.com/tanem/react-svg/pull/1736) Update babel monorepo to v7.17.9 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1735](https://github.com/tanem/react-svg/pull/1735) Fix fallback example ([@tanem](https://github.com/tanem))
+- [#1732](https://github.com/tanem/react-svg/pull/1732) Improve test setup ([@tanem](https://github.com/tanem))
+- [#1730](https://github.com/tanem/react-svg/pull/1730) Update dependency browserslist to 4.16.5 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v14.1.18](https://github.com/tanem/react-svg/tree/v14.1.18) (2022-04-08)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v14.1.17...v14.1.18)
 
