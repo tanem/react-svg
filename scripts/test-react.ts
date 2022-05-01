@@ -15,9 +15,9 @@ shell
         { fatal: true }
       )
       if (code !== 0) {
-        shell.echo(`Finished testing React ${reactVersion}`)
+        shell.echo(`Fail testing React ${reactVersion}`)
         shell.exit(code)
       }
     })
-    shell.echo(`Finished testing React ${reactVersion}`)
+    shell.echo(`Success testing React ${reactVersion}`)
   })
