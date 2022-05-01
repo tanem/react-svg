@@ -3,7 +3,8 @@ const srcConfig = require('./config.src')
 module.exports = Object.assign({}, srcConfig, {
   collectCoverage: false,
   moduleNameMapper: {
-    '^../src$': `<rootDir>/dist/react-svg.umd.development.js`,
+    ...srcConfig.moduleNameMapper,
+    '^../src$': `<rootDir>/dist/react-svg.esm.js`,
   },
   testMatch: ['<rootDir>/test/browser.spec.tsx'],
 })

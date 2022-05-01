@@ -2,6 +2,12 @@
 
 Details relating to major changes that aren't presently in `CHANGELOG.md`, due to limitations with how that file is being generated.
 
+## v15.0.0
+
+**Removed**
+
+- Dropped support for React 15. 
+
 ## v14.0.0
 
 **Changed**
