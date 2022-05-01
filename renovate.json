@@ -7,7 +7,7 @@
     ":masterIssue",
     ":enableVulnerabilityAlerts"
   ],
-  "ignorePaths": ["**/node_modules/**"],
+  "ignorePaths": ["**/node_modules/**", "**/test/**"],
   "lockFileMaintenance": {
     "enabled": true
   },
@@ -22,6 +22,13 @@
         "faker"
       ],
       "allowedVersions": "< 6.0.0"
+    },
+    {
+      "automerge": false,
+      "groupName": "react monorepo",
+      "labels": ["enhancement"],
+      "sourceUrlPrefixes": ["https://github.com/facebook/react"],
+      "updateTypes": ["major", "minor"]
     }
   ],
   "prCreation": "not-pending",
