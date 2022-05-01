@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.base.json",
-  "include": ["config/jest/setupJest.ts", "src", "test"],
+  "include": ["config/jest/setupJest.ts", "scripts", "src", "test"],
   "compilerOptions": {
     "allowJs": true,
     "declaration": false,
