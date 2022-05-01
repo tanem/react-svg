@@ -28,10 +28,10 @@
     "test:cjs": "jest --config ./scripts/jest/config.cjs.js",
     "test:cjsprod": "jest --config ./scripts/jest/config.cjsprod.js",
     "test:es": "jest --config ./scripts/jest/config.es.js",
-    "test:react": "ts-node ./scripts/test-react",
     "test:src": "jest --config ./scripts/jest/config.src.js",
     "test:umd": "jest --config ./scripts/jest/config.umd.js",
-    "test:umdprod": "jest --config ./scripts/jest/config.umdprod.js"
+    "test:umdprod": "jest --config ./scripts/jest/config.umdprod.js",
+    "test:react": "ts-node ./scripts/test-react"
   },
   "repository": "github:tanem/react-svg",
   "keywords": [
@@ -51,8 +51,8 @@
   "bugs": "https://github.com/tanem/react-svg/issues",
   "homepage": "https://github.com/tanem/react-svg",
   "peerDependencies": {
-    "react": "^15.5.4 || ^16.0.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^15.5.4 || ^16.0.0 || ^17.0.0 || ^18.0.0"
+    "react": "^16.0.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.0.0 || ^17.0.0 || ^18.0.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.17.9",

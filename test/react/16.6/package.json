@@ -2,7 +2,7 @@
   "private": true,
   "devDependencies": {
     "@testing-library/react": "12.x",
-    "react": "15.x",
-    "react-dom": "15.x"
+    "react": "16.6.x",
+    "react-dom": "16.6.x"
   }
 }
