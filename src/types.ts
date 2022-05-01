@@ -6,9 +6,9 @@ interface BaseProps {
   afterInjection?: Errback
   beforeInjection?: BeforeEach
   evalScripts?: EvalScripts
-  fallback?: React.ReactType
+  fallback?: React.ElementType
   httpRequestWithCredentials?: boolean
-  loading?: React.ReactType
+  loading?: React.ElementType
   renumerateIRIElements?: boolean
   src: string
   useRequestCache?: boolean
