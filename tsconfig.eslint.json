@@ -4,6 +4,6 @@
     "allowJs": true,
     "checkJs": true
   },
-  "include": ["examples", "scripts", "src", "test"],
+  "include": ["config", "examples", "scripts", "src", "test"],
   "files": [".eslintrc.js", "index.js", "rollup.config.js"]
 }

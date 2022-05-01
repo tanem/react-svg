@@ -11,7 +11,7 @@ shell
     })
     ;['cjs', 'cjsprod', 'es', 'src', 'umd', 'umdprod'].forEach((testType) => {
       const { code } = shell.exec(
-        `REACT_VERSION=${reactVersion} npx jest --config ./scripts/jest/config.${testType}.js --coverage false`,
+        `REACT_VERSION=${reactVersion} npx jest --config ./config/jest/config.${testType}.js --coverage false`,
         { fatal: true }
       )
       shell.echo(`Finished testing React ${reactVersion}`)
