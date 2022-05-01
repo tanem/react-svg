@@ -14,9 +14,10 @@ shell
         `REACT_VERSION=${reactVersion} npx jest --config ./config/jest/config.${testType}.js --coverage false`,
         { fatal: true }
       )
-      shell.echo(`Finished testing React ${reactVersion}`)
       if (code !== 0) {
+        shell.echo(`Finished testing React ${reactVersion}`)
         shell.exit(code)
       }
     })
+    shell.echo(`Finished testing React ${reactVersion}`)
   })

@@ -1,5 +1,25 @@
 # Changelog
 
+## [v15.0.0](https://github.com/tanem/react-svg/tree/v15.0.0) (2022-05-01)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v14.1.19...v15.0.0)
+
+#### :boom: Breaking Change
+
+- [#1763](https://github.com/tanem/react-svg/pull/1763) Add React version tests, drop support for ^15.0.0 ([@tanem](https://github.com/tanem))
+
+#### :house: Internal
+
+- [#1762](https://github.com/tanem/react-svg/pull/1762) Update react monorepo ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1761](https://github.com/tanem/react-svg/pull/1761) Update dependency ejs to 3.1.7 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1760](https://github.com/tanem/react-svg/pull/1760) Update dependency express to v4.18.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1759](https://github.com/tanem/react-svg/pull/1759) Update typescript-eslint monorepo to v5.21.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1758](https://github.com/tanem/react-svg/pull/1758) Update dependency eslint to v8.14.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1757](https://github.com/tanem/react-svg/pull/1757) Update dependency tanem-scripts to v6.0.47 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1756](https://github.com/tanem/react-svg/pull/1756) Update dependency jest-prettyhtml-matchers to v1.10.7 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1755](https://github.com/tanem/react-svg/pull/1755) Update dependency @tanem/svg-injector to ^10.1.22 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1754](https://github.com/tanem/react-svg/pull/1754) Update dependency @types/react-dom to v18.0.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1753](https://github.com/tanem/react-svg/pull/1753) Update dependency hosted-git-info to 2.8.9 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v14.1.19](https://github.com/tanem/react-svg/tree/v14.1.19) (2022-04-22)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v14.1.18...v14.1.19)
 
