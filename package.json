@@ -9,6 +9,9 @@
   "files": [
     "dist"
   ],
+  "engines": {
+    "npm": ">=8.0.0"
+  },
   "scripts": {
     "build": "run-s clean compile bundle",
     "bundle": "rollup -c",
