@@ -45,11 +45,11 @@ const isProduction = (bundleType) =>
 
 const getBabelConfig = (bundleType) => {
   const options = {
+    babelHelpers: 'runtime',
     babelrc: false,
     exclude: 'node_modules/**',
     plugins: ['@babel/transform-runtime'],
     presets: [['@babel/env', { loose: true, modules: false }], '@babel/react'],
-    runtimeHelpers: true,
   }
 
   switch (bundleType) {
@@ -79,19 +79,10 @@ const getPlugins = (bundleType) => [
   nodeResolve(),
   commonjs({
     include: 'node_modules/**',
-    namedExports: {
-      'node_modules/prop-types/index.js': [
-        'bool',
-        'func',
-        'object',
-        'oneOf',
-        'oneOfType',
-        'string',
-      ],
-    },
   }),
   babel(getBabelConfig(bundleType)),
   replace({
+    preventAssignment: true,
     'process.env.NODE_ENV': JSON.stringify(
       isProduction(bundleType) ? 'production' : 'development'
     ),
