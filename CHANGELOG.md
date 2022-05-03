@@ -1,5 +1,23 @@
 # Changelog
 
+## [v15.0.1](https://github.com/tanem/react-svg/tree/v15.0.1) (2022-05-03)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v15.0.0...v15.0.1)
+
+#### :house: Internal
+
+- [#1775](https://github.com/tanem/react-svg/pull/1775) Fix npm install warnings ([@tanem](https://github.com/tanem))
+- [#1769](https://github.com/tanem/react-svg/pull/1769) Update jest monorepo (major) ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1774](https://github.com/tanem/react-svg/pull/1774) Ensure newer npm version is used by renovate ([@tanem](https://github.com/tanem))
+- [#1773](https://github.com/tanem/react-svg/pull/1773) Update dependency rollup to v2.71.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1772](https://github.com/tanem/react-svg/pull/1772) Update dependency express to v4.18.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1771](https://github.com/tanem/react-svg/pull/1771) Update babel monorepo to v7.17.10 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1770](https://github.com/tanem/react-svg/pull/1770) Use .nvmrc in ci workflow ([@tanem](https://github.com/tanem))
+- [#1768](https://github.com/tanem/react-svg/pull/1768) Update dependency @types/react-dom to v18.0.3 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1767](https://github.com/tanem/react-svg/pull/1767) Update dependency typescript to v4.6.4 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1766](https://github.com/tanem/react-svg/pull/1766) Reconfigure renovate ([@tanem](https://github.com/tanem))
+- [#1747](https://github.com/tanem/react-svg/pull/1747) Update dependency @types/react to v18 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1764](https://github.com/tanem/react-svg/pull/1764) Fix test setup ([@tanem](https://github.com/tanem))
+
 ## [v15.0.0](https://github.com/tanem/react-svg/tree/v15.0.0) (2022-05-01)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v14.1.19...v15.0.0)
 
