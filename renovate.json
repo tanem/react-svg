@@ -1,4 +1,7 @@
 {
+  "constraints": {
+    "npm": "> 8.0.0"
+  },
   "extends": [
     "config:js-lib",
     ":rebaseStalePrs",
