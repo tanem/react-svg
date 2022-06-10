@@ -1,5 +1,19 @@
 # Changelog
 
+## [v15.0.3](https://github.com/tanem/react-svg/tree/v15.0.3) (2022-06-10)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v15.0.2...v15.0.3)
+
+#### :house: Internal
+
+- [#1804](https://github.com/tanem/react-svg/pull/1804) Update dependency @types/react to v18.0.12 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1818](https://github.com/tanem/react-svg/pull/1818) Update deps ([@tanem](https://github.com/tanem))
+- [#1817](https://github.com/tanem/react-svg/pull/1817) Constrain npm version in renovate config ([@tanem](https://github.com/tanem))
+- [#1816](https://github.com/tanem/react-svg/pull/1816) Update dependency @types/jest to v28 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1813](https://github.com/tanem/react-svg/pull/1813) Update dependency typescript to v4.7.3 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1806](https://github.com/tanem/react-svg/pull/1806) Update dependency @types/jest to v27.5.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1805](https://github.com/tanem/react-svg/pull/1805) Update dependency rollup to v2.75.5 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1803](https://github.com/tanem/react-svg/pull/1803) Update dependency @types/node to v16.11.38 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v15.0.2](https://github.com/tanem/react-svg/tree/v15.0.2) (2022-06-03)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v15.0.1...v15.0.2)
 
