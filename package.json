@@ -100,7 +100,7 @@
     "shelljs": "0.8.5",
     "shx": "0.3.4",
     "tanem-scripts": "6.0.49",
-    "ts-jest": "28.0.4",
+    "ts-jest": "28.0.5",
     "ts-node": "10.8.1",
     "typescript": "4.7.3"
   }
