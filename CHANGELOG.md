@@ -1,5 +1,17 @@
 # Changelog
 
+## [v15.1.1](https://github.com/tanem/react-svg/tree/v15.1.1) (2022-07-02)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v15.1.0...v15.1.1)
+
+#### :house: Internal
+
+- [#1849](https://github.com/tanem/react-svg/pull/1849) Update dependency tanem-scripts to v6.0.51 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1848](https://github.com/tanem/react-svg/pull/1848) Update dependency jest-prettyhtml-matchers to v1.11.4 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1847](https://github.com/tanem/react-svg/pull/1847) Update dependency @tanem/svg-injector to ^10.1.26 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1844](https://github.com/tanem/react-svg/pull/1844) Update styfle/cancel-workflow-action action to v0.10.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1846](https://github.com/tanem/react-svg/pull/1846) Update babel monorepo to v7.18.6 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1845](https://github.com/tanem/react-svg/pull/1845) Update typescript-eslint monorepo to v5.30.0 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v15.1.0](https://github.com/tanem/react-svg/tree/v15.1.0) (2022-06-28)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v15.0.4...v15.1.0)
 
