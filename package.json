@@ -99,7 +99,7 @@
     "rollup-plugin-terser": "7.0.2",
     "shelljs": "0.8.5",
     "shx": "0.3.4",
-    "tanem-scripts": "6.0.51",
+    "tanem-scripts": "6.0.52",
     "ts-jest": "28.0.5",
     "ts-node": "10.8.2",
     "typescript": "4.7.4"
