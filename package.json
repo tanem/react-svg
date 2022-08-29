@@ -82,7 +82,7 @@
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
     "eslint": "8.22.0",
     "eslint-config-prettier": "8.5.0",
-    "eslint-plugin-react": "7.30.1",
+    "eslint-plugin-react": "7.31.1",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-simple-import-sort": "7.0.0",
     "faker": "5.5.3",
