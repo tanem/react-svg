@@ -599,6 +599,20 @@ exports[`while running in a browser environment should render correctly with an 
 "
 `;
 
+exports[`while running in a browser environment should render fallback if afterInjection fails 1`] = `
+"<div>
+  <span>fallback</span>
+</div>
+"
+`;
+
+exports[`while running in a browser environment should render fallback if beforeInjection fails 1`] = `
+"<div>
+  <span>fallback</span>
+</div>
+"
+`;
+
 exports[`while running in a browser environment should render the specified fallback if injection is unsuccessful 1`] = `
 "<div>
   <span>fallback</span>
