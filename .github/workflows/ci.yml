@@ -20,4 +20,4 @@ jobs:
           check-latest: true
       - run: npm ci
       - run: npm test
-      - run: bash <(curl -s https://codecov.io/bash)
+      - uses: codecov/codecov-action@v3
