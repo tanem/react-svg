@@ -1,5 +1,31 @@
 # Changelog
 
+## [v15.1.10](https://github.com/tanem/react-svg/tree/v15.1.10) (2022-10-09)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v15.1.9...v15.1.10)
+
+#### :house: Internal
+
+- [#1968](https://github.com/tanem/react-svg/pull/1968) Update dependency open-cli to v7.1.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1965](https://github.com/tanem/react-svg/pull/1965) Update typescript-eslint monorepo to v5.39.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1967](https://github.com/tanem/react-svg/pull/1967) Update dependency react-spinners to v0.13.5 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1966](https://github.com/tanem/react-svg/pull/1966) Update dependency @types/node to v16.11.64 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1964](https://github.com/tanem/react-svg/pull/1964) Update jest monorepo ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1963](https://github.com/tanem/react-svg/pull/1963) Update dependency ts-jest to v29.0.3 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1962](https://github.com/tanem/react-svg/pull/1962) Update styfle/cancel-workflow-action action to v0.10.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1961](https://github.com/tanem/react-svg/pull/1961) Update dependency typescript to v4.8.4 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1960](https://github.com/tanem/react-svg/pull/1960) Update babel monorepo to v7.19.3 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1959](https://github.com/tanem/react-svg/pull/1959) Update dependency @types/node to v16.11.62 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1958](https://github.com/tanem/react-svg/pull/1958) Update typescript-eslint monorepo to v5.38.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1955](https://github.com/tanem/react-svg/pull/1955) Update dependency ts-jest to v29.0.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1954](https://github.com/tanem/react-svg/pull/1954) Update dependency eslint to v8.24.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1953](https://github.com/tanem/react-svg/pull/1953) Update dependency @types/react to v18.0.21 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1952](https://github.com/tanem/react-svg/pull/1952) Update dependency rollup to v2.79.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1951](https://github.com/tanem/react-svg/pull/1951) Use codecov action ([@tanem](https://github.com/tanem))
+- [#1950](https://github.com/tanem/react-svg/pull/1950) Update typescript-eslint monorepo to v5.38.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1949](https://github.com/tanem/react-svg/pull/1949) Update dependency tanem-scripts to v6.0.60 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1948](https://github.com/tanem/react-svg/pull/1948) Update dependency jest-prettyhtml-matchers to v1.12.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#1947](https://github.com/tanem/react-svg/pull/1947) Update jest monorepo to v29.0.3 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v15.1.9](https://github.com/tanem/react-svg/tree/v15.1.9) (2022-09-18)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v15.1.8...v15.1.9)
 
