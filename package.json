@@ -55,7 +55,7 @@
     "react-dom": "^16.0.0 || ^17.0.0 || ^18.0.0"
   },
   "dependencies": {
-    "@babel/runtime": "^7.19.0",
+    "@babel/runtime": "^7.19.4",
     "@tanem/svg-injector": "^10.1.34",
     "@types/prop-types": "^15.7.5",
     "prop-types": "^15.8.1"
@@ -63,7 +63,7 @@
   "devDependencies": {
     "@babel/core": "7.19.3",
     "@babel/plugin-transform-runtime": "7.19.1",
-    "@babel/preset-env": "7.19.3",
+    "@babel/preset-env": "7.19.4",
     "@babel/preset-react": "7.18.6",
     "@rollup/plugin-babel": "6.0.0",
     "@rollup/plugin-commonjs": "23.0.0",
