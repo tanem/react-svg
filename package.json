@@ -68,7 +68,7 @@
     "@rollup/plugin-babel": "6.0.0",
     "@rollup/plugin-commonjs": "23.0.0",
     "@rollup/plugin-node-resolve": "15.0.0",
-    "@rollup/plugin-replace": "4.0.0",
+    "@rollup/plugin-replace": "5.0.0",
     "@testing-library/react": "13.4.0",
     "@types/faker": "5.5.9",
     "@types/jest": "29.1.2",
