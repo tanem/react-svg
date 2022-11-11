@@ -72,7 +72,7 @@
     "@testing-library/react": "13.4.0",
     "@types/faker": "5.5.9",
     "@types/jest": "29.2.2",
-    "@types/jsdom": "20.0.0",
+    "@types/jsdom": "20.0.1",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.8",
     "@types/shelljs": "0.8.11",
