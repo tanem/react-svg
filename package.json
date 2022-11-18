@@ -74,7 +74,7 @@
     "@types/jest": "29.2.3",
     "@types/jsdom": "20.0.1",
     "@types/react": "18.0.25",
-    "@types/react-dom": "18.0.8",
+    "@types/react-dom": "18.0.9",
     "@types/shelljs": "0.8.11",
     "@typescript-eslint/eslint-plugin": "5.43.0",
     "@typescript-eslint/parser": "5.43.0",
