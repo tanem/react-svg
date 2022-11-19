@@ -1,5 +1,22 @@
 # Changelog
 
+## [v15.1.13](https://github.com/tanem/react-svg/tree/v15.1.13) (2022-11-19)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v15.1.12...v15.1.13)
+
+#### :house: Internal
+
+- [#1987](https://github.com/tanem/react-svg/pull/1987) Update dependency rollup to v3 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2034](https://github.com/tanem/react-svg/pull/2034) Update dependency typescript to v4.9.3 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2033](https://github.com/tanem/react-svg/pull/2033) Update dependency @types/react-dom to v18.0.9 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2032](https://github.com/tanem/react-svg/pull/2032) Update dependency @types/jest to v29.2.3 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2031](https://github.com/tanem/react-svg/pull/2031) Update typescript-eslint monorepo to v5.43.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2030](https://github.com/tanem/react-svg/pull/2030) Update dependency loader-utils to 2.0.4 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2029](https://github.com/tanem/react-svg/pull/2029) Update dependency loader-utils to 3.2.1 [SECURITY] ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2028](https://github.com/tanem/react-svg/pull/2028) Update dependency tanem-scripts to v6.0.63 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2027](https://github.com/tanem/react-svg/pull/2027) Update dependency jest-prettyhtml-matchers to v1.13.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2026](https://github.com/tanem/react-svg/pull/2026) Update dependency @tanem/svg-injector to ^10.1.36 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2025](https://github.com/tanem/react-svg/pull/2025) Update jest monorepo to v29.3.1 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v15.1.12](https://github.com/tanem/react-svg/tree/v15.1.12) (2022-11-11)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v15.1.11...v15.1.12)
 
