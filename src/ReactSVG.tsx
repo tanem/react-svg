@@ -60,8 +60,14 @@ export class ReactSVG extends React.Component<Props, State> {
   }
 
   renderSVG() {
+    const defaultView = this.reactWrapper?.ownerDocument.defaultView
+
     /* istanbul ignore else */
-    if (this.reactWrapper instanceof Node) {
+    if (
+      this.reactWrapper instanceof Node ||
+      (defaultView &&
+        (this.reactWrapper as WrapperType | null) instanceof defaultView.Node)
+    ) {
       const {
         beforeInjection,
         evalScripts,
