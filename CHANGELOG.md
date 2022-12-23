@@ -1,5 +1,23 @@
 # Changelog
 
+## [v15.1.17](https://github.com/tanem/react-svg/tree/v15.1.17) (2022-12-23)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v15.1.16...v15.1.17)
+
+#### :house: Internal
+
+- [#2095](https://github.com/tanem/react-svg/pull/2095) Update typescript-eslint monorepo to v5.47.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2094](https://github.com/tanem/react-svg/pull/2094) Update dependency tanem-scripts to v6.0.67 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2093](https://github.com/tanem/react-svg/pull/2093) Update dependency jest-prettyhtml-matchers to v1.14.4 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2092](https://github.com/tanem/react-svg/pull/2092) Update dependency @tanem/svg-injector to ^10.1.40 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2091](https://github.com/tanem/react-svg/pull/2091) Update dependency @rollup/plugin-commonjs to v24 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2090](https://github.com/tanem/react-svg/pull/2090) Update dependency @types/node to v18.11.17 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2089](https://github.com/tanem/react-svg/pull/2089) Update dependency @rollup/plugin-replace to v5.0.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2088](https://github.com/tanem/react-svg/pull/2088) Update dependency @rollup/plugin-commonjs to v23.0.7 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2085](https://github.com/tanem/react-svg/pull/2085) Update dependency wait-on to v7 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2087](https://github.com/tanem/react-svg/pull/2087) Update dependency rollup to v3.7.5 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2084](https://github.com/tanem/react-svg/pull/2084) Update dependency @types/node to v18.11.16 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2086](https://github.com/tanem/react-svg/pull/2086) Update dependency eslint to v8.30.0 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v15.1.16](https://github.com/tanem/react-svg/tree/v15.1.16) (2022-12-18)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v15.1.15...v15.1.16)
 
