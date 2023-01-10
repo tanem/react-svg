@@ -32,12 +32,6 @@
       "labels": ["enhancement"],
       "sourceUrlPrefixes": ["https://github.com/facebook/react"],
       "updateTypes": ["major", "minor"]
-    },
-    {
-      "matchPackageNames": [
-        "@rollup/plugin-terser"
-      ],
-      "allowedVersions": "0.1.0"
     }
   ],
   "prCreation": "not-pending",
