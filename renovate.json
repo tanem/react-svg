@@ -32,6 +32,12 @@
       "labels": ["enhancement"],
       "sourceUrlPrefixes": ["https://github.com/facebook/react"],
       "updateTypes": ["major", "minor"]
+    },
+    {
+      "matchPackageNames": [
+        "react-frame-component"
+      ],
+      "allowedVersions": "<= 5.2.4"
     }
   ],
   "prCreation": "not-pending",
