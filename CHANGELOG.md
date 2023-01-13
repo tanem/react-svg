@@ -1,5 +1,17 @@
 # Changelog
 
+## [v15.1.19](https://github.com/tanem/react-svg/tree/v15.1.19) (2023-01-13)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v15.1.18...v15.1.19)
+
+#### :house: Internal
+
+- [#2118](https://github.com/tanem/react-svg/pull/2118) Update typescript-eslint monorepo to v5.48.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2117](https://github.com/tanem/react-svg/pull/2117) Update dependency prettier to v2.8.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2116](https://github.com/tanem/react-svg/pull/2116) Bump @rollup/plugin-terser ([@tanem](https://github.com/tanem))
+- [#2115](https://github.com/tanem/react-svg/pull/2115) Update dependency jest-prettyhtml-matchers to v1.14.6 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2114](https://github.com/tanem/react-svg/pull/2114) Update dependency @tanem/svg-injector to ^10.1.42 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2113](https://github.com/tanem/react-svg/pull/2113) Update dependency @babel/core to v7.20.12 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v15.1.18](https://github.com/tanem/react-svg/tree/v15.1.18) (2023-01-06)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v15.1.17...v15.1.18)
 
