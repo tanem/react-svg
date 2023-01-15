@@ -1,5 +1,21 @@
 # Changelog
 
+## [v15.1.20](https://github.com/tanem/react-svg/tree/v15.1.20) (2023-01-15)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v15.1.19...v15.1.20)
+
+#### :bug: Bug Fix
+
+- [#2060](https://github.com/tanem/react-svg/pull/2060) Components don't work properly in iframe ([@tianxiumei](https://github.com/tianxiumei))
+
+#### :memo: Documentation
+
+- [#2122](https://github.com/tanem/react-svg/pull/2122) Add Iframe example to README ([@tanem](https://github.com/tanem))
+
+#### :house: Internal
+
+- [#2120](https://github.com/tanem/react-svg/pull/2120) Update dependency eslint-plugin-react to v7.32.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2119](https://github.com/tanem/react-svg/pull/2119) Update dependency nock to v13.3.0 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v15.1.19](https://github.com/tanem/react-svg/tree/v15.1.19) (2023-01-13)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v15.1.18...v15.1.19)
 
