@@ -1,0 +1,25 @@
+{
+  "name": "iframe",
+  "description": "ReactSVG Iframe Example",
+  "keywords": [
+    "react-svg"
+  ],
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-frame-component": "5.2.4",
+    "react-scripts": "5.0.1",
+    "react-svg": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

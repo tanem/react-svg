@@ -2,6 +2,7 @@ import { SVGInjector } from '@tanem/svg-injector'
 import * as PropTypes from 'prop-types'
 import * as React from 'react'
 
+import ownerWindow from './owner-window'
 import shallowDiffers from './shallow-differs'
 import { Props, State, WrapperType } from './types'
 
@@ -61,7 +62,7 @@ export class ReactSVG extends React.Component<Props, State> {
 
   renderSVG() {
     /* istanbul ignore else */
-    if (this.reactWrapper instanceof Node) {
+    if (this.reactWrapper instanceof ownerWindow(this.reactWrapper).Node) {
       const {
         beforeInjection,
         evalScripts,
