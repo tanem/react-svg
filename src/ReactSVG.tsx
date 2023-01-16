@@ -144,7 +144,7 @@ export class ReactSVG extends React.Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Props) {
-    if (shallowDiffers(prevProps, this.props)) {
+    if (shallowDiffers({ ...prevProps }, this.props)) {
       this.setState(
         () => this.initialState,
         () => {
