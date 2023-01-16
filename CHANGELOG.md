@@ -1,5 +1,18 @@
 # Changelog
 
+## [v15.1.21](https://github.com/tanem/react-svg/tree/v15.1.21) (2023-01-16)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v15.1.20...v15.1.21)
+
+#### :bug: Bug Fix
+
+- [#2125](https://github.com/tanem/react-svg/pull/2125) Tweak type defs to fix styled-components issue ([@tanem](https://github.com/tanem))
+
+#### :house: Internal
+
+- [#2124](https://github.com/tanem/react-svg/pull/2124) Update dependency ts-jest to v29.0.5 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2123](https://github.com/tanem/react-svg/pull/2123) Update dependency rollup to v3.10.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2121](https://github.com/tanem/react-svg/pull/2121) Update dependency ts-jest to v29.0.4 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v15.1.20](https://github.com/tanem/react-svg/tree/v15.1.20) (2023-01-15)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v15.1.19...v15.1.20)
 
