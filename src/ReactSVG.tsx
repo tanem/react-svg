@@ -74,7 +74,7 @@ export class ReactSVG extends React.Component<Props, State> {
       } = this.props
 
       /* eslint-disable @typescript-eslint/no-non-null-assertion */
-      const handleError = this.props.onError!
+      const onError = this.props.onError!
       const beforeInjection = this.props.beforeInjection!
       const afterInjection = this.props.afterInjection!
       const wrapper = this.props.wrapper!
@@ -97,40 +97,41 @@ export class ReactSVG extends React.Component<Props, State> {
 
       this.nonReactWrapper = this.reactWrapper.appendChild(nonReactWrapper)
 
-      const onError = (error: unknown) => {
+      const handleError = (error: unknown) => {
         this.removeSVG()
-        handleError(error)
-        this.setState({ hasError: true, isLoading: false })
+        if (!this._isMounted) {
+          onError(error)
+          return
+        }
+        this.setState(
+          () => ({
+            hasError: true,
+            isLoading: false,
+          }),
+          () => {
+            onError(error)
+          }
+        )
       }
+
       const afterEach = (error: Error | null, svg?: SVGSVGElement) => {
         if (error) {
-          if (!this._isMounted) {
-            onError(error)
-            try {
-              afterInjection(error)
-            } catch (afterInjectionError) {
-              onError(afterInjectionError)
-            }
-            return
-          }
+          handleError(error)
+          return
         }
 
         // TODO (Tane): It'd be better to cleanly unsubscribe from SVGInjector
         // callbacks instead of tracking a property like this.
         if (this._isMounted) {
           this.setState(
-            ({ hasError }) => {
-              return {
-                hasError: hasError || !!error,
-                isLoading: false,
-              }
-            },
+            () => ({
+              isLoading: false,
+            }),
             () => {
-              if (error) onError(error)
               try {
-                afterInjection(error, svg)
+                afterInjection(svg!)
               } catch (afterInjectionError) {
-                onError(afterInjectionError)
+                handleError(afterInjectionError)
               }
             }
           )
@@ -141,7 +142,7 @@ export class ReactSVG extends React.Component<Props, State> {
         try {
           beforeInjection(svg)
         } catch (error) {
-          onError(error)
+          handleError(error)
         }
       }
 

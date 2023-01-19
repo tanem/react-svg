@@ -10,7 +10,7 @@ const C = () => {
   return (
     <>
       <ReactSVG
-        afterInjection={(_err, svg) => {
+        afterInjection={(svg) => {
           if (animate) {
             svg.classList.add('is-clicked')
           }

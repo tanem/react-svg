@@ -248,7 +248,7 @@ exports[`while running in a browser environment should allow modification of the
 "
 `;
 
-exports[`while running in a browser environment should call afterInjection correctly when injection is successful 1`] = `
+exports[`while running in a browser environment should call afterInjection when injection is successful 1`] = `
 "<svg
   class='injected-svg'
   data-src='http://localhost/c090be24-6c35-45d8-8a81-32e57a3d48dd.svg'
@@ -599,14 +599,14 @@ exports[`while running in a browser environment should render correctly with an 
 "
 `;
 
-exports[`while running in a browser environment should render fallback if afterInjection fails 1`] = `
+exports[`while running in a browser environment should render the specified fallback if afterInjection fails 1`] = `
 "<div>
   <span>fallback</span>
 </div>
 "
 `;
 
-exports[`while running in a browser environment should render fallback if beforeInjection fails 1`] = `
+exports[`while running in a browser environment should render the specified fallback if beforeInjection fails 1`] = `
 "<div>
   <span>fallback</span>
 </div>

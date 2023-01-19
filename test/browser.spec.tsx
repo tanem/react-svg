@@ -127,8 +127,8 @@ describe('while running in a browser environment', () => {
     expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
   })
 
-  it('should call afterInjection correctly when injection is unsuccessful', (done) => {
-    expect.assertions(2)
+  it('should call onError when injection is unsuccessful', (done) => {
+    expect.assertions(1)
 
     const uuid = faker.datatype.uuid()
     const src = `http://localhost/${uuid}.svg`
@@ -137,9 +137,8 @@ describe('while running in a browser environment', () => {
 
     render(
       <ReactSVG
-        afterInjection={(error, svg) => {
+        onError={(error) => {
           expect(error).toEqual(new Error(`Unable to load SVG file: ${src}`))
-          expect(svg).toBeUndefined()
           done()
         }}
         src={src}
@@ -147,8 +146,8 @@ describe('while running in a browser environment', () => {
     )
   })
 
-  it('should call afterInjection correctly when injection is successful', (done) => {
-    expect.assertions(2)
+  it('should call afterInjection when injection is successful', (done) => {
+    expect.assertions(1)
 
     const uuid = faker.datatype.uuid()
 
@@ -158,8 +157,7 @@ describe('while running in a browser environment', () => {
 
     render(
       <ReactSVG
-        afterInjection={(error, svg) => {
-          expect(error).toBeNull()
+        afterInjection={(svg) => {
           expect((svg as SVGSVGElement).outerHTML).toMatchPrettyHtmlSnapshot()
           done()
         }}
@@ -168,14 +166,14 @@ describe('while running in a browser environment', () => {
     )
   })
 
-  it('should call afterInjection correctly when injection is unsuccessful and the component is not mounted', async () => {
+  it('should call onError when injection is unsuccessful and the component is not mounted', async () => {
     const mock = jest.fn()
     const uuid = faker.datatype.uuid()
     const src = `http://localhost/${uuid}.svg`
 
     nock('http://localhost').get(`/${uuid}.svg`).reply(404)
 
-    const { unmount } = render(<ReactSVG afterInjection={mock} src={src} />)
+    const { unmount } = render(<ReactSVG onError={mock} src={src} />)
 
     unmount()
 
@@ -348,7 +346,7 @@ describe('while running in a browser environment', () => {
     expect(div.innerHTML).toMatchPrettyHtmlSnapshot()
   })
 
-  it('should render fallback if beforeInjection fails', async () => {
+  it('should render the specified fallback if beforeInjection fails', async () => {
     const fallback = () => <span>fallback</span>
 
     const uuid = faker.datatype.uuid()
@@ -360,7 +358,7 @@ describe('while running in a browser environment', () => {
     const { container } = render(
       <ReactSVG
         beforeInjection={() => {
-          throw new Error('test error')
+          throw new Error('sad trombone')
         }}
         fallback={fallback}
         src={`http://localhost/${uuid}.svg`}
@@ -375,6 +373,7 @@ describe('while running in a browser environment', () => {
     expect.assertions(1)
 
     const uuid = faker.datatype.uuid()
+    const error = new Error('sad trombone')
 
     nock('http://localhost')
       .get(`/${uuid}.svg`)
@@ -383,10 +382,10 @@ describe('while running in a browser environment', () => {
     render(
       <ReactSVG
         beforeInjection={() => {
-          throw new Error('test error')
+          throw error
         }}
         onError={(error) => {
-          expect(error).toEqual(new Error('test error'))
+          expect(error).toEqual(error)
           done()
         }}
         src={`http://localhost/${uuid}.svg`}
@@ -394,7 +393,7 @@ describe('while running in a browser environment', () => {
     )
   })
 
-  it('should render fallback if afterInjection fails', async () => {
+  it('should render the specified fallback if afterInjection fails', async () => {
     const fallback = () => <span>fallback</span>
 
     const uuid = faker.datatype.uuid()
@@ -434,22 +433,6 @@ describe('while running in a browser environment', () => {
         }}
         onError={(error) => {
           expect(error).toEqual(new Error('test error'))
-          done()
-        }}
-        src={`http://localhost/${uuid}.svg`}
-      />
-    )
-  })
-
-  it('should call onError if injection is unsuccessful', (done) => {
-    const uuid = faker.datatype.uuid()
-
-    nock('http://localhost').get(`/${uuid}.svg`).reply(404)
-
-    render(
-      <ReactSVG
-        onError={(error) => {
-          expect(error).not.toBeNull()
           done()
         }}
         src={`http://localhost/${uuid}.svg`}

@@ -5,11 +5,7 @@ const container = document.getElementById('root')
 const root = createRoot(container)
 root.render(
   <ReactSVG
-    afterInjection={(error, svg) => {
-      if (error) {
-        console.error(error)
-        return
-      }
+    afterInjection={(svg) => {
       console.log(svg)
     }}
     beforeInjection={(svg) => {
@@ -23,6 +19,9 @@ root.render(
     loading={() => <span>Loading</span>}
     onClick={() => {
       console.log('wrapper onClick')
+    }}
+    onError={(error) => {
+      console.error(error)
     }}
     renumerateIRIElements={false}
     src="svg.svg"
