@@ -1,5 +1,27 @@
 # Changelog
 
+## [v16.0.0](https://github.com/tanem/react-svg/tree/v16.0.0) (2023-01-23)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v15.1.21...v16.0.0)
+
+#### :boom: Breaking Change
+
+- [#1923](https://github.com/tanem/react-svg/pull/1923) Add Error Handler to Limit Exception Bubbling ([@ProjectBarks](https://github.com/ProjectBarks))
+
+#### :house: Internal
+
+- [#2134](https://github.com/tanem/react-svg/pull/2134) Update dependency eslint-plugin-simple-import-sort to v9 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2137](https://github.com/tanem/react-svg/pull/2137) Update dependency react-spinners to v0.13.8 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2133](https://github.com/tanem/react-svg/pull/2133) Update dependency eslint-plugin-react to v7.32.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2136](https://github.com/tanem/react-svg/pull/2136) Update dependency @types/react to v18.0.27 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2135](https://github.com/tanem/react-svg/pull/2135) Update dependency @types/jest to v29.2.6 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2132](https://github.com/tanem/react-svg/pull/2132) Update typescript-eslint monorepo to v5.48.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2131](https://github.com/tanem/react-svg/pull/2131) Update dependency @tanem/svg-injector to ^10.1.44 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2130](https://github.com/tanem/react-svg/pull/2130) Update dependency eslint to v8.32.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2129](https://github.com/tanem/react-svg/pull/2129) Update dependency tanem-scripts to v6.0.69 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2128](https://github.com/tanem/react-svg/pull/2128) Update dependency prettier to v2.8.3 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2127](https://github.com/tanem/react-svg/pull/2127) Update dependency @tanem/svg-injector to ^10.1.43 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2126](https://github.com/tanem/react-svg/pull/2126) Update dependency jest-prettyhtml-matchers to v1.14.7 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v15.1.21](https://github.com/tanem/react-svg/tree/v15.1.21) (2023-01-16)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v15.1.20...v15.1.21)
 
