@@ -346,7 +346,7 @@ describe('while running in a browser environment', () => {
     expect(div.innerHTML).toMatchPrettyHtmlSnapshot()
   })
 
-  it('should render the specified fallback if beforeInjection fails', async () => {
+  it('should render the specified fallback if beforeInjection throws an error', async () => {
     const fallback = () => <span>fallback</span>
 
     const uuid = faker.datatype.uuid()
@@ -366,10 +366,11 @@ describe('while running in a browser environment', () => {
     )
 
     await waitFor(() => screen.findByText('fallback'))
+
     expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
   })
 
-  it('should call onError if beforeInjection fails', (done) => {
+  it('should call onError if beforeInjection throws an error', (done) => {
     expect.assertions(1)
 
     const uuid = faker.datatype.uuid()
@@ -384,8 +385,8 @@ describe('while running in a browser environment', () => {
         beforeInjection={() => {
           throw error
         }}
-        onError={(error) => {
-          expect(error).toEqual(error)
+        onError={(e) => {
+          expect(e).toEqual(error)
           done()
         }}
         src={`http://localhost/${uuid}.svg`}
@@ -393,7 +394,7 @@ describe('while running in a browser environment', () => {
     )
   })
 
-  it('should render the specified fallback if afterInjection fails', async () => {
+  it('should render the specified fallback if afterInjection throws an error', async () => {
     const fallback = () => <span>fallback</span>
 
     const uuid = faker.datatype.uuid()
@@ -405,7 +406,7 @@ describe('while running in a browser environment', () => {
     const { container } = render(
       <ReactSVG
         afterInjection={() => {
-          throw new Error('test error')
+          throw new Error('sad trombone')
         }}
         fallback={fallback}
         src={`http://localhost/${uuid}.svg`}
@@ -417,10 +418,11 @@ describe('while running in a browser environment', () => {
     expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
   })
 
-  it('should call onError if afterInjection fails', (done) => {
+  it('should call onError if afterInjection throws an error', (done) => {
     expect.assertions(1)
 
     const uuid = faker.datatype.uuid()
+    const error = new Error('sad trombone')
 
     nock('http://localhost')
       .get(`/${uuid}.svg`)
@@ -429,10 +431,10 @@ describe('while running in a browser environment', () => {
     render(
       <ReactSVG
         afterInjection={() => {
-          throw new Error('test error')
+          throw error
         }}
-        onError={(error) => {
-          expect(error).toEqual(new Error('test error'))
+        onError={(e) => {
+          expect(e).toEqual(error)
           done()
         }}
         src={`http://localhost/${uuid}.svg`}
