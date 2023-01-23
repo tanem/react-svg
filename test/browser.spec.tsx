@@ -127,8 +127,8 @@ describe('while running in a browser environment', () => {
     expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
   })
 
-  it('should call afterInjection correctly when injection is unsuccessful', (done) => {
-    expect.assertions(2)
+  it('should call onError when injection is unsuccessful', (done) => {
+    expect.assertions(1)
 
     const uuid = faker.datatype.uuid()
     const src = `http://localhost/${uuid}.svg`
@@ -137,9 +137,8 @@ describe('while running in a browser environment', () => {
 
     render(
       <ReactSVG
-        afterInjection={(error, svg) => {
+        onError={(error) => {
           expect(error).toEqual(new Error(`Unable to load SVG file: ${src}`))
-          expect(svg).toBeUndefined()
           done()
         }}
         src={src}
@@ -147,8 +146,8 @@ describe('while running in a browser environment', () => {
     )
   })
 
-  it('should call afterInjection correctly when injection is successful', (done) => {
-    expect.assertions(2)
+  it('should call afterInjection when injection is successful', (done) => {
+    expect.assertions(1)
 
     const uuid = faker.datatype.uuid()
 
@@ -158,8 +157,7 @@ describe('while running in a browser environment', () => {
 
     render(
       <ReactSVG
-        afterInjection={(error, svg) => {
-          expect(error).toBeNull()
+        afterInjection={(svg) => {
           expect((svg as SVGSVGElement).outerHTML).toMatchPrettyHtmlSnapshot()
           done()
         }}
@@ -168,14 +166,14 @@ describe('while running in a browser environment', () => {
     )
   })
 
-  it('should call afterInjection correctly when injection is unsuccessful and the component is not mounted', async () => {
+  it('should call onError when injection is unsuccessful and the component is not mounted', async () => {
     const mock = jest.fn()
     const uuid = faker.datatype.uuid()
     const src = `http://localhost/${uuid}.svg`
 
     nock('http://localhost').get(`/${uuid}.svg`).reply(404)
 
-    const { unmount } = render(<ReactSVG afterInjection={mock} src={src} />)
+    const { unmount } = render(<ReactSVG onError={mock} src={src} />)
 
     unmount()
 
@@ -346,5 +344,101 @@ describe('while running in a browser environment', () => {
       expect(div.querySelectorAll('.injected-svg')).toHaveLength(1)
     )
     expect(div.innerHTML).toMatchPrettyHtmlSnapshot()
+  })
+
+  it('should render the specified fallback if beforeInjection throws an error', async () => {
+    const fallback = () => <span>fallback</span>
+
+    const uuid = faker.datatype.uuid()
+
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { container } = render(
+      <ReactSVG
+        beforeInjection={() => {
+          throw new Error('sad trombone')
+        }}
+        fallback={fallback}
+        src={`http://localhost/${uuid}.svg`}
+      />
+    )
+
+    await waitFor(() => screen.findByText('fallback'))
+
+    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
+  })
+
+  it('should call onError if beforeInjection throws an error', (done) => {
+    expect.assertions(1)
+
+    const uuid = faker.datatype.uuid()
+    const error = new Error('sad trombone')
+
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    render(
+      <ReactSVG
+        beforeInjection={() => {
+          throw error
+        }}
+        onError={(e) => {
+          expect(e).toEqual(error)
+          done()
+        }}
+        src={`http://localhost/${uuid}.svg`}
+      />
+    )
+  })
+
+  it('should render the specified fallback if afterInjection throws an error', async () => {
+    const fallback = () => <span>fallback</span>
+
+    const uuid = faker.datatype.uuid()
+
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { container } = render(
+      <ReactSVG
+        afterInjection={() => {
+          throw new Error('sad trombone')
+        }}
+        fallback={fallback}
+        src={`http://localhost/${uuid}.svg`}
+      />
+    )
+
+    await waitFor(() => screen.findByText('fallback'))
+
+    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
+  })
+
+  it('should call onError if afterInjection throws an error', (done) => {
+    expect.assertions(1)
+
+    const uuid = faker.datatype.uuid()
+    const error = new Error('sad trombone')
+
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    render(
+      <ReactSVG
+        afterInjection={() => {
+          throw error
+        }}
+        onError={(e) => {
+          expect(e).toEqual(error)
+          done()
+        }}
+        src={`http://localhost/${uuid}.svg`}
+      />
+    )
   })
 })

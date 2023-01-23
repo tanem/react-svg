@@ -2,6 +2,16 @@
 
 Details relating to major changes that aren't presently in `CHANGELOG.md`, due to limitations with how that file is being generated.
 
+## v16.0.0
+
+**Added**
+
+- `onError` prop.
+
+**Changed**
+
+- `afterInjection` is no longer an error-first callback.
+
 ## v15.0.0
 
 **Removed**

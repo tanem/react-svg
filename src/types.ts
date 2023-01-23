@@ -1,13 +1,14 @@
-import { BeforeEach, Errback, EvalScripts } from '@tanem/svg-injector'
+import { BeforeEach, EvalScripts } from '@tanem/svg-injector'
 import * as React from 'react'
 
 interface BaseProps {
-  afterInjection?: Errback
+  afterInjection?: (svg: SVGSVGElement) => void
   beforeInjection?: BeforeEach
   evalScripts?: EvalScripts
   fallback?: React.ElementType
   httpRequestWithCredentials?: boolean
   loading?: React.ElementType
+  onError?: (error: unknown) => void
   renumerateIRIElements?: boolean
   src: string
   useRequestCache?: boolean

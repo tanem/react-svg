@@ -17,5 +17,19 @@ root.render(
     <ReactSVG fallback={ClassFallback} src="notfound.svg" />
     <ReactSVG fallback={FunctionFallback} src="notfound.svg" />
     <ReactSVG fallback={StringFallback} src="notfound.svg" />
+    <ReactSVG
+      beforeInjection={() => {
+        throw new Error('boom!')
+      }}
+      fallback={<span>beforeInjection fallback</span>}
+      src="svg.svg"
+    />
+    <ReactSVG
+      afterInjection={() => {
+        throw new Error('boom!')
+      }}
+      fallback={<span>afterInjection fallback</span>}
+      src="svg.svg"
+    />
   </Fragment>
 )

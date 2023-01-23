@@ -24,15 +24,13 @@ const Icon: FC<IconProps> = ({ src, filled, ...props }) => {
   return (
     <SVG
       $filled={filled}
-      afterInjection={(error) => {
-        if (error) {
-          console.error('Error injecting svg icon', error)
-        }
-      }}
       beforeInjection={(svg) => {
         if (svg.getElementsByTagName('title').length > 0) {
           svg.removeChild(svg.getElementsByTagName('title')[0])
         }
+      }}
+      onError={(error) => {
+        console.error('Error injecting svg icon', error)
       }}
       src={src}
       {...props}

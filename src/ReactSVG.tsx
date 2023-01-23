@@ -17,6 +17,7 @@ export class ReactSVG extends React.Component<Props, State> {
     fallback: null,
     httpRequestWithCredentials: false,
     loading: null,
+    onError: () => undefined,
     renumerateIRIElements: true,
     useRequestCache: true,
     wrapper: 'div',
@@ -37,6 +38,7 @@ export class ReactSVG extends React.Component<Props, State> {
       PropTypes.object,
       PropTypes.string,
     ]),
+    onError: PropTypes.func,
     renumerateIRIElements: PropTypes.bool,
     src: PropTypes.string.isRequired,
     useRequestCache: PropTypes.bool,
@@ -64,7 +66,6 @@ export class ReactSVG extends React.Component<Props, State> {
     /* istanbul ignore else */
     if (this.reactWrapper instanceof ownerWindow(this.reactWrapper).Node) {
       const {
-        beforeInjection,
         evalScripts,
         httpRequestWithCredentials,
         renumerateIRIElements,
@@ -73,9 +74,10 @@ export class ReactSVG extends React.Component<Props, State> {
       } = this.props
 
       /* eslint-disable @typescript-eslint/no-non-null-assertion */
+      const onError = this.props.onError!
+      const beforeInjection = this.props.beforeInjection!
       const afterInjection = this.props.afterInjection!
       const wrapper = this.props.wrapper!
-      /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
       let nonReactWrapper
       let nonReactTarget
@@ -95,14 +97,27 @@ export class ReactSVG extends React.Component<Props, State> {
 
       this.nonReactWrapper = this.reactWrapper.appendChild(nonReactWrapper)
 
+      const handleError = (error: unknown) => {
+        this.removeSVG()
+        if (!this._isMounted) {
+          onError(error)
+          return
+        }
+        this.setState(
+          () => ({
+            hasError: true,
+            isLoading: false,
+          }),
+          () => {
+            onError(error)
+          }
+        )
+      }
+
       const afterEach = (error: Error | null, svg?: SVGSVGElement) => {
         if (error) {
-          this.removeSVG()
-
-          if (!this._isMounted) {
-            afterInjection(error)
-            return
-          }
+          handleError(error)
+          return
         }
 
         // TODO (Tane): It'd be better to cleanly unsubscribe from SVGInjector
@@ -110,19 +125,30 @@ export class ReactSVG extends React.Component<Props, State> {
         if (this._isMounted) {
           this.setState(
             () => ({
-              hasError: !!error,
               isLoading: false,
             }),
             () => {
-              afterInjection(error, svg)
+              try {
+                afterInjection(svg!)
+              } catch (afterInjectionError) {
+                handleError(afterInjectionError)
+              }
             }
           )
         }
       }
 
+      const beforeEach = (svg: SVGSVGElement): void => {
+        try {
+          beforeInjection(svg)
+        } catch (error) {
+          handleError(error)
+        }
+      }
+
       SVGInjector(nonReactTarget, {
         afterEach,
-        beforeEach: beforeInjection,
+        beforeEach,
         cacheRequests: useRequestCache,
         evalScripts,
         httpRequestWithCredentials,
