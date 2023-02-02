@@ -4,6 +4,7 @@ import * as React from 'react'
 interface BaseProps {
   afterInjection?: (svg: SVGSVGElement) => void
   beforeInjection?: BeforeEach
+  desc?: string
   evalScripts?: EvalScripts
   fallback?: React.ElementType
   httpRequestWithCredentials?: boolean
@@ -11,6 +12,7 @@ interface BaseProps {
   onError?: (error: unknown) => void
   renumerateIRIElements?: boolean
   src: string
+  title?: string
   useRequestCache?: boolean
   wrapper?: 'div' | 'span' | 'svg'
 }

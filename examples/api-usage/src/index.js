@@ -13,6 +13,7 @@ root.render(
       svg.setAttribute('style', 'width: 200px')
     }}
     className="wrapper-class-name"
+    desc="Description"
     evalScripts="always"
     fallback={() => <span>Error!</span>}
     httpRequestWithCredentials={true}
@@ -25,6 +26,7 @@ root.render(
     }}
     renumerateIRIElements={false}
     src="svg.svg"
+    title="Title"
     useRequestCache={false}
     wrapper="span"
   />

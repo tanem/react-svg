@@ -4,6 +4,7 @@ import nock from 'nock'
 import * as React from 'react'
 
 import { ReactSVG } from '../src'
+import a11ySource from './a11y-source.fixture'
 import iriSource from './iri-source.fixture'
 import source from './source.fixture'
 
@@ -440,5 +441,49 @@ describe('while running in a browser environment', () => {
         src={`http://localhost/${uuid}.svg`}
       />
     )
+  })
+
+  it("should add desc and title elements if they don't already exist", async () => {
+    const uuid = faker.datatype.uuid()
+
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { container } = render(
+      <ReactSVG
+        desc="Description"
+        src={`http://localhost/${uuid}.svg`}
+        title="Title"
+      />
+    )
+
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+    )
+
+    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
+  })
+
+  it('should replace desc and title elements if they already exist', async () => {
+    const uuid = faker.datatype.uuid()
+
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .reply(200, a11ySource, { 'Content-Type': 'image/svg+xml' })
+
+    const { container } = render(
+      <ReactSVG
+        desc="New description"
+        src={`http://localhost/${uuid}.svg`}
+        title="New title"
+      />
+    )
+
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+    )
+
+    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
   })
 })
