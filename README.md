@@ -52,12 +52,14 @@ root.render(<ReactSVG src="svg.svg" />)
 - `src` - The SVG URL.
 - `afterInjection(svg)` - _Optional_ Function to call after the SVG is injected. `svg` is the injected SVG DOM element. If an error occurs during execution it will be routed to the `onError` callback, and if a `fallback` is specified it will be rendered. Defaults to `() => {}`.
 - `beforeInjection(svg)` - _Optional_ Function to call just before the SVG is injected. `svg` is the SVG DOM element which is about to be injected. If an error occurs during execution it will be routed to the `onError` callback, and if a `fallback` is specified it will be rendered. Defaults to `() => {}`.
+- `desc` - _Optional_ String used for SVG `<desc>` element content. If a `<desc>` exists it will be replaced, otherwise a new `<desc>` is created. Defaults to `''`, which is a noop.
 - `evalScripts` - _Optional_ Run any script blocks found in the SVG. One of `'always'`, `'once'`, or `'never'`. Defaults to `'never'`.
 - `fallback` - _Optional_ Fallback to use if an error occurs during injection, or if errors are thrown from the `beforeInjection` or `afterInjection` functions. Can be a string, class component, or function component. Defaults to `null`.
 - `httpRequestWithCredentials` - _Optional_ Boolean indicating if cross-site Access-Control requests for the SVG should be made using credentials. Defaults to `false`.
 - `loading` - _Optional_ Component to use during loading. Can be a string, class component, or function component. Defaults to `null`.
 - `onError(error)` - _Optional_ Function to call if an error occurs during injection, or if errors are thrown from the `beforeInjection` or `afterInjection` functions. `error` is an `unknown` object. Defaults to `() => {}`.
 - `renumerateIRIElements` - _Optional_ Boolean indicating if SVG IRI addressable elements should be renumerated. Defaults to `true`.
+- `title` - _Optional_ String used for SVG `<title>` element content. If a `<title>` exists it will be replaced, otherwise a new `<title>` is created. Defaults to `''`, which is a noop.
 - `useRequestCache` - _Optional_ Use SVG request cache. Defaults to `true`.
 - `wrapper` - _Optional_ Wrapper element types. One of `'div'`, `'span'` or `'svg'`. Defaults to `'div'`.
 
@@ -75,6 +77,7 @@ Other non-documented properties are applied to the outermost wrapper element.
     svg.setAttribute('style', 'width: 200px')
   }}
   className="wrapper-class-name"
+  desc="Description"
   evalScripts="always"
   fallback={() => <span>Error!</span>}
   httpRequestWithCredentials={true}
@@ -87,6 +90,7 @@ Other non-documented properties are applied to the outermost wrapper element.
   }}
   renumerateIRIElements={false}
   src="svg.svg"
+  title="Title"
   useRequestCache={false}
   wrapper="span"
 />
@@ -146,47 +150,6 @@ Related issues and PRs:
 - [#30](https://github.com/tanem/react-svg/issues/30).
 - [#36](https://github.com/tanem/react-svg/pull/36).
 - [#48](https://github.com/tanem/react-svg/issues/48).
-
-</details>
-
-<details>
-
-<summary>
-How can I improve the accessibility of the rendered output?
-</summary>
-
-Let's assume we want to add `role` and `aria-label` attributes to the outermost wrapper element, plus `title` and `desc` elements to the SVG.
-
-Since non-documented properties are applied to the outermost wrapper element, and the `beforeInjection` function allows us to modify the SVG DOM, we can do something like the following:
-
-```jsx
-<ReactSVG
-  aria-label="Description of the overall image"
-  beforeInjection={(svg) => {
-    const desc = document.createElementNS(
-      'http://www.w3.org/2000/svg',
-      'desc'
-    )
-    desc.innerHTML = 'A description'
-    svg.prepend(desc)
-
-    const title = document.createElementNS(
-      'http://www.w3.org/2000/svg',
-      'title'
-    )
-    title.innerHTML = 'A title'
-    svg.prepend(title)
-  }}
-  role="img"
-  src="svg.svg"
-/>
-```
-
-A live example is available [here](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/accessibility).
-
-Related issue:
-
-- [#639](https://github.com/tanem/react-svg/issues/639).
 
 </details>
 

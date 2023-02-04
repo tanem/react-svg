@@ -13,12 +13,14 @@ export class ReactSVG extends React.Component<Props, State> {
   static defaultProps = {
     afterInjection: () => undefined,
     beforeInjection: () => undefined,
+    desc: '',
     evalScripts: 'never',
     fallback: null,
     httpRequestWithCredentials: false,
     loading: null,
     onError: () => undefined,
     renumerateIRIElements: true,
+    title: '',
     useRequestCache: true,
     wrapper: 'div',
   }
@@ -26,6 +28,7 @@ export class ReactSVG extends React.Component<Props, State> {
   static propTypes = {
     afterInjection: PropTypes.func,
     beforeInjection: PropTypes.func,
+    desc: PropTypes.string,
     evalScripts: PropTypes.oneOf(['always', 'once', 'never']),
     fallback: PropTypes.oneOfType([
       PropTypes.func,
@@ -41,6 +44,7 @@ export class ReactSVG extends React.Component<Props, State> {
     onError: PropTypes.func,
     renumerateIRIElements: PropTypes.bool,
     src: PropTypes.string.isRequired,
+    title: PropTypes.string,
     useRequestCache: PropTypes.bool,
     wrapper: PropTypes.oneOf(['div', 'span', 'svg']),
   }
@@ -66,10 +70,12 @@ export class ReactSVG extends React.Component<Props, State> {
     /* istanbul ignore else */
     if (this.reactWrapper instanceof ownerWindow(this.reactWrapper).Node) {
       const {
+        desc,
         evalScripts,
         httpRequestWithCredentials,
         renumerateIRIElements,
         src,
+        title,
         useRequestCache,
       } = this.props
 
@@ -139,6 +145,28 @@ export class ReactSVG extends React.Component<Props, State> {
       }
 
       const beforeEach = (svg: SVGSVGElement): void => {
+        svg.setAttribute('role', 'img')
+
+        if (desc) {
+          const originalDesc = svg.querySelector(':scope > desc')
+          if (originalDesc) {
+            svg.removeChild(originalDesc)
+          }
+          const newDesc = document.createElement('desc')
+          newDesc.innerHTML = desc
+          svg.prepend(newDesc)
+        }
+
+        if (title) {
+          const originalTitle = svg.querySelector(':scope > title')
+          if (originalTitle) {
+            svg.removeChild(originalTitle)
+          }
+          const newTitle = document.createElement('title')
+          newTitle.innerHTML = title
+          svg.prepend(newTitle)
+        }
+
         try {
           beforeInjection(svg)
         } catch (error) {
@@ -191,12 +219,14 @@ export class ReactSVG extends React.Component<Props, State> {
     const {
       afterInjection,
       beforeInjection,
+      desc,
       evalScripts,
       fallback: Fallback,
       httpRequestWithCredentials,
       loading: Loading,
       renumerateIRIElements,
       src,
+      title,
       useRequestCache,
       wrapper,
       ...rest
