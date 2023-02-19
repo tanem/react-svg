@@ -1,5 +1,13 @@
 # Changelog
 
+## [v16.1.3](https://github.com/tanem/react-svg/tree/v16.1.3) (2023-02-19)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v16.1.2...v16.1.3)
+
+#### :house: Internal
+
+- [#2177](https://github.com/tanem/react-svg/pull/2177) Update jest monorepo to v29.4.3 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2176](https://github.com/tanem/react-svg/pull/2176) Update dependency @types/react-dom to v18.0.11 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v16.1.2](https://github.com/tanem/react-svg/tree/v16.1.2) (2023-02-17)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v16.1.1...v16.1.2)
 
