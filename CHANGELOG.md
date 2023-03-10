@@ -1,5 +1,22 @@
 # Changelog
 
+## [v16.1.6](https://github.com/tanem/react-svg/tree/v16.1.6) (2023-03-10)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v16.1.5...v16.1.6)
+
+#### :house: Internal
+
+- [#2210](https://github.com/tanem/react-svg/pull/2210) Update typescript-eslint monorepo to v5.54.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2209](https://github.com/tanem/react-svg/pull/2209) Update jest monorepo to v29.5.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2208](https://github.com/tanem/react-svg/pull/2208) Update dependency eslint-config-prettier to v8.7.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2207](https://github.com/tanem/react-svg/pull/2207) Update dependency tanem-scripts to v6.0.75 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2206](https://github.com/tanem/react-svg/pull/2206) Update dependency jest-prettyhtml-matchers to v1.15.5 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2205](https://github.com/tanem/react-svg/pull/2205) Update dependency @tanem/svg-injector to ^10.1.50 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2204](https://github.com/tanem/react-svg/pull/2204) Update dependency @types/node to v18.14.6 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2203](https://github.com/tanem/react-svg/pull/2203) Update dependency @types/node to v18.14.4 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2202](https://github.com/tanem/react-svg/pull/2202) Update dependency styled-components to v5.3.8 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2201](https://github.com/tanem/react-svg/pull/2201) Update dependency styled-components to v5.3.7 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2200](https://github.com/tanem/react-svg/pull/2200) Update dependency rollup to v3.18.0 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v16.1.5](https://github.com/tanem/react-svg/tree/v16.1.5) (2023-03-03)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v16.1.4...v16.1.5)
 
