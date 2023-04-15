@@ -102,6 +102,6 @@
     "tanem-scripts": "7.0.0",
     "ts-jest": "29.0.5",
     "ts-node": "10.9.1",
-    "typescript": "5.0.2"
+    "typescript": "5.0.4"
   }
 }
