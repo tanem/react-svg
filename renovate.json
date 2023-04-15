@@ -10,13 +10,18 @@
     ":masterIssue",
     ":enableVulnerabilityAlerts"
   ],
-  "ignorePaths": ["**/node_modules/**", "**/test/**"],
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/test/**"
+  ],
   "lockFileMaintenance": {
     "enabled": true
   },
   "packageRules": [
     {
-      "depTypeList": ["dependencies"],
+      "depTypeList": [
+        "dependencies"
+      ],
       "rangeStrategy": "bump"
     },
     {
@@ -29,15 +34,38 @@
     {
       "automerge": false,
       "groupName": "react monorepo",
-      "labels": ["enhancement"],
-      "sourceUrlPrefixes": ["https://github.com/facebook/react"],
-      "updateTypes": ["major", "minor"]
+      "labels": [
+        "enhancement"
+      ],
+      "sourceUrlPrefixes": [
+        "https://github.com/facebook/react"
+      ],
+      "updateTypes": [
+        "major",
+        "minor"
+      ]
     },
     {
       "matchPackageNames": [
         "react-frame-component"
       ],
       "allowedVersions": "<= 5.2.4"
+    },
+    {
+      "matchPackageNames": [
+        "react-frame-component"
+      ],
+      "allowedVersions": "<= 5.2.4"
+    },
+    {
+      "matchPaths": [
+        "examples/typescript/package.json",
+        "examples/styled-components/package.json"
+      ],
+      "matchPackageNames": [
+        "typescript"
+      ],
+      "allowedVersions": "< 5.0.0"
     }
   ],
   "prCreation": "not-pending",
