@@ -68,6 +68,5 @@
       "allowedVersions": "< 5.0.0"
     }
   ],
-  "prCreation": "not-pending",
   "stabilityDays": 3
 }
