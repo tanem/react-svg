@@ -1,5 +1,25 @@
 # Changelog
 
+## [v16.1.8](https://github.com/tanem/react-svg/tree/v16.1.8) (2023-04-17)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v16.1.7...v16.1.8)
+
+#### :house: Internal
+
+- [#2231](https://github.com/tanem/react-svg/pull/2231) Update dependency @types/jest to v29.5.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2225](https://github.com/tanem/react-svg/pull/2225) Lock file maintenance ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2230](https://github.com/tanem/react-svg/pull/2230) Update dependency styled-components to v5.3.9 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2235](https://github.com/tanem/react-svg/pull/2235) Update dependency @types/react to v18.0.35 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2238](https://github.com/tanem/react-svg/pull/2238) Fix TS dep issues ([@tanem](https://github.com/tanem))
+- [#2236](https://github.com/tanem/react-svg/pull/2236) Update dependency typescript to v5.0.4 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2237](https://github.com/tanem/react-svg/pull/2237) Restrict TS version in examples ([@tanem](https://github.com/tanem))
+- [#2234](https://github.com/tanem/react-svg/pull/2234) Update typescript-eslint monorepo to v5.58.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2233](https://github.com/tanem/react-svg/pull/2233) Update dependency rollup to v3.20.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2232](https://github.com/tanem/react-svg/pull/2232) Update dependency open-cli to v7.2.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2229](https://github.com/tanem/react-svg/pull/2229) Update dependency prettier to v2.8.7 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2228](https://github.com/tanem/react-svg/pull/2228) Update dependency @types/node to v18.15.11 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2227](https://github.com/tanem/react-svg/pull/2227) Update dependency @types/jsdom to v21.1.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2226](https://github.com/tanem/react-svg/pull/2226) Update babel monorepo to v7.21.4 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v16.1.7](https://github.com/tanem/react-svg/tree/v16.1.7) (2023-03-27)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v16.1.6...v16.1.7)
 
