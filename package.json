@@ -76,7 +76,7 @@
     "@types/jsdom": "21.1.1",
     "@types/react": "18.0.35",
     "@types/react-dom": "18.0.11",
-    "@types/shelljs": "0.8.11",
+    "@types/shelljs": "0.8.12",
     "@typescript-eslint/eslint-plugin": "5.58.0",
     "@typescript-eslint/parser": "5.58.0",
     "babel-core": "6.26.3",
