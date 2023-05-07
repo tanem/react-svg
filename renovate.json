@@ -52,12 +52,6 @@
       "allowedVersions": "<= 5.2.4"
     },
     {
-      "matchPackageNames": [
-        "react-frame-component"
-      ],
-      "allowedVersions": "<= 5.2.4"
-    },
-    {
       "matchPaths": [
         "examples/typescript/package.json",
         "examples/styled-components/package.json"
