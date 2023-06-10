@@ -1,5 +1,22 @@
 # Changelog
 
+## [v16.1.16](https://github.com/tanem/react-svg/tree/v16.1.16) (2023-06-10)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v16.1.15...v16.1.16)
+
+#### :house: Internal
+
+- [#2354](https://github.com/tanem/react-svg/pull/2354) Update typescript-eslint monorepo to v5.59.9 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2353](https://github.com/tanem/react-svg/pull/2353) Update dependency rollup to v3.23.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2352](https://github.com/tanem/react-svg/pull/2352) Update dependency eslint to v8.42.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2351](https://github.com/tanem/react-svg/pull/2351) Update dependency tanem-scripts to v7.0.8 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2350](https://github.com/tanem/react-svg/pull/2350) Update dependency jest-prettyhtml-matchers to v1.16.8 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2349](https://github.com/tanem/react-svg/pull/2349) Update dependency @tanem/svg-injector to ^10.1.57 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2348](https://github.com/tanem/react-svg/pull/2348) Lock file maintenance ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2347](https://github.com/tanem/react-svg/pull/2347) Update dependency typescript to v5.1.3 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2346](https://github.com/tanem/react-svg/pull/2346) Update dependency @types/react to v18.2.8 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2345](https://github.com/tanem/react-svg/pull/2345) Update dependency @types/jest to v29.5.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2344](https://github.com/tanem/react-svg/pull/2344) Update dependency @rollup/plugin-node-resolve to v15.1.0 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v16.1.15](https://github.com/tanem/react-svg/tree/v16.1.15) (2023-06-02)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v16.1.14...v16.1.15)
 
