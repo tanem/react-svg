@@ -1,5 +1,23 @@
 # Changelog
 
+## [v16.1.18](https://github.com/tanem/react-svg/tree/v16.1.18) (2023-06-30)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v16.1.17...v16.1.18)
+
+#### :house: Internal
+
+- [#2380](https://github.com/tanem/react-svg/pull/2380) Update dependency rollup to v3.25.3 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2379](https://github.com/tanem/react-svg/pull/2379) Update typescript-eslint monorepo to v5.60.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2378](https://github.com/tanem/react-svg/pull/2378) Update dependency rollup to v3.25.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2377](https://github.com/tanem/react-svg/pull/2377) Update dependency @types/react to v18.2.14 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2375](https://github.com/tanem/react-svg/pull/2375) Update typescript-eslint monorepo to v5.60.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2374](https://github.com/tanem/react-svg/pull/2374) Update dependency @rollup/plugin-commonjs to v25.0.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2373](https://github.com/tanem/react-svg/pull/2373) Update react monorepo ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2372](https://github.com/tanem/react-svg/pull/2372) Update dependency tanem-scripts to v7.0.10 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2371](https://github.com/tanem/react-svg/pull/2371) Update dependency jest-prettyhtml-matchers to v1.16.10 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2370](https://github.com/tanem/react-svg/pull/2370) Update dependency @tanem/svg-injector to ^10.1.59 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2369](https://github.com/tanem/react-svg/pull/2369) Update dependency eslint to v8.43.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2361](https://github.com/tanem/react-svg/pull/2361) Update react monorepo ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v16.1.17](https://github.com/tanem/react-svg/tree/v16.1.17) (2023-06-18)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v16.1.16...v16.1.17)
 
