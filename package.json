@@ -56,7 +56,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.22.5",
-    "@tanem/svg-injector": "^10.1.59",
+    "@tanem/svg-injector": "^10.1.60",
     "@types/prop-types": "^15.7.5",
     "prop-types": "^15.8.1"
   },
