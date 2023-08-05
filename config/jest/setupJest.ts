@@ -5,7 +5,7 @@ expect.extend(
     singleQuote: true,
     sortAttributes: true,
     wrapAttributes: true,
-  })
+  }),
 )
 
 const originalError = console.error

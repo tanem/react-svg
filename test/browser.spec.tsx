@@ -27,11 +27,11 @@ describe('while running in a browser environment', () => {
       .reply(200, source, { 'Content-Type': 'image/svg+xml' })
 
     const { container } = render(
-      <ReactSVG src={`http://localhost/${uuid}.svg`} />
+      <ReactSVG src={`http://localhost/${uuid}.svg`} />,
     )
 
     await waitFor(() =>
-      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
 
     expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
@@ -48,22 +48,22 @@ describe('while running in a browser environment', () => {
       <ReactSVG
         className="wrapper-class-name"
         src={`http://localhost/${uuid}.svg`}
-      />
+      />,
     )
 
     await waitFor(() =>
-      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
 
     rerender(
       <ReactSVG
         className="updated-wrapper-class-name"
         src={`http://localhost/${uuid}.svg`}
-      />
+      />,
     )
 
     await waitFor(() =>
-      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
 
     expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
@@ -77,11 +77,11 @@ describe('while running in a browser environment', () => {
       .reply(200, source, { 'Content-Type': 'image/svg+xml' })
 
     const { container, unmount } = render(
-      <ReactSVG src={`http://localhost/${uuid}.svg`} />
+      <ReactSVG src={`http://localhost/${uuid}.svg`} />,
     )
 
     await waitFor(() =>
-      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
 
     unmount()
@@ -97,11 +97,11 @@ describe('while running in a browser environment', () => {
       .reply(200, iriSource, { 'Content-Type': 'image/svg+xml' })
 
     const { container } = render(
-      <ReactSVG src={`http://localhost/${uuid}.svg`} />
+      <ReactSVG src={`http://localhost/${uuid}.svg`} />,
     )
 
     await waitFor(() =>
-      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
 
     expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
@@ -118,11 +118,11 @@ describe('while running in a browser environment', () => {
       <ReactSVG
         renumerateIRIElements={false}
         src={`http://localhost/${uuid}.svg`}
-      />
+      />,
     )
 
     await waitFor(() =>
-      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
 
     expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
@@ -143,7 +143,7 @@ describe('while running in a browser environment', () => {
           done()
         }}
         src={src}
-      />
+      />,
     )
   })
 
@@ -163,7 +163,7 @@ describe('while running in a browser environment', () => {
           done()
         }}
         src={`http://localhost/${uuid}.svg`}
-      />
+      />,
     )
   })
 
@@ -180,7 +180,7 @@ describe('while running in a browser environment', () => {
 
     await waitFor(() => {
       expect(mock).toHaveBeenCalledWith(
-        new Error(`Unable to load SVG file: ${src}`)
+        new Error(`Unable to load SVG file: ${src}`),
       )
     })
   })
@@ -193,7 +193,7 @@ describe('while running in a browser environment', () => {
     nock('http://localhost').get(`/${uuid}.svg`).reply(404)
 
     const { container } = render(
-      <ReactSVG fallback={fallback} src={`http://localhost/${uuid}.svg`} />
+      <ReactSVG fallback={fallback} src={`http://localhost/${uuid}.svg`} />,
     )
 
     await waitFor(() => screen.findByText('fallback'))
@@ -211,14 +211,14 @@ describe('while running in a browser environment', () => {
       .reply(200, source, { 'Content-Type': 'image/svg+xml' })
 
     const { container } = render(
-      <ReactSVG loading={loading} src={`http://localhost/${uuid}.svg`} />
+      <ReactSVG loading={loading} src={`http://localhost/${uuid}.svg`} />,
     )
 
     // Checking before the query has been processed should give us the loader.
     expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
 
     await waitFor(() =>
-      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
   })
 
@@ -230,11 +230,11 @@ describe('while running in a browser environment', () => {
       .reply(200, source, { 'Content-Type': 'image/svg+xml' })
 
     const { container } = render(
-      <ReactSVG src={`http://localhost/${uuid}.svg`} wrapper="span" />
+      <ReactSVG src={`http://localhost/${uuid}.svg`} wrapper="span" />,
     )
 
     await waitFor(() =>
-      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
 
     expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
@@ -255,11 +255,11 @@ describe('while running in a browser environment', () => {
           // TODO: Style child element fills.
         }}
         src={`http://localhost/${uuid}.svg`}
-      />
+      />,
     )
 
     await waitFor(() =>
-      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
 
     expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
@@ -280,11 +280,11 @@ describe('while running in a browser environment', () => {
         <ReactSVG src={src} />
         <ReactSVG src={src} />
         <ReactSVG src={src} useRequestCache={false} />
-      </div>
+      </div>,
     )
 
     await waitFor(() =>
-      expect(container.querySelectorAll('.injected-svg')).toHaveLength(4)
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(4),
     )
 
     expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
@@ -300,7 +300,7 @@ describe('while running in a browser environment', () => {
     const { container } = render(<ReactSVG src={`http://localhost/${uuid}`} />)
 
     await waitFor(() =>
-      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
 
     expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
@@ -314,11 +314,11 @@ describe('while running in a browser environment', () => {
       .reply(200, source, { 'Content-Type': 'image/svg+xml' })
 
     const { container } = render(
-      <ReactSVG src={`http://localhost/${uuid}`} wrapper="svg" />
+      <ReactSVG src={`http://localhost/${uuid}`} wrapper="svg" />,
     )
 
     await waitFor(() =>
-      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
 
     expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
@@ -336,13 +336,13 @@ describe('while running in a browser environment', () => {
 
     render(<ReactSVG src={src} wrapper="svg" />, { container: div })
     await waitFor(() =>
-      expect(div.querySelectorAll('.injected-svg')).toHaveLength(1)
+      expect(div.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
     expect(div.innerHTML).toMatchPrettyHtmlSnapshot()
 
     render(<ReactSVG src={src} wrapper="span" />, { container: div })
     await waitFor(() =>
-      expect(div.querySelectorAll('.injected-svg')).toHaveLength(1)
+      expect(div.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
     expect(div.innerHTML).toMatchPrettyHtmlSnapshot()
   })
@@ -363,7 +363,7 @@ describe('while running in a browser environment', () => {
         }}
         fallback={fallback}
         src={`http://localhost/${uuid}.svg`}
-      />
+      />,
     )
 
     await waitFor(() => screen.findByText('fallback'))
@@ -391,7 +391,7 @@ describe('while running in a browser environment', () => {
           done()
         }}
         src={`http://localhost/${uuid}.svg`}
-      />
+      />,
     )
   })
 
@@ -411,7 +411,7 @@ describe('while running in a browser environment', () => {
         }}
         fallback={fallback}
         src={`http://localhost/${uuid}.svg`}
-      />
+      />,
     )
 
     await waitFor(() => screen.findByText('fallback'))
@@ -439,7 +439,7 @@ describe('while running in a browser environment', () => {
           done()
         }}
         src={`http://localhost/${uuid}.svg`}
-      />
+      />,
     )
   })
 
@@ -455,11 +455,11 @@ describe('while running in a browser environment', () => {
         desc="Description"
         src={`http://localhost/${uuid}.svg`}
         title="Title"
-      />
+      />,
     )
 
     await waitFor(() =>
-      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
 
     expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
@@ -477,11 +477,11 @@ describe('while running in a browser environment', () => {
         desc="New description"
         src={`http://localhost/${uuid}.svg`}
         title="New title"
-      />
+      />,
     )
 
     await waitFor(() =>
-      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
 
     expect(container.innerHTML).toMatchPrettyHtmlSnapshot()

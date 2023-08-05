@@ -29,5 +29,5 @@ root.render(
     title="Title"
     useRequestCache={false}
     wrapper="span"
-  />
+  />,
 )

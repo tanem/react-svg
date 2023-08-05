@@ -7,5 +7,5 @@ const root = createRoot(container)
 root.render(
   <Frame>
     <ReactSVG src="svg.svg" />
-  </Frame>
+  </Frame>,
 )
