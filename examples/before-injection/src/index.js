@@ -18,5 +18,5 @@ root.render(
       firstGElement.setAttribute('fill', 'blue')
     }}
     src="svg.svg"
-  />
+  />,
 )

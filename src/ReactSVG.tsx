@@ -116,7 +116,7 @@ export class ReactSVG extends React.Component<Props, State> {
           }),
           () => {
             onError(error)
-          }
+          },
         )
       }
 
@@ -139,7 +139,7 @@ export class ReactSVG extends React.Component<Props, State> {
               } catch (afterInjectionError) {
                 handleError(afterInjectionError)
               }
-            }
+            },
           )
         }
       }
@@ -204,7 +204,7 @@ export class ReactSVG extends React.Component<Props, State> {
         () => {
           this.removeSVG()
           this.renderSVG()
-        }
+        },
       )
     }
   }

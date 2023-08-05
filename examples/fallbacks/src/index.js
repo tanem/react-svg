@@ -31,5 +31,5 @@ root.render(
       fallback={<span>afterInjection fallback</span>}
       src="svg.svg"
     />
-  </Fragment>
+  </Fragment>,
 )

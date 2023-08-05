@@ -13,5 +13,5 @@ root.render(
       loading={() => <ClipLoader />}
       src="notfound.svg"
     />
-  </Fragment>
+  </Fragment>,
 )
