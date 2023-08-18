@@ -1,5 +1,22 @@
 # Changelog
 
+## [v16.1.22](https://github.com/tanem/react-svg/tree/v16.1.22) (2023-08-18)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v16.1.21...v16.1.22)
+
+#### :house: Internal
+
+- [#2463](https://github.com/tanem/react-svg/pull/2463) Update typescript-eslint monorepo to v6.4.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2458](https://github.com/tanem/react-svg/pull/2458) Update dependency eslint to v8.47.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2462](https://github.com/tanem/react-svg/pull/2462) Update dependency tanem-scripts to v7.0.14 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2461](https://github.com/tanem/react-svg/pull/2461) Update dependency jest-prettyhtml-matchers to v1.17.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2460](https://github.com/tanem/react-svg/pull/2460) Update dependency @types/node to v18.17.5 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2459](https://github.com/tanem/react-svg/pull/2459) Update dependency @tanem/svg-injector to ^10.1.62 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2457](https://github.com/tanem/react-svg/pull/2457) Update dependency @rollup/plugin-commonjs to v25.0.4 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2456](https://github.com/tanem/react-svg/pull/2456) Lock file maintenance ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2455](https://github.com/tanem/react-svg/pull/2455) Update dependency @types/react to v18.2.20 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2454](https://github.com/tanem/react-svg/pull/2454) Update dependency rollup to v3.28.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#2453](https://github.com/tanem/react-svg/pull/2453) Update dependency @types/node to v18.17.4 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v16.1.21](https://github.com/tanem/react-svg/tree/v16.1.21) (2023-08-11)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v16.1.20...v16.1.21)
 
