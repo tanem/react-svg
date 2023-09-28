@@ -55,13 +55,13 @@
     "react-dom": "^16.0.0 || ^17.0.0 || ^18.0.0"
   },
   "dependencies": {
-    "@babel/runtime": "^7.22.15",
+    "@babel/runtime": "^7.23.1",
     "@tanem/svg-injector": "^10.1.63",
     "@types/prop-types": "^15.7.7",
     "prop-types": "^15.8.1"
   },
   "devDependencies": {
-    "@babel/core": "7.22.20",
+    "@babel/core": "7.23.0",
     "@babel/plugin-transform-runtime": "7.22.15",
     "@babel/preset-env": "7.22.20",
     "@babel/preset-react": "7.22.15",
