@@ -81,7 +81,7 @@
     "@typescript-eslint/parser": "6.8.0",
     "babel-core": "6.26.3",
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
-    "eslint": "8.51.0",
+    "eslint": "8.52.0",
     "eslint-config-prettier": "9.0.0",
     "eslint-plugin-react": "7.33.2",
     "eslint-plugin-react-hooks": "4.6.0",
