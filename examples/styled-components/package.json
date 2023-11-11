@@ -22,7 +22,7 @@
     "@types/node": "20.8.10",
     "@types/react": "18.2.36",
     "@types/react-dom": "18.2.14",
-    "@types/styled-components": "5.1.29",
+    "@types/styled-components": "5.1.30",
     "typescript": "4.9.5"
   },
   "browserslist": [
