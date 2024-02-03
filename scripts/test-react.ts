@@ -1,3 +1,9 @@
+// Temporary hack until this issue is resolved:
+// https://github.com/shelljs/shelljs/issues/1148. Also see:
+// https://github.com/isaacs/rimraf/issues/264#issuecomment-1499432564.
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import path from 'path'
 import shell from 'shelljs'
 
