@@ -74,7 +74,7 @@
     "@types/faker": "5.5.9",
     "@types/jest": "29.5.12",
     "@types/jsdom": "21.1.6",
-    "@types/react": "18.2.51",
+    "@types/react": "18.2.52",
     "@types/react-dom": "18.2.18",
     "@types/shelljs": "0.8.15",
     "@typescript-eslint/eslint-plugin": "6.20.0",
