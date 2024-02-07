@@ -92,7 +92,7 @@
     "jest-prettyhtml-matchers": "1.17.13",
     "nock": "13.5.1",
     "npm-run-all2": "6.1.2",
-    "prettier": "3.2.4",
+    "prettier": "3.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "rollup": "4.9.6",
