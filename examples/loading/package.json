@@ -11,7 +11,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-scripts": "5.0.1",
-    "react-spinners": "0.14.0",
+    "react-spinners": "0.14.1",
     "react-svg": "latest"
   },
   "scripts": {
