@@ -8,7 +8,7 @@
   "private": true,
   "dependencies": {
     "express": "4.21.0",
-    "npm-run-all2": "6.2.2",
+    "npm-run-all2": "6.2.3",
     "open-cli": "8.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
