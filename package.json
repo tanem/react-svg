@@ -72,7 +72,7 @@
     "@rollup/plugin-terser": "0.4.4",
     "@testing-library/react": "16.0.1",
     "@types/faker": "5.5.9",
-    "@types/jest": "29.5.13",
+    "@types/jest": "29.5.14",
     "@types/jsdom": "21.1.7",
     "@types/react": "18.2.79",
     "@types/react-dom": "18.2.25",
