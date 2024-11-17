@@ -96,7 +96,6 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "rollup": "4.24.3",
-    "rollup-plugin-sourcemaps": "0.6.3",
     "shelljs": "0.8.5",
     "shx": "0.3.4",
     "tanem-scripts": "7.0.27",
