@@ -8,9 +8,9 @@ module.exports = {
   ],
   overrides: [
     {
-      files: ['*.js'],
+      files: ['*.js', 'node.spec.ts'],
       rules: {
-        '@typescript-eslint/no-var-requires': 'off',
+        '@typescript-eslint/no-require-imports': 'off',
       },
     },
   ],
