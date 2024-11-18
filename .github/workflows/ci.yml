@@ -20,4 +20,4 @@ jobs:
           check-latest: true
       - run: npm ci
       - run: npm test
-      - uses: codecov/codecov-action@v4
+      - uses: codecov/codecov-action@v5
