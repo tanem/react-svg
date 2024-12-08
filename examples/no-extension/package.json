@@ -7,7 +7,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "express": "4.21.1",
+    "express": "4.21.2",
     "npm-run-all2": "7.0.1",
     "open-cli": "8.0.0",
     "react": "18.3.1",
