@@ -65,7 +65,7 @@
     "@babel/plugin-transform-runtime": "7.25.9",
     "@babel/preset-env": "7.26.0",
     "@babel/preset-react": "7.26.3",
-    "@eslint/compat": "1.2.3",
+    "@eslint/compat": "1.2.4",
     "@eslint/eslintrc": "3.2.0",
     "@eslint/js": "9.16.0",
     "@rollup/plugin-babel": "6.0.4",
