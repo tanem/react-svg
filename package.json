@@ -51,8 +51,8 @@
   "bugs": "https://github.com/tanem/react-svg/issues",
   "homepage": "https://github.com/tanem/react-svg",
   "peerDependencies": {
-    "react": "^16.0.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.0.0 || ^17.0.0 || ^18.0.0"
+    "react": "^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.26.0",
@@ -78,8 +78,8 @@
     "@types/jest": "29.5.14",
     "@types/jsdom": "21.1.7",
     "@types/node": "22.10.9",
-    "@types/react": "18.3.13",
-    "@types/react-dom": "18.3.1",
+    "@types/react": "19.0.8",
+    "@types/react-dom": "19.0.3",
     "@types/shelljs": "0.8.15",
     "@typescript-eslint/eslint-plugin": "8.21.0",
     "@typescript-eslint/parser": "8.21.0",
@@ -97,8 +97,8 @@
     "nock": "13.5.6",
     "npm-run-all2": "7.0.2",
     "prettier": "3.4.2",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "rollup": "4.31.0",
     "shelljs": "0.8.5",
     "shx": "0.3.4",
