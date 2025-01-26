@@ -104,21 +104,21 @@ Other non-documented properties are applied to the outermost wrapper element.
 $ npm install react-svg
 ```
 
-There are also UMD builds available via [unpkg](https://unpkg.com/):
+UMD builds are also available for use with pre-React 19 via [unpkg](https://unpkg.com/):
 
 - https://unpkg.com/react-svg/dist/react-svg.umd.development.js
 - https://unpkg.com/react-svg/dist/react-svg.umd.production.js
 
 For the non-minified development version, make sure you have already included:
 
-- [`React`](https://unpkg.com/react/umd/react.development.js)
-- [`ReactDOM`](https://unpkg.com/react-dom/umd/react-dom.development.js)
+- [`React`](https://unpkg.com/react@18/umd/react.development.js)
+- [`ReactDOM`](https://unpkg.com/react-dom@18/umd/react-dom.development.js)
 - [`PropTypes`](https://unpkg.com/prop-types/prop-types.js)
 
 For the minified production version, make sure you have already included:
 
-- [`React`](https://unpkg.com/react/umd/react.production.min.js)
-- [`ReactDOM`](https://unpkg.com/react-dom/umd/react-dom.production.min.js)
+- [`React`](https://unpkg.com/react@18/umd/react.production.min.js)
+- [`ReactDOM`](https://unpkg.com/react-dom@18/umd/react-dom.production.min.js)
 
 ## FAQ
 
