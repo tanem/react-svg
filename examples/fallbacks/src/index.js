@@ -21,14 +21,14 @@ root.render(
       beforeInjection={() => {
         throw new Error('boom!')
       }}
-      fallback={<span>beforeInjection fallback</span>}
+      fallback={() => <span>beforeInjection fallback</span>}
       src="svg.svg"
     />
     <ReactSVG
       afterInjection={() => {
         throw new Error('boom!')
       }}
-      fallback={<span>afterInjection fallback</span>}
+      fallback={() => <span>afterInjection fallback</span>}
       src="svg.svg"
     />
   </Fragment>,

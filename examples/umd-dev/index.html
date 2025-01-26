@@ -2,14 +2,17 @@
   <head>
     <meta charset="UTF-8" />
     <title>ReactSVG UMD Dev Example</title>
-    <script src="https://unpkg.com/react/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/prop-types/prop-types.js"></script>
     <script src="https://unpkg.com/babel-standalone/babel.js"></script>
     <script src="https://unpkg.com/react-svg/dist/react-svg.umd.development.js"></script>
   </head>
 
   <body>
+    <p>
+      Note: UMD builds were removed in React 19. This example uses React 18.
+    </p>
     <div id="app"></div>
     <script type="text/babel">
       ReactDOM.render(
