@@ -99,7 +99,7 @@
     "prettier": "3.4.2",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "rollup": "4.34.5",
+    "rollup": "4.34.6",
     "shelljs": "0.8.5",
     "shx": "0.3.4",
     "tanem-scripts": "7.0.27",
