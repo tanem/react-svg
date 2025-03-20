@@ -101,7 +101,7 @@
     "react-dom": "19.0.0",
     "rollup": "4.35.0",
     "shelljs": "0.9.2",
-    "shx": "0.3.4",
+    "shx": "0.4.0",
     "tanem-scripts": "7.0.27",
     "ts-jest": "29.2.6",
     "ts-node": "10.9.2",
