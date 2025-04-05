@@ -10,8 +10,8 @@
     "express": "5.1.0",
     "npm-run-all2": "7.0.2",
     "open-cli": "8.0.0",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "react-scripts": "5.0.1",
     "react-svg": "latest",
     "wait-on": "8.0.3"
