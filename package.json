@@ -63,7 +63,7 @@
   "devDependencies": {
     "@babel/core": "7.27.1",
     "@babel/plugin-transform-runtime": "7.27.1",
-    "@babel/preset-env": "7.27.1",
+    "@babel/preset-env": "7.27.2",
     "@babel/preset-react": "7.27.1",
     "@eslint/compat": "1.2.9",
     "@eslint/eslintrc": "3.3.1",
