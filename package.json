@@ -95,7 +95,7 @@
     "jest-environment-jsdom": "29.7.0",
     "jest-prettyhtml-matchers": "1.17.15",
     "nock": "13.5.6",
-    "npm-run-all2": "8.0.2",
+    "npm-run-all2": "8.0.3",
     "prettier": "3.5.3",
     "react": "19.0.0",
     "react-dom": "19.0.0",
