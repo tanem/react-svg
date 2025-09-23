@@ -14,7 +14,7 @@
     "react-dom": "19.0.0",
     "react-scripts": "5.0.1",
     "react-svg": "latest",
-    "wait-on": "9.0.0"
+    "wait-on": "9.0.1"
   },
   "scripts": {
     "build": "react-scripts build",
