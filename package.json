@@ -80,7 +80,7 @@
     "@types/node": "24.10.3",
     "@types/react": "19.0.10",
     "@types/react-dom": "19.0.4",
-    "@types/shelljs": "0.8.17",
+    "@types/shelljs": "0.10.0",
     "@typescript-eslint/eslint-plugin": "8.49.0",
     "@typescript-eslint/parser": "8.49.0",
     "babel-core": "6.26.3",
