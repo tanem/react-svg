@@ -55,15 +55,15 @@
     "react-dom": "^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
   },
   "dependencies": {
-    "@babel/runtime": "^7.28.4",
+    "@babel/runtime": "^7.28.6",
     "@tanem/svg-injector": "^10.1.68",
     "@types/prop-types": "^15.7.15",
     "prop-types": "^15.8.1"
   },
   "devDependencies": {
-    "@babel/core": "7.28.5",
+    "@babel/core": "7.28.6",
     "@babel/plugin-transform-runtime": "7.28.5",
-    "@babel/preset-env": "7.28.5",
+    "@babel/preset-env": "7.28.6",
     "@babel/preset-react": "7.28.5",
     "@eslint/compat": "2.0.1",
     "@eslint/eslintrc": "3.3.3",
