@@ -33,7 +33,10 @@
     "test:umdprod": "jest --config ./config/jest/config.umdprod.js",
     "test:react": "ts-node ./scripts/test-react"
   },
-  "repository": "github:tanem/react-svg",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanem/react-svg.git"
+  },
   "keywords": [
     "dom",
     "html",
