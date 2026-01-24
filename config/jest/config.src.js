@@ -23,6 +23,7 @@ module.exports = {
     ...generateReactVersionMappings(process.env.REACT_VERSION),
   },
   preset: 'ts-jest',
+  prettierPath: require.resolve('prettier'),
   rootDir: process.cwd(),
   roots: ['<rootDir>/test'],
   setupFilesAfterEnv: ['<rootDir>/config/jest/setupJest.ts'],

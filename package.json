@@ -96,7 +96,6 @@
     "faker": "5.5.3",
     "jest": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
-    "jest-prettyhtml-matchers": "1.17.15",
     "nock": "13.5.6",
     "npm-run-all2": "8.0.4",
     "prettier": "3.8.1",

@@ -34,7 +34,7 @@ describe('while running in a browser environment', () => {
       expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
 
-    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
+    expect(container.innerHTML).toMatchSnapshot()
   })
 
   it('should update correctly', async () => {
@@ -66,7 +66,7 @@ describe('while running in a browser environment', () => {
       expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
 
-    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
+    expect(container.innerHTML).toMatchSnapshot()
   })
 
   it('should unmount correctly', async () => {
@@ -104,7 +104,7 @@ describe('while running in a browser environment', () => {
       expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
 
-    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
+    expect(container.innerHTML).toMatchSnapshot()
   })
 
   it('should not renumerate IRI elements when renumerateIRIElements is false', async () => {
@@ -125,7 +125,7 @@ describe('while running in a browser environment', () => {
       expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
 
-    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
+    expect(container.innerHTML).toMatchSnapshot()
   })
 
   it('should call onError when injection is unsuccessful', (done) => {
@@ -159,7 +159,7 @@ describe('while running in a browser environment', () => {
     render(
       <ReactSVG
         afterInjection={(svg) => {
-          expect((svg as SVGSVGElement).outerHTML).toMatchPrettyHtmlSnapshot()
+          expect((svg as SVGSVGElement).outerHTML).toMatchSnapshot()
           done()
         }}
         src={`http://localhost/${uuid}.svg`}
@@ -198,7 +198,7 @@ describe('while running in a browser environment', () => {
 
     await waitFor(() => screen.findByText('fallback'))
 
-    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
+    expect(container.innerHTML).toMatchSnapshot()
   })
 
   it('should render the specified loader when injecting', async () => {
@@ -215,7 +215,7 @@ describe('while running in a browser environment', () => {
     )
 
     // Checking before the query has been processed should give us the loader.
-    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
+    expect(container.innerHTML).toMatchSnapshot()
 
     await waitFor(() =>
       expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
@@ -237,7 +237,7 @@ describe('while running in a browser environment', () => {
       expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
 
-    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
+    expect(container.innerHTML).toMatchSnapshot()
   })
 
   it('should allow modification of the SVG via the beforeInjection callback', async () => {
@@ -262,7 +262,7 @@ describe('while running in a browser environment', () => {
       expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
 
-    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
+    expect(container.innerHTML).toMatchSnapshot()
   })
 
   it('should render correctly when bypassing the request cache', async () => {
@@ -287,7 +287,7 @@ describe('while running in a browser environment', () => {
       expect(container.querySelectorAll('.injected-svg')).toHaveLength(4),
     )
 
-    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
+    expect(container.innerHTML).toMatchSnapshot()
   })
 
   it('should render correctly with an extensionless svg', async () => {
@@ -303,7 +303,7 @@ describe('while running in a browser environment', () => {
       expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
 
-    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
+    expect(container.innerHTML).toMatchSnapshot()
   })
 
   it('allows rendering of svg wrappers', async () => {
@@ -321,7 +321,7 @@ describe('while running in a browser environment', () => {
       expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
 
-    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
+    expect(container.innerHTML).toMatchSnapshot()
   })
 
   it('re-renders correctly into the same container', async () => {
@@ -338,13 +338,13 @@ describe('while running in a browser environment', () => {
     await waitFor(() =>
       expect(div.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
-    expect(div.innerHTML).toMatchPrettyHtmlSnapshot()
+    expect(div.innerHTML).toMatchSnapshot()
 
     render(<ReactSVG src={src} wrapper="span" />, { container: div })
     await waitFor(() =>
       expect(div.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
-    expect(div.innerHTML).toMatchPrettyHtmlSnapshot()
+    expect(div.innerHTML).toMatchSnapshot()
   })
 
   it('should render the specified fallback if beforeInjection throws an error', async () => {
@@ -368,7 +368,7 @@ describe('while running in a browser environment', () => {
 
     await waitFor(() => screen.findByText('fallback'))
 
-    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
+    expect(container.innerHTML).toMatchSnapshot()
   })
 
   it('should call onError if beforeInjection throws an error', (done) => {
@@ -416,7 +416,7 @@ describe('while running in a browser environment', () => {
 
     await waitFor(() => screen.findByText('fallback'))
 
-    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
+    expect(container.innerHTML).toMatchSnapshot()
   })
 
   it('should call onError if afterInjection throws an error', (done) => {
@@ -462,7 +462,7 @@ describe('while running in a browser environment', () => {
       expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
 
-    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
+    expect(container.innerHTML).toMatchSnapshot()
   })
 
   it('should replace desc and title elements if they already exist', async () => {
@@ -484,6 +484,6 @@ describe('while running in a browser environment', () => {
       expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
 
-    expect(container.innerHTML).toMatchPrettyHtmlSnapshot()
+    expect(container.innerHTML).toMatchSnapshot()
   })
 })
