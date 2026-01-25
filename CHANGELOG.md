@@ -1,5 +1,21 @@
 # Changelog
 
+## [v16.4.0](https://github.com/tanem/react-svg/tree/v16.4.0) (2026-01-25)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v16.3.1...v16.4.0)
+
+#### :rocket: Enhancement
+
+- [#3420](https://github.com/tanem/react-svg/pull/3420) Update dependency eslint-plugin-react-hooks to v7 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#3188](https://github.com/tanem/react-svg/pull/3188) Update react monorepo ([@renovate[bot]](https://github.com/apps/renovate))
+
+#### :house: Internal
+
+- [#3526](https://github.com/tanem/react-svg/pull/3526) Ensure we stay on nock 13, 14 introduces too much setup faff ([@tanem](https://github.com/tanem))
+- [#3304](https://github.com/tanem/react-svg/pull/3304) Update jest monorepo to v30 (major) ([@renovate[bot]](https://github.com/apps/renovate))
+- [#3525](https://github.com/tanem/react-svg/pull/3525) Migrate away from jest-prettyhtml-matchers ([@tanem](https://github.com/tanem))
+- [#3523](https://github.com/tanem/react-svg/pull/3523) Update dependency prettier to v3.8.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#3524](https://github.com/tanem/react-svg/pull/3524) Fix audit issues ([@tanem](https://github.com/tanem))
+
 ## [v16.3.1](https://github.com/tanem/react-svg/tree/v16.3.1) (2026-01-24)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v16.3.0...v16.3.1)
 
