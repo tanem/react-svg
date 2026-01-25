@@ -32,6 +32,12 @@
       "allowedVersions": "< 6.0.0"
     },
     {
+      "matchPackageNames": [
+        "nock"
+      ],
+      "allowedVersions": "< 14.0.0"
+    },
+    {
       "automerge": false,
       "groupName": "react monorepo",
       "labels": [
