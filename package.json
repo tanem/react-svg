@@ -91,7 +91,7 @@
     "eslint": "9.39.2",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-react": "7.37.5",
-    "eslint-plugin-react-hooks": "5.2.0",
+    "eslint-plugin-react-hooks": "7.0.1",
     "eslint-plugin-simple-import-sort": "12.1.1",
     "faker": "5.5.3",
     "jest": "30.2.0",
