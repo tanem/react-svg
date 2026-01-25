@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`while running in a browser environment allows rendering of span wrappers 1`] = `
 "<span><span><svg height="26" viewBox="0 0 115 26" width="115" xmlns="http://www.w3.org/2000/svg" class="injected-svg" data-src="http://localhost/13a7e8b6-7270-4c99-81e9-9d752e0c295c.svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
