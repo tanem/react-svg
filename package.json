@@ -80,7 +80,7 @@
     "@types/faker": "5.5.9",
     "@types/jest": "30.0.0",
     "@types/jsdom": "27.0.0",
-    "@types/node": "24.10.10",
+    "@types/node": "24.10.11",
     "@types/react": "19.2.13",
     "@types/react-dom": "19.2.3",
     "@types/shelljs": "0.10.0",
