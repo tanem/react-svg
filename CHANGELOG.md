@@ -1,5 +1,19 @@
 # Changelog
 
+## [v16.4.2](https://github.com/tanem/react-svg/tree/v16.4.2) (2026-02-09)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v16.4.1...v16.4.2)
+
+#### :house: Internal
+
+- [#3541](https://github.com/tanem/react-svg/pull/3541) Update dependency @types/node to v24.10.11 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#3540](https://github.com/tanem/react-svg/pull/3540) Update dependency @types/react to v19.2.13 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#3539](https://github.com/tanem/react-svg/pull/3539) Update dependency @types/react to v19.2.11 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#3538](https://github.com/tanem/react-svg/pull/3538) Update dependency @types/node to v24.10.10 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#3537](https://github.com/tanem/react-svg/pull/3537) Update dependency tanem-scripts to v8.0.1 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#3535](https://github.com/tanem/react-svg/pull/3535) Update dependency @eslint/compat to v2.0.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#3536](https://github.com/tanem/react-svg/pull/3536) Update babel monorepo to v7.29.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#3534](https://github.com/tanem/react-svg/pull/3534) Update dependency rollup to v4.57.1 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v16.4.1](https://github.com/tanem/react-svg/tree/v16.4.1) (2026-02-02)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v16.4.0...v16.4.1)
 
