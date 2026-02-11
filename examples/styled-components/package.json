@@ -12,7 +12,7 @@
     "react-dom": "19.2.4",
     "react-scripts": "5.0.1",
     "react-svg": "latest",
-    "styled-components": "6.3.8"
+    "styled-components": "6.3.9"
   },
   "scripts": {
     "start": "react-scripts start"
