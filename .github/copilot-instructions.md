@@ -32,7 +32,7 @@ SVG injection is async — always `await waitFor(() => expect(...))` after rende
 
 `config/jest/setupJest.ts` intentionally suppresses "not wrapped in act" warnings. This is expected because SVG injection occurs outside React's control flow.
 
-`npm run test:react` runs all test suites against boundary React versions. It installs dependencies per version directory under `test/react/` and takes a long time. Use `npm run test:src` for development; `test:react` is for pre-release verification.
+`npm run test:react` runs the `src` test suite against all boundary React versions. It installs dependencies per version directory under `test/react/` and takes a long time. Use `npm run test:src` for development; `test:react` is for pre-release verification. Bundle format tests (`test:cjs`, `test:es`, `test:umd`, etc.) run against the dev React version only via `npm run test` — bundle format is orthogonal to React version compatibility.
 
 To run a single React version suite during development:
 
