@@ -7,6 +7,10 @@ on:
     branches:
       - master
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 permissions:
   contents: write
   id-token: write
@@ -29,6 +33,7 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           check-latest: true
+          cache: 'npm'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Configure git
