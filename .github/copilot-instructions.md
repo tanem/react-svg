@@ -32,7 +32,48 @@ SVG injection is async — always `await waitFor(() => expect(...))` after rende
 
 `config/jest/setupJest.ts` intentionally suppresses "not wrapped in act" warnings. This is expected because SVG injection occurs outside React's control flow.
 
-`npm run test:react` runs all test suites against React 16.0 through 19.x. It installs dependencies per version directory under `test/react/` and takes a long time. Use `npm run test:src` for development; `test:react` is for pre-release verification.
+`npm run test:react` runs all test suites against boundary React versions. It installs dependencies per version directory under `test/react/` and takes a long time. Use `npm run test:src` for development; `test:react` is for pre-release verification.
+
+To run a single React version suite during development:
+
+```
+cd test/react/19.0 && npm i --no-package-lock --quiet --no-progress
+REACT_VERSION=19.0 npx jest --config ./config/jest/config.src.js --coverage false
+```
+
+### React version matrix strategy
+
+We test **boundary versions only** — the first and last minor of each supported major, plus any minor where React introduced breaking or significant behavioural changes. This avoids a combinatorial explosion while still validating the `peerDependencies` claim.
+
+Current boundary versions and rationale:
+
+| Version | Rationale |
+|---------|-----------|
+| 16.0 | Earliest supported, baseline |
+| 16.3 | New context API, lifecycle deprecation warnings introduced |
+| 16.14 | Latest 16.x, confirms nothing regressed across the range |
+| 17.0 | Event delegation changes |
+| 18.0 | Concurrent mode, `createRoot` |
+| 18.3 | Latest 18.x |
+| 19.0 | Removed legacy APIs, ref changes |
+| 19.1 | Latest 19.x |
+
+`@testing-library/react` versions must match React compatibility:
+
+| React | @testing-library/react |
+|-------|------------------------|
+| 16.x–17.x | 12.x |
+| 18.x–19.x | 16.x |
+
+### Adding support for a new React version
+
+When a new React major is released or `peerDependencies` is widened:
+
+1. Add a `test/react/<version>/package.json` with the correct `react`, `react-dom`, and `@testing-library/react` versions (see compatibility table above).
+2. Decide whether it's a new boundary. If it's the first minor of a new major, it is always a boundary. If it's a later minor, only add it if it introduces changes relevant to class components, lifecycle methods, or DOM reconciliation.
+3. Remove any previous "latest minor" boundary for that major and replace it with the new one (e.g. when 19.2 ships, replace 19.1).
+4. Run the single-version suite to verify before running the full matrix.
+5. Update the boundary table above.
 
 ## Conventions
 
