@@ -35,7 +35,7 @@ export default [
   ),
   {
     languageOptions: {
-      ecmaVersion: 5,
+      ecmaVersion: 'latest',
       parser: tsParser,
       parserOptions: {
         ecmaFeatures: {

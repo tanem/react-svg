@@ -1,5 +1,5 @@
-import { BeforeEach, EvalScripts } from '@tanem/svg-injector'
-import * as React from 'react'
+import type { BeforeEach, EvalScripts } from '@tanem/svg-injector'
+import type * as React from 'react'
 
 interface BaseProps {
   afterInjection?: (svg: SVGSVGElement) => void
