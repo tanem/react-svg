@@ -26,13 +26,6 @@
     },
     {
       "matchPackageNames": [
-        "@types/faker",
-        "faker"
-      ],
-      "allowedVersions": "< 6.0.0"
-    },
-    {
-      "matchPackageNames": [
         "nock"
       ],
       "allowedVersions": "< 14.0.0"
@@ -50,12 +43,6 @@
         "major",
         "minor"
       ]
-    },
-    {
-      "matchPackageNames": [
-        "react-frame-component"
-      ],
-      "allowedVersions": "<= 5.2.4"
     },
     {
       "matchPaths": [

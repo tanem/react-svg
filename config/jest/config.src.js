@@ -30,4 +30,5 @@ module.exports = {
   testEnvironment: 'jsdom',
   testMatch: ['<rootDir>/test/*.spec.ts?(x)'],
   transform: { '^.+\\.(js|tsx?)$': 'ts-jest' },
+  transformIgnorePatterns: ['/node_modules/(?!@faker-js)'],
 }
