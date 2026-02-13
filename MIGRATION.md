@@ -2,6 +2,12 @@
 
 Details relating to major changes that aren't presently in `CHANGELOG.md`, due to limitations with how that file is being generated.
 
+## v17.0.0
+
+**Changed**
+
+- [`@tanem/svg-injector`](https://github.com/tanem/svg-injector) updated to v11 (see [migration notes](https://github.com/tanem/svg-injector/blob/master/MIGRATION.md#v1100)). This drops explicit IE / legacy browser support. The library may still work in older browsers, but compatibility is no longer tested or guaranteed. If you need IE support, pin `@tanem/svg-injector@^10` and `react-svg@^16`.
+
 ## v16.0.0
 
 **Added**
@@ -65,7 +71,7 @@ Details relating to major changes that aren't presently in `CHANGELOG.md`, due t
 
 **Changed**
 
-- [`@tanem/svg-injector`](https://github.com/tanem/svg-injector) updated to it's latest version. This dependency had undergone significant refactoring, so even though there were no breaking API changes made to `react-svg`, it was decided to bump the major version in order to reduce the chance of breaking changes slipping into consuming code.
+- [`@tanem/svg-injector`](https://github.com/tanem/svg-injector) updated to its latest version. The dependency was significantly refactored. There were no breaking API changes to `react-svg`, but the major version was bumped to reduce the risk of unexpected breakage in consuming code.
 
 ## v7.0.0
 

@@ -12,7 +12,7 @@
 
 ## Background
 
-Let's say you have an SVG available at some URL, and you'd like to inject it into the DOM [for various reasons](https://github.com/tanem/svg-injector#background). This module does the heavy lifting for you by delegating the process to [@tanem/svg-injector](https://github.com/tanem/svg-injector), which makes an AJAX request for the SVG and then swaps in the SVG markup inline. The async loaded SVG is also cached, so multiple uses of an SVG only require a single server request.
+This component uses [@tanem/svg-injector](https://github.com/tanem/svg-injector) to fetch an SVG from a given URL and inject its markup into the DOM ([why?](https://github.com/tanem/svg-injector#background)). Fetched SVGs are cached, so multiple uses of the same SVG only require a single request.
 
 ## Basic Usage
 
@@ -58,7 +58,7 @@ root.render(<ReactSVG src="svg.svg" />)
 - `httpRequestWithCredentials` - _Optional_ Boolean indicating if cross-site Access-Control requests for the SVG should be made using credentials. Defaults to `false`.
 - `loading` - _Optional_ Component to use during loading. Can be a string, class component, or function component. Defaults to `null`.
 - `onError(error)` - _Optional_ Function to call if an error occurs during injection, or if errors are thrown from the `beforeInjection` or `afterInjection` functions. `error` is an `unknown` object. Defaults to `() => {}`.
-- `renumerateIRIElements` - _Optional_ Boolean indicating if SVG IRI addressable elements should be renumerated. Defaults to `true`.
+- `renumerateIRIElements` - _Optional_ Boolean indicating if SVG IRI addressable elements should be renumerated. Defaults to `true`. When enabled, IDs on IRI-addressable elements (`clipPath`, `linearGradient`, `mask`, `path`, etc.) are made unique, and all references to them — presentation attributes, `href`/`xlink:href`, inline `style` attributes, and `<style>` element text — are updated. Note: all matching element types are renumerated, not only those inside `<defs>`. Set to `false` if you need to query injected elements by their original IDs.
 - `title` - _Optional_ String used for SVG `<title>` element content. If a `<title>` exists it will be replaced, otherwise a new `<title>` is created. Defaults to `''`, which is a noop.
 - `useRequestCache` - _Optional_ Use SVG request cache. Defaults to `true`.
 - `wrapper` - _Optional_ Wrapper element types. One of `'div'`, `'span'` or `'svg'`. Defaults to `'div'`.
@@ -98,8 +98,6 @@ Other non-documented properties are applied to the outermost wrapper element.
 
 ## Installation
 
-> ⚠️This library depends on [@tanem/svg-injector](https://github.com/tanem/svg-injector), which uses [`Array.from()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from). If you're targeting [browsers that don't support that method](https://kangax.github.io/compat-table/es6/#test-Array_static_methods), you'll need to ensure an appropriate polyfill is included manually. See [this issue comment](https://github.com/tanem/svg-injector/issues/97#issuecomment-483365473) for further detail.
-
 ```
 $ npm install react-svg
 ```
@@ -128,7 +126,7 @@ For the minified production version, make sure you have already included:
 Why are there two wrapping elements?
 </summary>
 
-This module delegates it's core behaviour to [@tanem/svg-injector](https://github.com/tanem/svg-injector), which requires the presence of a parent node when swapping in the SVG element. The swapping in occurs outside of React flow, so we don't want React updates to conflict with the DOM nodes `@tanem/svg-injector` is managing.
+This module delegates its core behaviour to [@tanem/svg-injector](https://github.com/tanem/svg-injector), which requires a parent node when swapping in the SVG element. The swap occurs outside of React flow, so we don't want React updates to conflict with the DOM nodes `@tanem/svg-injector` is managing.
 
 Example output, assuming a `div` wrapper:
 
