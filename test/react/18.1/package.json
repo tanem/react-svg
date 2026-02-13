@@ -1,8 +1,0 @@
-{
-  "private": true,
-  "devDependencies": {
-    "@testing-library/react": "13.x",
-    "react": "18.1.x",
-    "react-dom": "18.1.x"
-  }
-}
