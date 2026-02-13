@@ -1,5 +1,21 @@
 # Changelog
 
+## [v17.0.0](https://github.com/tanem/react-svg/tree/v17.0.0) (2026-02-13)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v16.4.2...v17.0.0)
+
+#### :boom: Breaking Change
+
+- [#3547](https://github.com/tanem/react-svg/pull/3547) Update @tanem/svg-injector to new major, update & clean up deps, address audit issues ([@tanem](https://github.com/tanem))
+
+#### :house: Internal
+
+- [#3550](https://github.com/tanem/react-svg/pull/3550) Improve workflows ([@tanem](https://github.com/tanem))
+- [#3548](https://github.com/tanem/react-svg/pull/3548) Update dependency @types/node to v24.10.13 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#3546](https://github.com/tanem/react-svg/pull/3546) Update typescript-eslint monorepo to v8.55.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#3545](https://github.com/tanem/react-svg/pull/3545) Update dependency tanem-scripts to v8.0.2 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#3544](https://github.com/tanem/react-svg/pull/3544) Update dependency styled-components to v6.3.9 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#3543](https://github.com/tanem/react-svg/pull/3543) Update dependency @types/node to v24.10.12 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v16.4.2](https://github.com/tanem/react-svg/tree/v16.4.2) (2026-02-09)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v16.4.1...v16.4.2)
 
