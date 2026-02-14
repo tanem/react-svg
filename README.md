@@ -49,7 +49,7 @@ root.render(<ReactSVG src="svg.svg" />)
 
 **Props**
 
-- `src` - The SVG URL.
+- `src` - The SVG URL. Must be a fetchable URL (relative or absolute): `data:` URIs and inline SVG strings are not supported.
 - `afterInjection(svg)` - _Optional_ Function to call after the SVG is injected. `svg` is the injected SVG DOM element. If an error occurs during execution it will be routed to the `onError` callback, and if a `fallback` is specified it will be rendered. Defaults to `() => {}`.
 - `beforeInjection(svg)` - _Optional_ Function to call just before the SVG is injected. `svg` is the SVG DOM element which is about to be injected. If an error occurs during execution it will be routed to the `onError` callback, and if a `fallback` is specified it will be rendered. Defaults to `() => {}`.
 - `desc` - _Optional_ String used for SVG `<desc>` element content. If a `<desc>` exists it will be replaced, otherwise a new `<desc>` is created. When set, a unique `id` is added to the `<desc>` element and `aria-describedby` is set on the SVG for assistive technology. Defaults to `''`, which is a noop.
@@ -148,6 +148,20 @@ Related issues and PRs:
 - [#30](https://github.com/tanem/react-svg/issues/30).
 - [#36](https://github.com/tanem/react-svg/pull/36).
 - [#48](https://github.com/tanem/react-svg/issues/48).
+
+</details>
+
+<details>
+
+<summary>
+Can I use data URIs or inline SVG strings?
+</summary>
+
+No. The `src` prop must be a fetchable URL. Under the hood, [@tanem/svg-injector](https://github.com/tanem/svg-injector) uses `XMLHttpRequest` to fetch the SVG, so `data:image/svg+xml;base64,...` and `data:image/svg+xml,...` sources are not supported.
+
+If you already have the SVG markup as a string (for example, a dynamically generated chart), consider parsing it with `DOMParser` and appending the result yourself, or rendering it with `dangerouslySetInnerHTML`. These approaches avoid the fetch step entirely and will also avoid the brief flash that occurs when `react-svg` re-injects on `src` change.
+
+**Security note:** inserting SVG strings into the DOM bypasses React's built-in sanitisation and can expose your application to XSS if the content is not trusted. If the SVG originates from user input or a third party, sanitise it first with a library like [DOMPurify](https://github.com/cure53/DOMPurify) before inserting it into the page.
 
 </details>
 
