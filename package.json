@@ -4,7 +4,6 @@
   "description": "A React component that injects SVG into the DOM.",
   "main": "dist/index.js",
   "module": "dist/react-svg.esm.js",
-  "jsnext:main": "dist/react-svg.esm.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -68,8 +67,6 @@
     "@babel/plugin-transform-runtime": "7.29.0",
     "@babel/preset-env": "7.29.0",
     "@babel/preset-react": "7.28.5",
-    "@eslint/compat": "2.0.2",
-    "@eslint/eslintrc": "3.3.3",
     "@eslint/js": "9.39.2",
     "@faker-js/faker": "10.3.0",
     "@rollup/plugin-babel": "6.1.0",
@@ -84,14 +81,13 @@
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@types/shelljs": "0.10.0",
-    "@typescript-eslint/eslint-plugin": "8.55.0",
-    "@typescript-eslint/parser": "8.55.0",
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
     "eslint": "9.39.2",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-hooks": "7.0.1",
     "eslint-plugin-simple-import-sort": "12.1.1",
+    "globals": "^17.3.0",
     "jest": "30.2.0",
     "jest-environment-jsdom": "30.2.0",
     "nock": "13.5.6",
@@ -105,6 +101,7 @@
     "tanem-scripts": "8.0.2",
     "ts-jest": "29.4.6",
     "ts-node": "10.9.2",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "typescript-eslint": "^8.55.0"
   }
 }

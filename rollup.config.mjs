@@ -96,7 +96,6 @@ const getPlugins = (bundleType) => [
       ecma: 5,
       output: { comments: false },
       toplevel: false,
-      warnings: true,
     }),
 ]
 
