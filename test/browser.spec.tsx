@@ -461,6 +461,9 @@ describe('while running in a browser environment', () => {
     )
   })
 
+  // A11y tests use structural assertions (aria-labelledby === titleEl.id)
+  // rather than snapshots, because the generated IDs contain a random prefix
+  // that changes per test run.
   it("should add desc and title elements if they don't already exist", async () => {
     faker.seed(140)
     const uuid = faker.string.uuid()
@@ -481,7 +484,16 @@ describe('while running in a browser environment', () => {
       expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
 
-    expect(container.innerHTML).toMatchSnapshot()
+    const svg = container.querySelector('.injected-svg')!
+    const titleEl = svg.querySelector(':scope > title')
+    const descEl = svg.querySelector(':scope > desc')
+
+    expect(titleEl).not.toBeNull()
+    expect(titleEl!.textContent).toBe('Title')
+    expect(descEl).not.toBeNull()
+    expect(descEl!.textContent).toBe('Description')
+    expect(svg.getAttribute('aria-labelledby')).toBe(titleEl!.id)
+    expect(svg.getAttribute('aria-describedby')).toBe(descEl!.id)
   })
 
   it('should replace desc and title elements if they already exist', async () => {
@@ -504,7 +516,98 @@ describe('while running in a browser environment', () => {
       expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
     )
 
-    expect(container.innerHTML).toMatchSnapshot()
+    const svg = container.querySelector('.injected-svg')!
+    const titleEl = svg.querySelector(':scope > title')
+    const descEl = svg.querySelector(':scope > desc')
+
+    expect(titleEl).not.toBeNull()
+    expect(titleEl!.textContent).toBe('New title')
+    expect(descEl).not.toBeNull()
+    expect(descEl!.textContent).toBe('New description')
+    expect(svg.getAttribute('aria-labelledby')).toBe(titleEl!.id)
+    expect(svg.getAttribute('aria-describedby')).toBe(descEl!.id)
+
+    // Child-level title/desc (e.g. on <path>) should be untouched.
+    expect(svg.querySelectorAll('title')).toHaveLength(2)
+    expect(svg.querySelectorAll('desc')).toHaveLength(2)
+  })
+
+  it('should add only a title element and aria-labelledby when only title is provided', async () => {
+    faker.seed(147)
+    const uuid = faker.string.uuid()
+
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { container } = render(
+      <ReactSVG src={`http://localhost/${uuid}.svg`} title="Only a title" />,
+    )
+
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
+    )
+
+    const svg = container.querySelector('.injected-svg')!
+    const titleEl = svg.querySelector(':scope > title')
+
+    expect(titleEl).not.toBeNull()
+    expect(titleEl!.textContent).toBe('Only a title')
+    expect(svg.getAttribute('aria-labelledby')).toBe(titleEl!.id)
+    expect(svg.getAttribute('aria-describedby')).toBeNull()
+    expect(svg.querySelector(':scope > desc')).toBeNull()
+  })
+
+  it('should add only a desc element and aria-describedby when only desc is provided', async () => {
+    faker.seed(148)
+    const uuid = faker.string.uuid()
+
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { container } = render(
+      <ReactSVG
+        desc="Only a description"
+        src={`http://localhost/${uuid}.svg`}
+      />,
+    )
+
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
+    )
+
+    const svg = container.querySelector('.injected-svg')!
+    const descEl = svg.querySelector(':scope > desc')
+
+    expect(descEl).not.toBeNull()
+    expect(descEl!.textContent).toBe('Only a description')
+    expect(svg.getAttribute('aria-describedby')).toBe(descEl!.id)
+    expect(svg.getAttribute('aria-labelledby')).toBeNull()
+    expect(svg.querySelector(':scope > title')).toBeNull()
+  })
+
+  it('should not add aria attributes when neither title nor desc is provided', async () => {
+    faker.seed(149)
+    const uuid = faker.string.uuid()
+
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { container } = render(
+      <ReactSVG src={`http://localhost/${uuid}.svg`} />,
+    )
+
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
+    )
+
+    const svg = container.querySelector('.injected-svg')!
+    expect(svg.getAttribute('aria-labelledby')).toBeNull()
+    expect(svg.getAttribute('aria-describedby')).toBeNull()
+    expect(svg.querySelector(':scope > title')).toBeNull()
+    expect(svg.querySelector(':scope > desc')).toBeNull()
   })
 
   // React.forwardRef was added in 16.3. Skip this test on earlier versions

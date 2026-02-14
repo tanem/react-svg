@@ -9,6 +9,12 @@ import type { Props, State, WrapperType } from './types'
 const svgNamespace = 'http://www.w3.org/2000/svg'
 const xlinkNamespace = 'http://www.w3.org/1999/xlink'
 
+// Random prefix avoids ID collisions when multiple copies of react-svg are
+// bundled (e.g. microfrontends). The counter ensures each component instance
+// within the same bundle gets a unique ID.
+const idPrefix = `react-svg-${Math.random().toString(36).slice(2, 6)}`
+let idCounter = 0
+
 export class ReactSVG extends React.Component<Props, State> {
   static defaultProps = {
     afterInjection: () => undefined,
@@ -143,27 +149,57 @@ export class ReactSVG extends React.Component<Props, State> {
         }
       }
 
+      // WAI best practice: SVGs need role="img" plus aria-labelledby/
+      // aria-describedby pointing to <title>/<desc> element IDs for screen
+      // readers to announce them. svg-injector copies the HTML title
+      // *attribute* (tooltip) but doesn't create SVG-namespace child
+      // elements or ARIA linkage, so we handle that here.
       const beforeEach = (svg: SVGSVGElement): void => {
         svg.setAttribute('role', 'img')
 
-        if (desc) {
-          const originalDesc = svg.querySelector(':scope > desc')
-          if (originalDesc) {
-            svg.removeChild(originalDesc)
-          }
-          const newDesc = document.createElement('desc')
-          newDesc.innerHTML = desc
-          svg.prepend(newDesc)
-        }
+        const ariaLabelledBy: string[] = []
+        const ariaDescribedBy: string[] = []
 
         if (title) {
           const originalTitle = svg.querySelector(':scope > title')
           if (originalTitle) {
             svg.removeChild(originalTitle)
           }
-          const newTitle = document.createElement('title')
-          newTitle.innerHTML = title
+          const titleId = `${idPrefix}-title-${++idCounter}`
+          // createElementNS is required: createElement would produce an
+          // HTML-namespace node that screen readers ignore inside SVG.
+          const newTitle = document.createElementNS(svgNamespace, 'title')
+          newTitle.id = titleId
+          newTitle.textContent = title
           svg.prepend(newTitle)
+          ariaLabelledBy.push(titleId)
+        }
+
+        if (desc) {
+          const originalDesc = svg.querySelector(':scope > desc')
+          if (originalDesc) {
+            svg.removeChild(originalDesc)
+          }
+          const descId = `${idPrefix}-desc-${++idCounter}`
+          const newDesc = document.createElementNS(svgNamespace, 'desc')
+          newDesc.id = descId
+          newDesc.textContent = desc
+          // Insert after <title> if present, otherwise prepend.
+          const existingTitle = svg.querySelector(':scope > title')
+          if (existingTitle) {
+            existingTitle.after(newDesc)
+          } else {
+            svg.prepend(newDesc)
+          }
+          ariaDescribedBy.push(descId)
+        }
+
+        if (ariaLabelledBy.length > 0) {
+          svg.setAttribute('aria-labelledby', ariaLabelledBy.join(' '))
+        }
+
+        if (ariaDescribedBy.length > 0) {
+          svg.setAttribute('aria-describedby', ariaDescribedBy.join(' '))
         }
 
         try {
