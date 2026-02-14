@@ -1,5 +1,25 @@
 # Changelog
 
+## [v17.0.1](https://github.com/tanem/react-svg/tree/v17.0.1) (2026-02-14)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v17.0.0...v17.0.1)
+
+#### :bug: Bug Fix
+
+- [#3558](https://github.com/tanem/react-svg/pull/3558) Fix ForwardedRef not assignable to ref type (#2753) ([@tanem](https://github.com/tanem))
+
+#### :memo: Documentation
+
+- [#3553](https://github.com/tanem/react-svg/pull/3553) Add copilot instructions ([@tanem](https://github.com/tanem))
+
+#### :house: Internal
+
+- [#3557](https://github.com/tanem/react-svg/pull/3557) Pin dependencies ([@renovate[bot]](https://github.com/apps/renovate))
+- [#3556](https://github.com/tanem/react-svg/pull/3556) Modernise ESLint config and simplify tooling setup ([@tanem](https://github.com/tanem))
+- [#3555](https://github.com/tanem/react-svg/pull/3555) Modernise TypeScript configuration for TS 5.9 ([@tanem](https://github.com/tanem))
+- [#3554](https://github.com/tanem/react-svg/pull/3554) Test matrix improvements ([@tanem](https://github.com/tanem))
+- [#3552](https://github.com/tanem/react-svg/pull/3552) Update dependency react-frame-component to v5.2.7 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#3551](https://github.com/tanem/react-svg/pull/3551) Pin dependencies ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v17.0.0](https://github.com/tanem/react-svg/tree/v17.0.0) (2026-02-13)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v16.4.2...v17.0.0)
 
