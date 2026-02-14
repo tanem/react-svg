@@ -140,7 +140,7 @@ Example output, assuming a `div` wrapper:
 
 See:
 
-- [Integrating with Other Libraries](https://reactjs.org/docs/integrating-with-other-libraries.html).
+- [Integrating with Other Libraries](https://legacy.reactjs.org/docs/integrating-with-other-libraries.html).
 
 Related issues and PRs:
 
