@@ -1,5 +1,12 @@
 # Changelog
 
+## [v17.0.3](https://github.com/tanem/react-svg/tree/v17.0.3) (2026-02-14)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v17.0.2...v17.0.3)
+
+#### :bug: Bug Fix
+
+- [#3561](https://github.com/tanem/react-svg/pull/3561) Fix accessibility for title and desc props ([@tanem](https://github.com/tanem))
+
 ## [v17.0.2](https://github.com/tanem/react-svg/tree/v17.0.2) (2026-02-14)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v17.0.1...v17.0.2)
 
