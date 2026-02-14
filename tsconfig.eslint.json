@@ -1,9 +1,0 @@
-{
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "allowJs": true,
-    "checkJs": true
-  },
-  "include": ["config", "examples", "scripts", "src", "test"],
-  "files": ["eslint.config.mjs", "index.js", "rollup.config.mjs"]
-}

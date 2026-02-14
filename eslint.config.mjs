@@ -1,24 +1,12 @@
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
-
-import { fixupPluginRules } from '@eslint/compat'
-import { FlatCompat } from '@eslint/eslintrc'
-import js from '@eslint/js'
-import typescriptEslint from '@typescript-eslint/eslint-plugin'
-import tsParser from '@typescript-eslint/parser'
+import eslint from '@eslint/js'
+import eslintConfigPrettier from 'eslint-config-prettier'
 import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
+import globals from 'globals'
+import tseslint from 'typescript-eslint'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-const compat = new FlatCompat({
-  allConfig: js.configs.all,
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-})
-
-export default [
+export default tseslint.config(
   {
     ignores: [
       '**/build/',
@@ -28,37 +16,18 @@ export default [
       '**/node_modules/',
     ],
   },
-  ...compat.extends(
-    'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'prettier',
-  ),
+  eslint.configs.recommended,
+  ...tseslint.configs.recommended,
+  react.configs.flat.recommended,
   {
-    languageOptions: {
-      ecmaVersion: 'latest',
-      parser: tsParser,
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-        project: 'tsconfig.eslint.json',
-        sourceType: 'module',
-      },
-    },
-
     plugins: {
-      '@typescript-eslint': typescriptEslint,
-      react,
-      'react-hooks': fixupPluginRules(reactHooks),
+      'react-hooks': reactHooks,
       'simple-import-sort': simpleImportSort,
     },
 
     rules: {
-      '@typescript-eslint/explicit-module-boundary-types': 'off',
-      'react-hooks/exhaustive-deps': 'warn',
-      'react-hooks/rules-of-hooks': 'error',
+      ...reactHooks.configs['recommended-latest'].rules,
       'react/jsx-sort-props': 'error',
-      'react/jsx-uses-react': 'off',
       'react/react-in-jsx-scope': 'off',
       'simple-import-sort/exports': 'error',
       'simple-import-sort/imports': 'error',
@@ -73,10 +42,29 @@ export default [
     },
   },
   {
-    files: ['**/*.js', '**/node.spec.ts'],
+    files: ['**/*.js'],
+
+    languageOptions: {
+      globals: globals.node,
+    },
 
     rules: {
       '@typescript-eslint/no-require-imports': 'off',
     },
   },
-]
+  {
+    files: ['examples/**/src/**/*.js'],
+
+    languageOptions: {
+      globals: globals.browser,
+    },
+  },
+  {
+    files: ['**/node.spec.ts'],
+
+    rules: {
+      '@typescript-eslint/no-require-imports': 'off',
+    },
+  },
+  eslintConfigPrettier,
+)
