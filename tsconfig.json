@@ -5,6 +5,7 @@
     "allowJs": true,
     "declaration": false,
     "declarationDir": null,
-    "module": "commonjs"
+    "module": "commonjs",
+    "moduleResolution": "node"
   }
 }

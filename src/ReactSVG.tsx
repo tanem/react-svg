@@ -4,7 +4,7 @@ import * as React from 'react'
 
 import ownerWindow from './owner-window'
 import shallowDiffers from './shallow-differs'
-import { Props, State, WrapperType } from './types'
+import type { Props, State, WrapperType } from './types'
 
 const svgNamespace = 'http://www.w3.org/2000/svg'
 const xlinkNamespace = 'http://www.w3.org/1999/xlink'
@@ -79,7 +79,6 @@ export class ReactSVG extends React.Component<Props, State> {
         useRequestCache,
       } = this.props
 
-      /* eslint-disable @typescript-eslint/no-non-null-assertion */
       const onError = this.props.onError!
       const beforeInjection = this.props.beforeInjection!
       const afterInjection = this.props.afterInjection!
@@ -233,7 +232,6 @@ export class ReactSVG extends React.Component<Props, State> {
     } = this.props
     /* eslint-enable @typescript-eslint/no-unused-vars */
 
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const Wrapper = wrapper!
 
     return (
