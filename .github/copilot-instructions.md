@@ -3,7 +3,7 @@
 ## General Rules
 
 - Use NZ English in all code comments, docs, markdown, and commit messages (e.g. "colour", "behaviour", "initialise").
-- Prefer single-line commit messages. Follow the style in `git log --oneline`.
+- Prefer single-line commit messages for straightforward changes (dependency updates, typo fixes, obvious refactors). For type system changes, core behaviour changes, or anything non-obvious in `git blame`, add a commit body explaining "why". Follow the style in `git log --oneline`.
 - After any change, update related docs, instructions, and markdown files in the same commit.
 - Keep prose factual and concise. No marketing speak or hyperbole.
 
