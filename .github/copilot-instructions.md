@@ -75,8 +75,15 @@ When a new React major is released or `peerDependencies` is widened:
 4. Run the single-version suite to verify before running the full matrix.
 5. Update the boundary table above.
 
+## Dependencies
+
+Renovate manages dependency updates (`renovate.json`). Follow these conventions when adding or updating dependencies manually:
+
+- **`devDependencies`**: pin to exact versions (no range prefix), e.g. `"jest": "30.2.0"`.
+- **`dependencies`**: use caret ranges, e.g. `"prop-types": "^15.8.1"`. Renovate's `"bump"` strategy keeps the version current within the range.
+
 ## Conventions
 
 - PropTypes and TypeScript types are maintained in parallel — update both when changing props.
 - Import sorting is enforced by `eslint-plugin-simple-import-sort` (externals first, then relative).
-- `src/types.ts` `Props` extends both `React.HTMLAttributes` and `React.SVGProps` for wrapper pass-through attributes.
+- `src/types.ts` `Props` extends both `React.HTMLAttributes` and `React.SVGAttributes` for wrapper pass-through attributes. Keep the type flat to avoid excessive type depth with wrapper libraries like styled-components.
