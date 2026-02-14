@@ -1,5 +1,18 @@
 # Changelog
 
+## [v17.0.4](https://github.com/tanem/react-svg/tree/v17.0.4) (2026-02-14)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v17.0.3...v17.0.4)
+
+#### :memo: Documentation
+
+- [#3562](https://github.com/tanem/react-svg/pull/3562) docs: clarify src URL support and add FAQ guidance ([@tanem](https://github.com/tanem))
+
+#### :house: Internal
+
+- [#3564](https://github.com/tanem/react-svg/pull/3564) chore(deps): update dependency serve to v14.2.5 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#3563](https://github.com/tanem/react-svg/pull/3563) Migrate renovate config and remove example lockfiles ([@tanem](https://github.com/tanem))
+- [#3560](https://github.com/tanem/react-svg/pull/3560) chore(deps): update dependency @types/react to v19.2.14 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v17.0.3](https://github.com/tanem/react-svg/tree/v17.0.3) (2026-02-14)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v17.0.2...v17.0.3)
 
