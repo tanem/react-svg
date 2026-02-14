@@ -23,11 +23,14 @@ type SVGWrapperType = SVGSVGElement
 export type WrapperType = HTMLWrapperType | SVGWrapperType
 
 export type Props = BaseProps &
-  React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLWrapperType>,
-    HTMLWrapperType
+  Omit<
+    React.DetailedHTMLProps<
+      React.HTMLAttributes<HTMLWrapperType>,
+      HTMLWrapperType
+    >,
+    'ref'
   > &
-  React.SVGProps<SVGWrapperType>
+  Omit<React.SVGProps<SVGWrapperType>, 'ref'>
 
 export interface State {
   hasError: boolean

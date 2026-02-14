@@ -506,4 +506,36 @@ describe('while running in a browser environment', () => {
 
     expect(container.innerHTML).toMatchSnapshot()
   })
+
+  // React.forwardRef was added in 16.3. Skip this test on earlier versions
+  // where forwardRef doesn't exist.
+  ;('forwardRef' in React ? it : it.skip)(
+    'should accept a forwarded ref without type errors',
+    async () => {
+      faker.seed(146)
+      const uuid = faker.string.uuid()
+
+      nock('http://localhost')
+        .get(`/${uuid}.svg`)
+        .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+      // Repro for https://github.com/tanem/react-svg/issues/2753
+      const WrappedSVG = React.forwardRef<ReactSVG, { src: string }>(
+        function WrappedSVG(props, ref) {
+          return <ReactSVG ref={ref} src={props.src} />
+        },
+      )
+
+      const ref = React.createRef<ReactSVG>()
+      const { container } = render(
+        <WrappedSVG ref={ref} src={`http://localhost/${uuid}.svg`} />,
+      )
+
+      await waitFor(() =>
+        expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
+      )
+
+      expect(ref.current).toBeInstanceOf(ReactSVG)
+    },
+  )
 })
