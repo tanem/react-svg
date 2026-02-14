@@ -7,7 +7,7 @@
     ":rebaseStalePrs",
     ":automergeAll",
     ":label(internal)",
-    ":masterIssue",
+    ":dependencyDashboard",
     ":enableVulnerabilityAlerts"
   ],
   "ignorePaths": [
@@ -17,9 +17,10 @@
   "lockFileMaintenance": {
     "enabled": true
   },
+  "minimumReleaseAge": "3 days",
   "packageRules": [
     {
-      "depTypeList": [
+      "matchDepTypes": [
         "dependencies"
       ],
       "rangeStrategy": "bump"
@@ -36,16 +37,16 @@
       "labels": [
         "enhancement"
       ],
-      "sourceUrlPrefixes": [
-        "https://github.com/facebook/react"
+      "matchSourceUrls": [
+        "https://github.com/facebook/react**"
       ],
-      "updateTypes": [
+      "matchUpdateTypes": [
         "major",
         "minor"
       ]
     },
     {
-      "matchPaths": [
+      "matchFileNames": [
         "examples/typescript/package.json",
         "examples/styled-components/package.json"
       ],
@@ -54,6 +55,5 @@
       ],
       "allowedVersions": "< 5.0.0"
     }
-  ],
-  "stabilityDays": 3
+  ]
 }

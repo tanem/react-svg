@@ -5,4 +5,5 @@ build
 compiled
 coverage
 dist
+examples/*/package-lock.json
 node_modules
