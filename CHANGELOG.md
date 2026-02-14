@@ -1,5 +1,12 @@
 # Changelog
 
+## [v17.0.2](https://github.com/tanem/react-svg/tree/v17.0.2) (2026-02-14)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v17.0.1...v17.0.2)
+
+#### :bug: Bug Fix
+
+- [#3559](https://github.com/tanem/react-svg/pull/3559) Simplify Props type to avoid TS2589 with styled-components ([@tanem](https://github.com/tanem))
+
 ## [v17.0.1](https://github.com/tanem/react-svg/tree/v17.0.1) (2026-02-14)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v17.0.0...v17.0.1)
 
