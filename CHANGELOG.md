@@ -1,5 +1,12 @@
 # Changelog
 
+## [v17.1.0](https://github.com/tanem/react-svg/tree/v17.1.0) (2026-02-15)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v17.0.4...v17.1.0)
+
+#### :rocket: Enhancement
+
+- [#3565](https://github.com/tanem/react-svg/pull/3565) Add sprite support tests, example, and docs ([@tanem](https://github.com/tanem))
+
 ## [v17.0.4](https://github.com/tanem/react-svg/tree/v17.0.4) (2026-02-14)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v17.0.3...v17.0.4)
 
