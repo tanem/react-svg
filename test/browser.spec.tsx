@@ -7,6 +7,7 @@ import { ReactSVG } from '../src'
 import a11ySource from './a11y-source.fixture'
 import iriSource from './iri-source.fixture'
 import source from './source.fixture'
+import spriteSource from './sprite-source.fixture'
 
 // NOTE: Even though we're always responding with `source`, we use different
 // `src` values when mounting within each test so that SVGInjector doesn't use
@@ -641,4 +642,100 @@ describe('while running in a browser environment', () => {
       expect(ref.current).toBeInstanceOf(ReactSVG)
     },
   )
+
+  describe('sprite support', () => {
+    it('should extract a single symbol from a sprite', async () => {
+      faker.seed(150)
+      const uuid = faker.string.uuid()
+
+      nock('http://localhost')
+        .get(`/${uuid}.svg`)
+        .reply(200, spriteSource, { 'Content-Type': 'image/svg+xml' })
+
+      const { container } = render(
+        <ReactSVG src={`http://localhost/${uuid}.svg#icon-star`} />,
+      )
+
+      await waitFor(() =>
+        expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
+      )
+
+      expect(container.innerHTML).toMatchSnapshot()
+    })
+
+    it('should extract different symbols from the same sprite', async () => {
+      faker.seed(151)
+      const uuid = faker.string.uuid()
+
+      nock('http://localhost')
+        .get(`/${uuid}.svg`)
+        .times(2)
+        .reply(200, spriteSource, { 'Content-Type': 'image/svg+xml' })
+
+      const { container } = render(
+        <div>
+          <ReactSVG src={`http://localhost/${uuid}.svg#icon-star`} />
+          <ReactSVG src={`http://localhost/${uuid}.svg#icon-heart`} />
+        </div>,
+      )
+
+      await waitFor(() =>
+        expect(container.querySelectorAll('.injected-svg')).toHaveLength(2),
+      )
+
+      expect(container.innerHTML).toMatchSnapshot()
+    })
+
+    it('should handle symbol not found in sprite', async () => {
+      faker.seed(152)
+      const uuid = faker.string.uuid()
+
+      nock('http://localhost')
+        .get(`/${uuid}.svg`)
+        .reply(200, spriteSource, { 'Content-Type': 'image/svg+xml' })
+
+      const handleError = jest.fn()
+
+      const { container } = render(
+        <ReactSVG
+          onError={handleError}
+          src={`http://localhost/${uuid}.svg#nonexistent`}
+        />,
+      )
+
+      await waitFor(() => expect(handleError).toHaveBeenCalledTimes(1))
+
+      expect(handleError).toHaveBeenCalledWith(
+        expect.objectContaining({
+          message: expect.stringContaining('nonexistent'),
+        }),
+      )
+
+      // No SVG should be injected when the symbol is not found.
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(0)
+    })
+
+    it('should inject the same symbol multiple times', async () => {
+      faker.seed(153)
+      const uuid = faker.string.uuid()
+
+      nock('http://localhost')
+        .get(`/${uuid}.svg`)
+        .times(2)
+        .reply(200, spriteSource, { 'Content-Type': 'image/svg+xml' })
+
+      const { container } = render(
+        <div>
+          <ReactSVG src={`http://localhost/${uuid}.svg#icon-heart`} />
+          <ReactSVG src={`http://localhost/${uuid}.svg#icon-heart`} />
+        </div>,
+      )
+
+      await waitFor(() =>
+        expect(container.querySelectorAll('.injected-svg')).toHaveLength(2),
+      )
+
+      expect(container.innerHTML).toMatchSnapshot()
+    })
+  })
 })

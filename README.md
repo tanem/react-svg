@@ -38,6 +38,7 @@ root.render(<ReactSVG src="svg.svg" />)
 - Iframe: [Source](https://github.com/tanem/react-svg/tree/master/examples/iframe) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/iframe)
 - Loading: [Source](https://github.com/tanem/react-svg/tree/master/examples/loading) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/loading)
 - No Extension: [Source](https://github.com/tanem/react-svg/tree/master/examples/no-extension) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/no-extension)
+- Sprite Usage: [Source](https://github.com/tanem/react-svg/tree/master/examples/sprite-usage) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/sprite-usage)
 - SSR: [Source](https://github.com/tanem/react-svg/tree/master/examples/ssr) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/ssr)
 - Styled Components: [Source](https://github.com/tanem/react-svg/tree/master/examples/styled-components) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/styled-components)
 - SVG Wrapper: [Source](https://github.com/tanem/react-svg/tree/master/examples/svg-wrapper) | [Sandbox](https://codesandbox.io/s/github/tanem/react-svg/tree/master/examples/svg-wrapper)
@@ -49,7 +50,7 @@ root.render(<ReactSVG src="svg.svg" />)
 
 **Props**
 
-- `src` - The SVG URL. Must be a fetchable URL (relative or absolute): `data:` URIs and inline SVG strings are not supported.
+- `src` - The SVG URL. Must be a fetchable URL (relative or absolute): `data:` URIs and inline SVG strings are not supported. Supports SVG sprite sheets via fragment identifiers (e.g. `sprite.svg#icon-star`): see the [sprite usage example](https://github.com/tanem/react-svg/tree/master/examples/sprite-usage).
 - `afterInjection(svg)` - _Optional_ Function to call after the SVG is injected. `svg` is the injected SVG DOM element. If an error occurs during execution it will be routed to the `onError` callback, and if a `fallback` is specified it will be rendered. Defaults to `() => {}`.
 - `beforeInjection(svg)` - _Optional_ Function to call just before the SVG is injected. `svg` is the SVG DOM element which is about to be injected. If an error occurs during execution it will be routed to the `onError` callback, and if a `fallback` is specified it will be rendered. Defaults to `() => {}`.
 - `desc` - _Optional_ String used for SVG `<desc>` element content. If a `<desc>` exists it will be replaced, otherwise a new `<desc>` is created. When set, a unique `id` is added to the `<desc>` element and `aria-describedby` is set on the SVG for assistive technology. Defaults to `''`, which is a noop.

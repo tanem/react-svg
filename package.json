@@ -58,7 +58,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.28.6",
-    "@tanem/svg-injector": "^11.1.1",
+    "@tanem/svg-injector": "^11.2.0",
     "@types/prop-types": "^15.7.15",
     "prop-types": "^15.8.1"
   },
@@ -82,6 +82,7 @@
     "@types/react-dom": "19.2.3",
     "@types/shelljs": "0.10.0",
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
+    "css.escape": "1.5.1",
     "eslint": "9.39.2",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-react": "7.37.5",
