@@ -1,3 +1,7 @@
+// Polyfill CSS.escape for jsdom, which does not provide it natively.
+// svg-injector uses CSS.escape in extractSymbol for sprite support.
+import 'css.escape'
+
 const originalError = console.error
 
 beforeAll(() => {

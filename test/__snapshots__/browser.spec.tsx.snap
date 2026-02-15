@@ -201,3 +201,25 @@ exports[`while running in a browser environment should update correctly 1`] = `
     <path d="M11.057.665C8.71 2.04 7.9 5.112 9.254 7.493l4.252 7.473 4.26-7.48c1.267-2.225.64-5.053-1.36-6.536A4.933 4.933 0 0 0 13.503 0c-.834 0-1.677.214-2.447.665z" fill="#83E7FF"></path>
   </svg></div></div>"
 `;
+
+exports[`while running in a browser environment sprite support should extract a single symbol from a sprite 1`] = `
+"<div><div><svg viewBox="0 0 10 10" class="injected-svg" data-src="http://localhost/e4ebb8fe-1c1a-4136-93f6-b778691d4739.svg#icon-star" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+    <polygon points="5,0 6.5,3 10,3.5 7.5,6 8,10 5,8.5 2,10 2.5,6 0,3.5 3.5,3"></polygon>
+  </svg></div></div>"
+`;
+
+exports[`while running in a browser environment sprite support should extract different symbols from the same sprite 1`] = `
+"<div><div><div><svg viewBox="0 0 10 10" class="injected-svg" data-src="http://localhost/c24c9cfc-7899-4f63-af1e-e9e07e0cdf91.svg#icon-star" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+    <polygon points="5,0 6.5,3 10,3.5 7.5,6 8,10 5,8.5 2,10 2.5,6 0,3.5 3.5,3"></polygon>
+  </svg></div></div><div><div><svg viewBox="0 0 12 12" class="injected-svg" data-src="http://localhost/c24c9cfc-7899-4f63-af1e-e9e07e0cdf91.svg#icon-heart" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+    <path d="M6 2C4.5.5 2 .5 1 2s-.5 3.5 1 5l4 4 4-4c1.5-1.5 2-3.5 1-5s-3.5-1.5-5 0z"></path>
+  </svg></div></div></div>"
+`;
+
+exports[`while running in a browser environment sprite support should inject the same symbol multiple times 1`] = `
+"<div><div><div><svg viewBox="0 0 12 12" class="injected-svg" data-src="http://localhost/28707c37-84ca-4c6a-a832-92e09c871735.svg#icon-heart" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+    <path d="M6 2C4.5.5 2 .5 1 2s-.5 3.5 1 5l4 4 4-4c1.5-1.5 2-3.5 1-5s-3.5-1.5-5 0z"></path>
+  </svg></div></div><div><div><svg viewBox="0 0 12 12" class="injected-svg" data-src="http://localhost/28707c37-84ca-4c6a-a832-92e09c871735.svg#icon-heart" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+    <path d="M6 2C4.5.5 2 .5 1 2s-.5 3.5 1 5l4 4 4-4c1.5-1.5 2-3.5 1-5s-3.5-1.5-5 0z"></path>
+  </svg></div></div></div>"
+`;
