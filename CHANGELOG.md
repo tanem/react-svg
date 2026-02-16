@@ -1,5 +1,12 @@
 # Changelog
 
+## [v17.1.1](https://github.com/tanem/react-svg/tree/v17.1.1) (2026-02-16)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v17.1.0...v17.1.1)
+
+#### :house: Internal
+
+- [#3566](https://github.com/tanem/react-svg/pull/3566) fix(deps): update dependency wait-on to v9.0.4 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v17.1.0](https://github.com/tanem/react-svg/tree/v17.1.0) (2026-02-15)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v17.0.4...v17.1.0)
 
