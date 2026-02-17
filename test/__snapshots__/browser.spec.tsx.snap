@@ -28,6 +28,16 @@ exports[`while running in a browser environment allows rendering of svg wrappers
   </svg></svg></svg>"
 `;
 
+exports[`while running in a browser environment data URL support should inject a data URL sprite with a fragment identifier 1`] = `
+"<div><div><svg viewBox="0 0 10 10" class="injected-svg" data-src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Csymbol%20id%3D%22icon-star%22%20viewBox%3D%220%200%2010%2010%22%3E%0A%20%20%20%20%3Cpolygon%20points%3D%225%2C0%206.5%2C3%2010%2C3.5%207.5%2C6%208%2C10%205%2C8.5%202%2C10%202.5%2C6%200%2C3.5%203.5%2C3%22%3E%3C%2Fpolygon%3E%0A%20%20%3C%2Fsymbol%3E%0A%20%20%3Csymbol%20id%3D%22icon-heart%22%20viewBox%3D%220%200%2012%2012%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M6%202C4.5.5%202%20.5%201%202s-.5%203.5%201%205l4%204%204-4c1.5-1.5%202-3.5%201-5s-3.5-1.5-5%200z%22%3E%3C%2Fpath%3E%0A%20%20%3C%2Fsymbol%3E%0A%3C%2Fsvg%3E#icon-star" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
+    <polygon points="5,0 6.5,3 10,3.5 7.5,6 8,10 5,8.5 2,10 2.5,6 0,3.5 3.5,3"></polygon>
+  </svg></div></div>"
+`;
+
+exports[`while running in a browser environment data URL support should inject from a URL-encoded data URL 1`] = `"<div><div><svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" class="injected-svg" data-src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%228%22%20height%3D%228%22%20viewBox%3D%220%200%208%208%22%3E%3Cpath%20d%3D%22M5%201L3%203H1V7H3L5%209V1Z%22%2F%3E%3C%2Fsvg%3E" xmlns:xlink="http://www.w3.org/1999/xlink" role="img"><path d="M5 1L3 3H1V7H3L5 9V1Z"></path></svg></div></div>"`;
+
+exports[`while running in a browser environment data URL support should inject from a base64-encoded data URL 1`] = `"<div><div><svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCA4IDgiPjxwYXRoIGQ9Ik01IDFMMyAzSDFWN0gzTDUgOVYxWiIvPjwvc3ZnPg==" xmlns:xlink="http://www.w3.org/1999/xlink" role="img"><path d="M5 1L3 3H1V7H3L5 9V1Z"></path></svg></div></div>"`;
+
 exports[`while running in a browser environment re-renders correctly into the same container 1`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><svg height="26" viewBox="0 0 115 26" width="115" xmlns="http://www.w3.org/2000/svg" class="injected-svg" data-src="http://localhost/f1bb78e1-d5fc-4cbc-90d8-1aede87d83a8" xmlns:xlink="http://www.w3.org/1999/xlink" role="img">
     <g fill="#FFF">
