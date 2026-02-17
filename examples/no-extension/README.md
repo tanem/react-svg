@@ -1,6 +1,7 @@
 # ReactSVG No Extension Example
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+Demonstrates that react-svg handles SVG files served without a file extension,
+provided the server responds with an appropriate content type.
 
 ## Available Scripts
 
@@ -8,4 +9,5 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Serves the app production build.<br>
+Builds the app with Vite, starts an Express server on port 8080, and opens the
+browser automatically.

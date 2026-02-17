@@ -4,29 +4,21 @@
   "keywords": [
     "react-svg"
   ],
-  "main": "src/index.tsx",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "react-scripts": "5.0.1",
     "react-svg": "latest"
   },
   "scripts": {
-    "start": "react-scripts start"
+    "start": "vite"
   },
   "devDependencies": {
-    "@types/jest": "30.0.0",
-    "@types/node": "24.10.13",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
-    "typescript": "4.9.5"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+    "@vitejs/plugin-react": "5.1.4",
+    "typescript": "5.9.3",
+    "vite": "7.3.1"
+  }
 }

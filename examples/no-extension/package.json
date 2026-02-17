@@ -12,22 +12,19 @@
     "open-cli": "8.0.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "react-scripts": "5.0.1",
     "react-svg": "latest",
     "wait-on": "9.0.4"
   },
   "scripts": {
-    "build": "react-scripts build",
+    "build": "vite build",
     "open": "open-cli http://localhost:8080",
     "serve": "node serve",
     "start": "npm-run-all build -p serve wait-and-open",
     "wait": "wait-on http-get://localhost:8080",
     "wait-and-open": "run-s wait open"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "devDependencies": {
+    "@vitejs/plugin-react": "5.1.4",
+    "vite": "7.3.1"
+  }
 }
