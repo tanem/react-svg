@@ -18,7 +18,6 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
-          check-latest: true
           cache: 'npm'
       - run: npm ci
       - run: npm test

@@ -643,6 +643,124 @@ describe('while running in a browser environment', () => {
     },
   )
 
+  describe('data URL support', () => {
+    const svgRaw =
+      '<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"><path d="M5 1L3 3H1V7H3L5 9V1Z"/></svg>'
+
+    const encodedDataUrl = 'data:image/svg+xml,' + encodeURIComponent(svgRaw)
+
+    const base64DataUrl =
+      'data:image/svg+xml;base64,' +
+      Buffer.from(svgRaw, 'utf8').toString('base64')
+
+    it('should inject from a URL-encoded data URL', async () => {
+      faker.seed(160)
+
+      const { container } = render(<ReactSVG src={encodedDataUrl} />)
+
+      await waitFor(() =>
+        expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
+      )
+
+      expect(container.innerHTML).toMatchSnapshot()
+    })
+
+    it('should inject from a base64-encoded data URL', async () => {
+      faker.seed(161)
+
+      const { container } = render(<ReactSVG src={base64DataUrl} />)
+
+      await waitFor(() =>
+        expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
+      )
+
+      expect(container.innerHTML).toMatchSnapshot()
+    })
+
+    it('should call afterInjection for a data URL', (done) => {
+      expect.assertions(1)
+
+      faker.seed(162)
+
+      render(
+        <ReactSVG
+          afterInjection={(svg) => {
+            expect(svg).toBeInstanceOf(SVGSVGElement)
+            done()
+          }}
+          src={encodedDataUrl}
+        />,
+      )
+    })
+
+    it('should call onError for an invalid data URL', (done) => {
+      expect.assertions(1)
+
+      faker.seed(163)
+
+      const badDataUrl =
+        'data:image/svg+xml,' + encodeURIComponent('<not-svg/>')
+
+      render(
+        <ReactSVG
+          onError={(error) => {
+            expect(error).toBeTruthy()
+            done()
+          }}
+          src={badDataUrl}
+        />,
+      )
+    })
+
+    it('should render the fallback for an invalid data URL', async () => {
+      const fallback = () => <span>fallback</span>
+
+      faker.seed(164)
+
+      const badDataUrl =
+        'data:image/svg+xml,' + encodeURIComponent('<not-svg/>')
+
+      render(<ReactSVG fallback={fallback} src={badDataUrl} />)
+
+      await waitFor(() => expect(screen.getByText('fallback')).toBeDefined())
+    })
+
+    it('should apply beforeInjection to a data URL SVG', async () => {
+      faker.seed(165)
+
+      const { container } = render(
+        <ReactSVG
+          beforeInjection={(svg) => {
+            svg.setAttribute('data-modified', 'true')
+          }}
+          src={encodedDataUrl}
+        />,
+      )
+
+      await waitFor(() =>
+        expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
+      )
+
+      const svg = container.querySelector('.injected-svg')!
+      expect(svg.getAttribute('data-modified')).toBe('true')
+    })
+
+    it('should inject a data URL sprite with a fragment identifier', async () => {
+      faker.seed(166)
+
+      const spriteDataUrl =
+        'data:image/svg+xml,' + encodeURIComponent(spriteSource) + '#icon-star'
+
+      const { container } = render(<ReactSVG src={spriteDataUrl} />)
+
+      await waitFor(() =>
+        expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
+      )
+
+      expect(container.innerHTML).toMatchSnapshot()
+    })
+  })
+
   describe('sprite support', () => {
     it('should extract a single symbol from a sprite', async () => {
       faker.seed(150)
