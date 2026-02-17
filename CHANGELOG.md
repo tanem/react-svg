@@ -1,5 +1,12 @@
 # Changelog
 
+## [v17.2.0](https://github.com/tanem/react-svg/tree/v17.2.0) (2026-02-17)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v17.1.1...v17.2.0)
+
+#### :rocket: Enhancement
+
+- [#3567](https://github.com/tanem/react-svg/pull/3567) Add data URL support for data:image/svg+xml URLs ([@tanem](https://github.com/tanem))
+
 ## [v17.1.1](https://github.com/tanem/react-svg/tree/v17.1.1) (2026-02-16)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v17.1.0...v17.1.1)
 
