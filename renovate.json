@@ -44,16 +44,6 @@
         "major",
         "minor"
       ]
-    },
-    {
-      "matchFileNames": [
-        "examples/typescript/package.json",
-        "examples/styled-components/package.json"
-      ],
-      "matchPackageNames": [
-        "typescript"
-      ],
-      "allowedVersions": "< 5.0.0"
     }
   ]
 }
