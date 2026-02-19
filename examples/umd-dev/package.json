@@ -7,9 +7,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "dev": "serve . -l 1234 --no-clipboard",
     "start": "serve . -l 1234 --no-clipboard"
   },
-  "devDependencies": {
+  "dependencies": {
     "serve": "14.2.5"
   }
 }
