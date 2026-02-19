@@ -6,6 +6,7 @@
   ],
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "glamor": "2.20.40",
     "react": "19.2.4",
@@ -13,10 +14,13 @@
     "react-svg": "latest"
   },
   "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "start": "vite"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "5.1.4",
-    "vite": "7.3.1"
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.0.3"
   }
 }

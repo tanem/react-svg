@@ -7,7 +7,6 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "serve . -l 1235 --no-clipboard",
     "start": "serve . -l 1235 --no-clipboard"
   },
   "dependencies": {
