@@ -1,5 +1,23 @@
 # Changelog
 
+## [v17.2.1](https://github.com/tanem/react-svg/tree/v17.2.1) (2026-02-20)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v17.2.0...v17.2.1)
+
+#### :memo: Documentation
+
+- [#3577](https://github.com/tanem/react-svg/pull/3577) Streamline instructions ([@tanem](https://github.com/tanem))
+- [#3576](https://github.com/tanem/react-svg/pull/3576) Tidy up comments ([@tanem](https://github.com/tanem))
+
+#### :house: Internal
+
+- [#3575](https://github.com/tanem/react-svg/pull/3575) chore(deps): update dependency @vitejs/plugin-react to v5 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#3573](https://github.com/tanem/react-svg/pull/3573) Fix examples ([@tanem](https://github.com/tanem))
+- [#3572](https://github.com/tanem/react-svg/pull/3572) chore(deps): update dependency typescript-eslint to v8.56.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#3571](https://github.com/tanem/react-svg/pull/3571) chore(deps): update dependency tanem-scripts to v8.0.3 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#3570](https://github.com/tanem/react-svg/pull/3570) Specify node version for code sandbox ([@tanem](https://github.com/tanem))
+- [#3569](https://github.com/tanem/react-svg/pull/3569) Specify node version for code sandbox ([@tanem](https://github.com/tanem))
+- [#3568](https://github.com/tanem/react-svg/pull/3568) Migrate CRA examples to vite ([@tanem](https://github.com/tanem))
+
 ## [v17.2.0](https://github.com/tanem/react-svg/tree/v17.2.0) (2026-02-17)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v17.1.1...v17.2.0)
 
