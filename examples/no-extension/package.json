@@ -6,6 +6,7 @@
   ],
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "express": "5.2.1",
     "npm-run-all2": "8.0.4",
@@ -18,13 +19,13 @@
   "scripts": {
     "build": "vite build",
     "open": "open-cli http://localhost:8080",
-    "serve": "node serve",
+    "serve": "node serve.cjs",
     "start": "npm-run-all build -p serve wait-and-open",
     "wait": "wait-on http-get://localhost:8080",
     "wait-and-open": "run-s wait open"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "5.1.4",
-    "vite": "7.3.1"
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.0.3"
   }
 }

@@ -1,0 +1,47 @@
+{
+  "setupTasks": [
+    {
+      "name": "Update pnpm",
+      "command": "npm i -g pnpm@latest"
+    },
+    {
+      "name": "Install Dependencies",
+      "command": "pnpm install"
+    }
+  ],
+  "tasks": {
+    "dev": {
+      "name": "Start Dev Server",
+      "command": "pnpm run dev",
+      "runAtStart": true,
+      "preview": {
+        "port": 3000
+      },
+      "restartOn": {
+        "files": ["./pnpm-lock.yaml"]
+      }
+    },
+    "build": {
+      "name": "build",
+      "command": "pnpm run build",
+      "runAtStart": false
+    },
+    "start": {
+      "name": "Start Server",
+      "command": "pnpm run start",
+      "runAtStart": false
+    },
+    "lint": {
+      "name": "lint",
+      "command": "pnpm run lint",
+      "runAtStart": false
+    },
+    "install": {
+      "name": "install dependencies",
+      "command": "pnpm install",
+      "restartOn": {
+        "files": ["./package.json"]
+      }
+    }
+  }
+}

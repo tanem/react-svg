@@ -1,0 +1,26 @@
+{
+  "setupTasks": [
+    {
+      "name": "Update pnpm",
+      "command": "npm i -g pnpm@latest"
+    },
+    {
+      "name": "Install Dependencies",
+      "command": "pnpm install"
+    }
+  ],
+  "tasks": {
+    "start": {
+      "name": "start",
+      "command": "pnpm start",
+      "runAtStart": true,
+      "preview": {
+        "port": 1234
+      }
+    },
+    "install": {
+      "name": "install dependencies",
+      "command": "pnpm install"
+    }
+  }
+}

@@ -9,7 +9,7 @@
   "scripts": {
     "start": "serve . -l 1235 --no-clipboard"
   },
-  "devDependencies": {
+  "dependencies": {
     "serve": "14.2.5"
   }
 }
