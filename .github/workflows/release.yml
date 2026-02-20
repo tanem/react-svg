@@ -4,8 +4,6 @@ on:
   schedule:
     - cron: '0 9 * * 1' # Every Monday at 9:00 AM UTC
   workflow_dispatch:
-    branches:
-      - master
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -14,7 +12,6 @@ concurrency:
 permissions:
   contents: write
   id-token: write
-  packages: write
 
 jobs:
   release:
