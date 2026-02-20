@@ -12,7 +12,8 @@
   ],
   "ignorePaths": [
     "**/node_modules/**",
-    "**/test/**"
+    "**/test/**",
+    "**/examples/**"
   ],
   "lockFileMaintenance": {
     "enabled": true

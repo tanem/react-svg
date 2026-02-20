@@ -52,6 +52,20 @@ When adding a new boundary:
 - `devDependencies`: pin exact versions (e.g. `"jest": "30.2.0"`).
 - `dependencies`: use caret ranges (e.g. `"prop-types": "^15.8.1"`).
 
+## Examples
+
+Examples live in `examples/` and are designed to open on CodeSandbox. Their "platform" dependencies (vite, @vitejs/plugin-react, next, typescript, @types/react, @types/react-dom) must match the official CodeSandbox sandbox-templates at https://github.com/codesandbox/sandbox-templates/tree/main.
+
+Reference templates:
+- Vite-based examples → `react-vite` / `react-vite-ts`
+- SSR example → `nextjs`
+
+Renovate is disabled for `examples/**` (via `ignorePaths` in `renovate.json`). Updates are manual: check the reference template, update all examples in one commit, and verify at least one example still opens correctly on CodeSandbox.
+
+Example-specific deps (e.g. `styled-components`, `glamor`, `react-frame-component`) are not governed by the templates: update these as needed but test on CodeSandbox before merging.
+
+Do not bump vite, @vitejs/plugin-react, next, or typescript in examples beyond the versions in the reference templates.
+
 ## Conventions
 
 - PropTypes and TypeScript types are maintained in parallel: update both when changing props.
