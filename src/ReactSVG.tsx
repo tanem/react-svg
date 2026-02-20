@@ -184,7 +184,6 @@ export class ReactSVG extends React.Component<Props, State> {
           const newDesc = document.createElementNS(svgNamespace, 'desc')
           newDesc.id = descId
           newDesc.textContent = desc
-          // Insert after <title> if present, otherwise prepend.
           const existingTitle = svg.querySelector(':scope > title')
           if (existingTitle) {
             existingTitle.after(newDesc)
