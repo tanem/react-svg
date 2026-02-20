@@ -9,9 +9,9 @@ import iriSource from './iri-source.fixture'
 import source from './source.fixture'
 import spriteSource from './sprite-source.fixture'
 
-// NOTE: Even though we're always responding with `source`, we use different
+// Even though we're always responding with `source`, we use different
 // `src` values when mounting within each test so that SVGInjector doesn't use
-// it's internal cache. This keeps the tests isolated from one another.
+// its internal cache. This keeps the tests isolated from one another.
 
 describe('while running in a browser environment', () => {
   afterEach(() => {
@@ -829,7 +829,6 @@ describe('while running in a browser environment', () => {
         }),
       )
 
-      // No SVG should be injected when the symbol is not found.
       expect(container.querySelectorAll('.injected-svg')).toHaveLength(0)
     })
 
