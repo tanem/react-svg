@@ -1,5 +1,18 @@
 # Changelog
 
+## [v17.2.2](https://github.com/tanem/react-svg/tree/v17.2.2) (2026-02-23)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v17.2.1...v17.2.2)
+
+#### :memo: Documentation
+
+- [#3580](https://github.com/tanem/react-svg/pull/3580) Ensure we respect official codesandbox templates in examples ([@tanem](https://github.com/tanem))
+
+#### :house: Internal
+
+- [#3581](https://github.com/tanem/react-svg/pull/3581) chore(deps): update dependency @types/node to v25.3.0 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#3579](https://github.com/tanem/react-svg/pull/3579) Improve workflows ([@tanem](https://github.com/tanem))
+- [#3578](https://github.com/tanem/react-svg/pull/3578) chore(deps): update dependency vite to v7 ([@renovate[bot]](https://github.com/apps/renovate))
+
 ## [v17.2.1](https://github.com/tanem/react-svg/tree/v17.2.1) (2026-02-20)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v17.2.0...v17.2.1)
 
