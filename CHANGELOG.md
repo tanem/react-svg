@@ -1,5 +1,12 @@
 # Changelog
 
+## [v17.2.4](https://github.com/tanem/react-svg/tree/v17.2.4) (2026-03-09)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v17.2.3...v17.2.4)
+
+#### :house: Internal
+
+- [#3590](https://github.com/tanem/react-svg/pull/3590) Resolve npm audit vulnerabilities ([@tanem](https://github.com/tanem))
+
 ## [v17.2.3](https://github.com/tanem/react-svg/tree/v17.2.3) (2026-03-02)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v17.2.2...v17.2.3)
 
