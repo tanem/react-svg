@@ -623,7 +623,10 @@ describe('while running in a browser environment', () => {
         .get(`/${uuid}.svg`)
         .reply(200, source, { 'Content-Type': 'image/svg+xml' })
 
-      // Repro for https://github.com/tanem/react-svg/issues/2753
+      // Repro for https://github.com/tanem/react-svg/issues/2753. This
+      // intentionally exercises forwardRef, since the test is skipped
+      // altogether on React versions predating it (see above).
+      // eslint-disable-next-line @eslint-react/no-forward-ref
       const WrappedSVG = React.forwardRef<ReactSVG, { src: string }>(
         function WrappedSVG(props, ref) {
           return <ReactSVG ref={ref} src={props.src} />
