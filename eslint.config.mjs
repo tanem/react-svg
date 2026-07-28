@@ -1,6 +1,7 @@
 import eslint from '@eslint/js'
+import eslintReact from '@eslint-react/eslint-plugin'
 import eslintConfigPrettier from 'eslint-config-prettier'
-import react from 'eslint-plugin-react'
+import perfectionist from 'eslint-plugin-perfectionist'
 import reactHooks from 'eslint-plugin-react-hooks'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import globals from 'globals'
@@ -18,27 +19,27 @@ export default tseslint.config(
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
-  react.configs.flat.recommended,
+  eslintReact.configs['recommended-typescript'],
   {
     plugins: {
+      perfectionist,
       'react-hooks': reactHooks,
       'simple-import-sort': simpleImportSort,
     },
 
     rules: {
       ...reactHooks.configs['recommended-latest'].rules,
-      'react/jsx-sort-props': 'error',
-      'react/react-in-jsx-scope': 'off',
+      // eslint-plugin-react-hooks (above) is the source of truth for hooks
+      // rules, since it's backed by the React team's compiler. Disable the
+      // overlapping rules from @eslint-react/eslint-plugin's recommended
+      // config to avoid duplicate reports.
+      '@eslint-react/exhaustive-deps': 'off',
+      '@eslint-react/rules-of-hooks': 'off',
+      'perfectionist/sort-jsx-props': 'error',
       'simple-import-sort/exports': 'error',
       'simple-import-sort/imports': 'error',
       'sort-imports': 'off',
       'sort-keys': 'error',
-    },
-
-    settings: {
-      react: {
-        version: 'detect',
-      },
     },
   },
   {
