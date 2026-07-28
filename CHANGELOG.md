@@ -1,5 +1,15 @@
 # Changelog
 
+## [v17.2.5](https://github.com/tanem/react-svg/tree/v17.2.5) (2026-07-28)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v17.2.4...v17.2.5)
+
+#### :house: Internal
+
+- [#3592](https://github.com/tanem/react-svg/pull/3592) fix: resolve remaining dependabot alerts and renovate automerge ([@tanem](https://github.com/tanem))
+- [#3469](https://github.com/tanem/react-svg/pull/3469) chore(deps): lock file maintenance ([@renovate[bot]](https://github.com/apps/renovate))
+- [#3542](https://github.com/tanem/react-svg/pull/3542) chore(deps): update eslint monorepo to v10 ([@renovate[bot]](https://github.com/apps/renovate))
+- [#3591](https://github.com/tanem/react-svg/pull/3591) chore(deps): replace eslint-plugin-react with @eslint-react/eslint-plugin ([@tanem](https://github.com/tanem))
+
 ## [v17.2.4](https://github.com/tanem/react-svg/tree/v17.2.4) (2026-03-09)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v17.2.3...v17.2.4)
 
