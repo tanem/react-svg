@@ -16,7 +16,8 @@
     "**/examples/**"
   ],
   "lockFileMaintenance": {
-    "enabled": true
+    "enabled": true,
+    "minimumReleaseAge": null
   },
   "minimumReleaseAge": "3 days",
   "packageRules": [
@@ -31,6 +32,18 @@
         "nock"
       ],
       "allowedVersions": "< 14.0.0"
+    },
+    {
+      "automerge": false,
+      "groupName": "eslint",
+      "matchPackageNames": [
+        "eslint",
+        "@eslint/**",
+        "@eslint-react/**",
+        "typescript-eslint",
+        "eslint-plugin-**",
+        "eslint-config-**"
+      ]
     },
     {
       "automerge": false,

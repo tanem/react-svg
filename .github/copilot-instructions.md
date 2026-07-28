@@ -66,6 +66,8 @@ Example-specific deps (e.g. `styled-components`, `glamor`, `react-frame-componen
 
 Do not bump vite, @vitejs/plugin-react, next, or typescript in examples beyond the versions in the reference templates.
 
+Exception: patch-level bumps within the template's major.minor are allowed to clear security advisories, for example `next` 15.5.7 to 15.5.22. Do not cross a minor or major boundary.
+
 ## Conventions
 
 - PropTypes and TypeScript types are maintained in parallel: update both when changing props.
