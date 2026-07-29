@@ -14,6 +14,11 @@ const UMD_PROD = 'UMD_PROD'
 
 const input = './compiled/index.js'
 
+// Rollup strips file-level directives while bundling, so `"use client"` has to
+// be re-added to the output. UMD bundles are script-tag targets and have no
+// React Server Components boundary to mark, so they are left alone.
+const banner = `'use client';`
+
 const getExternal = (bundleType) => {
   const peerDependencies = Object.keys(pkg.peerDependencies)
   const dependencies = Object.keys(pkg.dependencies)
@@ -90,6 +95,10 @@ const getPlugins = (bundleType) => [
   isProduction(bundleType) &&
     terser({
       compress: {
+        // Terser treats `'use client'` as a non-standard directive and drops
+        // it by default, which would strip the banner from the minified
+        // bundles.
+        directives: false,
         keep_infinity: true,
         pure_getters: true,
       },
@@ -103,6 +112,7 @@ const getCjsConfig = (bundleType) => ({
   external: getExternal(bundleType),
   input,
   output: {
+    banner,
     file: `dist/react-svg.cjs.${
       isProduction(bundleType) ? 'production' : 'development'
     }.js`,
@@ -116,6 +126,7 @@ const getEsConfig = () => ({
   external: getExternal(ES),
   input,
   output: {
+    banner,
     file: pkg.module,
     format: 'es',
     sourcemap: true,

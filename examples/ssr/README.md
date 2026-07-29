@@ -2,6 +2,11 @@
 
 This project was bootstrapped with [Next.js](https://nextjs.org/).
 
+`ReactSVG` is published with a `"use client"` directive, so it can be imported
+directly into a Server Component - see `app/page.js`. Props that take functions
+(`afterInjection`, `beforeInjection`, `fallback`, `loading`) can't cross the
+server/client boundary, so pass those from your own Client Component.
+
 ## Available Scripts
 
 In the project directory, you can run:

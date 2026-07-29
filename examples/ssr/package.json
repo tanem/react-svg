@@ -16,7 +16,6 @@
     "next": "15.5.22",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "react-spinners": "0.17.0",
     "react-svg": "latest"
   },
   "license": "MIT"
