@@ -20,9 +20,13 @@ The two-wrapper structure (outer React-managed, inner managed by svg-injector) i
 ## Build & Test
 
 ```
-npm run build        # clean + compile (tsc) + bundle (rollup)
+npm run build        # clean + compile (tsc) + bundle (rollup) + package checks
 npm run test:src     # fastest feedback loop during development
 ```
+
+The package checks (`package:publint`, `package:attw`) run as a `postbuild` hook
+because they inspect `dist/`. They cannot live in the `check:*` glob, which runs
+before `build`.
 
 Testing rules:
 - Each test needs a unique `faker.seed()` + `faker.string.uuid()` for SVG URLs (bypasses svg-injector's cache). Use a seed not used by another test.
