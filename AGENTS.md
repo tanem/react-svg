@@ -15,7 +15,6 @@ constrains belongs there, not here.
   `semanticCommits: "disabled"` to match.
 - PR titles are copied verbatim into `CHANGELOG.md`, so write them as the
   changelog line you want readers to see.
-- Introduce explanations with colons, not em-dashes.
 - Hard-wrap commit message bodies at 72 columns; `git log` does not reflow
   them. Do not hard-wrap PR or issue descriptions: GitHub reflows markdown,
   and its web editor leaves wrapped source ragged once anyone edits it.
