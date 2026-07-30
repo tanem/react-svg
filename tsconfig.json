@@ -1,11 +1,27 @@
 {
-  "extends": "./tsconfig.base.json",
-  "include": ["config/jest/setupJest.ts", "scripts", "src", "test"],
   "compilerOptions": {
     "allowJs": true,
-    "declaration": false,
-    "declarationDir": null,
+    "erasableSyntaxOnly": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "jsx": "react",
     "module": "commonjs",
-    "moduleResolution": "node"
-  }
+    "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "esnext"
+  },
+  "exclude": ["coverage", "dist", "node_modules"],
+  "include": [
+    "config/jest/setupJest.ts",
+    "scripts",
+    "src",
+    "test",
+    "tsdown.config.mts"
+  ]
 }

@@ -1,10 +1,8 @@
 import { SVGInjector } from '@tanem/svg-injector'
-import * as PropTypes from 'prop-types'
 import * as React from 'react'
 
 import ownerWindow from './owner-window'
-import shallowDiffers from './shallow-differs'
-import type { Props, State, WrapperType } from './types'
+import type { Props, WrapperType } from './types'
 
 const svgNamespace = 'http://www.w3.org/2000/svg'
 const xlinkNamespace = 'http://www.w3.org/1999/xlink'
@@ -15,83 +13,98 @@ const xlinkNamespace = 'http://www.w3.org/1999/xlink'
 const idPrefix = `react-svg-${Math.random().toString(36).slice(2, 6)}`
 let idCounter = 0
 
-export class ReactSVG extends React.Component<Props, State> {
-  static defaultProps = {
-    afterInjection: () => undefined,
-    beforeInjection: () => undefined,
-    desc: '',
-    evalScripts: 'never',
-    fallback: null,
-    httpRequestWithCredentials: false,
-    loading: null,
-    onError: () => undefined,
-    renumerateIRIElements: true,
-    title: '',
-    useRequestCache: true,
-    wrapper: 'div',
-  }
+// forwardRef is still required: function components only accept a `ref` prop
+// directly from React 19 onwards, and the supported floor is React 16.8.
+//
+// The type annotation keeps declaration emit from inlining the interfaces
+// `Props` is built from, which aren't exported.
+// eslint-disable-next-line @eslint-react/no-forward-ref
+export const ReactSVG: React.ForwardRefExoticComponent<
+  Props & React.RefAttributes<WrapperType>
+> = React.forwardRef<WrapperType, Props>(
+  (
+    {
+      afterInjection = () => undefined,
+      beforeInjection = () => undefined,
+      desc = '',
+      evalScripts = 'never',
+      fallback: Fallback,
+      httpRequestWithCredentials = false,
+      loading: Loading,
+      onError = () => undefined,
+      renumerateIRIElements = true,
+      src,
+      title = '',
+      useRequestCache = true,
+      wrapper = 'div',
+      ...rest
+    },
+    forwardedRef,
+  ) => {
+    const [hasError, setHasError] = React.useState(false)
+    const [isLoading, setIsLoading] = React.useState(true)
 
-  static propTypes = {
-    afterInjection: PropTypes.func,
-    beforeInjection: PropTypes.func,
-    desc: PropTypes.string,
-    evalScripts: PropTypes.oneOf(['always', 'once', 'never']),
-    fallback: PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.object,
-      PropTypes.string,
-    ]),
-    httpRequestWithCredentials: PropTypes.bool,
-    loading: PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.object,
-      PropTypes.string,
-    ]),
-    onError: PropTypes.func,
-    renumerateIRIElements: PropTypes.bool,
-    src: PropTypes.string.isRequired,
-    title: PropTypes.string,
-    useRequestCache: PropTypes.bool,
-    wrapper: PropTypes.oneOf(['div', 'span', 'svg']),
-  }
+    const reactWrapperRef = React.useRef<WrapperType | null>(null)
 
-  initialState = {
-    hasError: false,
-    isLoading: true,
-  }
+    // The callbacks are read through a ref so that changing them - which inline
+    // arrow props do on every render - doesn't tear down and re-run the
+    // injection. Declared before the injection effect so it always holds the
+    // current props by the time that effect runs.
+    const callbacksRef = React.useRef({
+      afterInjection,
+      beforeInjection,
+      onError,
+    })
+    React.useEffect(() => {
+      callbacksRef.current = { afterInjection, beforeInjection, onError }
+    })
 
-  state = this.initialState
+    const refCallback = React.useCallback(
+      (reactWrapper: WrapperType | null) => {
+        reactWrapperRef.current = reactWrapper
+        if (typeof forwardedRef === 'function') {
+          forwardedRef(reactWrapper)
+        } else if (forwardedRef) {
+          forwardedRef.current = reactWrapper
+        }
+      },
+      [forwardedRef],
+    )
 
-  _isMounted = false
+    // Only props that affect the injected SVG are listed as dependencies. Props
+    // spread onto the React wrapper (className, style, event handlers, ...) are
+    // applied by React itself and don't warrant a re-injection.
+    React.useEffect(() => {
+      const reactWrapper = reactWrapperRef.current
 
-  reactWrapper?: WrapperType | null
+      /* istanbul ignore next */
+      if (!(reactWrapper instanceof ownerWindow(reactWrapper).Node)) {
+        return
+      }
 
-  nonReactWrapper?: WrapperType | null
+      // Guards against a teardown - unmount, or a dependency change that starts
+      // a fresh injection - landing while the previous injection is still in
+      // flight. The stale callbacks must not touch state, but errors are still
+      // reported.
+      let isActive = true
+      let nonReactWrapper: WrapperType | null = null
 
-  refCallback = (reactWrapper: WrapperType | null) => {
-    this.reactWrapper = reactWrapper
-  }
+      const removeSVG = () => {
+        if (nonReactWrapper?.parentNode) {
+          nonReactWrapper.parentNode.removeChild(nonReactWrapper)
+          nonReactWrapper = null
+        }
+      }
 
-  renderSVG() {
-    /* istanbul ignore else */
-    if (this.reactWrapper instanceof ownerWindow(this.reactWrapper).Node) {
-      const {
-        desc,
-        evalScripts,
-        httpRequestWithCredentials,
-        renumerateIRIElements,
-        src,
-        title,
-        useRequestCache,
-      } = this.props
+      // A new injection is starting, so any result from the previous one is
+      // stale. On mount both values already hold these defaults and React bails
+      // out, so this only re-renders when a dependency actually changed.
+      /* eslint-disable @eslint-react/set-state-in-effect */
+      setHasError(false)
+      setIsLoading(true)
+      /* eslint-enable @eslint-react/set-state-in-effect */
 
-      const onError = this.props.onError!
-      const beforeInjection = this.props.beforeInjection!
-      const afterInjection = this.props.afterInjection!
-      const wrapper = this.props.wrapper!
-
-      let nonReactWrapper
-      let nonReactTarget
+      let nonReactTarget: WrapperType
 
       if (wrapper === 'svg') {
         nonReactWrapper = document.createElementNS(svgNamespace, wrapper)
@@ -106,23 +119,15 @@ export class ReactSVG extends React.Component<Props, State> {
       nonReactWrapper.appendChild(nonReactTarget)
       nonReactTarget.dataset.src = src
 
-      this.nonReactWrapper = this.reactWrapper.appendChild(nonReactWrapper)
+      reactWrapper.appendChild(nonReactWrapper)
 
       const handleError = (error: unknown) => {
-        this.removeSVG()
-        if (!this._isMounted) {
-          onError(error)
-          return
+        removeSVG()
+        if (isActive) {
+          setHasError(true)
+          setIsLoading(false)
         }
-        this.setState(
-          () => ({
-            hasError: true,
-            isLoading: false,
-          }),
-          () => {
-            onError(error)
-          },
-        )
+        callbacksRef.current.onError(error)
       }
 
       const afterEach = (error: Error | null, svg?: SVGSVGElement) => {
@@ -131,21 +136,16 @@ export class ReactSVG extends React.Component<Props, State> {
           return
         }
 
-        // TODO (Tane): It'd be better to cleanly unsubscribe from SVGInjector
-        // callbacks instead of tracking a property like this.
-        if (this._isMounted) {
-          this.setState(
-            () => ({
-              isLoading: false,
-            }),
-            () => {
-              try {
-                afterInjection(svg!)
-              } catch (afterInjectionError) {
-                handleError(afterInjectionError)
-              }
-            },
-          )
+        if (!isActive) {
+          return
+        }
+
+        setIsLoading(false)
+
+        try {
+          callbacksRef.current.afterInjection(svg!)
+        } catch (afterInjectionError) {
+          handleError(afterInjectionError)
         }
       }
 
@@ -202,7 +202,7 @@ export class ReactSVG extends React.Component<Props, State> {
         }
 
         try {
-          beforeInjection(svg)
+          callbacksRef.current.beforeInjection(svg)
         } catch (error) {
           handleError(error)
         }
@@ -216,63 +216,28 @@ export class ReactSVG extends React.Component<Props, State> {
         httpRequestWithCredentials,
         renumerateIRIElements,
       })
-    }
-  }
 
-  removeSVG() {
-    if (this.nonReactWrapper?.parentNode) {
-      this.nonReactWrapper.parentNode.removeChild(this.nonReactWrapper)
-      this.nonReactWrapper = null
-    }
-  }
-
-  componentDidMount() {
-    this._isMounted = true
-    this.renderSVG()
-  }
-
-  componentDidUpdate(prevProps: Props) {
-    if (shallowDiffers({ ...prevProps }, this.props)) {
-      this.setState(
-        () => this.initialState,
-        () => {
-          this.removeSVG()
-          this.renderSVG()
-        },
-      )
-    }
-  }
-
-  componentWillUnmount() {
-    this._isMounted = false
-    this.removeSVG()
-  }
-
-  render() {
-    /* eslint-disable @typescript-eslint/no-unused-vars */
-    const {
-      afterInjection,
-      beforeInjection,
+      return () => {
+        isActive = false
+        removeSVG()
+      }
+    }, [
       desc,
       evalScripts,
-      fallback: Fallback,
       httpRequestWithCredentials,
-      loading: Loading,
       renumerateIRIElements,
       src,
       title,
       useRequestCache,
       wrapper,
-      ...rest
-    } = this.props
-    /* eslint-enable @typescript-eslint/no-unused-vars */
+    ])
 
-    const Wrapper = wrapper!
+    const Wrapper = wrapper
 
     return (
       <Wrapper
         {...rest}
-        ref={this.refCallback}
+        ref={refCallback}
         {...(wrapper === 'svg'
           ? {
               xmlns: svgNamespace,
@@ -280,9 +245,11 @@ export class ReactSVG extends React.Component<Props, State> {
             }
           : {})}
       >
-        {this.state.isLoading && Loading && <Loading />}
-        {this.state.hasError && Fallback && <Fallback />}
+        {isLoading && Loading && <Loading />}
+        {hasError && Fallback && <Fallback />}
       </Wrapper>
     )
-  }
-}
+  },
+)
+
+ReactSVG.displayName = 'ReactSVG'

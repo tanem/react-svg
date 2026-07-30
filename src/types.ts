@@ -25,8 +25,3 @@ export type WrapperType = HTMLWrapperType | SVGWrapperType
 export type Props = BaseProps &
   React.HTMLAttributes<HTMLWrapperType> &
   React.SVGAttributes<SVGWrapperType>
-
-export interface State {
-  hasError: boolean
-  isLoading: boolean
-}
