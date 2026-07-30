@@ -8,7 +8,7 @@
 
 > A React component that injects SVG into the DOM.
 
-[Background](#background) | [When To Use This](#when-to-use-this) | [Basic Usage](#basic-usage) | [Live Examples](#live-examples) | [API](#api) | [Installation](#installation) | [Security](#security) | [FAQ](#faq) | [Contributing](#contributing) | [License](#license)
+[Background](#background) | [When To Use This](#when-to-use-this) | [Basic Usage](#basic-usage) | [API](#api) | [Live Examples](#live-examples) | [Installation](#installation) | [Security](#security) | [FAQ](#faq) | [Contributing](#contributing) | [License](#license)
 
 ## Background
 
@@ -25,74 +25,108 @@ Injection costs a network request and two wrapper elements, and it earns that co
 ## Basic Usage
 
 ```jsx
-import { createRoot } from 'react-dom/client'
 import { ReactSVG } from 'react-svg'
 
-const container = document.getElementById('root')
-const root = createRoot(container)
-root.render(<ReactSVG src="svg.svg" />)
+const App = () => <ReactSVG src="svg.svg" />
 ```
-
-## Live Examples
-
-- Accessibility: [Source](https://github.com/tanem/react-svg/tree/master/examples/accessibility) | [Sandbox](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/accessibility)
-- API Usage: [Source](https://github.com/tanem/react-svg/tree/master/examples/api-usage) | [Sandbox](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/api-usage)
-- Basic Usage: [Source](https://github.com/tanem/react-svg/tree/master/examples/basic-usage) | [Sandbox](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/basic-usage)
-- Before Injection: [Source](https://github.com/tanem/react-svg/tree/master/examples/before-injection) | [Sandbox](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/before-injection)
-- CSS Animation: [Source](https://github.com/tanem/react-svg/tree/master/examples/css-animation) | [Sandbox](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/css-animation)
-- CSS-in-JS: [Source](https://github.com/tanem/react-svg/tree/master/examples/css-in-js) | [Sandbox](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/css-in-js)
-- Data URL: [Source](https://github.com/tanem/react-svg/tree/master/examples/data-url) | [Sandbox](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/data-url)
-- External Stylesheet: [Source](https://github.com/tanem/react-svg/tree/master/examples/external-stylesheet) | [Sandbox](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/external-stylesheet)
-- Fallbacks: [Source](https://github.com/tanem/react-svg/tree/master/examples/fallbacks) | [Sandbox](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/fallbacks)
-- Iframe: [Source](https://github.com/tanem/react-svg/tree/master/examples/iframe) | [Sandbox](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/iframe)
-- Loading: [Source](https://github.com/tanem/react-svg/tree/master/examples/loading) | [Sandbox](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/loading)
-- No Extension: [Source](https://github.com/tanem/react-svg/tree/master/examples/no-extension) | [Sandbox](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/no-extension)
-- Sprite Usage: [Source](https://github.com/tanem/react-svg/tree/master/examples/sprite-usage) | [Sandbox](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/sprite-usage)
-- SSR: [Source](https://github.com/tanem/react-svg/tree/master/examples/ssr) | [Sandbox](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/ssr)
-- Styled Components: [Source](https://github.com/tanem/react-svg/tree/master/examples/styled-components) | [Sandbox](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/styled-components)
-- SVG Wrapper: [Source](https://github.com/tanem/react-svg/tree/master/examples/svg-wrapper) | [Sandbox](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/svg-wrapper)
-- Typescript: [Source](https://github.com/tanem/react-svg/tree/master/examples/typescript) | [Sandbox](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/typescript)
 
 ## API
 
-**Props**
+### Props
 
-- `src` - The SVG URL. Supports fetchable URLs (relative or absolute), `data:image/svg+xml` URLs (URL-encoded or base64), and SVG sprite sheets via fragment identifiers (e.g. `sprite.svg#icon-star`). See the [data URL example](https://github.com/tanem/react-svg/tree/master/examples/data-url) and [sprite usage example](https://github.com/tanem/react-svg/tree/master/examples/sprite-usage).
-- `afterInjection(svg)` - _Optional_ Function to call after the SVG is injected. `svg` is the injected SVG DOM element. If an error occurs during execution it will be routed to the `onError` callback, and if a `fallback` is specified it will be rendered. Defaults to `() => {}`.
-- `beforeInjection(svg)` - _Optional_ Function to call just before the SVG is injected. `svg` is the SVG DOM element which is about to be injected. If an error occurs during execution it will be routed to the `onError` callback, and if a `fallback` is specified it will be rendered. Defaults to `() => {}`.
-- `desc` - _Optional_ String used for SVG `<desc>` element content. If a `<desc>` exists it will be replaced, otherwise a new `<desc>` is created. When set, a unique `id` is added to the `<desc>` element and `aria-describedby` is set on the SVG for assistive technology. Defaults to `''`, which is a noop.
-- `evalScripts` - _Optional_ Run any script blocks found in the SVG. One of `'always'`, `'once'`, or `'never'`. Defaults to `'never'`.
-- `fallback` - _Optional_ Fallback to use if an error occurs during injection, or if errors are thrown from the `beforeInjection` or `afterInjection` functions. Can be a string, class component, or function component. Defaults to `null`.
-- `httpRequestWithCredentials` - _Optional_ Boolean indicating if cross-site Access-Control requests for the SVG should be made using credentials. Defaults to `false`.
-- `loading` - _Optional_ Component to use during loading. Can be a string, class component, or function component. Defaults to `null`.
-- `onError(error)` - _Optional_ Function to call if an error occurs during injection, or if errors are thrown from the `beforeInjection` or `afterInjection` functions. `error` is an `unknown` object. Defaults to `() => {}`.
-- `renumerateIRIElements` - _Optional_ Boolean indicating if SVG IRI addressable elements should be renumerated. Defaults to `true`. When enabled, IDs on IRI-addressable elements (`clipPath`, `linearGradient`, `mask`, `path`, etc.) are made unique, and all references to them (presentation attributes, `href`/`xlink:href`, inline `style` attributes, and `<style>` element text) are updated. Note: all matching element types are renumerated, not only those inside `<defs>`. Set to `false` if you need to query injected elements by their original IDs.
-- `title` - _Optional_ String used for SVG `<title>` element content. If a `<title>` exists it will be replaced, otherwise a new `<title>` is created. When set, a unique `id` is added to the `<title>` element and `aria-labelledby` is set on the SVG for assistive technology. Defaults to `''`, which is a noop.
-- `useRequestCache` - _Optional_ Use SVG request cache. Defaults to `true`.
-- `wrapper` - _Optional_ Wrapper element types. One of `'div'`, `'span'` or `'svg'`. Defaults to `'div'`.
+| Prop                                                        | Type                            | Default    |
+| ----------------------------------------------------------- | ------------------------------- | ---------- |
+| [`src`](#src)                                               | `string`                        | _required_ |
+| [`afterInjection`](#afterinjection)                         | `(svg: SVGSVGElement) => void`  | noop       |
+| [`beforeInjection`](#beforeinjection)                       | `(svg: SVGSVGElement) => void`  | noop       |
+| [`desc`](#desc)                                             | `string`                        | `''`       |
+| [`evalScripts`](#evalscripts)                               | `'always' \| 'once' \| 'never'` | `'never'`  |
+| [`fallback`](#fallback)                                     | `React.ElementType`             | none       |
+| [`httpRequestWithCredentials`](#httprequestwithcredentials) | `boolean`                       | `false`    |
+| [`loading`](#loading)                                       | `React.ElementType`             | none       |
+| [`onError`](#onerror)                                       | `(error: unknown) => void`      | noop       |
+| [`renumerateIRIElements`](#renumerateirielements)           | `boolean`                       | `true`     |
+| [`title`](#title)                                           | `string`                        | `''`       |
+| [`useRequestCache`](#userequestcache)                       | `boolean`                       | `true`     |
+| [`wrapper`](#wrapper)                                       | `'div' \| 'span' \| 'svg'`      | `'div'`    |
 
-Other non-documented properties are applied to the outermost wrapper element.
+Errors thrown from `beforeInjection` and `afterInjection` are routed to `onError` and render the `fallback`, the same as an error raised by the injection itself.
+
+#### `src`
+
+The SVG URL. Supports fetchable URLs (relative or absolute), `data:image/svg+xml` URLs (URL-encoded or base64), and SVG sprite sheets via fragment identifiers (e.g. `sprite.svg#icon-star`). See the [data URL example](https://github.com/tanem/react-svg/tree/master/examples/data-url) and [sprite usage example](https://github.com/tanem/react-svg/tree/master/examples/sprite-usage).
+
+#### `afterInjection`
+
+Called after the SVG is injected. `svg` is the injected SVG DOM element.
+
+#### `beforeInjection`
+
+Called just before the SVG is injected. `svg` is the SVG DOM element which is about to be injected, so this is where to restyle, class or sanitise it - see [Security](#security).
+
+#### `desc`
+
+String used for the SVG `<desc>` element content. If a `<desc>` exists it is replaced, otherwise a new one is created. When set, a unique `id` is added to the `<desc>` element and `aria-describedby` is set on the SVG for assistive technology. An empty string is a noop.
+
+#### `evalScripts`
+
+Whether to run script blocks found in the SVG: `'always'`, `'once'` or `'never'`. Leave it at `'never'` for SVGs you don't control - see [Security](#security).
+
+#### `fallback`
+
+Rendered inside the wrapper if an error occurs. Can be a string, class component or function component. Nothing is rendered in its place when unset.
+
+#### `httpRequestWithCredentials`
+
+Whether cross-site Access-Control requests for the SVG are made using credentials.
+
+#### `loading`
+
+Rendered inside the wrapper until the SVG is injected. Can be a string, class component or function component. Nothing is rendered in its place when unset.
+
+#### `onError`
+
+Called if an error occurs. `error` is an `unknown` value.
+
+#### `renumerateIRIElements`
+
+Whether SVG IRI addressable elements are renumerated. When enabled, IDs on IRI-addressable elements (`clipPath`, `linearGradient`, `mask`, `path`, etc.) are made unique, and all references to them (presentation attributes, `href`/`xlink:href`, inline `style` attributes, and `<style>` element text) are updated. All matching element types are renumerated, not only those inside `<defs>`. Set to `false` if you need to query injected elements by their original IDs.
+
+#### `title`
+
+String used for the SVG `<title>` element content. If a `<title>` exists it is replaced, otherwise a new one is created. When set, a unique `id` is added to the `<title>` element and `aria-labelledby` is set on the SVG for assistive technology. An empty string is a noop.
+
+#### `useRequestCache`
+
+Whether the SVG request cache is used. With it on, repeated uses of the same URL share a single request.
+
+#### `wrapper`
+
+The element type used for the wrappers: `'div'`, `'span'` or `'svg'`.
+
+### Other props
+
+Props not listed above are applied to the outermost wrapper element, so `className`, `style`, `id`, `data-*` attributes and DOM event handlers behave as they would on the underlying element.
+
+### Ref forwarding
 
 A `ref` is forwarded to the outermost wrapper element, so `ref.current` is an `HTMLDivElement`, `HTMLSpanElement` or `SVGSVGElement` depending on `wrapper`. The exported `WrapperType` type covers all three.
 
+### Re-injection
+
 Re-injection happens when `src`, `wrapper`, `title`, `desc`, `evalScripts`, `httpRequestWithCredentials`, `renumerateIRIElements` or `useRequestCache` changes. Other props don't affect the injected SVG, so changing them re-renders the wrapper without re-fetching. `afterInjection`, `beforeInjection` and `onError` are always called in their latest form, but changing them doesn't trigger a re-injection on its own, so they can be passed inline.
 
-**Example**
+### Example
 
 ```jsx
 <ReactSVG
-  afterInjection={(svg) => {
-    console.log(svg)
-  }}
   beforeInjection={(svg) => {
     svg.classList.add('svg-class-name')
     svg.setAttribute('style', 'width: 200px')
   }}
   className="wrapper-class-name"
   desc="Description"
-  evalScripts="always"
   fallback={() => <span>Error!</span>}
-  httpRequestWithCredentials={true}
   loading={() => <span>Loading</span>}
   onClick={() => {
     console.log('wrapper onClick')
@@ -100,13 +134,35 @@ Re-injection happens when `src`, `wrapper`, `title`, `desc`, `evalScripts`, `htt
   onError={(error) => {
     console.error(error)
   }}
-  renumerateIRIElements={false}
   src="svg.svg"
   title="Title"
-  useRequestCache={false}
   wrapper="span"
 />
 ```
+
+## Live Examples
+
+Each name links to the example source, and the sandbox column opens it on CodeSandbox.
+
+| Example                                                                                            | Sandbox                                                                                                 |
+| -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| [Accessibility](https://github.com/tanem/react-svg/tree/master/examples/accessibility)             | [Open](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/accessibility)       |
+| [API Usage](https://github.com/tanem/react-svg/tree/master/examples/api-usage)                     | [Open](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/api-usage)           |
+| [Basic Usage](https://github.com/tanem/react-svg/tree/master/examples/basic-usage)                 | [Open](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/basic-usage)         |
+| [Before Injection](https://github.com/tanem/react-svg/tree/master/examples/before-injection)       | [Open](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/before-injection)    |
+| [CSS Animation](https://github.com/tanem/react-svg/tree/master/examples/css-animation)             | [Open](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/css-animation)       |
+| [CSS-in-JS](https://github.com/tanem/react-svg/tree/master/examples/css-in-js)                     | [Open](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/css-in-js)           |
+| [Data URL](https://github.com/tanem/react-svg/tree/master/examples/data-url)                       | [Open](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/data-url)            |
+| [External Stylesheet](https://github.com/tanem/react-svg/tree/master/examples/external-stylesheet) | [Open](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/external-stylesheet) |
+| [Fallbacks](https://github.com/tanem/react-svg/tree/master/examples/fallbacks)                     | [Open](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/fallbacks)           |
+| [Iframe](https://github.com/tanem/react-svg/tree/master/examples/iframe)                           | [Open](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/iframe)              |
+| [Loading](https://github.com/tanem/react-svg/tree/master/examples/loading)                         | [Open](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/loading)             |
+| [No Extension](https://github.com/tanem/react-svg/tree/master/examples/no-extension)               | [Open](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/no-extension)        |
+| [Sprite Usage](https://github.com/tanem/react-svg/tree/master/examples/sprite-usage)               | [Open](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/sprite-usage)        |
+| [SSR](https://github.com/tanem/react-svg/tree/master/examples/ssr)                                 | [Open](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/ssr)                 |
+| [Styled Components](https://github.com/tanem/react-svg/tree/master/examples/styled-components)     | [Open](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/styled-components)   |
+| [SVG Wrapper](https://github.com/tanem/react-svg/tree/master/examples/svg-wrapper)                 | [Open](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/svg-wrapper)         |
+| [Typescript](https://github.com/tanem/react-svg/tree/master/examples/typescript)                   | [Open](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/typescript)          |
 
 ## Installation
 
@@ -155,9 +211,12 @@ This module delegates its core behaviour to [@tanem/svg-injector](https://github
 Example output, assuming a `div` wrapper:
 
 ```html
-<div> <!-- The wrapper, managed by React -->
-  <div> <!-- The parent node, managed by @tanem/svg-injector -->
-    <svg>...</svg> <!-- The swapped-in SVG, managed by @tanem/svg-injector -->
+<div>
+  <!-- The wrapper, managed by React -->
+  <div>
+    <!-- The parent node, managed by @tanem/svg-injector -->
+    <svg>...</svg>
+    <!-- The swapped-in SVG, managed by @tanem/svg-injector -->
   </div>
 </div>
 ```
@@ -190,6 +249,8 @@ Inline SVG strings (raw markup passed directly as the `src` prop) are **not** su
 </details>
 
 ## Contributing
+
+Issues and pull requests are welcome. `npm run test:src` is the development loop; `npm test` runs the full gate.
 
 Repo conventions that aren't visible in the code - the PR labels that drive releases, the React version matrix policy, and how the `examples/` dependencies are pinned - live in [AGENTS.md](AGENTS.md). Coding agents read it from the repo root, so keep it in sync when a change invalidates something it states.
 
