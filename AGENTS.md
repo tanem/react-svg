@@ -34,8 +34,10 @@ the injection flow.
 
 `npm run test:src` is the development loop. `npm test` is the full gate.
 `npm run test:react` runs the React matrix and is slow enough to be
-pre-release only. `npm run size` and the `package:*` checks read `dist/`, so
-they need a current `npm run build`.
+pre-release only. `npm run size`, `npm run test:dist` and the `package:*`
+checks read `dist/`, so they need a current `npm run build`. A new spec that
+reads `dist/` goes in `config/jest/dist-tests.js`, which keeps it out of
+`test:src`.
 
 Give each test its own `faker.seed()` and a `faker.string.uuid()` SVG URL, or
 svg-injector's cache leaks state between tests. Injection is async: assert

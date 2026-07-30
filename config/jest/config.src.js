@@ -1,5 +1,7 @@
 const path = require('path')
 
+const distTests = require('./dist-tests')
+
 const generateReactVersionMappings = (reactVersion) => {
   if (!reactVersion) {
     return {}
@@ -29,6 +31,7 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/config/jest/setupJest.ts'],
   testEnvironment: 'jsdom',
   testMatch: ['<rootDir>/test/*.spec.ts?(x)'],
+  testPathIgnorePatterns: ['/node_modules/', ...distTests],
   transform: { '^.+\\.([cm]?js|tsx?)$': 'ts-jest' },
   transformIgnorePatterns: ['/node_modules/(?!@faker-js)'],
 }

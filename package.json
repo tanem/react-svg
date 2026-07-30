@@ -55,6 +55,7 @@
     "size": "size-limit",
     "test": "run-s check:* lint build size test:*",
     "test:cjs": "jest --config ./config/jest/config.cjs.js",
+    "test:dist": "jest --config ./config/jest/config.dist.js",
     "test:es": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --config ./config/jest/config.es.js",
     "test:src": "jest --config ./config/jest/config.src.js",
     "test:react": "ts-node ./scripts/test-react"
