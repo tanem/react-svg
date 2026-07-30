@@ -11,11 +11,13 @@ These instructions are injected into every agent context window. Only add rules 
 
 ## Architecture
 
-`ReactSVG` must remain a class component: lifecycle methods coordinate with `@tanem/svg-injector`, which operates outside React's reconciliation. Do not convert to a function component.
+`ReactSVG` is a function component wrapped in `forwardRef`, coordinating with `@tanem/svg-injector` from a single `useEffect`. `forwardRef` is required, not optional: function components only take `ref` as a plain prop from React 19 onwards, and the floor is 16.8.
 
 The two-wrapper structure (outer React-managed, inner managed by svg-injector) is load-bearing. Do not collapse them.
 
-`shallowDiffers` triggers full re-injection on any prop change. `_isMounted` guards against async callbacks after unmount.
+The injection effect's dependency list is deliberately narrow: only props that change the injected SVG. Callbacks (`afterInjection`, `beforeInjection`, `onError`) are read through `callbacksRef` so inline arrows don't re-inject on every render. Adding a prop that affects injection means adding it to the dependency list; adding one that only lands on the React wrapper does not.
+
+The effect's `isActive` flag replaces the old `_isMounted` field. It guards state updates from async injector callbacks belonging to a torn-down run, whether from unmount or from a dependency change starting a fresh injection. Errors are still routed to `onError` in that case. Cleanup must fully detach the injected node, otherwise StrictMode's double-invoked effects leave two SVGs behind.
 
 ## Build & Test
 
@@ -39,7 +41,7 @@ Testing rules:
 
 We test boundary versions only: first/last minor of each supported major, plus behavioural-change minors. See `test/react/` for current versions.
 
-Current boundaries: 16.0, 16.3, 16.14, 17.0, 18.0, 18.3, 19.0, 19.1.
+Current boundaries: 16.8, 16.14, 17.0, 18.0, 18.3, 19.0, 19.1. The floor is 16.8 because the component uses hooks.
 
 When adding a new boundary:
 

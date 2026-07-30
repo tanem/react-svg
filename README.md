@@ -65,6 +65,10 @@ root.render(<ReactSVG src="svg.svg" />)
 
 Other non-documented properties are applied to the outermost wrapper element.
 
+A `ref` is forwarded to the outermost wrapper element, so `ref.current` is an `HTMLDivElement`, `HTMLSpanElement` or `SVGSVGElement` depending on `wrapper`. The exported `WrapperType` type covers all three.
+
+Re-injection happens when `src`, `wrapper`, `title`, `desc`, `evalScripts`, `httpRequestWithCredentials`, `renumerateIRIElements` or `useRequestCache` changes. Other props don't affect the injected SVG, so changing them re-renders the wrapper without re-fetching. `afterInjection`, `beforeInjection` and `onError` are always called in their latest form, but changing them doesn't trigger a re-injection on its own, so they can be passed inline.
+
 **Example**
 
 ```jsx
@@ -101,6 +105,8 @@ Other non-documented properties are applied to the outermost wrapper element.
 ```
 $ npm install react-svg
 ```
+
+Requires React 16.8 or later, as a peer dependency.
 
 ## FAQ
 

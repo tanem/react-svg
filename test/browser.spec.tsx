@@ -6,7 +6,7 @@ import { render, screen, waitFor } from '@testing-library/react'
 import nock from 'nock'
 import * as React from 'react'
 
-import { ReactSVG } from '../src'
+import { ReactSVG, type WrapperType } from '../src'
 import a11ySource from './a11y-source.fixture'
 import iriSource from './iri-source.fixture'
 import source from './source.fixture'
@@ -614,40 +614,163 @@ describe('while running in a browser environment', () => {
     expect(svg.querySelector(':scope > desc')).toBeNull()
   })
 
-  // React.forwardRef was added in 16.3. Skip this test on earlier versions
-  // where forwardRef doesn't exist.
-  ;('forwardRef' in React ? it : it.skip)(
-    'should accept a forwarded ref without type errors',
-    async () => {
-      faker.seed(146)
-      const uuid = faker.string.uuid()
+  it('should forward a ref to the wrapper element', async () => {
+    faker.seed(146)
+    const uuid = faker.string.uuid()
 
-      nock('http://localhost')
-        .get(`/${uuid}.svg`)
-        .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
 
-      // Repro for https://github.com/tanem/react-svg/issues/2753. This
-      // intentionally exercises forwardRef, since the test is skipped
-      // altogether on React versions predating it (see above).
-      // eslint-disable-next-line @eslint-react/no-forward-ref
-      const WrappedSVG = React.forwardRef<ReactSVG, { src: string }>(
-        function WrappedSVG(props, ref) {
-          return <ReactSVG ref={ref} src={props.src} />
-        },
-      )
+    // Repro for https://github.com/tanem/react-svg/issues/2753.
+    // eslint-disable-next-line @eslint-react/no-forward-ref
+    const WrappedSVG = React.forwardRef<WrapperType, { src: string }>(
+      function WrappedSVG(props, ref) {
+        return <ReactSVG ref={ref} src={props.src} />
+      },
+    )
 
-      const ref = React.createRef<ReactSVG>()
-      const { container } = render(
-        <WrappedSVG ref={ref} src={`http://localhost/${uuid}.svg`} />,
-      )
+    const ref = React.createRef<WrapperType>()
+    const { container } = render(
+      <WrappedSVG ref={ref} src={`http://localhost/${uuid}.svg`} />,
+    )
 
-      await waitFor(() =>
-        expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
-      )
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
+    )
 
-      expect(ref.current).toBeInstanceOf(ReactSVG)
-    },
-  )
+    expect(ref.current).toBe(container.firstChild)
+    expect(ref.current!.tagName.toLowerCase()).toBe('div')
+  })
+
+  it('should support callback refs', async () => {
+    faker.seed(170)
+    const uuid = faker.string.uuid()
+
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    let wrapperElement: WrapperType | null = null
+
+    const { container, unmount } = render(
+      <ReactSVG
+        ref={(node) => {
+          wrapperElement = node
+        }}
+        src={`http://localhost/${uuid}.svg`}
+      />,
+    )
+
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
+    )
+
+    expect(wrapperElement).toBe(container.firstChild)
+
+    unmount()
+
+    expect(wrapperElement).toBeNull()
+  })
+
+  it('should inject once when mounted under StrictMode', async () => {
+    faker.seed(167)
+    const uuid = faker.string.uuid()
+
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { container } = render(
+      <React.StrictMode>
+        <ReactSVG src={`http://localhost/${uuid}.svg`} />
+      </React.StrictMode>,
+    )
+
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
+    )
+
+    // React 18+ double-invokes effects in development under StrictMode. Give
+    // the injection started by the discarded first effect time to resolve, so
+    // a cleanup that failed to detach its target would show up as a second
+    // injected SVG.
+    await new Promise((resolve) => setTimeout(resolve, 100))
+
+    expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+  })
+
+  it('should not re-inject when only wrapper props change', async () => {
+    faker.seed(168)
+    const uuid = faker.string.uuid()
+
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const afterInjection = jest.fn()
+
+    const { container, rerender } = render(
+      <ReactSVG
+        afterInjection={afterInjection}
+        className="wrapper-class-name"
+        src={`http://localhost/${uuid}.svg`}
+      />,
+    )
+
+    await waitFor(() => expect(afterInjection).toHaveBeenCalledTimes(1))
+
+    const injected = container.querySelector('.injected-svg')
+
+    rerender(
+      <ReactSVG
+        afterInjection={afterInjection}
+        className="updated-wrapper-class-name"
+        src={`http://localhost/${uuid}.svg`}
+      />,
+    )
+
+    await new Promise((resolve) => setTimeout(resolve, 100))
+
+    expect(afterInjection).toHaveBeenCalledTimes(1)
+    expect(container.querySelector('.injected-svg')).toBe(injected)
+    expect(container.firstElementChild!.className).toBe(
+      'updated-wrapper-class-name',
+    )
+  })
+
+  it('should re-inject when src changes', async () => {
+    faker.seed(169)
+    const firstUuid = faker.string.uuid()
+    const secondUuid = faker.string.uuid()
+
+    nock('http://localhost')
+      .get(`/${firstUuid}.svg`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+      .get(`/${secondUuid}.svg`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { container, rerender } = render(
+      <ReactSVG src={`http://localhost/${firstUuid}.svg`} />,
+    )
+
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
+    )
+
+    rerender(<ReactSVG src={`http://localhost/${secondUuid}.svg`} />)
+
+    await waitFor(() =>
+      expect(
+        container
+          .querySelector('.injected-svg')
+          ?.getAttribute('data-src')
+          ?.includes(secondUuid),
+      ).toBe(true),
+    )
+
+    expect(container.querySelectorAll('.injected-svg')).toHaveLength(1)
+  })
 
   describe('data URL support', () => {
     const svgRaw =
