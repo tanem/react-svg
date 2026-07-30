@@ -9,7 +9,16 @@ constrains belongs there, not here.
 - NZ English everywhere ("colour", "behaviour", "initialise").
 - Single-line commit messages, `git log --oneline` style. Add a body only to
   explain why, and only for behaviour or type changes.
+- No conventional-commit prefixes (`feat:`, `fix:`, `chore(deps):`) in commit
+  subjects or PR titles. Write a plain capitalised sentence. Nothing reads the
+  prefix: the version bump comes from the PR label, and renovate is set to
+  `semanticCommits: "disabled"` to match.
+- PR titles are copied verbatim into `CHANGELOG.md`, so write them as the
+  changelog line you want readers to see.
 - Introduce explanations with colons, not em-dashes.
+- Hard-wrap commit message bodies at 72 columns; `git log` does not reflow
+  them. Do not hard-wrap PR or issue descriptions: GitHub reflows markdown,
+  and its web editor leaves wrapped source ragged once anyone edits it.
 
 ## Architecture
 
