@@ -1,10 +1,6 @@
 {
   "setupTasks": [
     {
-      "name": "Update pnpm",
-      "command": "npm i -g pnpm@latest"
-    },
-    {
       "name": "Install Dependencies",
       "command": "pnpm install"
     }
