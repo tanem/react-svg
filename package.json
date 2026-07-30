@@ -2,33 +2,48 @@
   "name": "react-svg",
   "version": "17.2.5",
   "description": "A React component that injects SVG into the DOM.",
-  "main": "dist/react-svg.cjs.js",
-  "module": "dist/react-svg.esm.js",
-  "types": "dist/index.d.ts",
+  "type": "commonjs",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/react-svg.d.mts",
+        "default": "./dist/react-svg.mjs"
+      },
+      "default": {
+        "types": "./dist/react-svg.d.cts",
+        "default": "./dist/react-svg.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "dist/react-svg.cjs",
+  "module": "dist/react-svg.mjs",
+  "types": "dist/react-svg.d.cts",
+  "sideEffects": false,
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
-    "build": "run-s clean compile bundle",
-    "bundle": "rollup -c",
-    "check:format": "prettier --list-different \"**/*.{js,ts,tsx}\"",
+    "build": "run-s clean bundle",
+    "bundle": "tsdown",
+    "check:format": "prettier --list-different \"**/*.{cjs,cts,js,mjs,mts,ts,tsx}\"",
     "check:types": "tsc --noEmit",
     "clean": "run-p clean:*",
-    "clean:compiled": "shx rm -rf compiled",
     "clean:coverage": "shx rm -rf coverage",
-    "clean:dist": "shx rm -rf dist",
     "clean:react": "ts-node ./scripts/clean-react",
-    "compile": "tsc -p tsconfig.base.json",
-    "format": "prettier --write \"**/*.{js,ts,tsx}\"",
+    "format": "prettier --write \"**/*.{cjs,cts,js,mjs,mts,ts,tsx}\"",
     "lint": "eslint .",
     "package:attw": "attw --pack .",
     "package:publint": "publint",
     "postbuild": "run-s package:*",
-    "postbundle": "npm run clean:compiled",
     "release": "tanem-scripts release",
     "test": "run-s check:* lint build test:*",
     "test:cjs": "jest --config ./config/jest/config.cjs.js",
-    "test:es": "jest --config ./config/jest/config.es.js",
+    "test:es": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --config ./config/jest/config.es.js",
     "test:src": "jest --config ./config/jest/config.src.js",
     "test:react": "ts-node ./scripts/test-react"
   },
@@ -57,19 +72,14 @@
     "react-dom": "^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
   },
   "dependencies": {
-    "@babel/runtime": "^7.28.6",
     "@tanem/svg-injector": "^11.3.1"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "0.18.5",
-    "@babel/core": "7.29.7",
-    "@babel/plugin-transform-runtime": "7.29.7",
-    "@babel/preset-env": "7.29.7",
-    "@babel/preset-react": "7.29.7",
     "@eslint-react/eslint-plugin": "5.18.0",
     "@eslint/js": "10.0.1",
     "@faker-js/faker": "10.3.0",
-    "@rollup/plugin-babel": "6.1.0",
+    "@jest/globals": "30.2.0",
     "@testing-library/react": "16.3.2",
     "@types/jest": "30.0.0",
     "@types/jsdom": "28.0.0",
@@ -92,12 +102,12 @@
     "publint": "0.3.22",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "rollup": "4.59.0",
     "shelljs": "0.10.0",
     "shx": "0.4.0",
     "tanem-scripts": "8.0.4",
     "ts-jest": "29.4.6",
     "ts-node": "10.9.2",
+    "tsdown": "0.22.14",
     "typescript": "5.9.3",
     "typescript-eslint": "8.56.1"
   }

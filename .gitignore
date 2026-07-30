@@ -2,7 +2,6 @@
 .DS_Store
 .vscode
 build
-compiled
 coverage
 dist
 examples/*/package-lock.json

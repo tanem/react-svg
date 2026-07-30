@@ -20,7 +20,7 @@ The two-wrapper structure (outer React-managed, inner managed by svg-injector) i
 ## Build & Test
 
 ```
-npm run build        # clean + compile (tsc) + bundle (rollup) + package checks
+npm run build        # clean + bundle (tsdown) + package checks
 npm run test:src     # fastest feedback loop during development
 ```
 
@@ -32,6 +32,7 @@ Testing rules:
 - Each test needs a unique `faker.seed()` + `faker.string.uuid()` for SVG URLs (bypasses svg-injector's cache). Use a seed not used by another test.
 - SVG injection is async: always `await waitFor(() => expect(...))` after render.
 - Suppressed "not wrapped in act" warnings in `setupJest.ts` are intentional.
+- `test:es` runs Jest in ESM mode, because the ESM bundle is a `.mjs` file that TypeScript will not transpile to CommonJS. Jest does not inject the `jest` object in that mode, so import it from `@jest/globals` rather than relying on the global.
 - Use `npm run test:src` for development. `npm run test:react` is slow (full React version matrix): pre-release only.
 
 ### React version matrix

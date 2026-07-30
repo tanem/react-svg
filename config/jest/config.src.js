@@ -18,7 +18,7 @@ const generateReactVersionMappings = (reactVersion) => {
 module.exports = {
   collectCoverage: true,
   collectCoverageFrom: ['src/*.{ts,tsx}'],
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'mjs', 'cjs', 'json'],
   moduleNameMapper: {
     ...generateReactVersionMappings(process.env.REACT_VERSION),
   },
@@ -29,6 +29,6 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/config/jest/setupJest.ts'],
   testEnvironment: 'jsdom',
   testMatch: ['<rootDir>/test/*.spec.ts?(x)'],
-  transform: { '^.+\\.(js|tsx?)$': 'ts-jest' },
+  transform: { '^.+\\.([cm]?js|tsx?)$': 'ts-jest' },
   transformIgnorePatterns: ['/node_modules/(?!@faker-js)'],
 }

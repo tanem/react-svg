@@ -4,10 +4,22 @@ Details relating to major changes that aren't presently in `CHANGELOG.md`, due t
 
 ## v18.0.0
 
+**Added**
+
+- An `exports` map. `react-svg` and `react-svg/package.json` are the only entry points; paths into `dist` are no longer reachable, even though the top-level `main`, `module` and `types` fields are still set for webpack 4 and TypeScript `node10` resolution. Node ESM consumers now get the ES module build rather than falling back to CommonJS.
+- `sideEffects: false`, so bundlers can drop the package entirely when nothing is imported from it.
+- `engines.node` set to `>=22`, the oldest Node.js LTS line still receiving updates. This is a support statement rather than a syntax requirement: the published output targets ES2019.
+
+**Changed**
+
+- Build output filenames. The CommonJS build is `dist/react-svg.cjs` (was `dist/react-svg.cjs.js`) and the ES module build is `dist/react-svg.mjs` (was `dist/react-svg.esm.js`). Type declarations are `dist/react-svg.d.cts` and `dist/react-svg.d.mts` (was `dist/index.d.ts` plus one file per source module). Importing `react-svg` is unaffected.
+- The build pipeline moved from TypeScript plus Rollup and Babel to [tsdown](https://tsdown.dev). Output still targets ES2019. `@babel/runtime` is no longer a runtime dependency, leaving `@tanem/svg-injector` as the only one.
+- `src` is now published alongside `dist` so the declaration maps resolve.
+
 **Removed**
 
 - `propTypes` validation. TypeScript types are the supported contract for props. React 19 ignores `propTypes` entirely, so this only changes behaviour for React 18 and earlier in development mode, where invalid props previously logged a console warning. `prop-types` and `@types/prop-types` are no longer dependencies.
-- The separate development and production CommonJS builds. `dist/react-svg.cjs.development.js`, `dist/react-svg.cjs.production.js` and the `dist/index.js` shim that switched between them on `process.env.NODE_ENV` are replaced by a single unminified `dist/react-svg.cjs.js`. With `propTypes` gone the two builds differed only by minification, which bundlers apply themselves. Importing `react-svg` is unaffected; only code requiring those paths directly needs updating.
+- The separate development and production CommonJS builds. `dist/react-svg.cjs.development.js`, `dist/react-svg.cjs.production.js` and the `dist/index.js` shim that switched between them on `process.env.NODE_ENV` are replaced by a single unminified CommonJS build. With `propTypes` gone the two builds differed only by minification, which bundlers apply themselves.
 - UMD builds. `dist/react-svg.umd.development.js` and `dist/react-svg.umd.production.js` are no longer published, and the `ReactSVG` browser global is gone. React itself stopped shipping UMD builds in v19, so script-tag usage already required pinning React 18 or earlier. If you load `react-svg` via a script tag, pin `react-svg@^17`, or switch to the ES module build with an import map or a bundler.
 
 ## v17.0.0

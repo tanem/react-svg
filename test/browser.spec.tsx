@@ -1,4 +1,7 @@
 import { faker } from '@faker-js/faker'
+// Jest doesn't inject globals when running in ESM mode, which the ESM bundle
+// config does, so `jest` is imported explicitly rather than assumed.
+import { jest } from '@jest/globals'
 import { render, screen, waitFor } from '@testing-library/react'
 import nock from 'nock'
 import * as React from 'react'

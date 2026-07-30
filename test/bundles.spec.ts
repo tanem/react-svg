@@ -5,7 +5,7 @@
 import fs from 'fs'
 import path from 'path'
 
-const entryPoints = ['react-svg.cjs.js', 'react-svg.esm.js']
+const entryPoints = ['react-svg.cjs', 'react-svg.mjs']
 
 describe.each(entryPoints)('%s', (entryPoint) => {
   it('should start with the "use client" directive', () => {
