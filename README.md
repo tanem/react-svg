@@ -8,7 +8,7 @@
 
 > A React component that injects SVG into the DOM.
 
-[Background](#background) | [When To Use This](#when-to-use-this) | [Basic Usage](#basic-usage) | [Live Examples](#live-examples) | [API](#api) | [Installation](#installation) | [Security](#security) | [FAQ](#faq) | [License](#license)
+[Background](#background) | [When To Use This](#when-to-use-this) | [Basic Usage](#basic-usage) | [Live Examples](#live-examples) | [API](#api) | [Installation](#installation) | [Security](#security) | [FAQ](#faq) | [Contributing](#contributing) | [License](#license)
 
 ## Background
 
@@ -188,6 +188,10 @@ Inline SVG strings (raw markup passed directly as the `src` prop) are **not** su
 **Security note:** inserting SVG strings into the DOM bypasses React's built-in escaping and can expose your application to XSS if the content is not trusted. If the SVG originates from user input or a third party, sanitise it first with a library like [DOMPurify](https://github.com/cure53/DOMPurify) before inserting it into the page. The same applies to fetched SVGs - see [Security](#security).
 
 </details>
+
+## Contributing
+
+Repo conventions that aren't obvious from the code - the architecture rules, the build and test commands, the React version matrix, and how the `examples/` dependencies are pinned - live in [AGENTS.md](AGENTS.md). Coding agents read it from the repo root, so keep it in sync when a change invalidates something it states.
 
 ## License
 

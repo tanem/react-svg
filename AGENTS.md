@@ -1,6 +1,9 @@
-# Copilot Instructions for react-svg
+# AGENTS.md
 
-These instructions are injected into every agent context window. Only add rules here that prevent mistakes an agent would otherwise make. Prefer discoverable information (code, config, directory structure) over documenting it here.
+Instructions for coding agents working in this repo. They are injected into
+every agent context window, so only add rules here that prevent mistakes an
+agent would otherwise make. Prefer discoverable information (code, config,
+directory structure) over documenting it here.
 
 ## General Rules
 
