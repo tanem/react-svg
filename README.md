@@ -191,7 +191,7 @@ Inline SVG strings (raw markup passed directly as the `src` prop) are **not** su
 
 ## Contributing
 
-Repo conventions that aren't obvious from the code - the architecture rules, the build and test commands, the React version matrix, and how the `examples/` dependencies are pinned - live in [AGENTS.md](AGENTS.md). Coding agents read it from the repo root, so keep it in sync when a change invalidates something it states.
+Repo conventions that aren't visible in the code - the PR labels that drive releases, the React version matrix policy, and how the `examples/` dependencies are pinned - live in [AGENTS.md](AGENTS.md). Coding agents read it from the repo root, so keep it in sync when a change invalidates something it states.
 
 ## License
 
