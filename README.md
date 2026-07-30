@@ -8,11 +8,19 @@
 
 > A React component that injects SVG into the DOM.
 
-[Background](#background) | [Basic Usage](#basic-usage) | [Live Examples](#live-examples) | [API](#api) | [Installation](#installation) | [FAQ](#faq) | [License](#license)
+[Background](#background) | [When To Use This](#when-to-use-this) | [Basic Usage](#basic-usage) | [Live Examples](#live-examples) | [API](#api) | [Installation](#installation) | [Security](#security) | [FAQ](#faq) | [License](#license)
 
 ## Background
 
 This component uses [@tanem/svg-injector](https://github.com/tanem/svg-injector) to fetch an SVG from a given URL and inject its markup into the DOM ([why?](https://github.com/tanem/svg-injector#background)). Fetched SVGs are cached, so multiple uses of the same SVG only require a single request.
+
+## When To Use This
+
+Injection costs a network request and two wrapper elements, and it earns that cost in one case: the SVG's URL isn't known until the app runs, and the markup has to be reachable by CSS. An `<img>` tag renders an SVG but its contents can't be styled, animated or scripted from the page.
+
+- **SVGs live in your repo and are known at build time.** Reach for a build-time transform - [SVGR](https://react-svgr.com), [vite-plugin-svgr](https://github.com/pd4d10/vite-plugin-svgr), or your bundler's SVG loader. They compile each file to a React component, so there's no runtime fetch, and unused icons are tree-shaken out.
+- **The URL is only known at runtime.** SVGs from a CMS or an API, user uploads, a CDN-hosted icon set, or a path assembled from data. That's what this component is for.
+- **You only need to display the image.** Use `<img src="icon.svg">`. It's cheaper than either option above.
 
 ## Basic Usage
 
@@ -108,6 +116,32 @@ $ npm install react-svg
 
 Requires React 16.8 or later, as a peer dependency.
 
+## Security
+
+Injected markup becomes part of your page, with the same privileges as anything else in it. That matters whenever `src` points at something you don't fully control - user uploads, a third-party host, a CMS anyone can write to. An SVG is an XML document that can carry scripts, event handlers and styles, not just shapes.
+
+**Scripts are off by default.** `evalScripts` defaults to `'never'`, so `<script>` blocks inside a fetched SVG are not executed. Leave it that way for anything untrusted - `'always'` and `'once'` run whatever the file happens to contain.
+
+**Scripts aren't the only vector.** Event-handler attributes such as `onload` and `onclick`, and `href="javascript:..."` on `<a>` elements, are inert to `evalScripts` but live once injected. For untrusted sources, sanitise the SVG element in `beforeInjection`, which runs after the fetch and before the element reaches the DOM:
+
+```jsx
+import DOMPurify from 'dompurify'
+import { ReactSVG } from 'react-svg'
+
+const Icon = ({ src }) => (
+  <ReactSVG
+    beforeInjection={(svg) => {
+      DOMPurify.sanitize(svg, { IN_PLACE: true })
+    }}
+    src={src}
+  />
+)
+```
+
+Sanitising the URL matters too. A `javascript:` or `data:text/html` value in `src` should never reach this component; validate the URL's scheme and origin before passing it in.
+
+**Injected content isn't isolated.** A `<style>` element inside an SVG applies to the whole page, so a fetched file can restyle your app through a generic class name like `.cls-1`, and the last SVG injected wins ([#2077](https://github.com/tanem/react-svg/issues/2077)). DOMPurify keeps `<style>` elements, so sanitising doesn't address this. Remove or rewrite them in `beforeInjection` if the SVGs aren't yours. Note that `renumerateIRIElements` (on by default) makes `id` attributes unique, but does nothing for class names.
+
 ## FAQ
 
 <details>
@@ -151,7 +185,7 @@ Can I use data URIs or inline SVG strings?
 
 Inline SVG strings (raw markup passed directly as the `src` prop) are **not** supported. If you already have the SVG markup as a string (for example, a dynamically generated chart), consider parsing it with `DOMParser` and appending the result yourself, or rendering it with `dangerouslySetInnerHTML`. These approaches avoid the fetch step entirely and will also avoid the brief flash that occurs when `react-svg` re-injects on `src` change.
 
-**Security note:** inserting SVG strings into the DOM bypasses React's built-in sanitisation and can expose your application to XSS if the content is not trusted. If the SVG originates from user input or a third party, sanitise it first with a library like [DOMPurify](https://github.com/cure53/DOMPurify) before inserting it into the page.
+**Security note:** inserting SVG strings into the DOM bypasses React's built-in escaping and can expose your application to XSS if the content is not trusted. If the SVG originates from user input or a third party, sanitise it first with a library like [DOMPurify](https://github.com/cure53/DOMPurify) before inserting it into the page. The same applies to fetched SVGs - see [Security](#security).
 
 </details>
 
