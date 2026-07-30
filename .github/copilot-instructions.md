@@ -30,6 +30,11 @@ The package checks (`package:publint`, `package:attw`) run as a `postbuild` hook
 because they inspect `dist/`. They cannot live in the `check:*` glob, which runs
 before `build`.
 
+`npm run size` gates the gzipped size of both bundles against the budgets in the
+`size-limit` field of `package.json`. It runs after `build` in `npm test`, so it
+needs `dist/` to be current. Raising a budget is a deliberate decision: check
+what grew first, and say why in the commit message.
+
 Testing rules:
 - Each test needs a unique `faker.seed()` + `faker.string.uuid()` for SVG URLs (bypasses svg-injector's cache). Use a seed not used by another test.
 - SVG injection is async: always `await waitFor(() => expect(...))` after render.
