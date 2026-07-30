@@ -38,9 +38,6 @@
     "dist",
     "src"
   ],
-  "engines": {
-    "node": ">=22"
-  },
   "scripts": {
     "build": "run-s clean bundle",
     "bundle": "tsdown",

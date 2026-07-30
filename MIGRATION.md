@@ -8,7 +8,6 @@ Details relating to major changes that aren't presently in `CHANGELOG.md`, due t
 
 - An `exports` map. `react-svg` and `react-svg/package.json` are the only entry points; paths into `dist` are no longer reachable, even though the top-level `main`, `module` and `types` fields are still set for webpack 4 and TypeScript `node10` resolution. Node ESM consumers now get the ES module build rather than falling back to CommonJS.
 - `sideEffects: false`, so bundlers can drop the package entirely when nothing is imported from it.
-- `engines.node` set to `>=22`, the oldest Node.js LTS line still receiving updates. This is a support statement rather than a syntax requirement: the published output targets ES2019.
 
 **Changed**
 
