@@ -625,9 +625,7 @@ describe('while running in a browser environment', () => {
     // Repro for https://github.com/tanem/react-svg/issues/2753.
     // eslint-disable-next-line @eslint-react/no-forward-ref
     const WrappedSVG = React.forwardRef<WrapperType, { src: string }>(
-      function WrappedSVG(props, ref) {
-        return <ReactSVG ref={ref} src={props.src} />
-      },
+      (props, ref) => <ReactSVG ref={ref} src={props.src} />,
     )
 
     const ref = React.createRef<WrapperType>()
