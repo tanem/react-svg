@@ -1,5 +1,12 @@
 # Changelog
 
+## [v18.0.1](https://github.com/tanem/react-svg/tree/v18.0.1) (2026-07-30)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v18.0.0...v18.0.1)
+
+#### :house: Internal
+
+- [#3595](https://github.com/tanem/react-svg/pull/3595) Fix the CodeSandbox setup failure in the examples ([@tanem](https://github.com/tanem))
+
 ## [v18.0.0](https://github.com/tanem/react-svg/tree/v18.0.0) (2026-07-30)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v17.2.5...v18.0.0)
 
