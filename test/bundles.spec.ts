@@ -5,8 +5,6 @@
 import fs from 'fs'
 import path from 'path'
 
-// UMD bundles are script-tag targets, so they have no React Server Components
-// boundary to mark.
 const entryPoints = [
   'index.js',
   'react-svg.cjs.development.js',

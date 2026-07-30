@@ -2,6 +2,12 @@
 
 Details relating to major changes that aren't presently in `CHANGELOG.md`, due to limitations with how that file is being generated.
 
+## v18.0.0
+
+**Removed**
+
+- UMD builds. `dist/react-svg.umd.development.js` and `dist/react-svg.umd.production.js` are no longer published, and the `ReactSVG` browser global is gone. React itself stopped shipping UMD builds in v19, so script-tag usage already required pinning React 18 or earlier. If you load `react-svg` via a script tag, pin `react-svg@^17`, or switch to the ES module build with an import map or a bundler.
+
 ## v17.0.0
 
 **Changed**

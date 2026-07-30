@@ -9,43 +9,24 @@ import pkg from './package.json' with { type: 'json' }
 const CJS_DEV = 'CJS_DEV'
 const CJS_PROD = 'CJS_PROD'
 const ES = 'ES'
-const UMD_DEV = 'UMD_DEV'
-const UMD_PROD = 'UMD_PROD'
 
 const input = './compiled/index.js'
 
 // Rollup strips file-level directives while bundling, so `"use client"` has to
-// be re-added to the output. UMD bundles are script-tag targets and have no
-// React Server Components boundary to mark, so they are left alone.
+// be re-added to the output.
 const banner = `'use client';`
 
-const getExternal = (bundleType) => {
-  const peerDependencies = Object.keys(pkg.peerDependencies)
-  const dependencies = Object.keys(pkg.dependencies)
+// Hat-tip: https://github.com/rollup/rollup-plugin-babel/issues/148#issuecomment-399696316.
+const external = (() => {
+  const externals = [
+    ...Object.keys(pkg.peerDependencies),
+    ...Object.keys(pkg.dependencies),
+  ]
+  const pattern = new RegExp(`^(${externals.join('|')})($|/)`)
+  return (id) => pattern.test(id)
+})()
 
-  // Hat-tip: https://github.com/rollup/rollup-plugin-babel/issues/148#issuecomment-399696316.
-  const makeExternalPredicate = (externals) => {
-    if (externals.length === 0) {
-      return () => false
-    }
-    const pattern = new RegExp(`^(${externals.join('|')})($|/)`)
-    return (id) => pattern.test(id)
-  }
-
-  switch (bundleType) {
-    case CJS_DEV:
-    case CJS_PROD:
-    case ES:
-      return makeExternalPredicate([...peerDependencies, ...dependencies])
-    case UMD_DEV:
-      return makeExternalPredicate([...peerDependencies, 'prop-types'])
-    default:
-      return makeExternalPredicate(peerDependencies)
-  }
-}
-
-const isProduction = (bundleType) =>
-  bundleType === CJS_PROD || bundleType === UMD_PROD
+const isProduction = (bundleType) => bundleType === CJS_PROD
 
 const getBabelConfig = (bundleType) => {
   const options = {
@@ -66,7 +47,6 @@ const getBabelConfig = (bundleType) => {
           ['transform-react-remove-prop-types', { mode: 'wrap' }],
         ],
       }
-    case UMD_PROD:
     case CJS_PROD:
       return {
         ...options,
@@ -109,7 +89,7 @@ const getPlugins = (bundleType) => [
 ]
 
 const getCjsConfig = (bundleType) => ({
-  external: getExternal(bundleType),
+  external,
   input,
   output: {
     banner,
@@ -123,7 +103,7 @@ const getCjsConfig = (bundleType) => ({
 })
 
 const getEsConfig = () => ({
-  external: getExternal(ES),
+  external,
   input,
   output: {
     banner,
@@ -134,28 +114,4 @@ const getEsConfig = () => ({
   plugins: getPlugins(ES),
 })
 
-const getUmdConfig = (bundleType) => ({
-  external: getExternal(bundleType),
-  input,
-  output: {
-    file: `dist/react-svg.umd.${
-      isProduction(bundleType) ? 'production' : 'development'
-    }.js`,
-    format: 'umd',
-    globals: {
-      ...(isProduction(bundleType) ? {} : { 'prop-types': 'PropTypes' }),
-      react: 'React',
-    },
-    name: 'ReactSVG',
-    sourcemap: true,
-  },
-  plugins: getPlugins(bundleType),
-})
-
-export default [
-  getCjsConfig(CJS_DEV),
-  getCjsConfig(CJS_PROD),
-  getEsConfig(),
-  getUmdConfig(UMD_DEV),
-  getUmdConfig(UMD_PROD),
-]
+export default [getCjsConfig(CJS_DEV), getCjsConfig(CJS_PROD), getEsConfig()]

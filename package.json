@@ -31,8 +31,6 @@
     "test:cjsprod": "jest --config ./config/jest/config.cjsprod.js",
     "test:es": "jest --config ./config/jest/config.es.js",
     "test:src": "jest --config ./config/jest/config.src.js",
-    "test:umd": "jest --config ./config/jest/config.umd.js",
-    "test:umdprod": "jest --config ./config/jest/config.umdprod.js",
     "test:react": "ts-node ./scripts/test-react"
   },
   "repository": {

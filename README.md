@@ -44,8 +44,6 @@ root.render(<ReactSVG src="svg.svg" />)
 - Styled Components: [Source](https://github.com/tanem/react-svg/tree/master/examples/styled-components) | [Sandbox](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/styled-components)
 - SVG Wrapper: [Source](https://github.com/tanem/react-svg/tree/master/examples/svg-wrapper) | [Sandbox](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/svg-wrapper)
 - Typescript: [Source](https://github.com/tanem/react-svg/tree/master/examples/typescript) | [Sandbox](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/typescript)
-- UMD Build (Development): [Source](https://github.com/tanem/react-svg/tree/master/examples/umd-dev) | [Sandbox](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/umd-dev)
-- UMD Build (Production): [Source](https://github.com/tanem/react-svg/tree/master/examples/umd-prod) | [Sandbox](https://codesandbox.io/p/devbox/github/tanem/react-svg/tree/master/examples/umd-prod)
 
 ## API
 
@@ -103,22 +101,6 @@ Other non-documented properties are applied to the outermost wrapper element.
 ```
 $ npm install react-svg
 ```
-
-UMD builds are also available for use with pre-React 19 via [unpkg](https://unpkg.com/):
-
-- https://unpkg.com/react-svg/dist/react-svg.umd.development.js
-- https://unpkg.com/react-svg/dist/react-svg.umd.production.js
-
-For the non-minified development version, make sure you have already included:
-
-- [`React`](https://unpkg.com/react@18/umd/react.development.js)
-- [`ReactDOM`](https://unpkg.com/react-dom@18/umd/react-dom.development.js)
-- [`PropTypes`](https://unpkg.com/prop-types/prop-types.js)
-
-For the minified production version, make sure you have already included:
-
-- [`React`](https://unpkg.com/react@18/umd/react.production.min.js)
-- [`ReactDOM`](https://unpkg.com/react-dom@18/umd/react-dom.production.min.js)
 
 ## FAQ
 
