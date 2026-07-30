@@ -1,5 +1,12 @@
 # Changelog
 
+## [v18.0.0](https://github.com/tanem/react-svg/tree/v18.0.0) (2026-07-30)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v17.2.5...v18.0.0)
+
+#### :boom: Breaking Change
+
+- [#3594](https://github.com/tanem/react-svg/pull/3594) Modernise packaging and rewrite as a function component ([@tanem](https://github.com/tanem))
+
 ## [v17.2.5](https://github.com/tanem/react-svg/tree/v17.2.5) (2026-07-28)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v17.2.4...v17.2.5)
 
