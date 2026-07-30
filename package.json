@@ -2,7 +2,7 @@
   "name": "react-svg",
   "version": "17.2.5",
   "description": "A React component that injects SVG into the DOM.",
-  "main": "dist/index.js",
+  "main": "dist/react-svg.cjs.js",
   "module": "dist/react-svg.esm.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -24,11 +24,10 @@
     "package:attw": "attw --pack .",
     "package:publint": "publint",
     "postbuild": "run-s package:*",
-    "postbundle": "npm run clean:compiled && shx cp ./index.js ./dist/index.js",
+    "postbundle": "npm run clean:compiled",
     "release": "tanem-scripts release",
     "test": "run-s check:* lint build test:*",
     "test:cjs": "jest --config ./config/jest/config.cjs.js",
-    "test:cjsprod": "jest --config ./config/jest/config.cjsprod.js",
     "test:es": "jest --config ./config/jest/config.es.js",
     "test:src": "jest --config ./config/jest/config.src.js",
     "test:react": "ts-node ./scripts/test-react"
@@ -59,9 +58,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.28.6",
-    "@tanem/svg-injector": "^11.3.1",
-    "@types/prop-types": "^15.7.15",
-    "prop-types": "^15.8.1"
+    "@tanem/svg-injector": "^11.3.1"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "0.18.5",
@@ -73,10 +70,6 @@
     "@eslint/js": "10.0.1",
     "@faker-js/faker": "10.3.0",
     "@rollup/plugin-babel": "6.1.0",
-    "@rollup/plugin-commonjs": "29.0.0",
-    "@rollup/plugin-node-resolve": "16.0.3",
-    "@rollup/plugin-replace": "6.0.3",
-    "@rollup/plugin-terser": "1.0.0",
     "@testing-library/react": "16.3.2",
     "@types/jest": "30.0.0",
     "@types/jsdom": "28.0.0",
@@ -84,7 +77,6 @@
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@types/shelljs": "0.10.0",
-    "babel-plugin-transform-react-remove-prop-types": "0.4.24",
     "css.escape": "1.5.1",
     "eslint": "10.8.0",
     "eslint-config-prettier": "10.1.8",

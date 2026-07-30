@@ -54,7 +54,7 @@ When adding a new boundary:
 ## Dependencies
 
 - `devDependencies`: pin exact versions (e.g. `"jest": "30.2.0"`).
-- `dependencies`: use caret ranges (e.g. `"prop-types": "^15.8.1"`).
+- `dependencies`: use caret ranges (e.g. `"@tanem/svg-injector": "^11.3.1"`).
 
 ## Examples
 
@@ -74,6 +74,6 @@ Exception: patch-level bumps within the template's major.minor are allowed to cl
 
 ## Conventions
 
-- PropTypes and TypeScript types are maintained in parallel: update both when changing props.
+- TypeScript types in `src/types.ts` are the only prop contract: there is no runtime `propTypes` validation.
 - Import sorting enforced by `eslint-plugin-simple-import-sort` (externals first, then relative).
 - `Props` in `src/types.ts` extends `HTMLAttributes` and `SVGAttributes`. Keep the type flat (avoids excessive depth with wrapper libraries).

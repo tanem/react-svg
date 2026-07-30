@@ -1,5 +1,4 @@
 import { SVGInjector } from '@tanem/svg-injector'
-import * as PropTypes from 'prop-types'
 import * as React from 'react'
 
 import ownerWindow from './owner-window'
@@ -29,30 +28,6 @@ export class ReactSVG extends React.Component<Props, State> {
     title: '',
     useRequestCache: true,
     wrapper: 'div',
-  }
-
-  static propTypes = {
-    afterInjection: PropTypes.func,
-    beforeInjection: PropTypes.func,
-    desc: PropTypes.string,
-    evalScripts: PropTypes.oneOf(['always', 'once', 'never']),
-    fallback: PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.object,
-      PropTypes.string,
-    ]),
-    httpRequestWithCredentials: PropTypes.bool,
-    loading: PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.object,
-      PropTypes.string,
-    ]),
-    onError: PropTypes.func,
-    renumerateIRIElements: PropTypes.bool,
-    src: PropTypes.string.isRequired,
-    title: PropTypes.string,
-    useRequestCache: PropTypes.bool,
-    wrapper: PropTypes.oneOf(['div', 'span', 'svg']),
   }
 
   initialState = {

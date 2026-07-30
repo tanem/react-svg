@@ -6,6 +6,8 @@ Details relating to major changes that aren't presently in `CHANGELOG.md`, due t
 
 **Removed**
 
+- `propTypes` validation. TypeScript types are the supported contract for props. React 19 ignores `propTypes` entirely, so this only changes behaviour for React 18 and earlier in development mode, where invalid props previously logged a console warning. `prop-types` and `@types/prop-types` are no longer dependencies.
+- The separate development and production CommonJS builds. `dist/react-svg.cjs.development.js`, `dist/react-svg.cjs.production.js` and the `dist/index.js` shim that switched between them on `process.env.NODE_ENV` are replaced by a single unminified `dist/react-svg.cjs.js`. With `propTypes` gone the two builds differed only by minification, which bundlers apply themselves. Importing `react-svg` is unaffected; only code requiring those paths directly needs updating.
 - UMD builds. `dist/react-svg.umd.development.js` and `dist/react-svg.umd.production.js` are no longer published, and the `ReactSVG` browser global is gone. React itself stopped shipping UMD builds in v19, so script-tag usage already required pinning React 18 or earlier. If you load `react-svg` via a script tag, pin `react-svg@^17`, or switch to the ES module build with an import map or a bundler.
 
 ## v17.0.0
