@@ -119,7 +119,7 @@
     "shelljs": "0.10.0",
     "shx": "0.4.0",
     "size-limit": "13.0.2",
-    "tanem-scripts": "8.0.4",
+    "tanem-scripts": "8.0.7",
     "ts-jest": "29.4.6",
     "ts-node": "10.9.2",
     "tsdown": "0.22.14",
