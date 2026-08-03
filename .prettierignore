@@ -4,3 +4,7 @@ build
 coverage
 dist
 package.json
+# Git-excluded scratch area holding manual-check harnesses, which are written
+# against the browser rather than this project's config. Absent for anyone
+# else, so this entry is inert for them and keeps `npm test` passing here.
+roadmap
