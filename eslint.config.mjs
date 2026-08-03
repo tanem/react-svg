@@ -14,9 +14,8 @@ export default tseslint.config(
       '**/coverage/',
       '**/dist/',
       '**/node_modules/',
-      // Git-excluded scratch area, outside every tsconfig and written for the
-      // browser and node rather than this project's globals. Absent for
-      // anyone else.
+      // Git-excluded scratch area, outside every tsconfig and this project's
+      // globals. Absent for anyone else.
       'roadmap/',
     ],
   },
@@ -68,6 +67,32 @@ export default tseslint.config(
 
     rules: {
       '@typescript-eslint/no-require-imports': 'off',
+    },
+  },
+  {
+    // The hand-run screen-reader harness. Neither file is part of the build or
+    // the suite: one is a node server that reports on stdout, the other runs in
+    // the browser. `sort-keys` is off because app.mjs's step table is in the
+    // order the steps are run in, which is the order it has to be read in.
+    files: ['test/manual/*.mjs'],
+
+    rules: {
+      'no-console': 'off',
+      'sort-keys': 'off',
+    },
+  },
+  {
+    files: ['test/manual/app.mjs'],
+
+    languageOptions: {
+      globals: globals.browser,
+    },
+  },
+  {
+    files: ['test/manual/server.mjs'],
+
+    languageOptions: {
+      globals: globals.node,
     },
   },
   eslintConfigPrettier,

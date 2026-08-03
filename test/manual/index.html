@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en-NZ">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Does a briefly-mounted loading element announce?</title>
+
+    <!-- React ships no ES module build, so it arrives as the CJS files it does
+         publish, wrapped by the server and loaded here as classic scripts.
+         Order matters: each one requires only the ones above it. Classic
+         scripts run before any module script, so the registry they build is
+         populated before the import map below is used. -->
+    <script src="/vendor/cjs/react.js"></script>
+    <script src="/vendor/cjs/scheduler.js"></script>
+    <script src="/vendor/cjs/react-dom.js"></script>
+    <script src="/vendor/cjs/react-dom/client.js"></script>
+
+    <!-- Every specifier resolves to the working tree: react-svg from dist/,
+         svg-injector and React from node_modules/. The React entries are
+         generated shims over the scripts above, and there is one entry per
+         module, so react-dom and react-svg share a single React instance. -->
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "/vendor/react.mjs",
+          "react-dom/client": "/vendor/react-dom/client.mjs",
+          "react-svg": "/vendor/react-svg.mjs",
+          "@tanem/svg-injector": "/vendor/svg-injector.mjs"
+        }
+      }
+    </script>
+
+    <style>
+      body {
+        font: 15px/1.5 -apple-system, system-ui, sans-serif;
+        margin: 0 auto;
+        max-width: 60rem;
+        padding: 2rem 1.5rem 4rem;
+      }
+      h1 {
+        font-size: 1.4rem;
+      }
+      h2 {
+        font-size: 1.05rem;
+        margin-bottom: 0.35rem;
+      }
+      p {
+        max-width: 46rem;
+      }
+      .steps {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0;
+      }
+      button {
+        border: 1px solid #999;
+        border-radius: 6px;
+        background: #f4f4f4;
+        cursor: pointer;
+        font: inherit;
+        padding: 0.5rem 0.9rem;
+      }
+      button:disabled {
+        color: #999;
+        cursor: not-allowed;
+      }
+      /* Visually hidden, not display:none, which would take it out of the
+         accessibility tree. It must not be readable on the page: text you can
+         see is text that proves only that the DOM changed, and confusing that
+         with an announcement is the one mistake this harness cannot afford. */
+      #announcer,
+      #insertion-point {
+        clip-path: inset(50%);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+      }
+      #stage {
+        border: 1px dashed #bbb;
+        border-radius: 6px;
+        margin: 1rem 0;
+        min-height: 5rem;
+        padding: 0.75rem;
+      }
+      .grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+      .grid > * {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        min-height: 48px;
+        min-width: 48px;
+      }
+      #log {
+        background: #111;
+        border-radius: 6px;
+        color: #d8d8d8;
+        font: 12px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace;
+        max-height: 26rem;
+        overflow: auto;
+        padding: 0.85rem 1rem;
+        white-space: pre-wrap;
+      }
+      .note {
+        background: #fff8e1;
+        border-left: 3px solid #e0a800;
+        padding: 0.6rem 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Does a briefly-mounted <code>loading</code> element announce?</h1>
+
+    <p>
+      svg-injector defers its callbacks, so on a second mount of the same
+      <code>src</code> react-svg commits the <code>loading</code> element to the
+      DOM and removes it a moment later. Nothing paints differently. The
+      question this harness answers is whether assistive technology still
+      queues an announcement, and whether that depends on the loading component
+      carrying live-region semantics.
+    </p>
+
+    <p class="note">
+      Run this with VoiceOver on and its caption panel open
+      (<kbd>VO</kbd>+<kbd>Command</kbd>+<kbd>F10</kbd>), so queued
+      announcements are visible as text. The DOM log below is a
+      <em>proxy</em>: it proves the element entered and left the DOM, not that
+      anything was announced. The caption panel is the instrument; the log is
+      there so an absence of announcements can be told apart from an absence of
+      loading elements.
+    </p>
+
+    <h2>Run the steps in order</h2>
+    <div class="steps">
+      <button data-step="instrument" type="button">
+        0. Check the instrument
+      </button>
+      <button data-step="inserted" type="button">
+        0b. Insert a populated live region
+      </button>
+      <button data-step="warm" type="button">1. Warm the cache</button>
+      <button data-step="status" type="button" disabled>
+        2. Case A — cached remount, role="status"
+      </button>
+      <button data-step="plain" type="button" disabled>
+        3. Case B — cached remount, plain span
+      </button>
+      <button data-step="control" type="button">
+        4. Slow cold load, role="status"
+      </button>
+      <button data-step="reset" type="button">Reset</button>
+    </div>
+
+    <!-- The instrument check. This region is in the DOM from page load and
+         only its text changes, which is the canonical live-region pattern and
+         the one screen readers reliably announce. It sits outside #stage so
+         the DOM log, which watches #stage, never sees it. -->
+    <div aria-live="polite" id="announcer" role="status"></div>
+
+    <!-- Where step 0b inserts its already-populated live region. Also outside
+         #stage, and empty until then. -->
+    <div id="insertion-point"></div>
+
+    <div id="stage"></div>
+
+    <h2>DOM log</h2>
+    <pre id="log">Waiting for step 1.</pre>
+
+    <script type="module" src="/app.mjs"></script>
+  </body>
+</html>
