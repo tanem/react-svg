@@ -40,7 +40,9 @@ current `npm run build`.
 
 Give each test its own `faker.seed()` and a `faker.string.uuid()` SVG URL, or
 svg-injector's cache leaks state between tests. Injection is async: assert
-through `await waitFor(...)`.
+through `await waitFor(...)`. The warm-cache loading test is the one deliberate
+exception: it needs the cache to hit, so it uses a fixed URL no other test
+touches.
 
 Raising a `size-limit` budget in `package.json` is a decision, not a fix. Find
 what grew first, and say why in the commit message.

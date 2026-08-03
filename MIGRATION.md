@@ -2,6 +2,26 @@
 
 Details relating to major changes that aren't presently in `CHANGELOG.md`, due to limitations with how that file is being generated.
 
+## v19.0.0
+
+Nothing in this package's own API changed. Every entry below comes from [`@tanem/svg-injector`](https://github.com/tanem/svg-injector) moving to v12 (see its [migration notes](https://github.com/tanem/svg-injector/blob/master/MIGRATION.md#v1200) for the packaging changes, which only affect you if you also depend on it directly).
+
+**Changed**
+
+- Test suites running under jsdom need a `TextDecoder` polyfill. svg-injector uses `TextDecoder` to decode base64 `data:image/svg+xml` URLs as UTF-8, and jsdom does not expose it, so rendering `<ReactSVG src="data:image/svg+xml;base64,…" />` throws `ReferenceError: TextDecoder is not defined`. Add it to your Jest setup file:
+
+  ```ts
+  import { TextDecoder } from 'node:util'
+
+  globalThis.TextDecoder ??= TextDecoder as typeof globalThis.TextDecoder
+  ```
+
+  jsdom also lacks `CSS.escape`, which svg-injector uses to look up a sprite symbol. If you render an `src` with a fragment identifier, `import 'css.escape'` in the same file.
+
+- A `src` whose `.svg` appears outside the URL pathname now needs a valid `Content-Type`. svg-injector skips the `Content-Type` response header check for URLs ending in `.svg`, and it used to match that against the whole URL. It now matches against the end of the pathname, so `src="/render?file=logo.svg"` served without a valid `Content-Type` reports an error through `onError` where it previously injected. Serve `image/svg+xml` (or `text/plain`), or move the extension into the pathname.
+
+- The `loading` element now enters the DOM when the same `src` is mounted a second time. svg-injector v12 defers its callbacks, so `loading` renders and is then removed, where v11 called back synchronously for a cached `src` and React collapsed both state updates into a single render that never showed it. Nothing paints differently: a paint-level A/B measured 1 painted frame in 95 deferred mounts against 2 in 95 synchronous ones, which is React's own scheduling either way.
+
 ## v18.0.0
 
 **Added**
