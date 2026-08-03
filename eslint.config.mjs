@@ -9,7 +9,16 @@ import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
   {
-    ignores: ['**/build/', '**/coverage/', '**/dist/', '**/node_modules/'],
+    ignores: [
+      '**/build/',
+      '**/coverage/',
+      '**/dist/',
+      '**/node_modules/',
+      // Git-excluded scratch area, outside every tsconfig and written for the
+      // browser and node rather than this project's globals. Absent for
+      // anyone else.
+      'roadmap/',
+    ],
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
