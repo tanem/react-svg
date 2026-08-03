@@ -234,6 +234,44 @@ describe('while running in a browser environment', () => {
     )
   })
 
+  // Deliberately breaks the fixed-`src` convention noted at the top of this
+  // file: warming SVGInjector's cache is the point. From v12 it defers the
+  // cache-hit callback, so `setIsLoading(false)` lands in a later task than
+  // the mount and the loader is committed to the DOM. Under v11 both updates
+  // shared one task, React collapsed them, and the loader never appeared for
+  // a cached `src`.
+  it('should render the specified loader for a cached src', async () => {
+    const loading = () => <span>loading</span>
+    const src = 'http://localhost/warm-cache.svg'
+
+    nock('http://localhost')
+      .get('/warm-cache.svg')
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const first = render(<ReactSVG loading={loading} src={src} />)
+
+    await waitFor(() =>
+      expect(first.container.querySelectorAll('.injected-svg')).toHaveLength(1),
+    )
+
+    first.unmount()
+
+    // No interceptor is left in place, so a second request fails to connect
+    // rather than quietly succeeding. The injection below can only come from
+    // the cache.
+    nock.cleanAll()
+
+    const second = render(<ReactSVG loading={loading} src={src} />)
+
+    expect(second.getByText('loading')).toBeTruthy()
+
+    await waitFor(() =>
+      expect(second.container.querySelectorAll('.injected-svg')).toHaveLength(
+        1,
+      ),
+    )
+  })
+
   it('allows rendering of span wrappers', async () => {
     faker.seed(132)
     const uuid = faker.string.uuid()
