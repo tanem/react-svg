@@ -1,5 +1,14 @@
 # Changelog
 
+## [v18.0.2](https://github.com/tanem/react-svg/tree/v18.0.2) (2026-08-03)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v18.0.1...v18.0.2)
+
+#### :house: Internal
+
+- [#3598](https://github.com/tanem/react-svg/pull/3598) Polyfill TextDecoder for jsdom ([@tanem](https://github.com/tanem))
+- [#3597](https://github.com/tanem/react-svg/pull/3597) Update tanem-scripts to 8.0.7 ([@tanem](https://github.com/tanem))
+- [#3596](https://github.com/tanem/react-svg/pull/3596) Correct what AGENTS.md says npm test runs ([@tanem](https://github.com/tanem))
+
 ## [v18.0.1](https://github.com/tanem/react-svg/tree/v18.0.1) (2026-07-30)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v18.0.0...v18.0.1)
 
