@@ -1,5 +1,12 @@
 # Changelog
 
+## [v19.0.0](https://github.com/tanem/react-svg/tree/v19.0.0) (2026-08-03)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v18.0.2...v19.0.0)
+
+#### :boom: Breaking Change
+
+- [#3599](https://github.com/tanem/react-svg/pull/3599) Update @tanem/svg-injector to v12 ([@tanem](https://github.com/tanem))
+
 ## [v18.0.2](https://github.com/tanem/react-svg/tree/v18.0.2) (2026-08-03)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v18.0.1...v18.0.2)
 
