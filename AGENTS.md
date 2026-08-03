@@ -44,6 +44,18 @@ through `await waitFor(...)`. The warm-cache loading test is the one deliberate
 exception: it needs the cache to hit, so it uses a fixed URL no other test
 touches.
 
+jsdom has no accessibility layer and no paint, so the suite pins the ARIA
+wiring as markup and can go no further: whether a screen reader does anything
+with that markup is outside what any test here can answer. That is this repo's
+blind spot rather than a shared one, because the wiring lives here —
+svg-injector ships no ARIA behaviour of its own. `test/manual/` is the check for
+those questions: a node server and a page driven by hand under VoiceOver. It is
+not run by `npm test` and not wired into CI, deliberately, since the instrument
+is a real screen reader and automating it would mean simulating the thing it
+exists to escape. Run it and record the result in the PR when you change the
+ARIA wiring or the `loading` element's lifecycle, and update its recorded run in
+the same commit as any deliberate change to either.
+
 Raising a `size-limit` budget in `package.json` is a decision, not a fix. Find
 what grew first, and say why in the commit message.
 
