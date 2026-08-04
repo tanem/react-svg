@@ -275,7 +275,7 @@ describe('while running in a browser environment', () => {
   it('should hold the loader back until loadingDelay has elapsed', async () => {
     const loading = () => <span>loading</span>
 
-    faker.seed(133)
+    faker.seed(190)
     const uuid = faker.string.uuid()
 
     nock('http://localhost')
@@ -335,10 +335,70 @@ describe('while running in a browser environment', () => {
     expect(second.queryByText('loading')).toBeNull()
   })
 
+  // The delay is per injection, so an elapsed one must not carry over: changing
+  // `src` starts a fresh delay that has to hold the loader back again. Counts
+  // renders of `loading` rather than querying the DOM, because carrying the
+  // flag over mounts it for a fraction of a millisecond before the delay effect
+  // pulls it again - long enough for Chrome to paint it, far too short for a
+  // query after the fact to catch.
+  it('should not carry an elapsed loadingDelay into a re-injection', async () => {
+    let loadingRenders = 0
+    const loading = () => {
+      loadingRenders += 1
+      return <span>loading</span>
+    }
+
+    faker.seed(189)
+    const first = faker.string.uuid()
+    const second = faker.string.uuid()
+
+    nock('http://localhost')
+      .get(`/${first}.svg`)
+      .delay(200)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+      .get(`/${second}.svg`)
+      .delay(200)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { container, rerender } = render(
+      <ReactSVG
+        loading={loading}
+        loadingDelay={50}
+        src={`http://localhost/${first}.svg`}
+      />,
+    )
+
+    // The first delay has to actually elapse, or there is no elapsed flag to
+    // carry over and the assertion below passes without exercising anything.
+    await waitFor(() => expect(loadingRenders).toBeGreaterThan(0))
+
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
+    )
+
+    loadingRenders = 0
+
+    rerender(
+      <ReactSVG
+        loading={loading}
+        loadingDelay={2000}
+        src={`http://localhost/${second}.svg`}
+      />,
+    )
+
+    await waitFor(() => expect(nock.isDone()).toBe(true))
+
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
+    )
+
+    expect(loadingRenders).toBe(0)
+  })
+
   it('should render the loader immediately when loadingDelay is zero', async () => {
     const loading = () => <span>loading</span>
 
-    faker.seed(134)
+    faker.seed(191)
     const uuid = faker.string.uuid()
 
     nock('http://localhost')
@@ -367,7 +427,7 @@ describe('while running in a browser environment', () => {
     const fallback = () => <span>fallback</span>
     const loading = () => <span>loading</span>
 
-    faker.seed(135)
+    faker.seed(192)
     const uuid = faker.string.uuid()
 
     nock('http://localhost').get(`/${uuid}.svg`).reply(404)
