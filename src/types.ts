@@ -9,6 +9,7 @@ interface BaseProps {
   fallback?: React.ElementType
   httpRequestWithCredentials?: boolean
   loading?: React.ElementType
+  loadingDelay?: number
   onError?: (error: unknown) => void
   renumerateIRIElements?: boolean
   src: string

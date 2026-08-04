@@ -31,6 +31,7 @@ export const ReactSVG: React.ForwardRefExoticComponent<
       fallback: Fallback,
       httpRequestWithCredentials = false,
       loading: Loading,
+      loadingDelay = 0,
       onError = () => undefined,
       renumerateIRIElements = true,
       src,
@@ -43,6 +44,15 @@ export const ReactSVG: React.ForwardRefExoticComponent<
   ) => {
     const [hasError, setHasError] = React.useState(false)
     const [isLoading, setIsLoading] = React.useState(true)
+
+    // `loading` is held back until the delay elapses, so an injection that
+    // resolves sooner - a warm cache, localhost, a file:// read - never paints
+    // an indicator at all. The initial value has to account for the delay
+    // rather than start false: effects run after paint, so initialising to
+    // false would cost the default a frame without the loader.
+    const [hasLoadingDelayElapsed, setHasLoadingDelayElapsed] = React.useState(
+      loadingDelay <= 0,
+    )
 
     const reactWrapperRef = React.useRef<WrapperType | null>(null)
 
@@ -232,6 +242,33 @@ export const ReactSVG: React.ForwardRefExoticComponent<
       wrapper,
     ])
 
+    // Keyed on `isLoading` rather than living in the injection effect, so that
+    // changing `loadingDelay` restarts the timer without re-running the
+    // injection. The injection effect setting `isLoading` back to true is what
+    // restarts the delay for a re-injection.
+    React.useEffect(() => {
+      if (!isLoading) {
+        return
+      }
+
+      /* eslint-disable @eslint-react/set-state-in-effect */
+      if (loadingDelay <= 0) {
+        setHasLoadingDelayElapsed(true)
+        return
+      }
+
+      setHasLoadingDelayElapsed(false)
+      /* eslint-enable @eslint-react/set-state-in-effect */
+
+      const timeoutId = setTimeout(() => {
+        setHasLoadingDelayElapsed(true)
+      }, loadingDelay)
+
+      return () => {
+        clearTimeout(timeoutId)
+      }
+    }, [isLoading, loadingDelay])
+
     const Wrapper = wrapper
 
     return (
@@ -245,7 +282,7 @@ export const ReactSVG: React.ForwardRefExoticComponent<
             }
           : {})}
       >
-        {isLoading && Loading && <Loading />}
+        {isLoading && hasLoadingDelayElapsed && Loading && <Loading />}
         {hasError && Fallback && <Fallback />}
       </Wrapper>
     )

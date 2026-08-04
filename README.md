@@ -44,6 +44,7 @@ const App = () => <ReactSVG src="svg.svg" />
 | [`fallback`](#fallback)                                     | `React.ElementType`             | none       |
 | [`httpRequestWithCredentials`](#httprequestwithcredentials) | `boolean`                       | `false`    |
 | [`loading`](#loading)                                       | `React.ElementType`             | none       |
+| [`loadingDelay`](#loadingdelay)                             | `number`                        | `0`        |
 | [`onError`](#onerror)                                       | `(error: unknown) => void`      | noop       |
 | [`renumerateIRIElements`](#renumerateirielements)           | `boolean`                       | `true`     |
 | [`title`](#title)                                           | `string`                        | `''`       |
@@ -83,6 +84,14 @@ Whether cross-site Access-Control requests for the SVG are made using credential
 #### `loading`
 
 Rendered inside the wrapper until the SVG is injected. Can be a string, class component or function component. Nothing is rendered in its place when unset.
+
+#### `loadingDelay`
+
+Milliseconds to wait before rendering `loading`. At the default `0` it renders immediately. Set a value and an injection that finishes sooner - a warm request cache, a localhost or `file://` read, a warm CDN edge - never renders `loading` at all.
+
+Use it when `loading` is a spinner, where a sub-second appearance is worse than none: the user can't tell what flashed. Leave it at `0` when `loading` is a skeleton sized to hold the SVG's space, because delaying that trades one layout shift for two.
+
+200-300ms is the usual industry choice. The delay applies to `loading` only - `fallback` always renders as soon as the error arrives, since an error costs a round trip that no cache short-circuits.
 
 #### `onError`
 
