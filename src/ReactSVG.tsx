@@ -54,6 +54,18 @@ export const ReactSVG: React.ForwardRefExoticComponent<
       loadingDelay <= 0,
     )
 
+    // Bumped whenever an injection starts, so the delay effect below can tell
+    // one injection from the next. `isLoading` can't carry that on its own: a
+    // re-injection that begins while the previous request is still in flight
+    // leaves it true throughout, so with an unchanged `loadingDelay` neither of
+    // that effect's other dependencies would change and the timer would never
+    // re-arm.
+    //
+    // Skipped for the first injection, so mount still settles in one render -
+    // every value that effect writes already holds its default there.
+    const [injectionId, setInjectionId] = React.useState(0)
+    const hasInjectedRef = React.useRef(false)
+
     const reactWrapperRef = React.useRef<WrapperType | null>(null)
 
     // The callbacks are read through a ref so that changing them - which inline
@@ -116,20 +128,26 @@ export const ReactSVG: React.ForwardRefExoticComponent<
       }
 
       // A new injection is starting, so any result from the previous one is
-      // stale. On mount all three values already hold these defaults and React
-      // bails out, so this only re-renders when a dependency actually changed.
+      // stale. On mount the three flags already hold these defaults and React
+      // bails out - and `injectionId` is skipped there for the same reason - so
+      // this only re-renders when a dependency actually changed.
       //
       // The elapsed flag has to be cleared here rather than left to the delay
-      // effect below: that effect is keyed on `isLoading`, so it only reacts
-      // once this render has committed, and the render in between would still
-      // see a flag left true by the previous injection and mount `loading`
-      // regardless of the delay. It takes `loadingDelay <= 0` rather than a
-      // plain false for the reason the initial state does - the default would
-      // otherwise lose a frame to a re-injection.
+      // effect below: that effect only reacts once this render has committed,
+      // and the render in between would still see a flag left true by the
+      // previous injection and mount `loading` regardless of the delay. It
+      // takes `loadingDelay <= 0` rather than a plain false for the reason the
+      // initial state does - the default would otherwise lose a frame to a
+      // re-injection.
       /* eslint-disable @eslint-react/set-state-in-effect */
       setHasError(false)
       setIsLoading(true)
       setHasLoadingDelayElapsed(loadingDelayRef.current <= 0)
+      if (hasInjectedRef.current) {
+        setInjectionId((id) => id + 1)
+      } else {
+        hasInjectedRef.current = true
+      }
       /* eslint-enable @eslint-react/set-state-in-effect */
 
       let nonReactTarget: WrapperType
@@ -260,10 +278,15 @@ export const ReactSVG: React.ForwardRefExoticComponent<
       wrapper,
     ])
 
-    // Keyed on `isLoading` rather than living in the injection effect, so that
-    // changing `loadingDelay` restarts the timer without re-running the
+    // Keyed on `injectionId` rather than living in the injection effect, so
+    // that changing `loadingDelay` restarts the timer without re-running the
     // injection. Only the timer lives here; a re-injection's flag is cleared by
     // the injection effect itself, which is a render earlier than this can run.
+    //
+    // `isLoading` is a dependency so the timer is cleared once an injection
+    // finishes, and `injectionId` so it re-arms for every injection - including
+    // one that starts while the previous request is still in flight, which
+    // leaves `isLoading` true the whole way through.
     React.useEffect(() => {
       if (!isLoading) {
         return
@@ -285,7 +308,7 @@ export const ReactSVG: React.ForwardRefExoticComponent<
       return () => {
         clearTimeout(timeoutId)
       }
-    }, [isLoading, loadingDelay])
+    }, [injectionId, isLoading, loadingDelay])
 
     const Wrapper = wrapper
 
