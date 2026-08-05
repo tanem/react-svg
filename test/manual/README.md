@@ -136,16 +136,16 @@ VoiceOver / macOS version:
 
 Recorded so a later run has something to compare against.
 
-19.0.0, 2026-08-04, Safari 26.5 on macOS 26.5, VoiceOver with the caption panel
-open:
+19.0.0 plus the `loadingDelay` work (eed92b7b), 2026-08-06, Safari 26.5 on macOS
+15.7.7, VoiceOver with the caption panel open:
 
-| Case                                                    | Caption panel | DOM                                  |
-| ------------------------------------------------------- | ------------- | ------------------------------------ |
-| 0 — existing live region, text changed                  | announces     | n/a                                  |
-| 0b — `role="status"` element inserted already-populated | silent        | n/a                                  |
-| A — cached remount, `role="status"`                     | silent        | 8 elements, 0 requests               |
-| B — cached remount, plain span                          | silent        | 8 elements, median 2.0ms, 0 requests |
-| 4 — `loading`, `role="status"`, ~2.5s mounted           | silent        | 1 element                            |
+| Case                                                    | Caption panel | DOM                                              |
+| ------------------------------------------------------- | ------------- | ------------------------------------------------ |
+| 0 — existing live region, text changed                  | announces     | n/a                                              |
+| 0b — `role="status"` element inserted already-populated | silent        | n/a                                              |
+| A — cached remount, `role="status"`                     | silent        | 8 elements, median 6.0ms, range 5.0-6.0, 0 requests |
+| B — cached remount, plain span                          | silent        | 8 elements, median 7.0ms, range 6.0-7.0, 0 requests |
+| 4 — `loading`, `role="status"`, ~2.5s mounted           | silent        | 1 element, 2515.0ms                              |
 
 **No announcement, and lifetime is not the variable.** VoiceOver announces a
 live region whose content changes and ignores one that arrives with its content
@@ -153,8 +153,22 @@ already in it. Step 0b establishes that with neither React nor svg-injector in
 the picture, so it is platform behaviour react-svg inherits. React mounts a
 `loading` component as a complete element, which is always the second shape, and
 a `role="status"` element mounted for a full 2.5 seconds was as silent as the
-two-millisecond ones. Live-region semantics made no difference either: A and B
-were equally silent.
+millisecond-scale ones. Live-region semantics made no difference either: A and B
+were equally silent. Unchanged from the 2026-08-04 run.
+
+What this run does and does not cover. `loadingDelay` defaults to 0, so the
+default path mounts `loading` exactly as before, and that is the path every step
+here exercises - the harness never sets the prop. So this is a no-regression
+check, not coverage of the prop: a delay long enough to suppress the mount
+leaves no element to announce, which the DOM log settles without a screen
+reader. No step changes `src` on a mounted component either, which is the path
+the re-injection fix in eed92b7b corrects.
+
+Lifetimes came out longer than the 2026-08-04 run, B's median 7.0ms against
+2.0ms. Both are the same shape - every cached remount mounts and unmounts the
+element - and at this scale the figure tracks the machine and browser build
+rather than anything in the package, so it is recorded rather than read as a
+change.
 
 Re-run this against a different browser or screen reader, or if the mounting
 behaviour changes.
