@@ -136,6 +136,14 @@
       loading elements.
     </p>
 
+    <p class="note">
+      Step 5 is the exception to all of that: it needs no screen reader, only a
+      foregrounded tab. It swaps <code>src</code> on a live component with
+      <code>loadingDelay</code> set and samples
+      <code>requestAnimationFrame</code>, which is the one question jsdom cannot
+      answer — whether a frame was ever painted with the loader on screen.
+    </p>
+
     <h2>Run the steps in order</h2>
     <div class="steps">
       <button data-step="instrument" type="button">
@@ -153,6 +161,9 @@
       </button>
       <button data-step="control" type="button">
         4. Slow cold load, role="status"
+      </button>
+      <button data-step="probe" type="button">
+        5. Mid-flight re-injection probe
       </button>
       <button data-step="reset" type="button">Reset</button>
     </div>

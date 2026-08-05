@@ -91,6 +91,21 @@ actually reading.
 - **4 — slow cold load, `role="status"`.** A cold load held open for ~2.5
   seconds, so the loading element is mounted for a human-scale stretch rather
   than a couple of milliseconds.
+- **5 — mid-flight re-injection probe.** The odd one out, and the only step that
+  swaps `src` on a live component rather than remounting a fresh tree. Sets
+  `loadingDelay`, re-injects while the first request is still in flight, and
+  samples `requestAnimationFrame` to see whether a frame was ever painted with
+  the loader on screen. Two phases that control each other: `rearm` gives the
+  second injection long enough that the loader has to come back, `suppress`
+  gives it less than the delay so the loader must stay down. Needs no screen
+  reader, only a foregrounded tab — rAF stops in a background one. Takes about a
+  minute.
+
+Step 5 answers a question the rest of this harness cannot, and one jsdom cannot
+either: `loadingDelay` exists to stop a loader reaching the screen, and only a
+real browser paints. It is also the only step whose result does not depend on
+who is running it, so it is the one worth re-running on any change to the delay
+logic. Its result is recorded separately below.
 
 Step 4 is **not** the instrument check, though an earlier version of this
 harness treated it as one. It inserts an element that already carries
@@ -176,6 +191,42 @@ rather than read as a change.
 
 Re-run this against a different browser or screen reader, or if the mounting
 behaviour changes.
+
+## Last probe run
+
+Step 5 is recorded separately because it is a different instrument. It needs no
+screen reader, only a foregrounded tab, so unlike the steps above it reads the
+same however it is driven and can be re-run by anyone.
+
+Chrome 151 on macOS, 30 runs per phase, against `dist/` built from this commit:
+
+| Phase      | Expectation                | Mounted after the swap | Painted | Still up at the end |
+| ---------- | -------------------------- | ---------------------- | ------- | ------------------- |
+| `rearm`    | the loader has to come back | 30/30                  | 30/30   | 0/30                |
+| `suppress` | the loader must stay down   | 0/30                   | 0/30    | 0/30                |
+
+**The two phases are each other's control.** `suppress` returning zero only
+means something because `rearm` returned thirty in the same sitting: together
+they say the probe could see a loader and still saw none where none belonged.
+Run against `dist/` built from b06a2cb4, the commit before the fix, `rearm`
+reads 0/30 instead - the loader never comes back for the second injection -
+which is the regression the fix closes and the reason this step exists.
+
+Two figures were wrong before they were right, and both were the probe rather
+than the package. Counting every frame after the swap reported `suppress` as
+3/30 painted, because the loader already legitimately on screen keeps painting
+for a frame or two while React commits the swap; the count now ignores any
+element that did not arrive after the swap. And checking what was still on
+screen the moment `.injected-svg` appeared reported `rearm` as 1/30 lingering,
+because svg-injector inserts the SVG before it calls back, so React has not yet
+committed `isLoading` false; the check now settles first.
+
+What this does not cover. Only the mid-flight re-injection path, and only the
+paint question - whether assistive technology reacts to any of it is what steps
+0 through 4 are for, and they still never set `loadingDelay`. The frame count
+is a floor rather than a measurement: rAF samples at about 60Hz, so a mount
+shorter than a frame can be real and go uncounted. Mounts are the sensitive
+figure; frames only say whether one reached the screen.
 
 The mechanics were re-checked in Chrome 151 on 2026-08-04, after the move here
 and to React from `node_modules`: all six steps ran, both cached remounts served
