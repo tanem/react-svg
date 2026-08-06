@@ -9,8 +9,10 @@ constrains belongs there, not here.
 - NZ English everywhere ("colour", "behaviour", "initialise").
 - Match a document's length to what it needs. Cover the substance, then
   stop: no filler sections, restated summaries or boilerplate.
-- Single-line commit messages, `git log --oneline` style. Add a body only to
-  explain why, and only for behaviour or type changes.
+- Commit subjects are one capitalised line, `git log --oneline` style. Add a
+  body whenever the change had a reason the diff does not show: what it fixes,
+  what it rules out, what constraint forced the shape it has. Mechanical
+  changes need none.
 - No conventional-commit prefixes (`feat:`, `fix:`, `chore(deps):`) in commit
   subjects or PR titles. Write a plain capitalised sentence. Nothing reads the
   prefix: the version bump comes from the PR label, and renovate is set to
