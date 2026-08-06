@@ -1,39 +1,12 @@
 # Manual screen-reader checks
 
-The suite runs in jsdom, which has no accessibility layer and no paint. Every
-accessibility claim this package makes is therefore pinned as markup: that
-`role="img"` is set, that the `<title>` and `<desc>` nodes exist, that
-`aria-labelledby` points at their IDs. Nothing in the suite observes what
-assistive technology does with any of it.
+A node server and a page driven by hand under VoiceOver. It answers the
+accessibility questions the jsdom suite structurally cannot, and it is
+deliberately not wired into CI: the instrument is a real screen reader, and
+automating it would mean simulating the thing it exists to escape.
 
-That gap matters here more than in most repos. svg-injector ships no ARIA
-behaviour of its own, so the wiring in `beforeEach` and the `loading` element
-this package mounts and unmounts are the accessibility contract, and this repo
-owns all of it.
-
-This harness is how that contract gets checked. It is deliberately not wired
-into CI: the instrument is a real screen reader, and automating it would mean
-simulating the thing it exists to escape.
-
-It currently covers one question, the one it was built for. Extending it to the
-`role="img"` / `<title>` / `<desc>` / `aria-labelledby` path is the obvious next
-use and has not been done.
-
-## The question it answers
-
-Does a briefly-mounted `loading` element announce?
-
-svg-injector defers its callbacks, so on a second mount of the same `src`
-react-svg commits the `loading` element to the DOM and removes it a couple of
-milliseconds later. `should render the specified loader for a cached src` in
-`test/browser.spec.tsx` pins that DOM behaviour. Whether a screen reader queues an announcement for an element with
-that lifetime is what the suite cannot answer, since assistive technology
-observes the DOM rather than the screen and paint timing has nothing to do with
-it.
-
-A cold load mounts and unmounts `loading` in every version, and always has. What
-changed is how often: every cached mount now does what previously only a genuine
-load did. Report any finding as a frequency change, not as a new defect.
+Run it, and update the recorded runs below, when you change the ARIA wiring or
+the `loading` element's lifecycle.
 
 ## Running it
 
@@ -52,17 +25,6 @@ Then open <http://localhost:4191>, with:
 Safari is the representative pairing for VoiceOver. Worth a second run in Chrome
 if the two disagree, since the AT-to-browser bridge differs.
 
-Everything the page loads comes from the working tree: react-svg from `dist/`,
-svg-injector and React from `node_modules/`. So it tests the build in front of
-you, it needs no network, and there is no second React version to keep in step
-with `package.json`.
-
-React ships no ES module build, which is why `server.mjs` wraps the CJS files it
-does ship and `index.html` loads them as classic scripts before anything else.
-The import map then points `react` and `react-dom/client` at generated shims
-over those globals, so `dist/react-svg.mjs` resolves `react` to the same
-instance react-dom is using.
-
 ## The steps
 
 Run them in order. Each prints a DOM log; the caption panel is what you are
@@ -75,10 +37,9 @@ actually reading.
   panel and nothing else here can be read.
 - **0b — insert a populated live region.** Inserts a `role="status"` element
   that arrives with its text already in it, again with no react-svg involved.
-  Read against step 0 it says whether any silence is about insertion versus
-  mutation. That is structurally what react-svg does with a `loading` component,
-  minus React and svg-injector, so a silent 0b puts the finding on the platform
-  rather than on this package.
+  Structurally that is what react-svg does with a `loading` component, minus
+  React and svg-injector, so read against step 0 it puts any silence on the
+  platform rather than on this package.
 - **1 — warm the cache.** Mounts eight icons with no `loading` component at all,
   waits for injection, unmounts. Nothing here can announce; it exists only to
   leave svg-injector's cache holding all eight.
@@ -90,7 +51,11 @@ actually reading.
   semantics.
 - **4 — slow cold load, `role="status"`.** A cold load held open for ~2.5
   seconds, so the loading element is mounted for a human-scale stretch rather
-  than a couple of milliseconds.
+  than a couple of milliseconds. It is **not** the instrument check, though an
+  earlier version of this harness treated it as one: it inserts an element that
+  already carries its text, which is the open question the cached cases turn on,
+  so a silent step 4 cannot tell a broken setup apart from a real finding. Step
+  0 is the only step that can.
 - **5 — mid-flight re-injection probe.** The odd one out, and the only step that
   swaps `src` on a live component rather than remounting a fresh tree. Sets
   `loadingDelay`, re-injects while the first request is still in flight, and
@@ -99,40 +64,7 @@ actually reading.
   second injection long enough that the loader has to come back, `suppress`
   gives it less than the delay so the loader must stay down. Needs no screen
   reader, only a foregrounded tab — rAF stops in a background one. Takes about a
-  minute.
-
-Step 5 answers a question the rest of this harness cannot, and one jsdom cannot
-either: `loadingDelay` exists to stop a loader reaching the screen, and only a
-real browser paints. It is also the only step whose result does not depend on
-who is running it, so it is the one worth re-running on any change to the delay
-logic. Its result is recorded separately below.
-
-Step 4 is **not** the instrument check, though an earlier version of this
-harness treated it as one. It inserts an element that already carries
-`role="status"` and its text, and whether assistive technology announces a
-*newly inserted* live region is an open question in its own right — the same one
-the cached cases turn on. A silent step 4 therefore cannot tell a broken setup
-apart from a real finding. Step 0 exists to do that job, and it is the only step
-that can.
-
-## What the DOM log is and is not
-
-It records each loading element entering and leaving the DOM, and how long it
-stayed. That proves the elements existed, which is what tells an *absence of
-announcements* apart from an *absence of loading elements*. It does not prove
-anything was announced. Do not report a finding from the log alone.
-
-## The pieces that look incidental
-
-Each one is a wrong turn already taken once.
-
-| Piece                        | Covers                                                                                                                                                     |
-| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Step 0 against step 0b       | Mutation versus insertion. Without it a silent run cannot be told from a broken setup, which is exactly what happened first.                                |
-| The `/hits` delta            | Proves a cached remount did not refetch. The screen looks identical either way, so nothing else would catch it.                                             |
-| The MutationObserver log     | Tells "nothing announced" apart from "no loading element ever appeared".                                                                                    |
-| Port 4191, not 4190          | 4190 is ManageSieve, on the Fetch standard's blocked port list. WebKit refuses to connect and shows `about:blank`; Chromium loads it and hides the problem.  |
-| Visually hidden live regions | A visible region gets read as an announcement. This produced a contradictory reading before the region was hidden.                                          |
+  minute, and is recorded separately below.
 
 ## Recording a run
 
@@ -147,13 +79,70 @@ Each one is a wrong turn already taken once.
 Browser and version:
 VoiceOver / macOS version:
 
+## Why the harness looks the way it does
+
+**The question it answers.** Does a briefly-mounted `loading` element announce?
+svg-injector defers its callbacks, so a second mount of the same `src` commits
+the `loading` element and removes it a couple of milliseconds later —
+`should render the specified loader for a cached src` in `test/browser.spec.tsx`
+pins that DOM behaviour. Whether a screen reader queues an announcement for an
+element with that lifetime is what the suite cannot answer, since assistive
+technology observes the DOM rather than the screen. A cold load has always
+mounted and unmounted `loading`; what changed is how often, so report any
+finding as a frequency change rather than a new defect.
+
+**Why it can't be automated.** jsdom has no accessibility layer and no paint, so
+every accessibility claim this package makes is pinned as markup: `role="img"`
+set, `<title>` and `<desc>` present, `aria-labelledby` pointing at their IDs.
+Nothing in the suite observes what assistive technology does with any of it.
+That gap matters here more than in most repos, because svg-injector ships no
+ARIA behaviour of its own — the wiring and the `loading` element are the whole
+contract, and this repo owns all of it.
+
+**What the DOM log is and is not.** It records each loading element entering and
+leaving the DOM, and how long it stayed, which tells an _absence of
+announcements_ apart from an _absence of loading elements_. It does not prove
+anything was announced. Do not report a finding from the log alone.
+
+**Where the page's code comes from.** The working tree: react-svg from `dist/`,
+svg-injector and React from `node_modules/`. So it tests the build in front of
+you, needs no network, and has no second React version to keep in step with
+`package.json`. React ships no ES module build, so `server.mjs` wraps the CJS
+files it does ship, `index.html` loads them as classic scripts first, and the
+import map points `react` and `react-dom/client` at shims over those globals —
+which is how `dist/react-svg.mjs` resolves `react` to react-dom's instance.
+
+**The pieces that look incidental.** Each one is a wrong turn already taken once.
+
+| Piece                        | Covers                                                                                                                                                     |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Step 0 against step 0b       | Mutation versus insertion. Without it a silent run cannot be told from a broken setup, which is exactly what happened first.                                |
+| The `/hits` delta            | Proves a cached remount did not refetch. The screen looks identical either way, so nothing else would catch it.                                             |
+| The MutationObserver log     | Tells "nothing announced" apart from "no loading element ever appeared".                                                                                    |
+| Port 4191, not 4190          | 4190 is ManageSieve, on the Fetch standard's blocked port list. WebKit refuses to connect and shows `about:blank`; Chromium loads it and hides the problem.  |
+| Visually hidden live regions | A visible region gets read as an announcement. This produced a contradictory reading before the region was hidden.                                          |
+
+## What it doesn't cover
+
+Only the probe sets `loadingDelay`, so steps 0 through 4 are a no-regression
+check on the default path rather than coverage of the prop — a delay long enough
+to suppress the mount leaves no element to announce, which the DOM log settles
+without a screen reader.
+
+Step 5 covers only the mid-flight re-injection path, and only the paint
+question. A re-injection starting after the previous one has finished is
+exercised nowhere, since A and B remount a fresh tree rather than swapping `src`
+on a live component. The probe's frame count is a floor, not a measurement: rAF
+samples at about 60Hz, so a mount shorter than a frame can be real and go
+uncounted. Mounts are the sensitive figure.
+
+Extending the harness to the `role="img"` / `<title>` / `<desc>` /
+`aria-labelledby` path is the obvious next use, and has not been done.
+
 ## Last run
 
-Recorded so a later run has something to compare against.
-
-19.0.0 plus the `loadingDelay` work and the mid-flight re-injection fix in this
-commit, 2026-08-06, Safari 26.5 on macOS 15.7.7, VoiceOver with the caption
-panel open:
+19.0.0 plus the `loadingDelay` work and the mid-flight re-injection fix,
+2026-08-06, Safari 26.5 on macOS 15.7.7, VoiceOver with the caption panel open:
 
 | Case                                                    | Caption panel | DOM                                                 |
 | ------------------------------------------------------- | ------------- | --------------------------------------------------- |
@@ -164,39 +153,28 @@ panel open:
 | 4 — `loading`, `role="status"`, ~2.5s mounted           | silent        | 1 element, 2514.0ms                                 |
 
 **No announcement, and lifetime is not the variable.** VoiceOver announces a
-live region whose content changes and ignores one that arrives with its content
-already in it. Step 0b establishes that with neither React nor svg-injector in
-the picture, so it is platform behaviour react-svg inherits. React mounts a
-`loading` component as a complete element, which is always the second shape, and
-a `role="status"` element mounted for a full 2.5 seconds was as silent as the
-millisecond-scale ones. Live-region semantics made no difference either: A and B
-were equally silent. Unchanged across all three recorded runs.
+live region whose content changes and ignores one that arrives already
+populated. Step 0b establishes that with neither React nor svg-injector in the
+picture, so it is platform behaviour react-svg inherits — React always mounts
+`loading` as a complete element, the second shape. 2.5 seconds was as silent as
+7ms, and live-region semantics made no difference. Unchanged across all three
+recorded runs.
 
-What this run does and does not cover. `loadingDelay` defaults to 0, so the
-default path mounts `loading` exactly as before, and that is the path every step
-here exercises - the harness never sets the prop. So this is a no-regression
-check, not coverage of the prop: a delay long enough to suppress the mount
-leaves no element to announce, which the DOM log settles without a screen
-reader. No step changes `src` on a mounted component either, so neither
-re-injection path is exercised - not the one that starts after the previous
-injection finished, and not the mid-flight one this commit fixes. A and B remount
-a fresh tree instead. Covering those would need a step that swaps `src` on a live
-component, which the harness does not have.
-
-Lifetimes drift by about a millisecond a run - B's median has gone 2.0ms,
-7.0ms, 8.0ms across the three - while the shape never changes: every cached
-remount mounts and unmounts the element. At this scale the figure tracks the
-machine and browser build rather than anything in the package, so it is recorded
+Lifetimes drift about a millisecond a run — B's median has gone 2.0ms, 7.0ms,
+8.0ms across the three — while the shape never changes. At this scale that
+tracks the machine and browser build rather than the package, so it is recorded
 rather than read as a change.
 
-Re-run this against a different browser or screen reader, or if the mounting
-behaviour changes.
+The mechanics were re-checked in Chrome 151 on 2026-08-04, after the move here
+and to React from `node_modules`: all six steps ran, both cached remounts served
+0 requests, the control held its loading element for 2509ms, and the console was
+clean apart from React's DevTools notice. No screen reader was running, so that
+run says only that the harness works.
 
 ## Last probe run
 
-Step 5 is recorded separately because it is a different instrument. It needs no
-screen reader, only a foregrounded tab, so unlike the steps above it reads the
-same however it is driven and can be re-run by anyone.
+Recorded separately because it is a different instrument: needing no screen
+reader, it reads the same however it is driven and can be re-run by anyone.
 
 Chrome 151 on macOS, 30 runs per phase, against `dist/` built from this commit:
 
@@ -209,8 +187,8 @@ Chrome 151 on macOS, 30 runs per phase, against `dist/` built from this commit:
 means something because `rearm` returned thirty in the same sitting: together
 they say the probe could see a loader and still saw none where none belonged.
 Run against `dist/` built from b06a2cb4, the commit before the fix, `rearm`
-reads 0/30 instead - the loader never comes back for the second injection -
-which is the regression the fix closes and the reason this step exists.
+reads 0/30 instead — the loader never comes back for the second injection, which
+is the regression the fix closes and the reason this step exists.
 
 Two figures were wrong before they were right, and both were the probe rather
 than the package. Counting every frame after the swap reported `suppress` as
@@ -220,16 +198,3 @@ element that did not arrive after the swap. And checking what was still on
 screen the moment `.injected-svg` appeared reported `rearm` as 1/30 lingering,
 because svg-injector inserts the SVG before it calls back, so React has not yet
 committed `isLoading` false; the check now settles first.
-
-What this does not cover. Only the mid-flight re-injection path, and only the
-paint question - whether assistive technology reacts to any of it is what steps
-0 through 4 are for, and they still never set `loadingDelay`. The frame count
-is a floor rather than a measurement: rAF samples at about 60Hz, so a mount
-shorter than a frame can be real and go uncounted. Mounts are the sensitive
-figure; frames only say whether one reached the screen.
-
-The mechanics were re-checked in Chrome 151 on 2026-08-04, after the move here
-and to React from `node_modules`: all six steps ran, both cached remounts served
-0 requests, the control held its loading element for 2509ms, and the console was
-clean apart from React's DevTools notice. No screen reader was running, so that
-run says nothing about announcements — it only says the harness works.
