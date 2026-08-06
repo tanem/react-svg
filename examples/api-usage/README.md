@@ -1,10 +1,7 @@
 # ReactSVG API Usage Example
 
-## Available Scripts
+Every prop at once, including the ones left at their defaults elsewhere -
+`evalScripts`, `httpRequestWithCredentials`, `renumerateIRIElements`,
+`useRequestCache` and `wrapper`.
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in development mode.\
-Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+`npm start`, then open <http://localhost:5173>.

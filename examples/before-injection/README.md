@@ -1,10 +1,6 @@
 # ReactSVG Before Injection Example
 
-## Available Scripts
+Uses `beforeInjection` to class, style and rewrite the SVG element in the window
+between the fetch landing and the element reaching the DOM.
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in development mode.\
-Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+`npm start`, then open <http://localhost:5173>.

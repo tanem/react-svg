@@ -7,6 +7,8 @@ constrains belongs there, not here.
 ## Writing
 
 - NZ English everywhere ("colour", "behaviour", "initialise").
+- Match a document's length to what it needs. Cover the substance, then
+  stop: no filler sections, restated summaries or boilerplate.
 - Single-line commit messages, `git log --oneline` style. Add a body only to
   explain why, and only for behaviour or type changes.
 - No conventional-commit prefixes (`feat:`, `fix:`, `chore(deps):`) in commit
@@ -44,17 +46,11 @@ through `await waitFor(...)`. The warm-cache loading test is the one deliberate
 exception: it needs the cache to hit, so it uses a fixed URL no other test
 touches.
 
-jsdom has no accessibility layer and no paint, so the suite pins the ARIA
-wiring as markup and can go no further: whether a screen reader does anything
-with that markup is outside what any test here can answer. That is this repo's
-blind spot rather than a shared one, because the wiring lives here —
-svg-injector ships no ARIA behaviour of its own. `test/manual/` is the check for
-those questions: a node server and a page driven by hand under VoiceOver. It is
-not run by `npm test` and not wired into CI, deliberately, since the instrument
-is a real screen reader and automating it would mean simulating the thing it
-exists to escape. Run it and record the result in the PR when you change the
+`test/manual/` is a hand-driven screen-reader harness, deliberately outside
+`npm test` and CI. Run it and record the result in the PR when you change the
 ARIA wiring or the `loading` element's lifecycle, and update its recorded run in
-the same commit as any deliberate change to either.
+the same commit as any deliberate change to either. `test/manual/README.md`
+covers why it exists and what it can and cannot answer.
 
 Raising a `size-limit` budget in `package.json` is a decision, not a fix. Find
 what grew first, and say why in the commit message.

@@ -1,10 +1,6 @@
 # ReactSVG SVG Wrapper Example
 
-## Available Scripts
+`wrapper="svg"`, mounted twice: once inside an existing SVG document and once
+inside plain HTML.
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in development mode.\
-Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+`npm start`, then open <http://localhost:5173>.

@@ -1,10 +1,6 @@
 # ReactSVG External Stylesheet Example
 
-## Available Scripts
+Styles the injected SVG from a plain stylesheet, reaching it through a class on
+the wrapper. Injected markup is part of the page, so ordinary CSS applies.
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in development mode.\
-Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+`npm start`, then open <http://localhost:5173>.

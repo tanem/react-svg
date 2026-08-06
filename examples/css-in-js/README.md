@@ -1,10 +1,6 @@
 # ReactSVG CSS-in-JS Example
 
-## Available Scripts
+Styles the injected SVG with glamor, relying on unrecognised props being spread
+onto the outer wrapper so the generated class reaches the DOM.
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in development mode.\
-Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+`npm start`, then open <http://localhost:5173>.

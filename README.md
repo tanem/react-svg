@@ -8,13 +8,11 @@
 
 > A React component that injects SVG into the DOM.
 
-[Background](#background) | [When To Use This](#when-to-use-this) | [Basic Usage](#basic-usage) | [API](#api) | [Live Examples](#live-examples) | [Installation](#installation) | [Security](#security) | [FAQ](#faq) | [Contributing](#contributing) | [License](#license)
-
-## Background
-
-This component uses [@tanem/svg-injector](https://github.com/tanem/svg-injector) to fetch an SVG from a given URL and inject its markup into the DOM ([why?](https://github.com/tanem/svg-injector#background)). Fetched SVGs are cached, so multiple uses of the same SVG only require a single request.
+[When To Use This](#when-to-use-this) | [Basic Usage](#basic-usage) | [API](#api) | [Live Examples](#live-examples) | [Installation](#installation) | [Security](#security) | [FAQ](#faq) | [Contributing](#contributing) | [License](#license)
 
 ## When To Use This
+
+This component uses [@tanem/svg-injector](https://github.com/tanem/svg-injector) to fetch an SVG from a given URL and inject its markup into the DOM ([why?](https://github.com/tanem/svg-injector#background)). Fetched SVGs are cached, so multiple uses of the same SVG only require a single request.
 
 Injection costs a network request and two wrapper elements, and it earns that cost in one case: the SVG's URL isn't known until the app runs, and the markup has to be reachable by CSS. An `<img>` tag renders an SVG but its contents can't be styled, animated or scripted from the page.
 
@@ -249,11 +247,9 @@ Related issues and PRs:
 Can I use data URIs or inline SVG strings?
 </summary>
 
-`data:image/svg+xml` URLs are supported (both URL-encoded and base64-encoded). The underlying library parses the SVG content directly from the data URL using `DOMParser`, without making a network request. This is useful when bundlers like Vite inline small SVGs as data URIs. See the [data URL example](https://github.com/tanem/react-svg/tree/master/examples/data-url) for details.
+Data URIs yes, inline strings no. `data:image/svg+xml` URLs are parsed directly with `DOMParser` and make no network request - see [`src`](#src) and the [data URL example](https://github.com/tanem/react-svg/tree/master/examples/data-url).
 
-Inline SVG strings (raw markup passed directly as the `src` prop) are **not** supported. If you already have the SVG markup as a string (for example, a dynamically generated chart), consider parsing it with `DOMParser` and appending the result yourself, or rendering it with `dangerouslySetInnerHTML`. These approaches avoid the fetch step entirely and will also avoid the brief flash that occurs when `react-svg` re-injects on `src` change.
-
-**Security note:** inserting SVG strings into the DOM bypasses React's built-in escaping and can expose your application to XSS if the content is not trusted. If the SVG originates from user input or a third party, sanitise it first with a library like [DOMPurify](https://github.com/cure53/DOMPurify) before inserting it into the page. The same applies to fetched SVGs - see [Security](#security).
+Raw markup passed as `src` is **not** supported. If you already hold the SVG as a string - a generated chart, say - parse it with `DOMParser` and append the result yourself, or render it with `dangerouslySetInnerHTML`. Both skip the fetch, and the brief flash when `react-svg` re-injects on a `src` change. Either way you're inserting markup outside React's escaping, so [Security](#security) applies.
 
 </details>
 

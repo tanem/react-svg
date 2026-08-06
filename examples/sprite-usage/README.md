@@ -1,10 +1,6 @@
 # ReactSVG Sprite Usage Example
 
-## Available Scripts
+Pulls individual icons out of one `sprite.svg` through fragment identifiers
+(`sprite.svg#icon-star`), sizing each one in `beforeInjection`.
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in development mode.\
-Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+`npm start`, then open <http://localhost:5173>.
