@@ -1,5 +1,12 @@
 # Changelog
 
+## [v19.1.1](https://github.com/tanem/react-svg/tree/v19.1.1) (2026-08-06)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v19.1.0...v19.1.1)
+
+#### :house: Internal
+
+- [#3602](https://github.com/tanem/react-svg/pull/3602) Alias a stray commit author address in .mailmap ([@tanem](https://github.com/tanem))
+
 ## [v19.1.0](https://github.com/tanem/react-svg/tree/v19.1.0) (2026-08-06)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v19.0.0...v19.1.0)
 
