@@ -1,5 +1,16 @@
 # Changelog
 
+## [v19.1.0](https://github.com/tanem/react-svg/tree/v19.1.0) (2026-08-06)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v19.0.0...v19.1.0)
+
+#### :rocket: Enhancement
+
+- [#3601](https://github.com/tanem/react-svg/pull/3601) Add a loadingDelay prop ([@tanem](https://github.com/tanem))
+
+#### :house: Internal
+
+- [#3600](https://github.com/tanem/react-svg/pull/3600) Commit the screen-reader harness as test/manual ([@tanem](https://github.com/tanem))
+
 ## [v19.0.0](https://github.com/tanem/react-svg/tree/v19.0.0) (2026-08-03)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v18.0.2...v19.0.0)
 
