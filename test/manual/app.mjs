@@ -42,6 +42,12 @@ const statusLoading = (label) => () =>
 const plainLoading = (label) => () =>
   h('span', { 'data-loading': label }, `Loading ${label}`)
 
+// Hoisted rather than built per render like the two above. Step 5 re-renders
+// the same root to swap `src`, and a fresh component type each time would make
+// React unmount and remount the loading element on its own - mutations the
+// probe would then count as the thing it is measuring.
+const probeLoading = statusLoading('probe')
+
 const Grid = ({ makeLoading, srcs }) =>
   h(
     'div',
@@ -63,6 +69,10 @@ const Grid = ({ makeLoading, srcs }) =>
 const enteredAt = new Map()
 const lifetimes = []
 
+// Set while step 5 is running. That step does 30 runs a phase, so the
+// per-element lines below would bury the result; it counts instead.
+let probeRun = null
+
 const noteLoadingNodes = (node, kind) => {
   if (node.nodeType !== Node.ELEMENT_NODE) {
     return
@@ -72,6 +82,12 @@ const noteLoadingNodes = (node, kind) => {
     ...node.querySelectorAll('[data-loading]'),
   ]
   for (const element of matches) {
+    if (probeRun) {
+      if (kind === 'added' && probeRun.swapped) {
+        probeRun.mountsAfterSwap += 1
+      }
+      continue
+    }
     const label = element.dataset.loading
     if (kind === 'added') {
       enteredAt.set(label, performance.now())
@@ -154,6 +170,134 @@ const resetRun = () => {
   enteredAt.clear()
 }
 
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+
+// Step 5's two phases. Both bring the loader up, then re-inject while the first
+// request is still in flight and hold `loadingDelay` constant across the swap -
+// the case where neither of the delay effect's dependencies moves, so nothing
+// about the swap is visible to it unless the injection itself says so.
+//
+// They are each other's control. `rearm` gives the second injection long enough
+// that the loader has to come back; `suppress` gives it less than the delay, so
+// the loader must stay down. A zero from `suppress` only means something
+// because `rearm` is non-zero in the same sitting: together they say the probe
+// could see a loader and still saw none.
+const PROBE_RUNS = 30
+
+const PROBE_PHASES = [
+  {
+    expectation: 'the loader has to come back',
+    firstMs: 600,
+    loadingDelay: 80,
+    name: 'rearm  ',
+    secondMs: 600,
+    swapAt: 200,
+  },
+  {
+    expectation: 'the loader must stay down',
+    firstMs: 800,
+    loadingDelay: 300,
+    name: 'suppress',
+    secondMs: 120,
+    swapAt: 400,
+  },
+]
+
+// Three figures per phase, and they answer different questions.
+//
+// `mounted` comes from the MutationObserver and catches an element however
+// briefly it existed. `painted` comes from rAF sampling and says whether one
+// was ever on screen at a paint; a mount the frame count misses is real but
+// sub-frame, which is the whole reason this step runs in a browser rather than
+// in jsdom, where only the first figure is available at all.
+//
+// `lingering` is the one that keeps the other two honest. Both of those only
+// see an element that arrives after the swap, so a loader left over from
+// before it - the failure the flag-clearing in the injection effect exists to
+// prevent - would read as two clean zeroes. Checking what is still on screen
+// when the run ends closes that off.
+const runProbePhase = async (phase) => {
+  let lingering = 0
+  let mounted = 0
+  let painted = 0
+  let voided = 0
+
+  const render = (src) =>
+    root.render(
+      h(ReactSVG, {
+        loading: probeLoading,
+        loadingDelay: phase.loadingDelay,
+        src,
+      }),
+    )
+
+  for (let run = 0; run < PROBE_RUNS; run += 1) {
+    const stamp = `${phase.name.trim()}-${run}-${performance.now().toFixed(0)}`
+
+    probeRun = { mountsAfterSwap: 0, swapped: false }
+
+    root = createRoot(stage)
+    render(`/slow.svg?ms=${phase.firstMs}&n=${stamp}-a`)
+
+    await sleep(phase.swapAt)
+
+    // The loader has to be up before the swap, or there is no elapsed delay to
+    // carry across it and the run exercises nothing.
+    if (!stage.querySelector('[data-loading]')) {
+      voided += 1
+      unmount()
+      continue
+    }
+
+    let sampling = true
+    let frames = 0
+    const sample = () => {
+      if (!sampling) {
+        return
+      }
+      // Only frames showing a loader that arrived after the swap. The one
+      // already on screen keeps painting for a frame or two while React
+      // commits the swap, and counting those would report a flash where there
+      // is nothing but the tail of a legitimate loader.
+      if (
+        probeRun.mountsAfterSwap > 0 &&
+        stage.querySelector('[data-loading]')
+      ) {
+        frames += 1
+      }
+      requestAnimationFrame(sample)
+    }
+
+    probeRun.swapped = true
+    requestAnimationFrame(sample)
+    render(`/slow.svg?ms=${phase.secondMs}&n=${stamp}-b`)
+
+    await waitForInjections(1)
+    sampling = false
+
+    // svg-injector inserts the SVG and only then calls back, so the injection
+    // is visible in the DOM a moment before React commits `isLoading` false
+    // and pulls the loader. Settle first, or this reads that gap as a loader
+    // the component failed to take down.
+    await sleep(100)
+
+    if (stage.querySelector('[data-loading]')) {
+      lingering += 1
+    }
+    if (probeRun.mountsAfterSwap > 0) {
+      mounted += 1
+    }
+    if (frames > 0) {
+      painted += 1
+    }
+
+    unmount()
+  }
+
+  probeRun = null
+  return { lingering, mounted, painted, voided }
+}
+
 const announcer = document.getElementById('announcer')
 const insertionPoint = document.getElementById('insertion-point')
 
@@ -224,6 +368,43 @@ const steps = {
       button.disabled = false
     }
     log('Ready. Watch the caption panel, then run step 2.')
+  },
+
+  // The only step that swaps `src` on a live component rather than remounting a
+  // fresh tree, and the only one whose question needs a real browser: whether a
+  // frame was ever painted with the loader on screen. Needs no screen reader,
+  // so unlike the rest of this harness it reads the same however it is driven.
+  async probe() {
+    unmount()
+    resetRun()
+    clearLog(`Step 5: mid-flight re-injection, ${PROBE_RUNS} runs per phase.`)
+    log('  keep this tab foregrounded - rAF stops in a background tab')
+
+    const results = []
+    for (const phase of PROBE_PHASES) {
+      log(`  ${phase.name}  ${phase.expectation}`)
+      const result = await runProbePhase(phase)
+      results.push(result)
+      log(
+        `            mounted after the swap ${result.mounted}/${PROBE_RUNS}, ` +
+          `painted ${result.painted}/${PROBE_RUNS}, ` +
+          `still up at the end ${result.lingering}/${PROBE_RUNS}` +
+          (result.voided ? `, ${result.voided} void` : ''),
+      )
+    }
+
+    const [rearm, suppress] = results
+    log('')
+    log(
+      rearm.mounted === PROBE_RUNS &&
+        suppress.mounted === 0 &&
+        rearm.lingering === 0 &&
+        suppress.lingering === 0
+        ? '  PASS: the delay re-arms for the second injection, and still holds' +
+            ' back a loader the injection beats'
+        : '  FAIL: read the three figures against each other before believing' +
+            ' any of them',
+    )
   },
 
   async status() {

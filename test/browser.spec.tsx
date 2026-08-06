@@ -272,6 +272,402 @@ describe('while running in a browser environment', () => {
     )
   })
 
+  it('should hold the loader back until loadingDelay has elapsed', async () => {
+    const loading = () => <span>loading</span>
+
+    faker.seed(190)
+    const uuid = faker.string.uuid()
+
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .delay(200)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { container, queryByText } = render(
+      <ReactSVG
+        loading={loading}
+        loadingDelay={50}
+        src={`http://localhost/${uuid}.svg`}
+      />,
+    )
+
+    expect(queryByText('loading')).toBeNull()
+
+    await waitFor(() => expect(queryByText('loading')).toBeTruthy())
+
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
+    )
+  })
+
+  // The case the prop exists for. Same warm-cache setup as above, but the
+  // delay outlasts the cache hit, so the loader never reaches the DOM at all
+  // rather than painting and being pulled away again.
+  it('should never render the loader when the injection beats loadingDelay', async () => {
+    const loading = () => <span>loading</span>
+    const src = 'http://localhost/loading-delay-cache.svg'
+
+    nock('http://localhost')
+      .get('/loading-delay-cache.svg')
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const first = render(<ReactSVG loading={loading} src={src} />)
+
+    await waitFor(() =>
+      expect(first.container.querySelectorAll('.injected-svg')).toHaveLength(1),
+    )
+
+    first.unmount()
+    nock.cleanAll()
+
+    const second = render(
+      <ReactSVG loading={loading} loadingDelay={2000} src={src} />,
+    )
+
+    expect(second.queryByText('loading')).toBeNull()
+
+    await waitFor(() =>
+      expect(second.container.querySelectorAll('.injected-svg')).toHaveLength(
+        1,
+      ),
+    )
+
+    expect(second.queryByText('loading')).toBeNull()
+  })
+
+  // The delay is per injection, so an elapsed one must not carry over: changing
+  // `src` starts a fresh delay that has to hold the loader back again. Counts
+  // renders of `loading` rather than querying the DOM, because carrying the
+  // flag over mounts it for a fraction of a millisecond before the delay effect
+  // pulls it again - long enough for Chrome to paint it, far too short for a
+  // query after the fact to catch.
+  it('should not carry an elapsed loadingDelay into a re-injection', async () => {
+    let loadingRenders = 0
+    const loading = () => {
+      loadingRenders += 1
+      return <span>loading</span>
+    }
+
+    faker.seed(189)
+    const first = faker.string.uuid()
+    const second = faker.string.uuid()
+
+    nock('http://localhost')
+      .get(`/${first}.svg`)
+      .delay(200)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+      .get(`/${second}.svg`)
+      .delay(200)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { container, rerender } = render(
+      <ReactSVG
+        loading={loading}
+        loadingDelay={50}
+        src={`http://localhost/${first}.svg`}
+      />,
+    )
+
+    // The first delay has to actually elapse, or there is no elapsed flag to
+    // carry over and the assertion below passes without exercising anything.
+    await waitFor(() => expect(loadingRenders).toBeGreaterThan(0))
+
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
+    )
+
+    loadingRenders = 0
+
+    rerender(
+      <ReactSVG
+        loading={loading}
+        loadingDelay={2000}
+        src={`http://localhost/${second}.svg`}
+      />,
+    )
+
+    await waitFor(() => expect(nock.isDone()).toBe(true))
+
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
+    )
+
+    expect(loadingRenders).toBe(0)
+  })
+
+  // The four tests below walk the rest of the re-injection matrix. The one
+  // above only covers a re-injection that starts after the previous one
+  // finished, and which also changes `loadingDelay` - between them those two
+  // things move both of the delay effect's original dependencies, so they hid
+  // the case where neither moves.
+
+  // A re-injection that starts while the previous request is still in flight
+  // leaves `isLoading` true throughout. With `loadingDelay` held constant -
+  // the usual way to pass it - nothing the delay effect reads as a prop
+  // changes, so the timer has to re-arm off the injection itself or the loader
+  // is suppressed for the whole of the second injection.
+  it('should re-arm loadingDelay for a re-injection that starts mid-flight', async () => {
+    const loading = () => <span>loading</span>
+
+    faker.seed(193)
+    const first = faker.string.uuid()
+    const second = faker.string.uuid()
+
+    nock('http://localhost')
+      .get(`/${first}.svg`)
+      .delay(1000)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+      .get(`/${second}.svg`)
+      .delay(600)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { rerender } = render(
+      <ReactSVG
+        loading={loading}
+        loadingDelay={50}
+        src={`http://localhost/${first}.svg`}
+      />,
+    )
+
+    // The first delay elapses well inside its own request, so the loader is on
+    // screen at the moment the second injection starts.
+    await waitFor(() => expect(screen.queryByText('loading')).not.toBeNull())
+
+    rerender(
+      <ReactSVG
+        loading={loading}
+        loadingDelay={50}
+        src={`http://localhost/${second}.svg`}
+      />,
+    )
+
+    // Cleared in the same commit the injection starts, so it is gone before
+    // the new delay begins.
+    expect(screen.queryByText('loading')).toBeNull()
+
+    await waitFor(() => expect(screen.queryByText('loading')).not.toBeNull(), {
+      timeout: 400,
+    })
+  })
+
+  // The previous injection's timer has to be cleared rather than left running.
+  // A surviving one fires against the old start time, so the loader appears
+  // before the new injection's own delay has elapsed. Asserts on elapsed time
+  // rather than presence, since both outcomes end with the loader on screen -
+  // only the timing separates them.
+  it('should not let one injection loadingDelay timer fire for the next', async () => {
+    const loading = () => <span>loading</span>
+
+    faker.seed(194)
+    const first = faker.string.uuid()
+    const second = faker.string.uuid()
+
+    nock('http://localhost')
+      .get(`/${first}.svg`)
+      .delay(2000)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+      .get(`/${second}.svg`)
+      .delay(2000)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { rerender } = render(
+      <ReactSVG
+        loading={loading}
+        loadingDelay={500}
+        src={`http://localhost/${first}.svg`}
+      />,
+    )
+
+    // Re-inject part-way through the first delay, so a surviving timer fires
+    // ~100ms later rather than a full 500ms. Overshooting this sleep on a slow
+    // machine costs nothing: the test then just becomes the case above.
+    await new Promise((resolve) => setTimeout(resolve, 400))
+
+    const reinjectedAt = Date.now()
+
+    rerender(
+      <ReactSVG
+        loading={loading}
+        loadingDelay={500}
+        src={`http://localhost/${second}.svg`}
+      />,
+    )
+
+    await waitFor(() => expect(screen.queryByText('loading')).not.toBeNull(), {
+      timeout: 1200,
+    })
+
+    expect(Date.now() - reinjectedAt).toBeGreaterThanOrEqual(300)
+  })
+
+  it('should restart loadingDelay for a re-injection that leaves it unchanged', async () => {
+    const loading = () => <span>loading</span>
+
+    faker.seed(195)
+    const first = faker.string.uuid()
+    const second = faker.string.uuid()
+
+    nock('http://localhost')
+      .get(`/${first}.svg`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+      .get(`/${second}.svg`)
+      .delay(600)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { container, rerender } = render(
+      <ReactSVG
+        loading={loading}
+        loadingDelay={50}
+        src={`http://localhost/${first}.svg`}
+      />,
+    )
+
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
+    )
+
+    rerender(
+      <ReactSVG
+        loading={loading}
+        loadingDelay={50}
+        src={`http://localhost/${second}.svg`}
+      />,
+    )
+
+    await waitFor(() => expect(screen.queryByText('loading')).not.toBeNull(), {
+      timeout: 400,
+    })
+  })
+
+  it('should re-arm loadingDelay when a mid-flight re-injection changes it', async () => {
+    const loading = () => <span>loading</span>
+
+    faker.seed(196)
+    const first = faker.string.uuid()
+    const second = faker.string.uuid()
+
+    nock('http://localhost')
+      .get(`/${first}.svg`)
+      .delay(1000)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+      .get(`/${second}.svg`)
+      .delay(600)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { rerender } = render(
+      <ReactSVG
+        loading={loading}
+        loadingDelay={50}
+        src={`http://localhost/${first}.svg`}
+      />,
+    )
+
+    await waitFor(() => expect(screen.queryByText('loading')).not.toBeNull())
+
+    rerender(
+      <ReactSVG
+        loading={loading}
+        loadingDelay={60}
+        src={`http://localhost/${second}.svg`}
+      />,
+    )
+
+    await waitFor(() => expect(screen.queryByText('loading')).not.toBeNull(), {
+      timeout: 400,
+    })
+  })
+
+  it('should restart loadingDelay for a re-injection after an error', async () => {
+    const fallback = () => <span>fallback</span>
+    const loading = () => <span>loading</span>
+
+    faker.seed(197)
+    const first = faker.string.uuid()
+    const second = faker.string.uuid()
+
+    nock('http://localhost')
+      .get(`/${first}.svg`)
+      .reply(404)
+      .get(`/${second}.svg`)
+      .delay(600)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { rerender } = render(
+      <ReactSVG
+        fallback={fallback}
+        loading={loading}
+        loadingDelay={50}
+        src={`http://localhost/${first}.svg`}
+      />,
+    )
+
+    await waitFor(() => expect(screen.queryByText('fallback')).not.toBeNull())
+
+    rerender(
+      <ReactSVG
+        fallback={fallback}
+        loading={loading}
+        loadingDelay={50}
+        src={`http://localhost/${second}.svg`}
+      />,
+    )
+
+    await waitFor(() => expect(screen.queryByText('loading')).not.toBeNull(), {
+      timeout: 400,
+    })
+  })
+
+  it('should render the loader immediately when loadingDelay is zero', async () => {
+    const loading = () => <span>loading</span>
+
+    faker.seed(191)
+    const uuid = faker.string.uuid()
+
+    nock('http://localhost')
+      .get(`/${uuid}.svg`)
+      .reply(200, source, { 'Content-Type': 'image/svg+xml' })
+
+    const { container, getByText } = render(
+      <ReactSVG
+        loading={loading}
+        loadingDelay={0}
+        src={`http://localhost/${uuid}.svg`}
+      />,
+    )
+
+    expect(getByText('loading')).toBeTruthy()
+
+    await waitFor(() =>
+      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
+    )
+  })
+
+  // The delay is for the loading path only. An error costs a round trip that
+  // no cache short-circuits, so there is no flash to suppress, and holding the
+  // fallback back would only delay the message.
+  it('should not delay the fallback', async () => {
+    const fallback = () => <span>fallback</span>
+    const loading = () => <span>loading</span>
+
+    faker.seed(192)
+    const uuid = faker.string.uuid()
+
+    nock('http://localhost').get(`/${uuid}.svg`).reply(404)
+
+    const { findByText, queryByText } = render(
+      <ReactSVG
+        fallback={fallback}
+        loading={loading}
+        loadingDelay={2000}
+        src={`http://localhost/${uuid}.svg`}
+      />,
+    )
+
+    await findByText('fallback')
+
+    expect(queryByText('loading')).toBeNull()
+  })
+
   it('allows rendering of span wrappers', async () => {
     faker.seed(132)
     const uuid = faker.string.uuid()
