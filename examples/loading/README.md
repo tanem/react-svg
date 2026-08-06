@@ -1,10 +1,6 @@
 # ReactSVG Loading Example
 
-## Available Scripts
+Shows a spinner through `loading` while the SVG is fetched, once on its own and
+once alongside a `fallback` for a URL that fails.
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in development mode.\
-Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+`npm start`, then open <http://localhost:5173>.

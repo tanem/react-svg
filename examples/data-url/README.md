@@ -1,10 +1,6 @@
 # ReactSVG Data URL Example
 
-## Available Scripts
+Injects from `data:image/svg+xml` URLs, both URL-encoded and base64, as a
+bundler like Vite produces for small SVGs. No network request is made.
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in development mode.\
-Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+`npm start`, then open <http://localhost:5173>.

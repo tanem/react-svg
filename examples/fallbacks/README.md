@@ -1,10 +1,7 @@
 # ReactSVG Fallbacks Example
 
-## Available Scripts
+`fallback` as a class, function and string component, and the two cases that
+aren't a failed fetch: an error thrown from `beforeInjection` or
+`afterInjection`.
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in development mode.\
-Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+`npm start`, then open <http://localhost:5173>.

@@ -1,10 +1,6 @@
 # ReactSVG CSS Animation Example
 
-## Available Scripts
+Animates the injected SVG by adding a class in `afterInjection`, which is the
+first point at which the element is in the DOM and animatable.
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in development mode.\
-Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+`npm start`, then open <http://localhost:5173>.

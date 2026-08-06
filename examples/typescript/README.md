@@ -1,10 +1,5 @@
 # ReactSVG Typescript Example
 
-## Available Scripts
+Basic usage from TypeScript, against the bundled type declarations.
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in development mode.\
-Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+`npm start`, then open <http://localhost:5173>.
