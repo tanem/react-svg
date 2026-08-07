@@ -1,5 +1,13 @@
 # Changelog
 
+## [v19.1.2](https://github.com/tanem/react-svg/tree/v19.1.2) (2026-08-07)
+[Full Changelog](https://github.com/tanem/react-svg/compare/v19.1.1...v19.1.2)
+
+#### :memo: Documentation
+
+- [#3604](https://github.com/tanem/react-svg/pull/3604) Describe the commit messages this repo actually writes ([@tanem](https://github.com/tanem))
+- [#3603](https://github.com/tanem/react-svg/pull/3603) Trim the documentation to what each document needs ([@tanem](https://github.com/tanem))
+
 ## [v19.1.1](https://github.com/tanem/react-svg/tree/v19.1.1) (2026-08-06)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v19.1.0...v19.1.1)
 
