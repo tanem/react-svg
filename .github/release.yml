@@ -12,6 +12,10 @@ changelog:
     - title: 🚀 Enhancements
       labels:
         - enhancement
-    - title: 🛠 Everything Else
+    # The catch-all, and so the patch category: under the label convention
+    # everything reaching it is a patch. Titled for what it holds rather than
+    # the bump it causes, so that it still reads on the many weeks where it is
+    # the only section there is.
+    - title: 🛠 Fixes & Maintenance
       labels:
         - '*'
