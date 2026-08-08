@@ -1,5 +1,9 @@
 # Changelog
 
+This file is frozen history: it covers releases up to and including v19.1.2, and
+is not regenerated any more. Everything released after that lives on
+[GitHub Releases](https://github.com/tanem/react-svg/releases).
+
 ## [v19.1.2](https://github.com/tanem/react-svg/tree/v19.1.2) (2026-08-07)
 [Full Changelog](https://github.com/tanem/react-svg/compare/v19.1.1...v19.1.2)
 
