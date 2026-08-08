@@ -1,0 +1,17 @@
+# Categories for GitHub's generated release notes, keyed by the same labels the
+# release reads to derive the semver bump. `safe to test` authorises CI runs and
+# says nothing about the release, so it is excluded from both.
+changelog:
+  exclude:
+    labels:
+      - safe to test
+  categories:
+    - title: 💥 Breaking Changes
+      labels:
+        - breaking
+    - title: 🚀 Enhancements
+      labels:
+        - enhancement
+    - title: 🛠 Everything Else
+      labels:
+        - '*'

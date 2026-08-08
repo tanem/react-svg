@@ -1,6 +1,6 @@
 # Migrating
 
-Details relating to major changes that aren't presently in `CHANGELOG.md`, due to limitations with how that file is being generated.
+Details relating to major changes that the release notes don't carry: those are generated from PR titles alone, so anything a reader needs beyond a one-line title lives here.
 
 ## v19.0.0
 
