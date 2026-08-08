@@ -23,7 +23,7 @@ jobs:
     # The cron only ever fires on the default branch, but a manual dispatch can
     # target any branch. Without this guard, dispatching against a version
     # branch would bump, tag and publish that branch to npm as latest.
-    if: github.ref == 'refs/heads/master'
+    if: github.ref_name == github.event.repository.default_branch
 
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
