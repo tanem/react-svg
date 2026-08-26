@@ -700,7 +700,6 @@ describe('while running in a browser environment', () => {
         beforeInjection={(svg) => {
           svg.classList.add('svg-class-name')
           svg.setAttribute('style', 'width: 200px')
-          // TODO: Style child element fills.
         }}
         src={`http://localhost/${uuid}.svg`}
       />,
