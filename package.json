@@ -90,7 +90,7 @@
     "@arethetypeswrong/cli": "0.18.5",
     "@eslint-react/eslint-plugin": "5.18.0",
     "@eslint/js": "10.0.1",
-    "@faker-js/faker": "10.3.0",
+    "@faker-js/faker": "10.5.0",
     "@jest/globals": "30.2.0",
     "@size-limit/file": "13.0.2",
     "@testing-library/react": "16.3.2",
