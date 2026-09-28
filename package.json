@@ -117,7 +117,7 @@
     "shelljs": "0.10.0",
     "shx": "0.4.0",
     "size-limit": "13.0.2",
-    "ts-jest": "29.4.6",
+    "ts-jest": "29.4.13",
     "ts-node": "10.9.2",
     "tsdown": "0.22.14",
     "typescript": "5.9.3",
