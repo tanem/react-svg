@@ -111,7 +111,7 @@
     "nock": "13.5.6",
     "npm-run-all2": "8.0.4",
     "prettier": "3.8.1",
-    "publint": "0.3.22",
+    "publint": "0.3.24",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "shelljs": "0.10.0",
