@@ -257,7 +257,7 @@ Raw markup passed as `src` is **not** supported. If you already hold the SVG as 
 
 Issues and pull requests are welcome. `npm run test:src` is the development loop; `npm test` runs the full gate.
 
-Repo conventions that aren't visible in the code - the PR labels that drive releases, the React version matrix policy, and how the `examples/` dependencies are pinned - live in [AGENTS.md](AGENTS.md). Coding agents read it from the repo root, so keep it in sync when a change invalidates something it states.
+Repo conventions that aren't visible in the code, such as the PR labels that drive releases, live in [AGENTS.md](AGENTS.md). Keep it in sync when a change invalidates something it states.
 
 ## License
 

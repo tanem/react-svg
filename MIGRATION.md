@@ -8,7 +8,7 @@ Nothing in this package's own API changed. Every entry below comes from [`@tanem
 
 **Changed**
 
-- Test suites running under jsdom need a `TextDecoder` polyfill. svg-injector uses `TextDecoder` to decode base64 `data:image/svg+xml` URLs as UTF-8, and jsdom does not expose it, so rendering `<ReactSVG src="data:image/svg+xml;base64,…" />` throws `ReferenceError: TextDecoder is not defined`. Add it to your Jest setup file:
+- Test suites running under jsdom need a `TextDecoder` polyfill. jsdom does not expose it, so a base64 `src` such as `<ReactSVG src="data:image/svg+xml;base64,…" />` is not injected and `onError` receives `Error: Invalid base64 in data URL`. Add it to your Jest setup file:
 
   ```ts
   import { TextDecoder } from 'node:util'
@@ -18,34 +18,34 @@ Nothing in this package's own API changed. Every entry below comes from [`@tanem
 
   jsdom also lacks `CSS.escape`, which svg-injector uses to look up a sprite symbol. If you render an `src` with a fragment identifier, `import 'css.escape'` in the same file.
 
-- A `src` whose `.svg` appears outside the URL pathname now needs a valid `Content-Type`. svg-injector skips the `Content-Type` response header check for URLs ending in `.svg`, and it used to match that against the whole URL. It now matches against the end of the pathname, so `src="/render?file=logo.svg"` served without a valid `Content-Type` reports an error through `onError` where it previously injected. Serve `image/svg+xml` (or `text/plain`), or move the extension into the pathname.
+- A `src` with `.svg` anywhere other than the end of the URL pathname now needs a valid `Content-Type`. The `Content-Type` check is skipped only when the pathname ends in `.svg`, where it used to be skipped when `.svg` appeared anywhere in the URL, so `src="/render?file=logo.svg"` served without a valid `Content-Type` now reports an error through `onError`. Serve `image/svg+xml` (or `text/plain`), or move the extension to the end of the pathname.
 
-- The `loading` element now enters the DOM when the same `src` is mounted a second time. svg-injector v12 defers its callbacks, so `loading` renders and is then removed, where v11 called back synchronously for a cached `src` and React collapsed both state updates into a single render that never showed it. Nothing paints differently: a paint-level A/B measured 1 painted frame in 95 deferred mounts against 2 in 95 synchronous ones, which is React's own scheduling either way.
+- A cached `src` is now injected in a later task rather than during the mount. When the same `src` is mounted a second time, the `loading` element is still in the DOM after the mount and is removed once the SVG is injected, where it used to be gone before the mount finished. A test that asserts on a cached `src` straight after rendering now needs to wait for the injection. In practice nothing paints differently.
 
 ## v18.0.0
 
 **Added**
 
-- An `exports` map. `react-svg` and `react-svg/package.json` are the only entry points; paths into `dist` are no longer reachable, even though the top-level `main`, `module` and `types` fields are still set for webpack 4 and TypeScript `node10` resolution. Node ESM consumers now get the ES module build rather than falling back to CommonJS.
+- An `exports` map. `react-svg` and `react-svg/package.json` are the only entry points, so paths into `dist` are no longer reachable. The top-level `main`, `module` and `types` fields are still set for webpack 4 and TypeScript `node10` resolution. Node ESM consumers now get the ES module build rather than falling back to CommonJS.
 - `sideEffects: false`, so bundlers can drop the package entirely when nothing is imported from it.
 
 **Changed**
 
-- The minimum supported React version is now 16.8, up from 16.0. The peer dependency range is `^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0`. React's support unit is the major, and fixes for the 16.x line only ever land on 16.14.x, so individual pre-16.8 minors were never separately supported.
-- `ReactSVG` is a function component built on hooks, rather than a class component. `defaultProps` is gone (React 19 ignores it on function components); prop defaults are unchanged and are now applied by destructuring.
-- `ReactSVG` is a value only, so it can no longer be used in a type position. A class declaration doubles as a type describing its instances, which made `Omit<ReactSVG, 'src'>` and similar valid; the same code now fails with `TS2749: 'ReactSVG' refers to a value, but is being used as a type here`. Use the exported `Props` type instead: `Omit<Props, 'src'>`.
-- `ref` now resolves to the outermost wrapper DOM element - an `HTMLDivElement`, `HTMLSpanElement` or `SVGSVGElement`, depending on `wrapper` - instead of the `ReactSVG` class instance. The class instance had no documented methods, so the DOM node is the useful thing to hand back. Type the ref as the exported `WrapperType` if you need it.
-- Re-injection now only happens when a prop that affects the injected SVG changes: `src`, `wrapper`, `title`, `desc`, `evalScripts`, `httpRequestWithCredentials`, `renumerateIRIElements` or `useRequestCache`. Previously any prop change re-fetched and re-injected, including ones that only apply to the React wrapper (`className`, `style`, event handlers) and inline `beforeInjection` / `afterInjection` / `onError` functions, whose identity changes on every render. Those callbacks are still always invoked in their latest form; they just no longer trigger an injection by themselves. If you were relying on a wrapper prop change to force a re-injection, change `src` instead.
+- The minimum supported React version is now 16.8, up from 16.0. The peer dependency range is `^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0`.
+- `ReactSVG` is a function component rather than a class component. `defaultProps` is gone; prop defaults are unchanged.
+- `ReactSVG` can no longer be used in a type position. `Omit<ReactSVG, 'src'>` and similar now fail with `TS2749: 'ReactSVG' refers to a value, but is being used as a type here`. Use the exported `Props` type instead: `Omit<Props, 'src'>`.
+- `ref` now resolves to the outermost wrapper DOM element - an `HTMLDivElement`, `HTMLSpanElement` or `SVGSVGElement`, depending on `wrapper` - instead of the `ReactSVG` class instance. Type the ref as the exported `WrapperType` if you need it.
+- Re-injection now only happens when a prop that affects the injected SVG changes: `src`, `wrapper`, `title`, `desc`, `evalScripts`, `httpRequestWithCredentials`, `renumerateIRIElements` or `useRequestCache`. Previously any prop change re-fetched and re-injected, including `className`, `style`, event handlers and inline `beforeInjection` / `afterInjection` / `onError` functions. Those callbacks are still always invoked in their latest form. If you were relying on a change to one of those props to force a re-injection, change `src` instead.
 - Build output filenames. The CommonJS build is `dist/react-svg.cjs` (was `dist/react-svg.cjs.js`) and the ES module build is `dist/react-svg.mjs` (was `dist/react-svg.esm.js`). Type declarations are `dist/react-svg.d.cts` and `dist/react-svg.d.mts` (was `dist/index.d.ts` plus one file per source module). Importing `react-svg` is unaffected.
-- The build pipeline moved from TypeScript plus Rollup and Babel to [tsdown](https://tsdown.dev). Output still targets ES2019. `@babel/runtime` is no longer a runtime dependency, leaving `@tanem/svg-injector` as the only one.
+- `@babel/runtime` is no longer a runtime dependency, leaving `@tanem/svg-injector` as the only one. Output still targets ES2019.
 - `src` is now published alongside `dist` so the declaration maps resolve.
 
 **Removed**
 
-- The `State` type export. It described the internal state shape of the class component, which no longer exists.
-- `propTypes` validation. TypeScript types are the supported contract for props. React 19 ignores `propTypes` entirely, so this only changes behaviour for React 18 and earlier in development mode, where invalid props previously logged a console warning. `prop-types` and `@types/prop-types` are no longer dependencies.
-- The separate development and production CommonJS builds. `dist/react-svg.cjs.development.js`, `dist/react-svg.cjs.production.js` and the `dist/index.js` shim that switched between them on `process.env.NODE_ENV` are replaced by a single unminified CommonJS build. With `propTypes` gone the two builds differed only by minification, which bundlers apply themselves.
-- UMD builds. `dist/react-svg.umd.development.js` and `dist/react-svg.umd.production.js` are no longer published, and the `ReactSVG` browser global is gone. React itself stopped shipping UMD builds in v19, so script-tag usage already required pinning React 18 or earlier. If you load `react-svg` via a script tag, pin `react-svg@^17`, or switch to the ES module build with an import map or a bundler.
+- The `State` type export, which described the class component's internal state.
+- `propTypes` validation. On React 18 and earlier, invalid props no longer log a console warning in development. TypeScript types are the supported contract for props. `prop-types` and `@types/prop-types` are no longer dependencies.
+- The separate development and production CommonJS builds. `dist/react-svg.cjs.development.js`, `dist/react-svg.cjs.production.js` and the `dist/index.js` shim that switched between them on `process.env.NODE_ENV` are replaced by a single unminified CommonJS build.
+- UMD builds. `dist/react-svg.umd.development.js` and `dist/react-svg.umd.production.js` are no longer published, and the `ReactSVG` browser global is gone. If you load `react-svg` via a script tag, pin `react-svg@^17`, or switch to the ES module build with an import map or a bundler.
 
 ## v17.0.0
 
@@ -67,7 +67,7 @@ Nothing in this package's own API changed. Every entry below comes from [`@tanem
 
 **Removed**
 
-- Dropped support for React 15. 
+- Dropped support for React 15.
 
 ## v14.0.0
 

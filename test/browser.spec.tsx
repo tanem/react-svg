@@ -15,6 +15,11 @@ import spriteSource from './sprite-source.fixture'
 // Even though we're always responding with `source`, we use different
 // `src` values when mounting within each test so that SVGInjector doesn't use
 // its internal cache. This keeps the tests isolated from one another.
+//
+// The `src` comes from `faker.string.uuid()`, which the seed fixes, so every
+// test that fetches a `src` needs a `faker.seed()` value no other test uses. A
+// copied seed gives the same URL and a cache hit. The tests that use a fixed
+// URL instead say why.
 
 describe('while running in a browser environment', () => {
   afterEach(() => {
@@ -234,7 +239,7 @@ describe('while running in a browser environment', () => {
     )
   })
 
-  // Deliberately breaks the fixed-`src` convention noted at the top of this
+  // Deliberately breaks the unique-`src` convention noted at the top of this
   // file: warming SVGInjector's cache is the point. From v12 it defers the
   // cache-hit callback, so `setIsLoading(false)` lands in a later task than
   // the mount and the loader is committed to the DOM. Under v11 both updates
