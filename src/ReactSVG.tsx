@@ -150,6 +150,12 @@ export const ReactSVG: React.ForwardRefExoticComponent<
       }
       /* eslint-enable @eslint-react/set-state-in-effect */
 
+      // The two wrappers are load-bearing: don't collapse them. `reactWrapper`
+      // is rendered and managed by React. `nonReactWrapper` is created and
+      // removed by this effect, and its content is managed by svg-injector,
+      // which replaces `nonReactTarget` with the SVG and needs a parent node to
+      // do it. That swap happens outside React, so it has to land in a node
+      // React never updates.
       let nonReactTarget: WrapperType
 
       if (wrapper === 'svg') {

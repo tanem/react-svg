@@ -23,6 +23,7 @@ type SVGWrapperType = SVGSVGElement
 
 export type WrapperType = HTMLWrapperType | SVGWrapperType
 
+// Keep this flat. Nesting it trips excessive-depth errors in wrapper libraries.
 export type Props = BaseProps &
   React.HTMLAttributes<HTMLWrapperType> &
   React.SVGAttributes<SVGWrapperType>
