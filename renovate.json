@@ -64,16 +64,26 @@
     },
     {
       "automerge": false,
-      "groupName": "react monorepo",
+      "description": "A new React major or minor is one more version this package is tested against, which is an enhancement for consumers. Matched by name rather than source URL: the URL changed when React's repository moved, and it also matches eslint-plugin-react-hooks, whose minors would then share this PR with React patches labelled internal. The group is named apart from Renovate's own react monorepo group, which keeps the patches, so a minor of one package and a patch of the other can't share a branch either.",
+      "groupName": "react",
       "labels": [
         "enhancement"
       ],
-      "matchSourceUrls": [
-        "https://github.com/facebook/react**"
+      "matchPackageNames": [
+        "react",
+        "react-dom"
       ],
       "matchUpdateTypes": [
         "major",
         "minor"
+      ]
+    },
+    {
+      "description": "Renovate's own react group includes the React types, and a grouped PR carries every label its updates have. Left there, they add internal to a React minor's enhancement, and the release fails on two labels. Their own group keeps each PR to one label, and it stays internal at every update type so the group can't mix labels either.",
+      "groupName": "react types",
+      "matchPackageNames": [
+        "@types/react",
+        "@types/react-dom"
       ]
     }
   ],
