@@ -16,7 +16,7 @@ Rules for coding agents that the code and config don't already state. Keep it th
 - `npm run size`, `test:cjs`, `test:es`, `test:dist` and the `package:*` checks read `dist/`, so they need a current `npm run build`.
 - Raising a `size-limit` budget in `package.json` is a decision, not a fix. Find what grew first, and say why in the commit message.
 - `test/manual/` is a hand-driven screen-reader harness, outside `npm test` and CI. When you change the ARIA wiring or the `loading` element's lifecycle, run it as `test/manual/README.md` describes, record the result in the PR, and update that README's recorded runs in the same commit.
-- `test/react/` covers boundary versions only: the first and last minor of each supported major, plus minors that changed behaviour. A new boundary replaces the previous last minor for that major. Copy a sibling `package.json`, and see `scripts/test-react.ts` for how a single version is run.
+- `test/react/` covers boundary versions only: the first and last minor of each supported major, plus minors that changed behaviour. For the current major the root `devDependencies` cover the newest minor, so the matrix holds only its first minor; add its last minor when the next major ships. Copy a sibling `package.json`, and see `scripts/test-react.ts` for how a single version is run.
 
 ## Releases
 
