@@ -377,9 +377,12 @@ describe('while running in a browser environment', () => {
     // carry over and the assertion below passes without exercising anything.
     await waitFor(() => expect(loadingRenders).toBeGreaterThan(0))
 
-    await waitFor(() =>
-      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
-    )
+    // Wait for the loader to unmount rather than for the SVG to land: the
+    // injector swaps the SVG into the DOM one task before it calls back, and
+    // the component only finishes loading on that callback. Re-rendering in
+    // the gap would render `loading` once more off the still-elapsed first
+    // delay, which is a different scenario from the one asserted below.
+    await waitFor(() => expect(screen.queryByText('loading')).toBeNull())
 
     loadingRenders = 0
 
@@ -507,6 +510,10 @@ describe('while running in a browser environment', () => {
 
   it('should restart loadingDelay for a re-injection that leaves it unchanged', async () => {
     const loading = () => <span>loading</span>
+    let injections = 0
+    const afterInjection = () => {
+      injections += 1
+    }
 
     faker.seed(195)
     const first = faker.string.uuid()
@@ -519,20 +526,24 @@ describe('while running in a browser environment', () => {
       .delay(600)
       .reply(200, source, { 'Content-Type': 'image/svg+xml' })
 
-    const { container, rerender } = render(
+    const { rerender } = render(
       <ReactSVG
+        afterInjection={afterInjection}
         loading={loading}
         loadingDelay={50}
         src={`http://localhost/${first}.svg`}
       />,
     )
 
-    await waitFor(() =>
-      expect(container.querySelectorAll('.injected-svg')).toHaveLength(1),
-    )
+    // `afterInjection` rather than the SVG landing in the DOM, for the reason
+    // given in `should not carry an elapsed loadingDelay into a re-injection`.
+    // The loader can't be the signal here: the first request has no delay, so
+    // it may never show.
+    await waitFor(() => expect(injections).toBe(1))
 
     rerender(
       <ReactSVG
+        afterInjection={afterInjection}
         loading={loading}
         loadingDelay={50}
         src={`http://localhost/${second}.svg`}
