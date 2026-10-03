@@ -88,7 +88,7 @@
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "0.18.5",
-    "@eslint-react/eslint-plugin": "5.18.0",
+    "@eslint-react/eslint-plugin": "5.23.3",
     "@eslint/js": "10.0.1",
     "@faker-js/faker": "10.6.0",
     "@jest/globals": "30.5.2",
@@ -100,9 +100,9 @@
     "@types/react-dom": "19.3.0",
     "@types/shelljs": "0.10.0",
     "css.escape": "1.5.1",
-    "eslint": "10.8.0",
+    "eslint": "10.11.0",
     "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-perfectionist": "5.10.0",
+    "eslint-plugin-perfectionist": "5.12.1",
     "eslint-plugin-react-hooks": "7.1.1",
     "eslint-plugin-simple-import-sort": "12.1.1",
     "globals": "17.12.0",
@@ -121,6 +121,6 @@
     "ts-node": "10.9.2",
     "tsdown": "0.22.14",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.56.1"
+    "typescript-eslint": "8.71.0"
   }
 }
