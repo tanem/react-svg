@@ -84,7 +84,7 @@
     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
   },
   "dependencies": {
-    "@tanem/svg-injector": "^12.2.0"
+    "@tanem/svg-injector": "^12.2.1"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "0.18.5",
