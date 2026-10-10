@@ -2,6 +2,7 @@
   "constraints": {
     "npm": "> 8.0.0"
   },
+  "dependencyDashboardOSVVulnerabilitySummary": "all",
   "extends": [
     "config:js-lib",
     ":rebaseStalePrs",
@@ -20,6 +21,7 @@
     "minimumReleaseAge": null
   },
   "minimumReleaseAge": "3 days",
+  "osvVulnerabilityAlerts": true,
   "packageRules": [
     {
       "description": "Runtime dependencies reach consumers, so they are not internal. A patch or minor bump forwards an upstream fix, which is a bug fix from a consumer's point of view.",
