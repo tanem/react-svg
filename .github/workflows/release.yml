@@ -40,4 +40,4 @@ jobs:
 
       - run: npm test
 
-      - uses: tanem/release-action@1f7a65201b7636236bc51d84fa455711ba867790 # v0.1.4
+      - uses: tanem/release-action@031aa9236346c5db8a556100a6ab77643e68184b # v0.1.5
