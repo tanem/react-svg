@@ -10,8 +10,8 @@ shell
       cwd: reactDir,
     })
     const { code } = shell.exec(
-      `REACT_VERSION=${reactVersion} npx jest --config ./config/jest/config.src.js --coverage false`,
-      { fatal: true },
+      'npx jest --config ./config/jest/config.src.js --coverage false',
+      { env: { ...process.env, REACT_VERSION: reactVersion }, fatal: true },
     )
     if (code !== 0) {
       shell.echo(`Fail testing React ${reactVersion}`)
