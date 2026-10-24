@@ -4,6 +4,7 @@
  */
 export interface PullRequest {
   commits: { message: string; sha: string }[]
+  files: string[]
   labels: string[]
   title: string
 }
@@ -89,8 +90,17 @@ const checkCommits = ({ commits }: PullRequest) =>
     ]
   })
 
+/** The generated release notes are only a list of PR titles. */
+const checkMigration = ({ files, labels }: PullRequest) =>
+  labels.includes('breaking') && !files.includes('MIGRATION.md')
+    ? [
+        'Labelled breaking without a MIGRATION.md change. Add an entry saying what breaks and how to move, or relabel if nothing breaks.',
+      ]
+    : []
+
 export const checkPullRequest = (pullRequest: PullRequest) => [
   ...checkLabels(pullRequest),
   ...checkSentence('Title', pullRequest.title),
   ...checkCommits(pullRequest),
+  ...checkMigration(pullRequest),
 ]

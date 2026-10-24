@@ -11,6 +11,7 @@ const pullRequest = (overrides: Partial<PullRequest>): PullRequest => ({
       sha: '2f1fb0eca414e3491a05d4cc240fc54cd52f0ef9',
     },
   ],
+  files: ['package-lock.json', 'package.json'],
   labels: ['bug'],
   title: 'Update dependency @tanem/svg-injector to ^12.2.3',
   ...overrides,
@@ -105,4 +106,22 @@ test('fails a commit body wrapped past 72 columns, but not a long URL', () => {
     pullRequest(commit('word '.repeat(15).trim())),
   )
   assert.match(problem, /body lines over 72 columns/)
+})
+
+test('passes #3599, a breaking PR with its MIGRATION.md entry', () => {
+  assert.deepEqual(
+    checkPullRequest(
+      pullRequest({
+        files: ['MIGRATION.md', 'package-lock.json', 'package.json'],
+        labels: ['breaking'],
+        title: 'Update @tanem/svg-injector to v12',
+      }),
+    ),
+    [],
+  )
+})
+
+test('fails a breaking PR without a MIGRATION.md change', () => {
+  const [problem] = checkPullRequest(pullRequest({ labels: ['breaking'] }))
+  assert.match(problem, /without a MIGRATION.md change/)
 })

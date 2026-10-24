@@ -22,7 +22,6 @@ Rules for coding agents that the code and config don't already state. Keep it th
 [`tanem/release-action`](https://github.com/tanem/release-action) releases `master` weekly. It takes the version bump from the labels on PRs merged since the last tag, then bumps `version`, tags, and publishes the GitHub Release and the npm package. The PR workflow holds each PR to what the release needs; `node scripts/check-pr.mts <number>` runs the same check locally.
 
 - Tooling, CI and `devDependencies` work is `internal`, except a `react` / `react-dom` major or minor, which is `enhancement`. A runtime `dependencies` bump reaches consumers, so it is `bug`, or `breaking` for a major unless review shows otherwise.
-- Breaking changes need a `MIGRATION.md` entry in the same PR: the generated release notes are only a list of PR titles.
 - Leave `CHANGELOG.md`, `AUTHORS` and the `version` fields in `package.json` and `package-lock.json` alone. The first two are frozen, the changelog is [GitHub Releases](https://github.com/tanem/react-svg/releases), and the action owns the version.
 
 ## Dependencies

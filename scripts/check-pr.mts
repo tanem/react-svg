@@ -24,7 +24,7 @@ const fetchPullRequest = (number: number): PullRequest => {
 
   // Three dots: what the PR adds since it left its base, however far the base
   // has moved on since.
-  const { commits } = JSON.parse(
+  const { commits, files } = JSON.parse(
     gh('api', `repos/{owner}/{repo}/compare/${baseRefOid}...${headRefOid}`),
   )
 
@@ -34,6 +34,16 @@ const fetchPullRequest = (number: number): PullRequest => {
         message: commit.message,
         sha,
       }),
+    ),
+    // A rename counts against both names.
+    files: files.flatMap(
+      ({
+        filename,
+        previous_filename,
+      }: {
+        filename: string
+        previous_filename?: string
+      }) => (previous_filename ? [filename, previous_filename] : [filename]),
     ),
     labels: labels.map(({ name }: { name: string }) => name),
     title,
