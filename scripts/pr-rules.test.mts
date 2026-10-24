@@ -5,11 +5,18 @@ import { checkPullRequest, type PullRequest } from './pr-rules.mts'
 
 // Shaped on #3658, a PR the release took without complaint.
 const pullRequest = (overrides: Partial<PullRequest>): PullRequest => ({
+  commits: [
+    {
+      message: 'Update dependency @tanem/svg-injector to ^12.2.3',
+      sha: '2f1fb0eca414e3491a05d4cc240fc54cd52f0ef9',
+    },
+  ],
   labels: ['bug'],
+  title: 'Update dependency @tanem/svg-injector to ^12.2.3',
   ...overrides,
 })
 
-test('passes a PR with one release label', () => {
+test('passes a PR the release took', () => {
   assert.deepEqual(checkPullRequest(pullRequest({})), [])
 })
 
@@ -41,4 +48,61 @@ test('fails a triage label standing in for a release label', () => {
     pullRequest({ labels: ['has workaround'] }),
   )
   assert.match(problem, /"has workaround" is not a release label/)
+})
+
+test('fails the conventional-commit titles of #3593 and #479', () => {
+  for (const title of [
+    'feat: add "use client" to published bundles',
+    'feat: add className prop support',
+  ]) {
+    const [problem] = checkPullRequest(pullRequest({ title }))
+    assert.match(problem, /has a conventional-commit prefix/)
+  }
+})
+
+test('fails a title in lower case', () => {
+  const [problem] = checkPullRequest(pullRequest({ title: 'update README' }))
+  assert.match(problem, /starts in lower case/)
+})
+
+test('fails the conventional-commit subject of eb299a5d', () => {
+  const [problem] = checkPullRequest(
+    pullRequest({
+      commits: [
+        {
+          message:
+            'chore(deps): replace eslint-plugin-react with @eslint-react/eslint-plugin',
+          sha: 'eb299a5d',
+        },
+      ],
+    }),
+  )
+  assert.match(
+    problem,
+    /^Commit eb299a5d subject .* conventional-commit prefix/,
+  )
+})
+
+test('fails a commit body wrapped past 72 columns, but not a long URL', () => {
+  const commit = (line: string) => ({
+    commits: [{ message: `Fix the thing\n\n${line}`, sha: 'abcdef12' }],
+  })
+
+  assert.deepEqual(
+    checkPullRequest(
+      pullRequest(commit(`See https://github.com/${'x'.repeat(80)} for more.`)),
+    ),
+    [],
+  )
+  assert.deepEqual(
+    checkPullRequest(
+      pullRequest(commit(`https://example.com/${'x'.repeat(80)}`)),
+    ),
+    [],
+  )
+
+  const [problem] = checkPullRequest(
+    pullRequest(commit('word '.repeat(15).trim())),
+  )
+  assert.match(problem, /body lines over 72 columns/)
 })

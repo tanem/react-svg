@@ -1,9 +1,11 @@
 /**
- * The conventions the weekly release depends on, as checks on a pull request.
- * `check-pr.mts` fetches the PR and runs them.
+ * The conventions a pull request has to meet, as checks. `check-pr.mts`
+ * fetches the PR and runs them.
  */
 export interface PullRequest {
+  commits: { message: string; sha: string }[]
   labels: string[]
+  title: string
 }
 
 /**
@@ -46,6 +48,49 @@ const checkLabels = ({ labels }: PullRequest) => {
   return []
 }
 
+/**
+ * Nothing reads a prefix: the label sets the bump. The PR title is copied
+ * verbatim into the release notes, and history is what the next contributor
+ * copies, so both read as one plain capitalised sentence.
+ */
+const CONVENTIONAL_PREFIX =
+  /^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\(.*?\))?!?:/i
+
+const checkSentence = (what: string, sentence: string) => {
+  if (CONVENTIONAL_PREFIX.test(sentence)) {
+    return [
+      `${what} "${sentence}" has a conventional-commit prefix. Drop it and write one plain capitalised sentence.`,
+    ]
+  }
+
+  if (/^[a-z]/.test(sentence)) {
+    return [
+      `${what} "${sentence}" starts in lower case. Write one plain capitalised sentence.`,
+    ]
+  }
+
+  return []
+}
+
+/** A URL or other unbreakable token can't be wrapped, so it may run long. */
+const isOverlong = (line: string) =>
+  line.length > 72 && !line.includes('://') && /\s\S/.test(line.trim())
+
+const checkCommits = ({ commits }: PullRequest) =>
+  commits.flatMap(({ message, sha }) => {
+    const [subject, ...body] = message.split('\n')
+    const what = `Commit ${sha.slice(0, 8)}`
+
+    return [
+      ...checkSentence(`${what} subject`, subject),
+      ...(body.some(isOverlong)
+        ? [`${what} has body lines over 72 columns. Hard-wrap the body at 72.`]
+        : []),
+    ]
+  })
+
 export const checkPullRequest = (pullRequest: PullRequest) => [
   ...checkLabels(pullRequest),
+  ...checkSentence('Title', pullRequest.title),
+  ...checkCommits(pullRequest),
 ]

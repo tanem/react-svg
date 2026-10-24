@@ -5,8 +5,7 @@ Rules for coding agents that the code and config don't already state. Keep it th
 ## Writing
 
 - NZ English everywhere ("colour", "behaviour", "initialise").
-- Commit subjects and PR titles are one plain capitalised sentence, `git log --oneline` style, with no conventional-commit prefix (`feat:`, `fix:`, `chore(deps):`). Nothing reads a prefix: the version bump comes from the PR label.
-- Add a commit body whenever the change had a reason the diff does not show: what it fixes, what it rules out, what constraint forced the shape it has. Hard-wrap it at 72 columns.
+- Add a commit body whenever the change had a reason the diff does not show: what it fixes, what it rules out, what constraint forced the shape it has.
 - PR titles are copied verbatim into the generated release notes, so write them as the changelog line you want readers to see.
 - Do not hard-wrap markdown files, PR descriptions or issue descriptions.
 

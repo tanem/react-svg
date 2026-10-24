@@ -12,12 +12,31 @@ const gh = (...args: string[]) =>
   execFileSync('gh', args, { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 })
 
 const fetchPullRequest = (number: number): PullRequest => {
-  const { labels } = JSON.parse(
-    gh('pr', 'view', String(number), '--json', 'labels'),
+  const { baseRefOid, headRefOid, labels, title } = JSON.parse(
+    gh(
+      'pr',
+      'view',
+      String(number),
+      '--json',
+      'baseRefOid,headRefOid,labels,title',
+    ),
+  )
+
+  // Three dots: what the PR adds since it left its base, however far the base
+  // has moved on since.
+  const { commits } = JSON.parse(
+    gh('api', `repos/{owner}/{repo}/compare/${baseRefOid}...${headRefOid}`),
   )
 
   return {
+    commits: commits.map(
+      ({ commit, sha }: { commit: { message: string }; sha: string }) => ({
+        message: commit.message,
+        sha,
+      }),
+    ),
     labels: labels.map(({ name }: { name: string }) => name),
+    title,
   }
 }
 
