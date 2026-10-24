@@ -1,0 +1,30 @@
+name: PR
+
+# Checks the PR itself, not the code: scripts/pr-rules.mts says what and why.
+# Kept out of ci.yml so that a label or title edit reruns this alone.
+
+on:
+  pull_request:
+    branches: [master, 'v*']
+    types: [opened, edited, reopened, synchronize, labeled, unlabeled]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  pr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: '.nvmrc'
+      - run: node scripts/check-pr.mts "$PR_NUMBER"
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}

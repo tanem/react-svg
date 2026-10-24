@@ -57,7 +57,8 @@
     "test:dist": "jest --config ./config/jest/config.dist.js",
     "test:es": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --config ./config/jest/config.es.js",
     "test:src": "jest --config ./config/jest/config.src.js",
-    "test:react": "ts-node ./scripts/test-react"
+    "test:react": "ts-node ./scripts/test-react",
+    "test:scripts": "node --test \"scripts/*.test.mts\""
   },
   "repository": {
     "type": "git",
