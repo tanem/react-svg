@@ -23,10 +23,6 @@ Rules for coding agents that the code and config don't already state. Keep it th
 
 - Tooling, CI and `devDependencies` work is `internal`, except a `react` / `react-dom` major or minor, which is `enhancement`. A runtime `dependencies` bump reaches consumers, so it is `bug`, or `breaking` for a major unless review shows otherwise.
 
-## Dependencies
-
-Pin `devDependencies` to exact versions. Keep `dependencies` on caret ranges.
-
 ## Examples
 
 `examples/` are built to open on CodeSandbox, so their platform dependencies (vite, @vitejs/plugin-react, next, typescript, @types/react, @types/react-dom) track the official [sandbox-templates](https://github.com/codesandbox/sandbox-templates/tree/main): `react-vite` / `react-vite-ts` for the Vite examples, `nextjs` for the SSR one. Bump them only as far as the template has, except for patch-level security fixes inside the template's major.minor. Example-only dependencies (`styled-components`, `glamor`, `react-frame-component`) aren't governed by it.

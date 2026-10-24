@@ -41,6 +41,7 @@
   "scripts": {
     "build": "run-s clean bundle",
     "bundle": "tsdown",
+    "check:dependencies": "node scripts/check-dependencies.mts",
     "check:format": "prettier --list-different \"**/*.{cjs,cts,js,mjs,mts,ts,tsx}\"",
     "check:types": "tsc --noEmit",
     "clean": "run-p clean:*",
