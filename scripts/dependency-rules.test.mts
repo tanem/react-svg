@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
 
-import { checkRanges } from './dependency-rules.mts'
+import { checkExamples, checkRanges } from './dependency-rules.mts'
 
 test('passes pinned devDependencies and caret dependencies', () => {
   assert.deepEqual(
@@ -27,4 +27,39 @@ test('fails a pinned runtime dependency', () => {
     dependencies: { '@tanem/svg-injector': '12.2.3' },
   })
   assert.match(problem, /Use a caret range, such as "\^12.2.3"/)
+})
+
+const vite = (version: string) => ({
+  devDependencies: { '@vitejs/plugin-react': '^4.3.4', vite: version },
+})
+
+test('passes examples that agree within each template', () => {
+  assert.deepEqual(
+    checkExamples([
+      { manifest: vite('^6.0.3'), name: 'basic-usage' },
+      { manifest: vite('^6.0.3'), name: 'loading' },
+      // The Next.js template may pin a different typescript to react-vite-ts.
+      {
+        manifest: { dependencies: { next: '15.5.26', typescript: '^5' } },
+        name: 'ssr',
+      },
+      {
+        manifest: { devDependencies: { typescript: '^5.7.2', vite: '^6.0.3' } },
+        name: 'typescript',
+      },
+    ]),
+    [],
+  )
+})
+
+test('fails an example bumped without the others', () => {
+  const [problem] = checkExamples([
+    { manifest: vite('^6.0.3'), name: 'basic-usage' },
+    { manifest: vite('^6.0.3'), name: 'fallbacks' },
+    { manifest: vite('^7.0.0'), name: 'loading' },
+  ])
+  assert.equal(
+    problem,
+    'vite across the Vite examples differs: ^6.0.3 in basic-usage, fallbacks; ^7.0.0 in loading. Move every example on a template together, as far as the template has.',
+  )
 })

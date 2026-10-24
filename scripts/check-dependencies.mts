@@ -1,15 +1,29 @@
 /**
- * Checks package.json against `dependency-rules.mts`. Part of `npm test`, as
- * `npm run check:dependencies`.
+ * Checks package.json and the examples against `dependency-rules.mts`. Part
+ * of `npm test`, as `npm run check:dependencies`.
  */
-import { readFileSync } from 'node:fs'
+import { readdirSync, readFileSync } from 'node:fs'
 
-import { checkRanges } from './dependency-rules.mts'
+import { checkExamples, checkRanges } from './dependency-rules.mts'
 
-const problems = checkRanges(JSON.parse(readFileSync('package.json', 'utf8')))
+const readManifest = (path: string) => JSON.parse(readFileSync(path, 'utf8'))
+
+const problems = [
+  ...checkRanges(readManifest('package.json')).map(
+    (problem) => `package.json: ${problem}`,
+  ),
+  ...checkExamples(
+    readdirSync('examples', { withFileTypes: true })
+      .filter((entry) => entry.isDirectory())
+      .map(({ name }) => ({
+        manifest: readManifest(`examples/${name}/package.json`),
+        name,
+      })),
+  ).map((problem) => `examples: ${problem}`),
+]
 
 for (const problem of problems) {
-  console.error(`package.json: ${problem}`)
+  console.error(problem)
 }
 
 process.exitCode = problems.length > 0 ? 1 : 0
