@@ -14,6 +14,9 @@ const pullRequest = (overrides: Partial<PullRequest>): PullRequest => ({
   files: ['package-lock.json', 'package.json'],
   labels: ['bug'],
   title: 'Update dependency @tanem/svg-injector to ^12.2.3',
+  versionFields: [
+    { base: '19.2.3', head: '19.2.3', name: 'package.json version' },
+  ],
   ...overrides,
 })
 
@@ -124,4 +127,21 @@ test('passes #3599, a breaking PR with its MIGRATION.md entry', () => {
 test('fails a breaking PR without a MIGRATION.md change', () => {
   const [problem] = checkPullRequest(pullRequest({ labels: ['breaking'] }))
   assert.match(problem, /without a MIGRATION.md change/)
+})
+
+test('fails a PR that does what release commit 2bd2ff24 did', () => {
+  const problems = checkPullRequest(
+    pullRequest({
+      files: ['CHANGELOG.md', 'package-lock.json', 'package.json'],
+      versionFields: [
+        { base: '19.2.2', head: '19.2.3', name: 'package.json version' },
+      ],
+    }),
+  )
+  assert.equal(problems.length, 2)
+  assert.match(problems[0], /Changes CHANGELOG.md, which is frozen/)
+  assert.match(
+    problems[1],
+    /Changes package.json version from 19.2.2 to 19.2.3/,
+  )
 })

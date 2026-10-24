@@ -7,6 +7,8 @@ export interface PullRequest {
   files: string[]
   labels: string[]
   title: string
+  /** The version fields of the files the PR touches, at its base and head. */
+  versionFields: { base?: string; head?: string; name: string }[]
 }
 
 /**
@@ -98,9 +100,29 @@ const checkMigration = ({ files, labels }: PullRequest) =>
       ]
     : []
 
+/**
+ * tanem/release-action owns the versions and bumps them on master itself.
+ * CHANGELOG.md and AUTHORS are frozen: GitHub Releases is the changelog now.
+ */
+const FROZEN_FILES = ['AUTHORS', 'CHANGELOG.md']
+
+const checkReleaseOwned = ({ files, versionFields }: PullRequest) => [
+  ...FROZEN_FILES.filter((file) => files.includes(file)).map(
+    (file) =>
+      `Changes ${file}, which is frozen. Revert it: GitHub Releases is the changelog.`,
+  ),
+  ...versionFields
+    .filter(({ base, head }) => base !== head)
+    .map(
+      ({ base, head, name }) =>
+        `Changes ${name} from ${base} to ${head}. Revert it: tanem/release-action sets the version from the PR label.`,
+    ),
+]
+
 export const checkPullRequest = (pullRequest: PullRequest) => [
   ...checkLabels(pullRequest),
   ...checkSentence('Title', pullRequest.title),
   ...checkCommits(pullRequest),
   ...checkMigration(pullRequest),
+  ...checkReleaseOwned(pullRequest),
 ]

@@ -8,6 +8,24 @@ import { execFileSync } from 'node:child_process'
 
 import { checkPullRequest, type PullRequest } from './pr-rules.mts'
 
+// Each file's version fields, as [name, value] pairs.
+const VERSIONED_FILES = [
+  {
+    path: 'package.json',
+    versions: (json: { version?: string }) => [['version', json.version]],
+  },
+  {
+    path: 'package-lock.json',
+    versions: (json: {
+      packages?: Record<string, { version?: string }>
+      version?: string
+    }) => [
+      ['version', json.version],
+      ['packages[""].version', json.packages?.['']?.version],
+    ],
+  },
+]
+
 const gh = (...args: string[]) =>
   execFileSync('gh', args, { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 })
 
@@ -24,9 +42,36 @@ const fetchPullRequest = (number: number): PullRequest => {
 
   // Three dots: what the PR adds since it left its base, however far the base
   // has moved on since.
-  const { commits, files } = JSON.parse(
+  const { commits, files, merge_base_commit } = JSON.parse(
     gh('api', `repos/{owner}/{repo}/compare/${baseRefOid}...${headRefOid}`),
   )
+
+  const readJson = (path: string, ref: string) =>
+    JSON.parse(
+      gh(
+        'api',
+        '-H',
+        'Accept: application/vnd.github.raw+json',
+        `repos/{owner}/{repo}/contents/${path}?ref=${ref}`,
+      ),
+    )
+
+  const versionFields = VERSIONED_FILES.flatMap(({ path, versions }) => {
+    if (
+      !files.some(({ filename }: { filename: string }) => filename === path)
+    ) {
+      return []
+    }
+
+    const base = versions(readJson(path, merge_base_commit.sha))
+    const head = versions(readJson(path, headRefOid))
+
+    return base.map(([name, value], index) => ({
+      base: value,
+      head: head[index][1],
+      name: `${path} ${name}`,
+    }))
+  })
 
   return {
     commits: commits.map(
@@ -47,6 +92,7 @@ const fetchPullRequest = (number: number): PullRequest => {
     ),
     labels: labels.map(({ name }: { name: string }) => name),
     title,
+    versionFields,
   }
 }
 
